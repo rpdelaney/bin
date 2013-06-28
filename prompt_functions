@@ -1,0 +1,13 @@
+#print a quick summary of raid array health
+awk '/^md/ {printf "%s: ", $1}; /blocks/ {print $NF}' </proc/mdstat
+
+#print free ram in mb
+grep '^MemFree:' /proc/meminfo | awk '{ mem=($2)/(1024) ; printf "%0.0f MB\n", mem }'
+
+#get public ip - slow, should be a cron job to a file
+curl -s http://checkip.dyndns.org/ | grep -o "[[:digit:].]\+"
+
+#show git branches by date
+for k in `git branch|sed s/^..//`;do echo -e `git log -1 --pretty=format:"%Cgreen%ci %Cblue%cr%Creset" "$k"`\\t"$k";done|sort
+
+

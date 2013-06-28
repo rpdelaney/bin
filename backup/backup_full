@@ -1,0 +1,8 @@
+#!/bin/sh
+
+START=$(date +%s)
+rsync -aAXHlhPi --exclude-from=/home/ryan/bin/backup/backup_full.excludes --delete --delete-excluded / /media/vault/backup/full
+FINISH=$(date +%s)
+echo "total time: $(( ($FINISH-$START) / 60 )) minutes, $(( ($FINISH-$START) % 60 )) seconds"
+
+echo $(date) > $1"/backup_time"

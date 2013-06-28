@@ -1,0 +1,1 @@
+colordiff -y $2 $5 | pager
