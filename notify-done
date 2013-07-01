@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+
+$@ && notify-send $@": Process finished. Exit code:" $?
