@@ -1,0 +1,24 @@
+#!/bin/bash
+
+#set variables
+pg_dump="/home/Ryan/pgsql/bin/pg_dump.exe"
+dump_path="D:/Users/Ryan/Dropbox/Sierra/Backup/"
+current_date=$(date +%Y-%m-%d__%H-%M-%S)
+
+backup_file=$dump_path$current_date".backup"
+log_file=$dump_path$current_date".log"
+
+#echo "Backup file: " $backup_file
+#echo "Log file:    " $log_file
+
+#create the backup
+source ~/bin/susie_dump $backup_file $log_file
+
+#drop the sandbox
+source ~/bin/susie_drop
+
+#create the sandbox
+source ~/bin/susie_create
+
+#restore to sandbox
+source ~/bin/susie_restore
