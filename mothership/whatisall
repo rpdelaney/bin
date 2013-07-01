@@ -1,0 +1,2468 @@
+411toppm (1)         - convert Sony Mavica .411 image to PPM
+7z (1)               - A file archiver with highest compression ratio
+7za (1)              - A file archiver with highest compression ratio
+7zr (1)              - A file archiver with highest compression ratio
+a2p (1perl)          - Awk to Perl translator
+a2ps (1)             - format files for printing on a PostScript printer
+a52dec (1)           - decode ATSC A/52 audio streams
+aafire (1)           - aalib example programs
+aclocal (1)          - manual page for aclocal 1.13.1
+aclocal-1.13 (1)     - manual page for aclocal 1.13.1
+aconnect (1)         - ALSA sequencer connection manager
+acpi (1)             - Shows battery status and other ACPI information
+acyclic (1)          - make directed graph acyclic
+addftinfo (1)        - add information to troff font files for use with groff
+addr2line (1)        - convert addresses into file names and line numbers.
+adie (1)             - The ADvanced Interactive Editor
+afmtodit (1)         - create font files for use with groff - Tps and - Tpdf
+agentxtrap (1)       - send an AgentX NotifyPDU to an AgentX master agent
+agrep (1)            - print lines approximately matching a pattern
+al (1)               - Mono Assembly Linker
+alc (1)              - the aMule eD2k link creator
+alcc (1)             - text based eD2k links calculator for aMule
+alsaloop (1)         - command-line PCM loopback
+alsamixer (1)        - soundcard mixer for ALSA soundcard driver, with ncurses interface
+ambiguous_words (1)  - generate sets of words Tesseract is likely to find ambiguous
+amidi (1)            - read from and write to ALSA RawMIDI ports
+amixer (1)           - command-line mixer for ALSA soundcard driver
+amule (1)            - the all-platform eMule p2p client
+amulecmd (1)         - Console-based program to control aMule
+amuled (1)           - the all-platform eMule p2p client - daemonized version
+amuleweb (1)         - aMule web server
+ANALYZE (7)          - collect statistics about a database
+animate (1)          - animates an image or image sequence on any X server.
+any2djvu (1)         - Convert .ps/.ps.gz/.pdf to .djvu
+anytopnm (1)         - convert an arbitrary type of image file to PBM, PGM, or PPM
+aoss (1)             - Wrapper script to facilitate use of the ALSA OSS compatibility library.
+aplay (1)            - command-line sound recorder and player for ALSA soundcard driver
+aplaymidi (1)        - play Standard MIDI Files
+appletviewer (1)     - The Java Applet Viewer.
+appres (1)           - list X application resource database
+apropos (1)          - search the manual page names and descriptions
+apt (1)              - annotation processing tool
+ar (1)               - create, modify, and extract from archives
+ar (1p)              - create and maintain library archives
+arecord (1)          - command-line sound recorder and player for ALSA soundcard driver
+arecordmidi (1)      - record Standard MIDI Files
+as (1)               - the portable GNU assembler.
+asciitopgm (1)       - convert ASCII graphics into a PGM
+aseqdump (1)         - show the events received at an ALSA sequencer port
+aseqnet (1)          - ALSA sequencer connectors over network
+asn1Coding (1)       - ASN.1 DER encoder
+asn1Decoding (1)     - ASN.1 DER decoder
+asn1Parser (1)       - ASN.1 syntax tree generator for libtasn1
+aspell (1)           - interactive spell checker
+aspell-import (1)    - import old personal dictionaries into GNU Aspell
+atktopbm (1)         - convert Andrew Toolkit raster object to PBM
+attr (5)             - Extended attributes
+attr (1)             - extended attributes on XFS filesystem objects
+autoconf (1)         - Generate configuration scripts
+autoheader (1)       - Create a template header for configure
+autom4te (1)         - Generate files and scripts thanks to M4
+automake (1)         - manual page for automake 1.13.1
+automake-1.13 (1)    - manual page for automake 1.13.1
+autopoint (1)        - copies standard gettext infrastructure
+autoreconf (1)       - Update generated configuration files
+autoscan (1)         - Generate a preliminary configure.in
+autoupdate (1)       - Update a configure.in to a newer Autoconf
+avahi-bookmarks (1)  - Web service showing mDNS/DNS-SD announced HTTP services using the Avahi daemon
+avahi-browse (1)     - Browse for mDNS/DNS-SD services using the Avahi daemon
+avahi-browse-domains (1) - Browse for mDNS/DNS-SD services using the Avahi daemon
+avahi-discover (1)   - Browse for mDNS/DNS-SD services using the Avahi daemon
+avahi-publish (1)    - Register an mDNS/DNS-SD service or host name or address mapping using the Avahi daemon
+avahi-publish-address (1) - Register an mDNS/DNS-SD service or host name or address mapping using the Avahi daemon
+avahi-publish-service (1) - Register an mDNS/DNS-SD service or host name or address mapping using the Avahi daemon
+avahi-resolve (1)    - Resolve one or more mDNS/DNS host name(s) to IP address(es) (and vice versa) using the Avahi ...
+avahi-resolve-address (1) - Resolve one or more mDNS/DNS host name(s) to IP address(es) (and vice versa) using the A...
+avahi-resolve-host-name (1) - Resolve one or more mDNS/DNS host name(s) to IP address(es) (and vice versa) using the...
+avahi-set-host-name (1) - Change mDNS host name
+awesome (1)          - awesome window manager
+awesome-client (1)   - awesome window manager remote execution
+awk (1p)             - pattern scanning and processing language
+baobab (1)           - A graphical tool to analyse disk usage
+barcode (6)          - draws a random sequence of barcodes for the products you enjoy
+base64 (1)           - base64 encode/decode data and print to standard output
+basename (3)         - parse pathname components
+basename (3p)        - return the last component of a pathname
+basename (1p)        - return non-directory portion of a pathname
+basename (1)         - strip directory and suffix from filenames
+bash (1)             - GNU Bourne-Again SHell
+bashbug (1)          - report a bug in bash
+bashdb (1)           - bash debugger script
+BC (3x)              - direct curses interface to the terminfo capability database
+bc (1)               - An arbitrary precision calculator language
+bc (1p)              - arbitrary-precision arithmetic language
+bcomps (1)           - biconnected components filter for graphs
+bdftopcf (1)         - convert X font from Bitmap Distribution Format to Portable Compiled Format
+bdftruncate (1)      - generate truncated BDF font from ISO 10646-1-encoded BDF font
+bibus (1)            - Bibus is a bibliographic database
+bioradtopgm (1)      - convert a Biorad confocal file into a PGM image
+bison (1)            - GNU Project parser generator (yacc replacement)
+bmp2tiff (1)         - create a TIFF file from a Microsoft Windows Device Independent Bitmap image file
+bmptopnm (1)         - convert a BMP file into a PBM, PGM, or PNM image
+bmptoppm (1)         - replaced by bmptopnm
+brushtopbm (1)       - convert a doodle brush file into a PBM image
+bsdcpio (1)          - copy files to and from archives
+bsdtar (1)           - manipulate tape archives
+bssh (1)             - Browse for SSH/VNC servers on the local network
+bti (1)              - send a tweet to twitter.com or identi.ca from the command line
+bti-shrink-urls (1)  - convert URLs to a shorter form using a web service
+bunzip2 (1)          - a block-sorting file compressor, v1.0.6
+bvnc (1)             - Browse for SSH/VNC servers on the local network
+byobu (1)            - wrapper script for seeding a user's byobu configuration and launching a text based window man...
+byobu-config (1)     - Configuration utility for byobu
+byobu-ctrl-a (1)     - Configure Byobu's ctrl-a behavior
+byobu-disable (1)    - wrapper script for enabling/disabling automatic startup of byobu after login into text console
+byobu-enable (1)     - wrapper script for enabling/disabling automatic startup of byobu after login into text console
+byobu-export (1)     - DEPRECATED
+byobu-janitor (1)    - script for cleaning and upgrading environment after upgrades
+byobu-launch (1)     - Byobu Launcher
+byobu-launcher (1)   - Byobu Launcher
+byobu-launcher-install (1) - Byobu Launcher installation utility
+byobu-launcher-uninstall (1) - Byobu Launcher uninstallation utility
+byobu-layout (1)     - Save and restore byobu-tmux laouts
+byobu-quiet (1)      - Silence all of Byobu's status indicators and eliminate the hardstatus line
+byobu-reconnect-sockets (1) - Sourcable script that updates GPG_AGENT_INFO and DBUS_SESSION_BUS_ADDRESS in the envir...
+byobu-screen (1)     - Launch byobu with screen as the backend
+byobu-select-backend (1) - select your default Byobu backend window manager
+byobu-select-profile (1) - select your Byobu foreground and background colors
+byobu-select-session (1) - select and connect to a byobu session
+byobu-shell (1)      - Print the message of the day and launch a shell
+byobu-silent (1)     - Silence all of Byobu's status indicators, eliminate the hardstatus line, and the window list
+byobu-status (1)     - displays status suitable for printing by the BYOBU_BACKEND
+byobu-status-detail (1) - Wrapper that uses a sensible pager
+byobu-tmux (1)       - Launch byobu with tmux as the backend
+bzcat (1)            - decompresses files to stdout
+bzip2 (1)            - a block-sorting file compressor, v1.0.6
+bzip2recover (1)     - recovers data from damaged bzip2 files
+bzz (1)              - DjVu general purpose compression utility.
+c44 (1)              - DjVuPhoto encode.
+c99 (1p)             - compile standard C programs
+cabextract (1)       - program to extract files from Microsoft cabinet (.cab) archives
+caca-config (1)      - script to get information about the installed version of libcaca
+cacademo (1)         - libcaca's demonstration applications
+cacafire (1)         - libcaca's demonstration applications
+cacaplay (1)         - play libcaca files
+cacaserver (1)       - telnet server for libcaca
+cacaview (1)         - ASCII image browser
+cairo-dock (1)       - A dock to launch your programs easily.
+cal (1)              - display a calendar
+cal (1p)             - print a calendar
+calc (1)             - arbitrary precision calculator
+calculator (1)       - simple desktop calculator
+calcurse (1)         - text-based organizer
+cameratopam (1)      - convert raw camera image to PAM
+cancel (1)           - cancel jobs
+captest (8)          - a program to demonstrate capabilities
+captoinfo (1m)       - convert a termcap description into a terminfo description
+card (1)             - print reference card of program options
+cas (1)              - c aMule statistics
+castget (1)          - download RSS enclosures
+cat (1p)             - concatenate and print files
+cat (1)              - concatenate files and print on the standard output
+catdoc (1)           - reads MS-Word file and puts its content as plain text on standard output
+catman (8)           - create or update the pre-formatted manual pages
+catppt (1)           - reads MS-PowerPoint file and puts its content on standard output
+cclive (1)           - media stream extraction tool
+ccmake (1)           - Curses Interface for CMake.
+ccomps (1)           - connected components filter for graphs
+ccrewrite (1)        - Rewrite CLR assemblies for runtime code contract verification.
+ccze-plugin (7)      - A robust log colorizer, plugin infrastructure
+ccze (1)             - A robust log colorizer
+ccze-cssdump (1)     - Dump CCZE color setup into CSS format
+cdb (3)              - Constant DataBase library
+cdb (5)              - Constant DataBase file format
+cdb (1)              - Constant DataBase manipulation tool
+cd-create-profile (1) - Color Manager Profile Creation Tool
+cdda2ogg (1)         - extract audio CD audio tracks and encode them
+cdda2wav (1)         - a sampling utility that dumps CD audio data into wav sound files
+cd-drive (1)         - manual page for lt-cd-drive version 0.90 i686-pc-linux-gnu
+cd-fix-profile (1)   - Color Manager Testing Tool
+cdiff (1)            - a wrapper tool for colordiff
+cd-info (1)          - manual page for lt-cd-info version 0.90 i686-pc-linux-gnu
+cdparanoia (1)       - (unknown subject)
+cd-paranoia (1)      - (unknown subject)
+cd-read (1)          - manual page for lt-cd-read version 0.90
+cdrecord (1)         - write data to optical disk media
+cert2spc (1)         - Transform multiple X.509 certificates to a Software Publisher Certificate
+certmgr (1)          - Mono Certificate Manager (CLI version)
+certtool (1)         - GnuTLS certificate tool
+c++filt (1)          - Demangle C++ and Java symbols.
+cfv (1)              - Verify file consistency with .sfv, .csv, .crc, .md5, md5sum, sha1sum, .torrent, par, or par2 ...
+cgdisk (8)           - Curses-based GUID partition table (GPT) manipulator
+chacl (1)            - change the access control list of a file or directory
+chage (1)            - change user password expiry information
+chattr (1)           - change file attributes on a Linux file system
+chcon (1)            - change file security context
+chem (1)             - groff preprocessor for producing chemical structure diagrams
+cherrymusic (1)      - a standalone HTML5 (with Flash fallback) music streaming server written in Python
+cherrymusicd (8)     - the daemon for CherryMusic, see cherrymusic(1)
+chfn (1)             - change your finger information
+chgrp (1)            - change group ownership
+chgrp (1p)           - change the file group ownership
+chkfont (6)          - checks figlet 2.0 and up font files for format errors
+chktrust (1)         - Check the trust of a PE executable.
+chmod (3p)           - change mode of a file
+chmod (1p)           - change the file modes
+chmod (1)            - change file mode bits
+chmod (2)            - change permissions of a file
+chown (3p)           - change owner and group of a file
+chown (1p)           - change the file ownership
+chown (1)            - change file owner and group
+chown (2)            - change ownership of a file
+chromium (1)         - the web browser from Google
+chroot (1)           - run command or interactive shell with special root directory
+chroot (2)           - change root directory
+chrt (1)             - manipulate the real-time attributes of a process
+chsh (1)             - change your login shell
+chvt (1)             - change foreground virtual terminal
+cifscreds (1)        - manage NTLM credentials in kernel keyring
+cifsiostat (1)       - Report CIFS statistics.
+circo (1)            - filter for circular layout of graphs
+cjb2 (1)             - Simple DjVuBitonal encoder.
+cjpeg (1)            - compress an image file to a JPEG file
+cksum (1p)           - write file checksums and sizes
+cksum (1)            - checksum and count the bytes in a file
+clear (3x)           - clear all or part of a curses window
+clear (1)            - clear the terminal screen
+CLUSTER (7)          - cluster a table according to an index
+cluster (1)          - find clusters in a graph and augment the graph with this information.
+clusterdb (1)        - cluster a PostgreSQL database
+cmake (1)            - Cross-Platform Makefile Generator.
+cmake-gui (1)        - CMake GUI.
+cmp (1)              - compare two files byte by byte
+cmp (1p)             - compare two files
+cmus-tutorial (7)    - C* Music Player tutorial
+cmus (1)             - C* Music Player
+cmus-remote (1)      - control cmus
+cmuwmtopbm (1)       - convert a CMU window manager bitmap into a PBM image
+cntraining (1)       - character normalization training for Tesseract
+colcrt (1)           - filter nroff output for CRT previewing
+colordiff (1)        - a tool to colorize diff output
+colormgr (1)         - Color Manager Testing Tool
+colrm (1)            - remove columns from a file
+column (1)           - columnate lists
+combine_tessdata (1) - combine/extract/overwrite Tesseract data
+comm (1p)            - select or reject lines common to two files
+comm (1)             - compare two sorted files line by line
+compare (1)          - mathematically and visually annotate the difference between an image and its reconstruction.
+compile_et (1)       - error table compiler
+Composite (3)        - widget from X toolkit
+composite (1)        - overlaps one image over another.
+conjure (1)          - interprets and executes scripts written in the Magick Scripting Language (MSL).
+conky (1)            - A system monitor for X originally based on the torsmo code, but more kickass. It just keeps o...
+convert (1)          - convert between image formats as well as resize an image, blur, crop, despeckle, dither, draw...
+copydatabase (1)     - Perform a document-by-document copy of one or more Xapian databases
+cower (1)            - a simple AUR downloader
+cp (1)               - copy files and directories
+cp (1p)              - copy files
+cpack (1)            - Packaging driver provided by CMake.
+cpaldjvu (1)         - DjVuDocument encoder for low-color images.
+cpp (1)              - The C Preprocessor
+createdb (1)         - create a new PostgreSQL database
+createlang (1)       - install a PostgreSQL procedural language
+createuser (1)       - define a new PostgreSQL user account
+crontab (5)          - files used to schedule the execution of programs
+crontab (1)          - maintains crontab files for individual users
+crontab (1p)         - schedule periodic background work
+csepdjvu (1)         - DjVu encoder for separated data files.
+csharp (1)           - Interactive C# Shell
+csplit (1p)          - split files based on context
+csplit (1)           - split a file into sections determined by context lines
+ctags (1p)           - create a tags file (DEVELOPMENT, FORTRAN)
+ctags (1)            - Generate tag files for source code
+ctest (1)            - Testing driver provided by CMake.
+cups-config (1)      - get cups api, compiler, directory, and link information.
+cupstestdsc (1)      - test conformance of postscript files
+cupstestppd (1)      - test conformance of ppd files
+curl (1)             - transfer a URL
+curl-config (1)      - Get information about a libcurl installation
+curlftpfs (1)        - mount a ftp host as a local directory
+cut (1p)             - cut out selected fields of each line of a file
+cut (1)              - remove sections from each line of files
+vlc (1)              - the VLC media player
+cvt (1)              - calculate VESA CVT mode lines
+cwebp (1)            - compress an image file to a WebP file
+cxpm (1)             - Check an XPM (X PixMap) file - XPM 1, 2, or 3.
+cytune (8)           - tune driver parameters for Cyclades-Z multiport serial card
+date (1p)            - write the date and time
+date (1)             - print or set the system date and time
+dawg2wordlist (1)    - convert a Tesseract DAWG to a wordlist
+dbus-binding-tool (1) - C language GLib bindings generation utility.
+dbus-cleanup-sockets (1) - clean up leftover sockets in a directory
+dbus-daemon (1)      - Message bus daemon
+dbus-launch (1)      - Utility to start a message bus from a shell script
+dbus-monitor (1)     - debug probe to print message bus messages
+dbus-send (1)        - Send a message to a message bus
+dbus-uuidgen (1)     - Utility to generate UUIDs
+dc (1)               - an arbitrary precision calculator
+dc1394_reset_bus (1) - resets the IEEE1394 bus
+dcadec (1)           - decode DTS Coherent Acoustics audio streams
+dconf (7)            - A configuration systen
+dconf (1)            - Simple tool for manipulating a dconf database
+dconf-editor (1)     - Graphical editor for dconf
+dd (1)               - convert and copy a file
+dd (1p)              - convert and copy a file
+ddbugtopbm (1)       - convert Diddle or DiddleBug sketches to PBM files
+ddjvu (1)            - Command line DjVu decoder.
+deallocvt (1)        - deallocate unused virtual consoles
+delve (1)            - Inspect the contents of a Xapian database
+derb (1)             - disassemble a resource bundle
+desktop-file-edit (1) - Installation and edition of desktop files
+desktop-file-install (1) - Installation and edition of desktop files
+desktop-file-validate (1) - Validate desktop entry files
+devdump (1)          - Utility programs for dumping and verifying iso9660 images.
+df (1)               - report file system disk space usage
+df (1p)              - report free disk space
+dgawk (1)            - pattern scanning and processing language
+di (1)               - disk information
+dialog (3)           - widgets and utilities for the  program
+dialog (1)           - display dialog boxes from shell scripts
+diff (1)             - compare files line by line
+diff (1p)            - compare two files
+diff3 (1)            - compare three files line by line
+diffimg (1)          - Calculates intersection between two images
+diffpp (1)           - pretty-print diff outputs with GNU enscript
+dijkstra (1)         - single-source distance filter
+dillo (1)            - web browser
+dir (1)              - list directory contents
+dircolors (1)        - color setup for ls
+dirmngr (1)          - CRL and OCSP daemon
+dirmngr-client (1)   - CRL and OCSP daemon
+dirname (3)          - parse pathname components
+dirname (3p)         - report the parent directory name of a file pathname
+dirname (1p)         - return the directory portion of a pathname
+dirname (1)          - strip last component from file name
+dirsplit (1)         - splits directory into multiple with equal size
+disco (1)            - Mono's Web Service Discovery Tool
+display (1)          - displays an image or image sequence on any X server.
+djpeg (1)            - decompress a JPEG file to an image file
+djvm (1)             - Manipulate bundled multi-page DjVu documents.
+djvmcvt (1)          - Convert multi-page DjVu documents.
+djvudigital (1)      - creates DjVu files from PS or PDF files.
+djvudump (1)         - Display internal structure of DjVu files.
+djvuextract (1)      - Extract chunks from DjVu image files.
+djvumake (1)         - Assemble DjVu image files.
+djvups (1)           - Convert DjVu documents to PostScript.
+djvused (1)          - Multi-purpose DjVu document editor.
+djvuserve (1)        - Generate indirect DjVu documents on the fly.
+djvutoxml (1)        - DjVuLibre XML Tools.
+djvutxt (1)          - Extract the hidden text from DjVu documents.
+djvuxmlparser (1)    - DjVuLibre XML Tools.
+dos2unix (1)         - DOS/Mac to Unix and vice versa text file format converter
+dot (1)              - filter for drawing directed graphs
+dot (1p)             - execute commands in the current environment
+dotty (1)            - A Customizable Graph Editor
+dpkg (1)             - package manager for Debian
+dpkg-architecture (1) - set and determine the architecture for package building
+dpkg-buildflags (1)  - returns build flags to use during package build
+dpkg-buildpackage (1) - build binary or source packages from sources
+dpkg-checkbuilddeps (1) - check build dependencies and conflicts
+dpkg-deb (1)         - Debian package archive (.deb) manipulation tool
+dpkg-distaddfile (1) - add entries to debian/files
+dpkg-divert (8)      - override a package's version of a file
+dpkg-genchanges (1)  - generate Debian .changes files
+dpkg-gencontrol (1)  - generate Debian control files
+dpkg-gensymbols (1)  - generate symbols files (shared library dependency information)
+dpkg-maintscript-helper (1) - works around known dpkg limitations in maintainer scripts
+dpkg-mergechangelogs (1) - 3-way merge of debian/changelog files
+dpkg-name (1)        - rename Debian packages to full package names
+dpkg-parsechangelog (1) - parse Debian changelog files
+dpkg-query (1)       - a tool to query the dpkg database
+dpkg-scanpackages (1) - create Packages index files
+dpkg-scansources (1) - create Sources index files
+dpkg-shlibdeps (1)   - generate shared library substvar dependencies
+dpkg-source (1)      - Debian source package (.dsc) manipulation tool
+dpkg-split (1)       - Debian package archive split/join tool
+dpkg-statoverride (8) - override ownership and mode of files
+dpkg-trigger (1)     - a package trigger utility
+dpkg-vendor (1)      - queries information about distribution vendors
+drill (1)            - get (debug) information out of DNS(SEC)
+dropdb (1)           - remove a PostgreSQL database
+droplang (1)         - remove a PostgreSQL procedural language
+dropuser (1)         - remove a PostgreSQL user account
+dselect (1)          - Debian package management frontend
+dtd2xsd (1)          - XML Schema generator from XML document that contains DTD.
+dtsdec (1)           - decode DTS Coherent Acoustics audio streams
+du (1p)              - estimate file space usage
+du (1)               - estimate file space usage
+dubdv (1)            - insert audio into a digital video stream
+dumpiso (1)          - dump IEEE 1394 isochronous channel packets
+dumpkeys (1)         - dump keyboard translation tables
+duplicity (1)        - Encrypted incremental backup to local or remote storage.
+dush (1)             - find and display largest files/directories
+dvconnect (1)        - receive or transmit raw DV using the video1394 device
+dvcont (1)           - send control commands to DV cameras
+dvipdf (1)           - Convert TeX DVI file to PDF using ghostscript and dvips
+dwebp (1)            - decompress a WebP file to an image file
+echo (3x)            - curses input options
+echo (1p)            - write arguments to standard output
+echo (1)             - display a line of text
+ecpg (1)             - embedded SQL C preprocessor
+ed2k (1)             - aMule eD2k link parser
+edit (1)             - text editor
+egrep (1)            - print lines matching a pattern
+eject (1)            - eject removable media
+elfedit (1)          - Update the ELF header of ELF files.
+elinks (1)           - lynx-like alternative character mode WWW browser
+emerald (1)          - The Emerald Windows Decorator
+emerald-theme-manager (1) - The Emerald Theme Manager
+enca (1)             - - detect and convert encoding of text files
+enchant (1)          - a spellchecker
+encodedv (1)         - encode a series of images to a digital video stream
+encode_keychange (1) - produce the KeyChange string for SNMPv3
+enconv (1)           - - detect and convert encoding of text files
+enscript (1)         - convert text files to PostScript, HTML, RTF, ANSI, and overstrikes
+Env (3perl)          - perl module that imports environment variables as scalars or arrays
+env (n)              - Variables used by Tcl
+env (1)              - run a program in a modified environment
+env (1p)             - set the environment for command invocation
+envsubst (1)         - substitutes environment variables in shell format strings
+epiphany (1)         - simple to use web browser for GNOME
+eps2eps (1)          - Ghostscript PostScript "distiller"
+epsffit (1)          - fit encapsulated PostScript file (EPSF) into constrained size
+epylint (1)          - Emacs and Flymake compatible Pylint
+eqn (1)              - format equations for troff or MathML
+eqn2graph (1)        - convert an EQN equation into a cropped image
+erb (1)              - Ruby Templating
+esdcompat (1)        - PulseAudio ESD wrapper script
+ethstatus (1)        - Console-based ethernet statistics monitor
+eview (1)            - easy Vim, edit a file with Vim and setup for modeless editing
+evim (1)             - easy Vim, edit a file with Vim and setup for modeless editing
+evince (1)           - GNOME document viewer
+ex (1)               - text editor
+ex (1p)              - text editor
+exif (1)             - shows EXIF information in JPEG files
+exiftran (1)         - transform digital camera jpeg images
+exiv2 (1)            - Image metadata manipulation tool
+exo-csource (1)      - C code generation utility for arbitrary data
+exo-open (1)         - Open URLs and launch preferred applications
+expac (1)            - alpm data extraction utility
+expand (1p)          - convert tabs to spaces
+expand (1)           - convert tabs to spaces
+expiry (1)           - check and enforce password expiration policy
+expr (3)             - c-like expression library
+expr (n)             - Evaluate an expression
+expr (1p)            - evaluate arguments as an expression
+expr (1)             - evaluate expressions
+extcheck (1)         - A utility to detect jar conflicts
+extract_a52 (1)      - extract ATSC A/52 audio from a MPEG stream.
+extract_dca (1)      - extract DTS Coherent Acoustics audio from a MPEG stream.
+extract_dts (1)      - extract DTS Coherent Acoustics audio from a MPEG stream.
+extract_mpeg2 (1)    - extract MPEG video streams from a multiplexed stream.
+extractres (1)       - filter to extract resources from a PostScript document
+eyuvtoppm (1)        - convert a Berkeley YUV file to a PPM file
+faac (1)             - open source MPEG-4 and MPEG-2 AAC encoder
+faad (1)             - Process an Advanced Audio Codec stream
+factor (1)           - factor numbers
+faillog (5)          - login failure logging file
+faillog (8)          - display faillog records or set login failure limits
+faked (1)            - daemon that remembers fake ownership/permissions of files manipulated by fakeroot processes.
+fakeroot (1)         - run a command in an environment faking root privileges for file manipulation
+fallocate (1)        - preallocate space to a file
+fallocate (2)        - manipulate file space
+false (1p)           - return false value
+false (1)            - do nothing, unsuccessfully
+fatrat (1)           - download/upload manager for Linux
+fax2ps (1)           - convert a TIFF facsimile to compressed
+fax2tiff (1)         - create a TIFF Class F fax file from raw fax data
+fbgs (1)             - Poor man's PostScript/pdf viewer for the linux framebuffer console.
+fbi (1)              - Linux framebuffer imageviewer
+fc-cache (1)         - build font information cache files
+fc-cat (1)           - read font information cache files
+fc-list (1)          - list available fonts
+fc-match (1)         - match available fonts
+fc-pattern (1)       - parse and show pattern
+fc-query (1)         - query font files
+fc-scan (1)          - scan font files or directories
+fdp (1)              - filter for drawing undirected graphs
+fdupes (1)           - finds duplicate files in a given set of directories
+feh (1)              - image viewer and cataloguer
+feh-cam (1)          - utility for viewing live webcam images
+ffmpeg (1)           - ffmpeg video converter
+ffplay (1)           - FFplay media player
+ffprobe (1)          - ffprobe media prober
+ffserver (1)         - ffserver video server
+fftwf-wisdom (1)     - create wisdom (pre-optimized FFTs)
+fftwl-wisdom (1)     - create wisdom (pre-optimized FFTs)
+fftw-wisdom (1)      - create wisdom (pre-optimized FFTs)
+fftw-wisdom-to-conf (1) - generate FFTW wisdom (pre-planned transforms)
+fgconsole (1)        - print the number of the active VT.
+fgrep (1)            - print lines matching a pattern
+fiascotopnm (1)      - Convert compressed FIASCO image to PGM, or PPM
+figlet (6)           - display large characters made up of ordinary screen characters
+figlist (6)          - lists figlet fonts and control files
+file (n)             - Manipulate file names and attributes
+file (1p)            - determine file type
+file (1)             - determine file type
+filecap (8)          - a program to see capabilities
+filezilla (1)        - FTP client
+finch (1)            - A Pimpin' Penguin console frontend to libpurple. Instant Messaging client.
+find (n)             - search for classes and objects
+find (1)             - search for files in a directory hierarchy
+find (1p)            - find files
+finger (1)           - user information lookup program
+fitstopnm (1)        - convert a FITS file into a PNM image
+fixdlsrps (1)        - filter to fix DviLaser/PS documents to work with PSUtils
+fixfmps (1)          - filter to fix Framemaker documents so PSUtils work
+fixmacps (1)         - filter to fix Macintosh documents with saner version of md
+fixparts (8)         - MBR partition table repair utility
+fixproc (1)          - Fixes a process by performing the specified action.
+fixps (1)            - sanitize PostScript files
+fixpsditps (1)       - filter to fix Transcript psdit documents so PSUtils work
+fixpspps (1)         - filter to fix PSPrint PostScript so PSUtils work
+fix-qdf (1)          - repair PDF files in QDF form after editing
+fixscribeps (1)      - filter to fix Scribe documents so PSUtils work
+fixtpps (1)          - filter to fix Tpscript documents to work with PSUtils
+fixwfwps (1)         - filter to fix Word for Windows documents so PSUtils work
+fixwpps (1)          - filter to fix WP documents so PSUtils work
+fixwwps (1)          - filter to fix Windows Write documents so PSUtils work
+flac (1)             - Free Lossless Audio Codec
+flam3-animate (1)    - (unknown subject)
+flam3-convert (1)    - (unknown subject)
+flam3-genome (1)     - (unknown subject)
+flam3-render (1)     - (unknown subject)
+flex (1)             - the fast lexical analyser generator
+flock (1)            - manage locks from shell scripts
+flock (2)            - apply or remove an advisory lock on an open file
+fltk-config (1)      - script to get information about the installed version of fltk.
+fluid (1)            - the fast light user-interface designer
+fmt (1)              - simple optimal text formatter
+fold (1)             - wrap each input line to fit in specified width
+fold (1p)            - filter for folding lines
+font2c (1)           - Write PostScript Type 0 or Type 1 font as C code
+free (3)             - allocate and free dynamic memory
+free (3p)            - free allocated memory
+free (1)             - Display amount of free and used memory in the system
+fstopgm (1)          - convert a Usenix FaceSaver(tm) file into a PGM image
+ftp (1)              - File Transfer Protocol client.
+funzip (1)           - filter for extracting from a ZIP archive in a pipe
+fuser (1p)           - list process IDs of all processes that have one or more files open
+fuser (1)            - identify processes using files or sockets
+fzputtygen (1)       - SFTP private key converter of FileZilla
+fzsftp (1)           - SFTP connection handler of FileZilla
+g++ (1)              - GNU project C and C++ compiler
+g3topbm (1)          - convert a Group 3 fax file into a PBM image
+gacutil (1)          - Global Assembly Cache management utility.
+gameconqueror (1)    - A GUI for scanmem, a game hacking tool.
+gamma4scanimage (1)  - create a gamma table for scanimage
+gawk (1)             - pattern scanning and processing language
+gc (3)               - Garbage collecting malloc replacement
+gc (1)               - count graph components
+gcc (1)              - GNU project C and C++ compiler
+gconftool-2 (1)      - GNOME configuration tool
+gcov (1)             - coverage testing tool
+gdb (1)              - The GNU Debugger
+gdbserver (1)        - Remote Server for the GNU Debugger
+gdbus (1)            - Tool for working with D-Bus objects
+gdbus-codegen (1)    - D-Bus code and documentation generator
+gdiffmk (1)          - mark differences between groff/nroff/troff files
+gdisk (8)            - Interactive GUID partition table (GPT) manipulator
+gdk-pixbuf-csource (1) - C code generation utility for GdkPixbuf images
+gdk-pixbuf-query-loaders (1) - GdkPixbuf loader registration utility
+geeqie (1)           - GTK based multiformat image viewer
+gemtopbm (1)         - replaced by gemtopnm
+gemtopnm (1)         - convert a GEM .img file into a PNM image
+genbrk (1)           - Compiles ICU break iteration rules source files into binary data files
+gen-cam-menu (1)     - utility for updating Enlightenment user menus for feh-cam
+gencat (1p)          - generate a formatted message catalog
+gencfu (1)           - Generates Unicode Confusable data files
+gencnval (1)         - compile the converters aliases file
+gendict (1)          - Compiles word list into ICU string trie dictionary
+genisoimage (1)      - create ISO9660/Joliet/HFS filesystem with optional Rock Ridge attributes
+genl-ctrl-list (8)   - List available kernel-side Generic Netlink families
+genrb (1)            - compile a resource bundle
+genxs (1)            - Mono's Xml Serializer Generator
+geoiplookup (1)      - look up country using IP Address or hostname
+geoiplookup6 (1)     - look up country using IP Address or hostname
+geoipupdate (1)      - a program for updating the MaxMind GeoIP databases
+getafm (1)           - create an AFM file for a PostScript font.
+getcifsacl (1)       - Userspace helper to display an ACL in a security descriptor for Common Internet File System (...
+getconf (1p)         - get configuration values
+getent (1)           - get entries from Name Service Switch libraries
+getfacl (1)          - get file access control lists
+getfattr (1)         - get extended attributes of filesystem objects
+gethostip (1)        - convert an IP address into various formats
+getkeycodes (8)      - print kernel scancode-to-keycode mapping table
+getopt (3p)          - command option parsing
+getopt (3)           - Parse command-line options
+Getopt::Std (3perl)  - Process single-character switches with switch clustering
+getopt (1)           - parse command options (enhanced)
+gettext (3)          - translate message
+gettext (1)          - translate message
+gettextize (1)       - install or upgrade gettext infrastructure
+ghc (1)              - the Glasgow Haskell Compiler
+gif2tiff (1)         - create a TIFF file from a GIF87 format image file
+giftopnm (1)         - convert a GIF file into a PNM image
+gimp (1)             - an image manipulation and paint program.
+gimp-2.8 (1)         - an image manipulation and paint program.
+gimp-console (1)     - an image manipulation and paint program.
+gimp-console-2.8 (1) - an image manipulation and paint program.
+gimptool (1)         - script to perform various GIMPy functions
+gimptool-2.0 (1)     - script to perform various GIMPy functions
+gio-querymodules (1) - GIO module cache creation
+g-ir-compiler (1)    - typelib compiler.
+g-ir-generate (1)    - typelib generator
+g-ir-scanner (1)     - extracting C metadata from sources and headers
+Git (3pm)            - Perl interface to the Git version control system
+git (1)              - the stupid content tracker
+git-cvsserver (1)    - A CVS server emulator for Git
+gitk (1)             - The Git repository browser
+git-receive-pack (1) - Receive what is pushed into the repository
+git-shell (1)        - Restricted login shell for Git-only SSH access
+git-upload-archive (1) - Send archive back to git-archive
+git-upload-pack (1)  - Send objects packed back to git-fetch-pack
+gksu (1)             - GTK+ frontend for su and sudo
+gksudo (1)           - GTK+ frontend for su and sudo
+gksu-properties (1)  - Configure the behaviour of gksu
+glances (1)          - CLI curses based monitoring tool
+glib-compile-resources (1) - GLib resource compiler
+glib-compile-schemas (1) - GSettings schema compiler
+glib-config (1)      - script to get information about the installed version of GLib
+glib-genmarshal (1)  - C code marshaller generation utility for GLib closures
+glib-gettextize (1)  - gettext internationalization utility
+glib-mkenums (1)     - C language enum description generation utility
+gliv (1)             - An OpenGL Image Viewer
+mcs (1)              - Mono C# Compiler (1.0, 2.0, Moonlight)
+gml2gv (1)           - GML-DOT converters
+gnutls-cli (1)       - GnuTLS client
+gnutls-cli-debug (1) - GnuTLS debug client
+gnutls-serv (1)      - GnuTLS server
+gobject-query (1)    - display a tree of types
+gocr (1)             - command line text recognition tool
+google (1)           - command-line access to (some) Google services
+gouldtoppm (1)       - convert Gould scanner file into a PPM image
+gpasswd (1)          - administer /etc/group and /etc/gshadow
+gpg (1)              - OpenPGP encryption and signing tool
+gpg2 (1)             - OpenPGP encryption and signing tool
+gpg-agent (1)        - Secret key management for GnuPG
+gpgconf (1)          - Modify .gnupg home directories
+gpg-connect-agent (1) - Communicate with a running agent
+gpgparsemail (1)     - Parse a mail message into an annotated format
+gpgsm (1)            - CMS encryption and signing tool
+gpgsm-gencert.sh (1) - Generate an X.509 certificate request
+gpgv2 (1)            - Verify OpenPGP signatures
+gpm-root (1)         - a default handler for gpm, used to draw menus on the root window
+gprof (1)            - display call graph profile data
+grap2graph (1)       - convert a grap diagram into a cropped bitmap image
+graph (3)            - abstract graph library
+graphml2gv (1)       - GRAPHML-DOT converter
+grc (1)              - frontend for generic colouriser grcat "(1)
+grcat (1)            - read from standard input, colourise it and write to standard output
+grep (1)             - print lines matching a pattern
+grep (1p)            - search a file for a pattern
+gresource (1)        - GResource tool
+grn (1)              - groff preprocessor for gremlin files
+grodvi (1)           - convert groff output to TeX dvi format
+groff (7)            - a short reference for the GNU roff language
+groff (1)            - front-end for the groff document formatting system
+groffer (1)          - display groff files and man pages on X and tty
+grog (1)             - guess options for groff command
+grolbp (1)           - groff driver for Canon CAPSL printers (LBP-4 and LBP-8 series laser printers).
+grolj4 (1)           - groff driver for HP Laserjet 4 family
+gropdf (1)           - PDF driver for groff
+grops (1)            - PostScript driver for groff
+grotty (1)           - groff driver for typewriter-like devices
+grsync (1)           - GTK+ frontend for rsync
+grsync-batch (1)     - Grsync batch session runner
+grub-editenv (1)     - edit GRUB environment block
+grub-fstest (1)      - debug tool for GRUB filesystem drivers
+grub-kbdcomp (1)     - generate a GRUB keyboard layout file
+grub-menulst2cfg (1) - transform legacy menu.lst into grub.cfg
+grub-mkfont (1)      - make GRUB font files
+grub-mkimage (1)     - make a bootable image of GRUB
+grub-mklayout (1)    - generate a GRUB keyboard layout file
+grub-mkpasswd-pbkdf2 (1) - generate hashed password for GRUB
+grub-mkrelpath (1)   - make a system path relative to its root
+grub-mkrescue (1)    - make a GRUB rescue image
+grub-mkstandalone (1) - make a memdisk-based GRUB image
+grub-mount (1)       - export GRUB filesystem with FUSE
+grub-script-check (1) - check grub.cfg for syntax errors
+gs (1)               - Ghostscript (PostScript and PDF language interpreter and previewer)
+gsbj (1)             - Format and print text for BubbleJet printer using ghostscript
+gsdj (1)             - Format and print text for DeskJet printer using ghostscript
+gsdj500 (1)          - Format and print text for DeskJet 500 BubbleJet using ghostscript
+gsettings (1)        - GSettings configuration tool
+gsettings-data-convert (1) - GConf to GSettings data migration
+gsettings-schema-convert (1) - GConf to GSettings schema conversion
+gslj (1)             - Format and print text for LaserJet printer using ghostscript
+gslp (1)             - Format and print text using ghostscript
+gsmartcontrol (1)    - Hard disk drive health inspection tool
+gsmartcontrol-root (1) - Hard disk drive health inspection tool
+gsnd (1)             - Run ghostscript (PostScript and PDF engine) without display
+gst-discoverer-1.0 (1) - Display file metadata and stream information
+gst-feedback-0.10 (1) - generate debug info for GStreamer bug reports
+gst-inspect-0.10 (1) - print info about a GStreamer plugin or element
+gst-inspect-1.0 (1)  - print info about a GStreamer plugin or element
+gst-launch-0.10 (1)  - build and run a GStreamer pipeline
+gst-launch-1.0 (1)   - build and run a GStreamer pipeline
+gst-typefind-0.10 (1) - print MIME type of file
+gst-typefind-1.0 (1) - print Media type of file
+gst-visualise-0.10 (1) - Run a GStreamer pipeline to display an audio visualisation
+gst-xmlinspect-0.10 (1) - print info about a GStreamer plugin or element
+gst-xmllaunch-0.10 (1) - build and run a GStreamer pipeline from an XML serialization
+gtester (1)          - test running utility
+gtester-report (1)   - test report formatting utility
+gtf (1)              - calculate VESA GTF mode lines
+gtk-config (1)       - script to get information about the installed version of GTK+
+gtk-launch (1)       - Launch an application
+gtk-query-immodules-3.0 (1) - Input method module registration utility
+gtk-update-icon-cache (1) - Icon theme caching utility
+gunzip (1)           - compress or expand files
+gv2gml (1)           - GML-DOT converters
+gv2gxl (1)           - GXL-GV converters
+gvcolor (1)          - flow colors through a ranked digraph
+gvedit (1)           - simple graph editor and viewer
+gvfs-cat (1)         - Concatenate files
+gvfs-copy (1)        - Copy files
+gvfs-info (1)        - Show information about files
+gvfs-ls (1)          - List files
+gvfs-mime (1)        - Get or set mime handlers
+gvfs-mkdir (1)       - Create directories
+gvfs-monitor-dir (1) - Monitor directories for changes
+gvfs-monitor-file (1) - Monitor files for changes
+gvfs-mount (1)       - Mounts the locations
+gvfs-move (1)        - Copy files
+gvfs-open (1)        - Open files with the default handler
+gvfs-rename (1)      - Rename a file
+gvfs-rm (1)          - Delete files
+gvfs-save (1)        - Save standard input
+gvfs-set-attribute (1) - Set file attributes
+gvfs-trash (1)       - Move files or directories to the trash
+gvfs-tree (1)        - List contents of directories in a tree-like format
+gvgen (1)            - generate graphs
+gview (1)            - Vi IMproved, a programmers text editor
+gvim (1)             - Vi IMproved, a programmers text editor
+gvimdiff (1)         - edit two, three or four versions of a file with Vim and show differences
+gvmap (1)            - find clusters and create a geographical map highlighting clusters.
+gvmap.sh (1)         - pipeline for running gvmap
+gvpack (1)           - merge and pack disjoint graphs
+gvpr (1)             - graph pattern scanning and processing language
+gxl2gv (1)           - GXL-GV converters
+gzexe (1)            - compress executable files in place
+gzip (1)             - compress or expand files
+hashdeep (1)         - Compute, compare, or audit multiple message digests
+hdifftopam (1)       - convert horizontal difference image to original PAM image
+__gnu_pbds::detail::pat_trie_base__Iter (3) - (unknown subject)
+head (1)             - output the first part of files
+head (1p)            - copy the first part of files
+lwp-request (1p)     - Simple command line user agent
+hexdump (1)          - display file contents in ascii, decimal, hexadecimal, or octal
+hg (1)               - Mercurial source code management system
+hipstopgm (1)        - convert a HIPS file into a PGM image
+hostid (1)           - print the numeric identifier for the current host
+hostname (7)         - hostname resolution description
+hostname (5)         - Local host name configuration file
+hostname (1)         - show or set system host name
+hostnamectl (1)      - Control the system hostname
+hpcdtoppm (1)        - convert a Photo-CD image into a PBM image
+hpftodit (1)         - create font description files for use with groff - Tlj4
+hspell (3)           - Hebrew spellchecker (C API)
+hspell (1)           - Hebrew spellchecker
+htmldoc (1)          - convert html source files into html, postscript, or pdf.
+htop (1)             - interactive process viewer
+httpcfg (1)          - Mono Certificate Management for HttpListener
+hunspell (4)         - format of Hunspell dictionaries and affix files
+hunspell (3)         - spell checking, stemming, morphological generation and analysis
+hunspell (1)         - spell checker, stemmer and morphological analyzer
+hunzip (1)           - decompress and decrypt hzip files to the standard output
+hzip (1)             - compress and encrypt dictionary files
+i386 (8)             - change reported architecture in new program environment and set personality flags
+icc2ps (1)           - little cms PostScript converter.
+icclink (1)          - little cms device link generator.
+iceauth (1)          - ICE authority file utility
+icedax (1)           - a sampling utility that dumps CD audio data into wav sound files
+icontopbm (1)        - convert a Sun icon into a PBM image
+iconv (3p)           - codeset conversion function
+iconv (3)            - perform character set conversion
+iconv (1p)           - codeset conversion
+icu-config (1)       - output ICU build options
+id (1)               - print real and effective user and group IDs
+id (1p)              - return user identity
+id3 (1)              - a commandline mass tagger
+ida (1)              - image viewing and editing program
+identify (1)         - describes the format and characteristics of one or more image files.
+idevicebackup (1)    - Create or restore backup for devices.
+idevicebackup2 (1)   - Create or restore backups for devices running iOS 4 or later.
+idevicedate (1)      - Display the current date or set it on a device.
+ideviceenterrecovery (1) - Make a device enter recovery mode.
+idevice_id (1)       - Prints device name or a list of attached devices.
+ideviceimagemounter (1) - Mount disk images on the device.
+ideviceinfo (1)      - Show information about the first connected device.
+idevicepair (1)      - Manage pairings with devices and this host.
+idevicescreenshot (1) - Gets a screenshot from the connected device.
+idevicesyslog (1)    - Relay syslog of a connected device.
+idle (2)             - make process 0 idle
+idlj (1)             - The IDL-to-Java Compiler
+idn (1)              - Internationalized Domain Names command line tool
+iecset (1)           - Set or dump IEC958 status bits
+ifnames (1)          - Extract CPP conditionals from a set of files
+igawk (1)            - gawk with include files
+ijs-config (1)       - script to get information about the installed version of ijs
+ilasm (1)            - Mono IL assembler
+ilbmtoppm (1)        - convert an ILBM file into a PPM image
+image_to_j2k (1)     - This program reads in an image of a certain type and converts it to a jpeg2000 file. It is pa...
+img2txt (1)          - convert images to various text-based coloured files
+imgcmp (1)           - Image comparison utility
+imginfo (1)          - Image information utility
+imgtoppm (1)         - convert an Img-whatnot file into a PPM image
+imlib_config (1)     - Imlib Configuration Editor
+imlib-config (1)     - Display Imlib and GDK-Imlib Library Configuration
+import (1)           - saves any visible window on an X server and outputs it as an image file. You can capture a si...
+includeres (1)       - filter to include resources in a PostScript document
+indxbib (1)          - make inverted index for bibliographic databases
+info (n)             - Return information about the state of the Tcl interpreter
+info (5)             - readable online documentation
+info (1)             - read Info documents
+infocmp (1m)         - compare or print out terminfo descriptions
+infokey (1)          - compile customizations for Info
+infotocap (1m)       - convert a terminfo description into a termcap description
+infotopam (1)        - convert Amiga .info icons to PAM
+initdb (1)           - create a new PostgreSQL database cluster
+insmod (8)           - Simple program to insert a module into the Linux Kernel
+install (1)          - copy files and set attributes
+install-info (1)     - update info/dir entries
+inxi (1)             - Command line system information script for console and IRC
+ionice (1)           - set or get process I/O scheduling class and priority
+iostat (1)           - Report Central Processing Unit (CPU) statistics and input/output statistics for devices and p...
+iotop (8)            - simple top-like I/O monitor
+ipcmk (1)            - create various ipc resources
+ipcrm (1p)           - remove an XSI message queue, semaphore set, or shared memory segment identifier
+ipcrm (1)            - remove a message queue, semaphore set or shared memory id
+ipcs (1p)            - report XSI interprocess communication facilities status
+ipcs (1)             - provide information on ipc facilities
+ipptool (1)          - perform internet printing protocol requests
+iptables-xml (1)     - Convert iptables-save format to XML
+irb (1)              - Interactive Ruby Shell
+ircat (1)            - print strings when pressing buttons
+irexec (1)           - run programs with one button press
+ir-keytable (1)      - a swiss-knife tool to handle Remote Controllers.
+irpty (1)            - pseudo tty driver
+irrecord (1)         - application for recording IR-codes for usage with LIRC
+irsend (1)           - basic LIRC program to send infra-red commands
+irssi (1)            - a modular IRC client for UNIX
+irw (1)              - sends data from Unix domain socket to stdout
+irxevent (1)         - infrared X-event sender
+isag (1)             - Interactive System Activity Grapher
+isodebug (1)         - print genisoimage debug info from ISO-9660 image
+isodump (5)          - format of IEEE 1394 isochronous packets dump file
+isodump (1)          - Utility programs for dumping and verifying iso9660 images.
+isoinfo (1)          - Utility programs for dumping and verifying iso9660 images.
+iso-info (1)         - manual page for lt-iso-info version 0.90 i686-pc-linux-gnu
+iso-read (1)         - manual page for lt-iso-read version 0.90 i686-pc-linux-gnu
+isosize (8)          - output the length of an iso9660 filesystem
+isovfy (1)           - Utility programs for dumping and verifying iso9660 images.
+j2k_dump (1)         - This program reads in a jpeg2000 image and dumps the contents to stdout. It is part of the Op...
+j2k_to_image (1)     - This program reads in a jpeg2000 image and converts it to another image type. It is part of t...
+jackd (1)            - JACK Audio Connection Kit sound server
+jar (1)              - (unknown subject)
+jarsigner (1)        - JAR Signing and Verification Tool
+jasper (1)           - File format converter specialized in JPEG-2000 encoding
+java (1)             - the Java application launcher
+javac (1)            - Java programming language compiler
+javadoc (1)          - The Java API Documentation Generator
+javah (1)            - C Header and Stub File Generator
+javap (1)            - The Java Class File Disassembler
+javaws (1)           - a Java Web Start client
+jay (1)              - an LALR(1) parser generator for Java and C#
+jbigtopnm (1)        - JBIG to PNM image file converter
+jcmd (1)             - Diagnostic Command
+jconsole (1)         - Java Monitoring and Management Console
+jdb (1)              - The Java Debugger
+jhat (1)             - Java Heap Analysis Tool
+jhead (1)            - Digicam JPEG Exif header manipulation tool
+jinfo (1)            - Configuration Info
+jiv (1)              - Image display utility
+jmap (1)             - Memory Map
+join (n)             - Create a string by joining together list elements
+join (1p)            - relational database operator
+join (1)             - join lines of two files on a common field
+journalctl (1)       - Query the systemd journal
+jpeg2ktopam (1)      - convert JPEG-2000 code stream to PAM/PNM
+jpeg2yuv (1)         - Convert jpeg images to the yuv format.
+jpegicc (1)          - little cms ICC profile applier for JPEG.
+jpegtopnm (1)        - convert JPEG/JFIF file to PPM or PGM image
+jpegtran (1)         - lossless transformation of JPEG files
+jpgicc (1)           - little cms ICC profile applier for JPEG.
+jps (1)              - Java Virtual Machine Process Status Tool
+jrunscript (1)       - command line script shell
+jsadebugd (1)        - Serviceability Agent Debug Daemon
+jstack (1)           - Stack Trace
+jstat (1)            - Java Virtual Machine Statistics Monitoring Tool
+jstatd (1)           - Virtual Machine jstat Daemon
+k5srvutil (1)        - host key table (keytab) manipulation utility
+kadmin (1)           - Kerberos V5 database administration program
+katalyzer (1)        - analyzes Kate streams and displays various information about them.
+katedec (1)          - decodes Kate streams to a textual description
+KateDJ (1)           - edits and remixes Kate streams in Ogg
+kateenc (1)          - create Kate streams from text input
+kbd_mode (1)         - report or set the keyboard mode
+kbdrate (8)          - reset the keyboard repeat rate and delay time
+kdestroy (1)         - destroy Kerberos tickets
+kernel-install (8)   - Add and remove kernel and initramfs images to and from /boot
+keychain (1)         - re-use ssh-agent and/or gpg-agent between logins
+keytool (1)          - Key and Certificate Management Tool
+killall (1)          - kill processes by name
+kinit (1)            - obtain and cache Kerberos ticket-granting ticket
+klist (1)            - list cached Kerberos tickets
+koi8rxterm (1)       - X terminal emulator for KOI8-R environments
+kpasswd (1)          - change a user's Kerberos password
+ksu (1)              - Kerberized super-user
+kswitch (1)          - switch primary ticket cache
+ktutil (1)           - Kerberos keytab file maintenance utility
+kvno (1)             - print key version numbers of Kerberos principals
+lame (1)             - create mp3 audio files
+last (1)             - show listing of last logged in users
+lastb (1)            - show listing of last logged in users
+lastlog (8)          - reports the most recent login of all users or of a given user
+lav2mpeg (1)         - easy conversion of lav files to mpeg
+lav2wav (1)          - Extract the audio out of MJPEG container files to stdout
+lav2yuv (1)          - Convert a MJPEG file to raw yuv
+lavpipe (1)          - creates raw YUV streams from pipe list scripts
+lavplay (1)          - Playback and edit MJPEG video
+lavrec (1)           - Record MJPEG-video from a zoran/video4linux-device
+lavtrans (1)         - Convert MJPEG videos to other MJPEG video formats
+lc (1)               - Mono License Compiler
+ld (1)               - The GNU linker
+ldconfig (8)         - configure dynamic linker run-time bindings
+ldd (1)              - print shared library dependencies
+ldns-chaos (1)       - give some information about a nameserver
+ldns-compare-zones (1) - read and compare two zonefiles and print differences
+ldns-config (1)      - show compiler and linker flags for ldns usage.
+ldnsd (1)            - simple daemon example code
+ldns-dane (1)        - verify or create TLS authentication with DANE (RFC6698)
+ldns-dpa (1)         - DNS Packet Analyzer. Analyze DNS packets in ip trace files
+ldns-gen-zone (1)    - read a zonefile and print it while adding DS records and extra RR's
+ldns-key2ds (1)      - transform a DNSKEY RR to a DS RR
+ldns-keyfetcher (1)  - retrieve the DNSSEC DNSKEYs for a zone
+ldns-keygen (1)      - generate a DNSSEC key pair
+ldns-mx (1)          - print out the mx record(s) for a domain
+ldns-notify (1)      - notify DNS servers that updates are available
+ldns-nsec3-hash (1)  - print out the NSEC3 hash for a domain name
+ldns-read-zone (1)   - read a zonefile and print it
+ldns-resolver (1)    - tries to create a resolver from a resolv.conf file.
+ldns-revoke (1)      - sets the revoke bit of a DNSKEY
+ldns-rrsig (1)       - print out the inception and expiration dates in human readable form
+ldns-signzone (1)    - sign a zonefile with DNSSEC data
+ldns-test-edns (1)   - test if dns cache supports EDNS and DNSSEC.
+ldns-testns (1)      - simple fake nameserver tool
+ldns-update (1)      - send a dynamic update packet
+ldns-verify-zone (1) - read a DNSSEC signed zone and verify it.
+ldns-version (1)     - print out the version of the ldns-library and tools on this system
+ldns-walk (1)        - Retrieve the contents of a DNSSEC signed zone
+ldns-zcat (1)        - reunite (z)split up a zone files
+ldns-zsplit (1)      - split up a zone file
+leaftoppm (1)        - convert Interleaf image format to PPM image
+lefty (1)            - A Programmable Graphics Editor
+less (3perl)         - perl pragma to request less of something
+less (1)             - opposite of more
+lessecho (1)         - expand metacharacters
+lesskey (1)          - specify key bindings for less
+lesspipe (1)         - a filter for less
+lex (1p)             - generate programs for lexical tasks (DEVELOPMENT)
+lexgrog (1)          - parse header information in man pages
+lftp (1)             - Sophisticated file transfer program
+lftpget (1)          - get a file with lftp(1)
+libreoffice (1)      - LibreOffice office suite
+libtool (1)          - manual page for libtool 2.4.2
+libtoolize (1)       - manual page for libtoolize 2.4.1a
+link (3p)            - link to a file
+link (1p)            - call link function
+link (1)             - call the link function to create a link to a file
+link (2)             - make a new name for a file
+links (1)            - lynx-like alternative character mode WWW browser
+linux32 (8)          - change reported architecture in new program environment and set personality flags
+linux64 (8)          - change reported architecture in new program environment and set personality flags
+lircrcd (1)          - daemon to handle consistent .lircrc state among client applications
+lispmtopgm (1)       - convert a Lisp Machine bitmap file to PGM
+lkbib (1)            - search bibliographic databases
+ln (1)               - make links between files
+ln (1p)              - link files
+lneato (1)           - A Customizable Graph Editor
+loadkeys (1)         - load keyboard translation tables
+loadunimap (8)       - load the kernel unicode-to-font mapping table
+lobase (1)           - LibreOffice office suite
+localc (1)           - LibreOffice office suite
+locale (3perl)       - Perl pragma to use or avoid POSIX locales for built-in operations
+locale (7)           - description of multilanguage support
+locale (5)           - describes a locale definition file
+locale (1p)          - get locale-specific information
+localectl (1)        - Control the system locale and keyboard layout settings
+localedef (1p)       - define locale environment
+lodraw (1)           - LibreOffice office suite
+loffice (1)          - LibreOffice office suite
+lofromtemplate (1)   - LibreOffice office suite
+loggen (1)           - Generate syslog messages at a specified rate
+logger (1p)          - log messages
+logger (1)           - a shell command interface to the syslog(3) system log module
+loginctl (1)         - Control the systemd login manager
+logname (1)          - print user's login name
+logname (1p)         - return the user's login name
+loimpress (1)        - LibreOffice office suite
+lomath (1)           - LibreOffice office suite
+look (1)             - display lines beginning with a given string
+lookbib (1)          - search bibliographic databases
+loweb (1)            - LibreOffice office suite
+lowriter (1)         - LibreOffice office suite
+lp (4)               - line printer devices
+lp (1p)              - send files to a printer
+lp (1)               - print files
+lpoptions (1)        - display or set printer options and defaults
+lppasswd (1)         - add, change, or delete digest passwords.
+lpq (1)              - show printer queue status
+lpr (1)              - print files
+lprm (1)             - cancel print jobs
+lpstat (1)           - print cups status information
+ls (1p)              - list directory contents
+ls (1)               - list directory contents
+lsattr (1)           - list file attributes on a Linux second extended file system
+lsb_release (1)      - manual page for FSG lsb_release v1.4
+lscpu (1)            - display information about the CPU architecture
+lsinitcpio (1)       - Examine an initramfs
+lslocks (8)          - list local system locks
+lsmod (8)            - Show the status of modules in the Linux Kernel
+lss16toppm (1)       - Convert an LSS-16 image to PPM
+lsusb (8)            - list USB devices
+lua (1)              - Lua interpreter
+lua5.1 (1)           - Lua interpreter
+luac (1)             - Lua compiler
+luac5.1 (1)          - Lua compiler
+luit (1)             - Locale and ISO 2022 support for Unicode terminals
+lynx (1)             - a general purpose distributed information browser for the World Wide Web
+lzcat (1)            - Compress or decompress .xz and .lzma files
+lzcmp (1)            - compare compressed files
+lzdiff (1)           - compare compressed files
+lzegrep (1)          - search compressed files for a regular expression
+lzfgrep (1)          - search compressed files for a regular expression
+lzgrep (1)           - search compressed files for a regular expression
+lzless (1)           - view xz or lzma compressed (text) files
+lzma (1)             - Compress or decompress .xz and .lzma files
+lzmadec (1)          - Small .xz and .lzma decompressors
+lzmainfo (1)         - show information stored in the .lzma file header
+lzmore (1)           - view xz or lzma compressed (text) files
+m4 (1)               - macro processor
+m4 (1p)              - macro processor (DEVELOPMENT)
+mac2unix (1)         - DOS/Mac to Unix and vice versa text file format converter
+macpack (1)          - Macintosh OS X Packager for managed gui assemblies
+macptopbm (1)        - convert a MacPaint file into a PBM image
+Magick-config (1)    - get information about the installed version of ImageMagick
+Magick++-config (1)  - get information about the installed version of Magick++
+MagickCore-config (1) - get information about the installed version of ImageMagick
+MagickWand-config (1) - get information about the installed version of the Magick Wand
+mail (1)             - send and receive Internet mail
+mailq (1)            - Postfix to Sendmail compatibility interface
+mailx (1)            - send and receive Internet mail
+mailx (1p)           - process messages
+make (1p)            - maintain, update, and regenerate groups of programs (DEVELOPMENT)
+make (1)             - GNU make utility to maintain groups of programs
+makecert (1)         - Create X.509 certificates for test purposes
+makeconv (1)         - compile a converter table
+makeinfo (1)         - translate Texinfo documents
+makepkg (8)          - package build utility
+man (7)              - macros to format man pages
+man (1p)             - display system documentation
+man (1)              - an interface to the on-line reference manuals
+mandb (8)            - create or update the manual page index caches
+manpath (5)          - format of the /etc/man_db.conf file
+manpath (1)          - determine search path for manual pages
+manweb (1)           - browse netpbm (and other) documentation
+mapscrn (8)          - load screen output mapping table
+mconfig (1)          - Utility for modifying .NET configuration files
+mcookie (1)          - generate magic cookies for xauth
+mcpp (1)             - Matsui CPP, an alternative C preprocessor
+md5deep (1)          - Compute and compare MD5 message digests
+md5sum (1)           - compute and check MD5 message digest
+mdassembler (1)      - Compile documentation for use in monodoc browser
+mdatopbm (1)         - convert a Microdesign .mda or .mdp file into a PBM image
+mdoc (7)             - quick reference guide for the -mdoc macro package
+mdoc (5)             - Mono Documentation XML Format
+mdoc (1)             - Mono documentation management tool
+mdoc-assemble (1)    - (unknown subject)
+mdoc-export-html (1) - (unknown subject)
+mdoc-export-msxdoc (1) - (unknown subject)
+mdoc-update (1)      - (unknown subject)
+mdoc-validate (1)    - (unknown subject)
+mdvalidater (1)      - Validate XML Documents against the ECMA Documentation Schema
+mesg (1)             - display (do not display) messages from other users
+mesg (1p)            - permit or deny messages
+metaflac (1)         - program to list, add, remove, or edit metadata in one or more FLAC files.
+mev (1)              - a program to report mouse events
+mftraining (1)       - feature training for Tesseract
+mgrtopbm (1)         - convert a MGR bitmap into a PBM image
+mib2c (1)            - generate template code for extending the agent
+mib2c-update (1)     - script to merge custom code into updated mib2c code
+mid3iconv (1)        - convert ID3 tag encodings
+mid3v2 (1)           - audio tag editor similar to 'id3v2'
+mkbundle (1)         - Creates a bundled executable.
+mk_cmds (1)          - error table compiler
+mkdir (3p)           - make a directory
+mkdir (1)            - make directories
+mkdir (1p)           - make directories
+mkdir (2)            - create a directory
+mkfifo (3p)          - make a FIFO special file
+mkfifo (3)           - make a FIFO special file (a named pipe)
+mkfifo (1)           - make FIFOs (named pipes)
+mkfifo (1p)          - make FIFO special files
+mkfontdir (1)        - create an index of X font files in a directory
+mkfontscale (1)      - create an index of scalable font files for X
+mkfs.ntfs (8)        - create an NTFS file system
+mkhybrid (1)         - create ISO9660/Joliet/HFS filesystem with optional Rock Ridge attributes
+mkinitcpio (8)       - Create an initial ramdisk environment
+mkisofs (1)          - create ISO9660/Joliet/HFS filesystem with optional Rock Ridge attributes
+mknod (3p)           - make a directory, a special file, or a regular file
+mknod (1)            - make block or character special files
+mknod (2)            - create a special or ordinary file
+mkrfc2734 (1)        - Make Linux 2.4 IP over IEEE 1394 capable.
+mktemp (3p)          - make a unique filename (LEGACY)
+mktemp (3)           - make a unique temporary filename
+mktemp (1)           - create a temporary file or directory
+mm2gv (1)            - Matrix Market-DOT converters
+mmroff (1)           - cross reference preprocessor
+mode2 (1)            - shows the pulse/space length of infrared signals
+modinfo (8)          - Show information about a Linux Kernel module
+moggsplit (1)        - split Ogg logical streams
+mogrify (1)          - resize an image, blur, crop, despeckle, dither, draw on, flip, join, re-sample, and much more...
+monitorix (8)        - a lightweight system monitoring tool
+mono (1)             - Mono's ECMA-CLI native code generator (Just-in-Time and Ahead-of-Time)
+mono-api-info (1)    - Expose IL structure of CLR assemblies as XML.
+mono-cil-strip (1)   - (unknown subject)
+mono-configuration-crypto (1) - Mono configuration utility to manage encryption keys and encrypt/decrypt config file...
+monodis (1)          - CIL image content dumper and disassembler.
+monodocer (1)        - ECMA Documentation Format Support
+monodocs2html (1)    - Translate Monodoc XML to HTML
+monolinker (1)       - (unknown subject)
+monop (1)            - Mono Class Outline Viewer
+mono-service (1)     - Mono ServiceProcess host
+mono-shlib-cop (1)   - Shared Library Usage Checker
+mono-xmltool (1)     - Mono XML validation and transformation tool.
+montage (1)          - create a composite image by combining several separate images. The images are tiled on the co...
+most (1)             - browse or page through a text file
+mount.cifs (8)       - mount using the Common Internet File System (CIFS)
+mount.lowntfs-3g (8) - Third Generation Read/Write NTFS Driver
+mount.ntfs-3g (8)    - Third Generation Read/Write NTFS Driver
+mouse-test (1)       - a tool for determining mouse type and device it's attached to.
+mozroots (1)         - Download and import trusted root certificates from Mozilla's LXR into Mono's certificate store
+mp2enc (1)           - Simple MPEG-1 layer-II audio encoder
+mp3info (1)          - MP3 technical info viewer and ID3 tag editor
+mp4art (1)           - manual page for mp4art - MP4v2 2.0.0
+mp4file (1)          - manual page for mp4file - MP4v2 2.0.0
+mp4subtitle (1)      - manual page for mp4subtitle - MP4v2 2.0.0
+mp4track (1)         - manual page for mp4track - MP4v2 2.0.0
+mpeg2dec (1)         - decode MPEG and MPEG2 video streams
+mpeg2enc (1)         - MPEG-1/2 encoder
+mpg123 (1)           - play audio MPEG 1.0/2.0/2.5 stream (layers 1, 2 and 3)
+mplayer (1)          - movie player
+mplex (1)            - MPEG 1/2 program/system stream multiplexer
+mpstat (1)           - Report processors related statistics.
+mrftopbm (1)         - convert an MRF image to PBM format
+msgattrib (1)        - attribute matching and manipulation on message catalog
+msgcat (n)           - Tcl message catalog
+msgcat (1)           - combines several message catalogs
+msgcmp (1)           - compare message catalog and template
+msgcomm (1)          - match two message catalogs
+msgconv (1)          - character set conversion for message catalog
+msgen (1)            - create English message catalog
+msgexec (1)          - process translations of message catalog
+msgfilter (1)        - edit translations of message catalog
+msgfmt (1)           - compile message catalog to binary format
+msggrep (1)          - pattern matching on message catalog
+msginit (1)          - initialize a message catalog
+msgmerge (1)         - merge message catalog and template
+msgunfmt (1)         - uncompile message catalog from binary format
+msguniq (1)          - unify duplicate translations in message catalog
+msiexec (1)          - Wine MSI Installer
+mtrace (3)           - malloc tracing
+mtvtoppm (1)         - convert output from an MTV or PRT ray tracer into a PPM
+multitail (1)        - browse through several files at once
+mumble (1)           - a low-latency, high quality voice chat program for gaming.
+mumble-overlay (1)   - load OpenGL overlay for Mumble.
+munch (6)            - munching squares
+mutagen-inspect (1)  - view Mutagen-supported audio tags
+mutagen-pony (1)     - scan a collection of MP3 files
+mutt (1)             - The Mutt Mail User Agent
+mv (1)               - move (rename) files
+mv (1p)              - move files
+mwm (1)              - The M*tif Window Manager
+mysql (1)            - the MySQL command-line tool
+mysqladmin (1)       - client for administering a MySQL server
+mysqlcheck (1)       - a table maintenance program
+mysql_config (1)     - get compile options for compiling clients
+mysqldump (1)        - a database backup program
+mysqlimport (1)      - a data import program
+mysqlshow (1)        - display database, table, and column information
+mysqlslap (1)        - load emulation client
+namcap (1)           - package analysis utility
+namei (1)            - follow a pathname until a terminal point is found
+nano (1)             - Nano's ANOther editor, an enhanced free Pico clone
+native2ascii (1)     - Native-to-ASCII Converter
+ncat (1)             - Concatenate and redirect sockets
+ncftp (1)            - Browser program for the File Transfer Protocol
+ncftpbatch (1)       - Individual batch FTP job processor
+ncftpget (1)         - Internet file transfer program for scripts
+ncftpls (1)          - Internet file transfer program for scripts
+ncftpput (1)         - Internet file transfer program for scripts
+ncftpspooler (1)     - Global batch FTP job processor daemon
+ncursesw5-config (1) - helper script for ncurses libraries
+ndiff (1)            - Utility to compare the results of Nmap scans
+neato (1)            - filter for drawing undirected graphs
+neon-config (1)      - script providing information about installed copy of neon library
+neotoppm (1)         - convert an Atari Neochrome .neo into a PPM image
+neqn (1)             - format equations for ascii output
+netcap (8)           - a program to see capabilities
+netcfg (8)           - start/stop/control network profiles
+nethogs (8)          - Net top tool grouping bandwidth per process
+net-snmp-config (1)  - returns information about installed net-snmp libraries and binaries
+net-snmp-create-v3-user (1) - create a SNMPv3 user in net-snmp configuration file
+newaliases (1)       - Postfix to Sendmail compatibility interface
+newgrp (1)           - log in to a new group
+newgrp (1p)          - change to a new group
+nfsiostat (1)        - Report input/output statistics for network filesystems (NFS).
+ngettext (3)         - translate message and choose plural form
+ngettext (1)         - translate message and choose plural form
+ngrep (8)            - network grep
+nice (3p)            - change the nice value of a process
+nice (1)             - run a program with modified scheduling priority
+nice (1p)            - invoke a utility with an altered nice value
+nice (2)             - change process priority
+nl (3x)              - curses output options
+nl (1)               - number lines of files
+nl (1p)              - line numbering filter
+nl-classid-lookup (8) - Lookup classid definitions
+nload (1)            - displays the current network usage
+nl-pktloc-lookup (8) - Lookup packet location definitions
+nl-qdisc-add (8)     - Manage queueing disciplines
+nl-qdisc-delete (8)  - Manage queueing disciplines
+nl-qdisc-list (8)    - Manage queueing disciplines
+nm (1)               - list symbols from object files
+nm (1p)              - write the name list of an object file (DEVELOPMENT)
+nmap (1)             - Network exploration tool and security / port scanner
+nmblookup (1)        - NetBIOS over TCP/IP client used to lookup NetBIOS names
+nmcli (1)            - (unknown subject)
+nm-online (1)        - ask NetworkManager whether the network is connected
+nm-tool (1)          - utility to report NetworkManager state and devices
+nohup (1p)           - invoke a utility immune to hangups
+nohup (1)            - run a command immune to hangups, with output to a non-tty
+nop (1)              - pretty-print graph file
+notepad (1)          - Wine text editor
+notmuch (1)          - thread-based email index, search, and tagging
+notmuch-mutt (1)     - notmuch (of a) helper for Mutt
+nping (1)            - Network packet generation tool / ping utility
+nproc (1)            - print the number of processing units available
+nroff (1)            - emulate nroff command with groff
+ntfs-3g (8)          - Third Generation Read/Write NTFS Driver
+ntfs-3g.probe (8)    - Probe an NTFS volume mountability
+ntfs-3g.secaudit (8) - NTFS Security Data Auditing
+ntfs-3g.usermap (8)  - NTFS Building a User Mapping File
+ntfscat (8)          - print NTFS files and streams on the standard output
+ntfscluster (8)      - identify files in a specified region of an NTFS volume.
+ntfscmp (8)          - compare two NTFS filesystems and tell the differences
+ntfsfix (8)          - fix common errors and force Windows to check NTFS
+ntfsinfo (8)         - dump a file's attributes
+ntfsls (8)           - list directory contents on an NTFS filesystem
+ntop (8)             - display top network users
+numfmt (1)           - Convert numbers from/to human-readable strings
+nvidia-settings (1)  - configure the NVIDIA graphics driver
+nvidia-smi (1)       - NVIDIA System Management Interface program
+nvidia-xconfig (1)   - manipulate X configuration files for the NVIDIA driver
+objcopy (1)          - copy and translate object files
+objdump (1)          - display information from object files.
+ocrfeeder (1)        - document layout analysis and optical character recognition system.
+ocrfeeder-cli (1)    - command line interface for OCRFeeder, a document layout analysis and optical character recogn...
+ocsptool (1)         - GnuTLS OCSP tool
+od (1p)              - dump files in various formats
+od (1)               - dump files in octal and other formats
+ode (1)              - numerical solution of ordinary differential equations
+ogonkify (1)         - international support for PostScript
+oid2name (1)         - resolve OIDs and file nodes in a PostgreSQL data directory
+on_ac_power (1)      - test whether the computer is running on line power
+openssl (1ssl)       - OpenSSL command line tool
+openvt (1)           - start a program on a new virtual terminal (VT).
+orbd (1)             - The Object Request Broker Daemon
+osage (1)            - filter for drawing clustered graphs
+overlay (3x)         - overlay and manipulate overlapped curses windows
+p11tool (1)          - GnuTLS PKCS #11 tool
+pacat (1)            - Play back or record raw or encoded audio streams on a PulseAudio sound server
+pack200 (1)          - JAR Packing tool
+package-query (8)    - Query alpm database and/or AUR
+pacman (6)           - simulates a game of Pac-Man on a randomly-created level.
+pacman (8)           - package manager utility
+pacman-key (8)       - manage pacman's list of trusted keys
+pacmd (1)            - Reconfigure a PulseAudio sound server during runtime
+pactl (1)            - Control a running PulseAudio sound server
+pactree (8)          - package dependency tree viewer
+padsp (1)            - PulseAudio OSS Wrapper
+pal2rgb (1)          - convert a palette color TIFF image to a full color image
+palmtopnm (1)        - convert a Palm Bitmap to a PNM image
+pamaddnoise (1)      - add noise to a Netpbm image
+pamarith (1)         - perform arithmetic on two Netpbm images
+pambackground (1)    - create a mask of the background area of an image
+pambayer (1)         - interpret Bayer patterns
+pamchannel (1)       - extract channels from a PAM image
+pamcomp (1)          - composite (overlay) two Netpbm images together
+pamcut (1)           - cut a rectangle out of a PAM, PBM, PGM, or PPM image
+pamdeinterlace (1)   - remove every other row from a PAM/PNM image
+pamdepth (1)         - change the maxval in a Netpbm image
+pamdice (1)          - slice a Netpbm image into many horizontally and/or vertically
+pamditherbw (1)      - dither grayscale image to black and white
+pamedge (1)          - edge-detect an image
+pamendian (1)        - reverse endianness of a Netpbm image
+pamenlarge (1)       - Enlarge a Netpbm image N times
+pamfile (1)          - describe a Netpbm (PAM or PNM) file
+pamfixtrunc (1)      - repair a Netpbm image whose file is truncated
+pamflip (1)          - flip or rotate a PAM or PNM image
+pamfunc (1)          - Apply a simple monadic arithmetic function to a Netpbm image
+pamgauss (1)         - create a two dimensional gaussian function as a PAM image
+pamgradient (1)      - create a four-corner gradient PAM or PNM image
+pamlookup (1)        - map an image to a new image by using it as indices into a table
+pammasksharpen (1)   - Sharpen an image via an unsharp mask
+pammixinterlace (1)  - mix adjacent lines to merge interlaced images
+pamoil (1)           - turn a PAM image into an oil painting
+pamperspective (1)   - a reverse scanline renderer for Netpbm images
+pampick (1)          - pick images out of a multi-image Netpbm image stream
+pampop9 (1)          - simulate a multi-lens camera such as the Pop9
+pamrgbatopng (1)     - convert PAM color/transparency image to PNG
+pamscale (1)         - scale a Netpbm image
+pamseq (1)           - generate PAM image of all possible tuple values, in sequence
+pamsharpmap (1)      - create map of sharpness in a PNM/PAM image
+pamsharpness (1)     - measure the sharpness of a PNM/PAM image
+pamslice (1)         - extract one line of values out of a Netpbm image
+pamsplit (1)         - split a multi-image PNM/PAM file into single-image files
+pamstack (1)         - stack planes of multiple PAM images into one PAM image
+pamstereogram (1)    - create a single-image stereogram from a PAM height map
+pamstretch (1)       - scale up a PNM or PAM image by interpolating between pixels.
+pamstretch-gen (1)   - use pamstretch and pamscale to scale by non-integer values
+pamsumm (1)          - Summarize the samples in a Netpbm image arithmetically
+pamsummcol (1)       - summarize (sum, average, etc) a Netpbm image by column
+pamthreshold (1)     - threshold grayscale image to black and white
+pamtilt (1)          - print the tilt angle of a PGM file
+pamtodjvurle (1)     - convert a Netpbm image to DjVu Color RLE format
+pamtofits (1)        - convert a Netpbm image into FITS format
+pamtogif (1)         - convert a Netpbm image to a GIF image
+pamtohdiff (1)       - convert PAM image to horizontal difference image
+pamtohtmltbl (1)     - convert pnm/pam visual image to an HTML table
+pamtojpeg2k (1)      - convert PAM/PNM image to a JPEG-2000 code stream
+pamtopfm (1)         - Convert Netpbm image to PFM (Portable Float Map)
+pamtopnm (1)         - convert PAM image to PBM, PGM, or PPM
+pamtosvg (1)         - convert a Netpbm image to a SVG (Scalable Vector Graphics) image
+pamtotga (1)         - convert a Netpbm image to a TrueVision Targa file
+pamtotiff (1)        - convert a Netpbm image to a TIFF file
+pamtouil (1)         - convert a PNM or PNM/alpha image into a Motif UIL icon file
+pamtoxvmini (1)      - convert Netpbm image to an XV 'thumbnail' picture
+panelctl (1)         - manual page for panelctl 0.2
+pango-querymodules (1) - Module registration utility
+pango-view (1)       - Pango text viewer
+paplay (1)           - Play back audio files on a PulseAudio sound server
+passwd (5)           - the password file
+passwd (1)           - change user password
+passwd (1ssl)        - compute password hashes
+paste (1)            - merge lines of files
+paste (1p)           - merge corresponding or subsequent lines of files
+pasuspender (1)      - Temporarily suspend PulseAudio
+patch (1p)           - apply changes to files
+patch (1)            - apply a diff file to an original
+patchwork (1)        - filter for drawing clustered graphs as treemaps
+pathchk (1p)         - check pathnames
+pathchk (1)          - check whether file names are valid or portable
+PathFinder (1)       - simple file manager
+pax11publish (1)     - PulseAudio X11 Credential Utility
+pbmclean (1)         - flip isolated pixels in portable bitmap
+pbmlife (1)          - apply Conway's rules of Life to a PBM image
+pbmmake (1)          - create a blank bitmap of a specified size
+pbmmask (1)          - create a mask bitmap from a regular bitmap
+pbmpage (1)          - create a one page test pattern for printing
+pbmpscale (1)        - enlarge a PBM image with edge smoothing
+pbmreduce (1)        - read a PBM image and reduce it N times
+pbmtext (1)          - render text into a PBM image
+pbmtextps (1)        - render text into a PBM image using a postscript interpreter
+pbmto10x (1)         - convert a PBM image into Gemini 10X printer graphics
+pbmto4425 (1)        - Display PBM images on an AT&T 4425 terminal
+pbmtoascii (1)       - convert a PBM image to ASCII graphics
+pbmtoatk (1)         - convert a PBM image to a Andrew Toolkit raster object
+pbmtobbnbg (1)       - convert a PBM image into BitGraph graphics
+pbmtocmuwm (1)       - convert a PBM image into a CMU window manager bitmap
+pbmtodjvurle (1)     - convert a PBM image to DjVu Bitonal RLE format
+pbmtoepsi (1)        - convert a PBM image to an encapsulated PostScript style preview bitmap
+pbmtoepson (1)       - convert a PBM image into Epson printer graphics
+pbmtoescp2 (1)       - convert a PBM image to a ESC/P2 printer file
+pbmtog3 (1)          - convert a PBM image into a Group 3 MH fax file
+pbmtogem (1)         - convert a PBM image into a GEM .img file
+pbmtogo (1)          - convert a PBM image into compressed GraphOn graphics
+pbmtoibm23xx (1)     - convert a PBM image to IBM 23XX printer stream
+pbmtoicon (1)        - convert a PBM image into a Sun icon
+pbmtolj (1)          - convert a PBM image to HP LaserJet format
+pbmtoln03 (1)        - convert PBM image to DEC LN03+ Sixel output
+pbmtolps (1)         - convert PBM image to PostScript
+pbmtomacp (1)        - convert a PBM image into a MacPaint file
+pbmtomatrixorbital (1) - convert a PBM image to a Matrix Orbital LCD image
+pbmtomda (1)         - convert a PBM image to a Microdesign .mda
+pbmtomgr (1)         - convert a PBM image into a MGR bitmap
+pbmtomrf (1)         - convert a PBM format image to MRF
+pbmtonokia (1)       - convert a PBM image to Nokia Smart Messaging Formats
+pbmtopgm (1)         - convert PBM image to PGM by averaging areas
+pbmtopi3 (1)         - convert a PBM image into an Atari Degas .pi3 file
+pbmtopk (1)          - convert a PBM image into a packed (PK) format font
+pbmtoplot (1)        - convert a PBM image into a Unix 'plot' file
+pbmtoppa (1)         - convert PBM image to HP Printer Performance Architecture (PPA)
+pbmtopsg3 (1)        - convert PBM images to Postscript with G3 fax compression
+pbmtoptx (1)         - convert a PBM image into Printronix printer graphics
+pbmtowbmp (1)        - convert a PBM image to a wireless bitmap (wbmp) file
+pbmtox10bm (1)       - convert a PBM image to an X11 bitmap
+pbmtoxbm (1)         - convert a PBM image to an X11 bitmap
+pbmtoybm (1)         - convert a PBM image into a Bennet Yee 'face' file
+pbmtozinc (1)        - convert a PBM image into a Zinc bitmap
+pbmupc (1)           - create a Universal Product Code PBM image
+pc1toppm (1)         - convert an Atari Degas .pc1 into a PPM image
+pcap-config (1)      - write libpcap compiler and linker flags to standard output
+pcdovtoppm (1)       - create index image for a photo CD
+pcre-config (1)      - program to return PCRE configuration
+pcregrep (1)         - a grep with Perl-compatible regular expressions.
+pcretest (1)         - a program for testing Perl-compatible regular expressions.
+pcxtoppm (1)         - convert a PCX file into a PPM image
+pdb2mdb (1)          - Program Database to Mono Debugging Symbol converter.
+pdbtool (1)          - An application to test and convert syslog-ng pattern database rules
+pdf2dsc (1)          - generate a PostScript page list of a PDF document
+pdf2ps (1)           - Ghostscript PDF to PostScript translator
+pdfdetach (1)        - Portable Document Format (PDF) document embedded file extractor (version 3.03)
+pdffonts (1)         - Portable Document Format (PDF) font analyzer (version 3.03)
+pdfgrep (1)          - search pdf files for a regular expression
+pdfimages (1)        - Portable Document Format (PDF) image extractor (version 3.03)
+pdfinfo (1)          - Portable Document Format (PDF) document information extractor (version 3.03)
+pdfmom (1)           - Produce PDF documents using the mom macro set
+pdfroff (1)          - create PDF documents using groff
+pdfseparate (1)      - Portable Document Format (PDF) page extractor
+pdftexi2dvi (1)      - convert Texinfo documents to DVI or PDF
+pdftocairo (1)       - Portable Document Format (PDF) to PNG/JPEG/TIFF/PDF/PS/EPS/SVG using cairo
+pdftohtml (1)        - program to convert PDF files into HTML, XML and PNG images
+pdftoppm (1)         - Portable Document Format (PDF) to Portable Pixmap (PPM) converter (version 3.03)
+pdftops (1)          - Portable Document Format (PDF) to PostScript converter (version 3.03)
+pdftotext (1)        - Portable Document Format (PDF) to text converter (version 3.03)
+pdfunite (1)         - Portable Document Format (PDF) page merger
+pdiff (1)            - produce a pretty comparison between files
+peekfd (1)           - peek at file descriptors of running processes
+perl (1perl)         - The Perl 5 language interpreter
+permview (1)         - Viewer for declarative security permission sets inside assemblies.
+pf2afm (1)           - Make an AFM file from Postscript (PFB/PFA/PFM) font files using ghostscript
+pfbtopfa (1)         - Convert Postscript .pfb fonts to .pfa format using ghostscript
+pfbtops (1)          - translate a PostScript font in .pfb format to ASCII
+pfmtopam (1)         - Convert PFM (Portable Float Map) image to Netpbm format
+pg (1)               - browse pagewise through text files
+pg_archivecleanup (1) - clean up PostgreSQL WAL archive files
+pgawk (1)            - pattern scanning and processing language
+pg_basebackup (1)    - take a base backup of a PostgreSQL cluster
+pgbench (1)          - run a benchmark test on PostgreSQL
+pg_config (1)        - retrieve information about the installed version of PostgreSQL
+pg_controldata (1)   - display control information of a PostgreSQL database cluster
+pg_ctl (1)           - initialize, start, stop, or control a PostgreSQL server
+pg_dump (1)          - extract a PostgreSQL database into a script file or other archive file
+pg_dumpall (1)       - extract a PostgreSQL database cluster into a script file
+pgmabel (1)          - create cross section using Abel Integration for Deconvolution
+pgmbentley (1)       - Bentleyize a PGM image
+pgmcrater (1)        - create cratered terrain by fractal forgery
+pgmdeshadow (1)      - Deshadow a PGM image
+pgmedge (1)          - replaced by pamedge
+pgmenhance (1)       - edge-enhance a PGM image
+pgmhist (1)          - print a histogram of the values in a PGM image
+pgmkernel (1)        - generate a convolution kernel
+pgmmake (1)          - create a PGM image of a specified gray level and dimensions
+pgmmedian (1)        - apply a median filter to a PGM file
+pgmminkowski (1)     - compute Minkowski integral
+pgmmorphconv (1)     - perform morphological convolutions: dilation, erosion
+pgmnoise (1)         - create a PGM image made up of white noise
+pgmnorm (1)          - replaced by pnmnorm
+pgmoil (1)           - replaced by pamoil
+pgmramp (1)          - generate a grayscale ramp
+pgmslice (1)         - extract one line of pixel values out of a PGM
+pgmtexture (1)       - calculate textural features on a PGM image
+pgmtofs (1)          - convert PGM image to Usenix FaceSaver(tm) format
+pgmtolispm (1)       - convert a PGM image to Lisp Machine format
+pgmtopbm (1)         - convert a PGM image to PBM
+pgmtopgm (1)         - copy PGM image
+pgmtoppm (1)         - colorize a PGM (grayscale) image into a PPM (color) image
+pgmtoy4m (1)         - Convert mpeg2dec pgm and pgmpipe output to YUV4MPEG2
+pg_receivexlog (1)   - streams transaction logs from a PostgreSQL cluster
+pgrep (1)            - look up or signal processes based on name and other attributes
+pg_resetxlog (1)     - reset the write-ahead log and other control information of a PostgreSQL database cluster
+pg_restore (1)       - restore a PostgreSQL database from an archive file created by pg_dump
+pg_standby (1)       - supports the creation of a PostgreSQL warm standby server
+pg_test_fsync (1)    - determine fastest wal_sync_method for PostgreSQL
+pg_test_timing (1)   - measure timing overhead
+pg_upgrade (1)       - upgrade a PostgreSQL server instance
+php (1)              - PHP Command Line Interface 'CLI'
+php-config (1)       - get information about PHP configuration and compile options
+phpize (1)           - prepare a PHP extension for compiling
+pi1toppm (1)         - convert an Atari Degas .pi1 into a PPM image
+pi3topbm (1)         - convert an Atari Degas .pi3 file into a PBM image
+pic (1)              - compile pictures for troff or TeX
+pic2graph (1)        - convert a PIC diagram into a cropped image
+Pidgin (3pm)         - Perl extension for the Pidgin instant messenger.
+pidgin (1)           - Instant Messaging client
+pidstat (1)          - Report statistics for Linux tasks.
+ping (8)             - send ICMP ECHO_REQUEST to network hosts
+ping6 (8)            - send ICMP ECHO_REQUEST to network hosts
+pinky (1)            - lightweight finger
+pitchplay (1)        - wrapper script to play audio tracks with cdda2wav with different pitches through a soundcard ...
+pjtoppm (1)          - convert an HP PaintJet file to a PPM image
+pkaction (1)         - Get details about a registered action
+pkcheck (1)          - Check whether a process is authorized
+pkexec (1)           - Execute a command as another user
+pkg-config (1)       - Return metainformation about installed libraries
+pkgdata (1)          - package data for use by ICU
+pkgdelta (8)         - package delta generation utility
+pkill (1)            - look up or signal processes based on name and other attributes
+pktopbm (1)          - convert packed (PK) format font into PBM
+pkttyagent (1)       - Textual authentication helper
+playdv (1)           - display digital video streams on screen
+plot (1)             - translate GNU metafiles to other graphics formats
+plotfont (1)         - produce character maps of fonts supported by the plotting utilities
+plugctl (1)          - a program to get or set any MPR or PCR register value
+plugreport (1)       - a program to read all MPR/PCR registers from all devices and report them.
+pmap (1)             - report memory map of a process
+pm-is-supported (1)  - Test whether suspend or hibernate is supported.
+png2yuv (1)          - Convert PNG images to the YUV4MPEG stream format.
+pngtopnm (1)         - convert a PNG image into a PNM image
+pnmalias (1)         - antialias a PNM image
+pnmarith (1)         - perform arithmetic on two PNM images
+pnmcat (1)           - concatenate Netpbm images
+pnmcolormap (1)      - create quantization color map for a Netpbm image
+pnmcomp (1)          - composite (overlay) two PNM images together
+pnmconvol (1)        - general MxN convolution on a Netpbm image
+pnmcrop (1)          - crop a PNM image
+pnmcut (1)           - replaced by pamcut
+pnmdepth (1)         - change the maxval in a PNM image
+pnmenlarge (1)       - replaced by pamenlarge
+pnmfile (1)          - replaced by pamfile
+pnmgamma (1)         - perform gamma adjustment on a PNM image
+pnmhisteq (1)        - histogram equalize a PNM image
+pnmhistmap (1)       - draw a histogram for a PGM or PPM file
+pnmindex (1)         - build a visual index of a bunch of PNM images
+pnminterp (1)        - replaced by pamstretch
+pnminvert (1)        - invert a PNM image
+pnmmargin (1)        - add borders to a PNM image
+pnmmontage (1)       - create a montage of PNM images
+pnmnlfilt (1)        - non-linear filters: smooth, alpha trim mean, optimal estimation smoothing, edge enhancement.
+pnmnoraw (1)         - replaced by pnmtoplainpnm
+pnmnorm (1)          - normalize the contrast in a Netbpm image
+pnmpad (1)           - add borders to a PNM image
+pnmpaste (1)         - paste a rectangle into a PNM image
+pnmpsnr (1)          - compute the difference between two images (the PSNR)
+pnmquant (1)         - quantize the colors in a Netpbm image to a smaller set
+pnmremap (1)         - replace colors in a PNM image with colors from another set
+pnmrotate (1)        - rotate a PNM image by some angle
+pnmscale (1)         - replaced by pamscale
+pnmscalefixed (1)    - scale a PNM file quickly
+pnmshear (1)         - shear a PNM image by a specified angle
+pnmsmooth (1)        - smooth out an image
+pnmsplit (1)         - split a multi-image PNM file into multiple single-image files
+pnmstitch (1)        - stitch together two panoramic (side-by-side) photographs
+pnmtile (1)          - replicate an image to fill a specified region
+pnmtoddif (1)        - Convert a PNM image to DDIF format
+pnmtofiasco (1)      - Convert PNM file to FIASCO compressed file
+pnmtofits (1)        - replaced by pamtofits
+pnmtojbig (1)        - PNM to JBIG file converter
+pnmtojpeg (1)        - convert PNM image to a JFIF ('JPEG') image
+pnmtopalm (1)        - convert a PNM image to a Palm Bitmap
+pnmtopclxl (1)       - convert a PNM image to an HP LaserJet PCL XL printer stream
+pnmtoplainpnm (1)    - replaced by pnmtopnm
+pnmtopng (1)         - convert a PNM image to PNG
+pnmtopnm (1)         - copy a PNM image
+pnmtops (1)          - convert PNM image to PostScript
+pnmtorast (1)        - convert a PPM into a Sun rasterfile
+pnmtorle (1)         - convert a Netpbm image file into an RLE image file.
+pnmtosgi (1)         - convert a PNM image to a SGI image file
+pnmtosir (1)         - convert a PNM image into a Solitaire format
+pnmtotiff (1)        - convert a PNM image to a TIFF file
+pnmtotiffcmyk (1)    - convert a Netpbm image into a CMYK encoded TIFF file
+pnmtoxwd (1)         - convert a PNM into an X11 window dump
+pnmtoy4m (1)         - Convert PNM/PAM images to YUV4MPEG2 stream
+pod2texi (1)         - convert Pod to Texinfo
+podofobox (1)        - modify colors in a PDF file.
+podofocountpages (1) - count the number of pages in a pdf file
+podofocrop (1)       - crop all pages
+podofoencrypt (1)    - encrypt PDF files and set PDF security settings
+podofoimg2pdf (1)    - Convert images to PDF files
+podofoimgextract (1) - Extract all images from a PDF file
+podofoimpose (1)     - A powerful PDF imposition tool
+podofoincrementalupdates (1) - Provides information about incremental updates in PDF files
+podofomerge (1)      - merge several PDF files
+podofopages (1)      - move and delete pages in a PDF document
+podofopdfinfo (1)    - provide information about a PDF file
+podofotxt2pdf (1)    - convert plain text files into PDF files
+podofotxtextract (1) - Extract all text from a PDF file
+podofouncompress (1) - Uncompress PDF files
+podofoxmp (1)        - Modify or extract XMP information from a PDF file
+pon (1)              - starts up, shuts down or lists the log of PPP connections
+policytool (1)       - PolicyTool Administration GUI Utility
+ponymix (1)          - cli volume control for PulseAudio
+postgres (1)         - PostgreSQL database server
+postmaster (1)       - PostgreSQL database server
+ppdc (1)             - cups ppd compiler
+ppdhtml (1)          - cups html summary generator
+ppdi (1)             - import ppd files
+ppdmerge (1)         - merge ppd files
+ppdpo (1)            - ppd message catalog generator
+ppm2tiff (1)         - create a TIFF file from PPM, PGM and PBM image files
+ppm3d (1)            - convert two PPM images into an anaglyph (red/blue 3d glasses) PPM
+ppmbrighten (1)      - change a PPM image's Saturation and Value
+ppmchange (1)        - change all pixels of one color to another in a PPM image
+ppmcie (1)           - draw a CIE color chart as a PPM image
+ppmcolormask (1)     - produce mask of areas of a certain color in a PPM file
+ppmdcfont (1)        - Turn a Ppmdfont file into C source for a builtin font
+ppmddumpfont (1)     - dump a Ppmdfont file
+ppmdim (1)           - dim a PPM image
+ppmdist (1)          - simplistic grayscale assignment for machine generated, color images
+ppmdither (1)        - ordered dither for color images
+ppmdmkfont (1)       - Create Ppmdfont 'standard'.
+ppmdraw (1)          - draw lines, text, etc on a PPM image
+ppmfade (1)          - generate a transition between two image files using special effects
+ppmflash (1)         - brighten a picture to approach white
+ppmforge (1)         - fractal forgeries of clouds, planets, and starry skies
+ppmglobe (1)         - generate strips to glue onto a sphere
+ppmhist (1)          - print a histogram of the colors in a PPM image
+ppmlabel (1)         - add text to a PPM image
+ppmmake (1)          - create a PPM image of a specified color and dimensions
+ppmmix (1)           - blend together two PPM images
+ppmnorm (1)          - replaced by pnmnorm
+ppmntsc (1)          - Make RGB colors legal for NTSC or PAL color systems.
+ppmpat (1)           - make a pretty PPM image
+ppmquant (1)         - quantize the colors in a PPM image down to a specified number
+ppmquantall (1)      - run Pnmquant on a bunch of files all at once, so they share a common colormap
+ppmrainbow (1)       - Generate a rainbow
+ppmrelief (1)        - run a Laplacian relief filter on a PPM image
+ppmrough (1)         - create PPM image of two colors with a ragged border between them
+ppmshadow (1)        - add simulated shadows to a PPM image
+ppmshift (1)         - shift lines of a PPM image left or right by a random amount
+ppmspread (1)        - displace a PPM image's pixels by a random amount
+ppmtoacad (1)        - convert PPM to Autocad database or slide
+ppmtoarbtxt (1)      - generate image in arbitrary text format from PPM image
+ppmtobmp (1)         - convert a PPM image into a BMP file
+ppmtoeyuv (1)        - convert a PPM image into a Berkeley YUV file
+ppmtoicr (1)         - convert a PPM image into NCSA ICR format
+ppmtoilbm (1)        - convert a PPM image into an ILBM file
+ppmtojpeg (1)        - replaced by pnmtojpeg
+ppmtoleaf (1)        - convert PPM image to Interleaf image format
+ppmtolj (1)          - convert a PPM image to an HP LaserJet PCL 5 Color file
+ppmtolss16 (1)       - Convert a PPM to an LSS16 image
+ppmtomap (1)         - create a map of all colors in a PPM image
+ppmtomitsu (1)       - convert a PPM image to a Mitsubishi S340-10 file
+ppmtompeg (1)        - encode an MPEG-1 bitstream
+ppmtoneo (1)         - convert a PPM into an Atari Neochrome .neo file
+ppmtopcx (1)         - convert a PPM image to a PCX file
+ppmtopgm (1)         - convert a PPM image to a PGM image
+ppmtopi1 (1)         - convert a PPM image into an Atari Degas .pi1 file
+ppmtopict (1)        - convert a PPM image to a Macintosh PICT file
+ppmtopj (1)          - convert a PPM image to an HP PaintJet file
+ppmtopjxl (1)        - convert a PPM image to an HP PaintJet XL PCL file
+ppmtoppm (1)         - copy PPM image
+ppmtopuzz (1)        - convert a PPM image to an X11 'puzzle' file
+ppmtorgb3 (1)        - separate a PPM image into three PGMs
+ppmtosixel (1)       - convert a PPM image to DEC sixel format
+ppmtoterm (1)        - convert a PPM image to a ANSI ISO 6429 ascii image
+ppmtouil (1)         - replaced by pamtouil
+ppmtowinicon (1)     - convert PPM image into a Windows .ico file
+ppmtoxpm (1)         - convert a PPM image to an X11 pixmap
+ppmtoy4m (1)         - Convert PPM images to YUV4MPEG2 stream
+ppmtoyuv (1)         - convert a PPM image to an Abekas YUV file
+ppmtoyuvsplit (1)    - convert a PPM image to 3 subsampled raw YUV files
+ppmtv (1)            - make a PPM image look like taken from an American TV
+ppmwheel (1)         - make a PPM image of a color wheel
+pr (1p)              - print files
+pr (1)               - convert text files for printing
+preconv (1)          - convert encoding of input files to something GNU troff understands
+prezip-bin (1)       - prefix zip delta word list compressor/decompressor
+printafm (1)         - Print the metrics from a Postscript font in AFM format using ghostscript
+printenv (1)         - print all or part of environment
+printf (3)           - formatted output conversion
+printf (3p)          - print formatted output
+printf (1p)          - write formatted output
+printf (1)           - format and print data
+prj2make (1)         - Makefile generator from Visual Studio and Sharp Develop solution files.
+vlimit (3)           - get/set resource limits
+prlimit (1)          - get and set a process resource limits.
+prlimit (2)          - get/set resource limits
+prtstat (1)          - print statistics of a process
+prune (1)            - Prune directed graphs
+ps2ascii (1)         - Ghostscript translator from PostScript or PDF to ASCII
+ps2epsi (1)          - generate conforming Encapsulated PostScript
+ps2pdf (1)           - Convert PostScript to PDF using ghostscript
+ps2pdf12 (1)         - Convert PostScript to PDF 1.2 (Acrobat 3-and-later compatible) using ghostscript
+ps2pdf13 (1)         - Convert PostScript to PDF 1.3 (Acrobat 4-and-later compatible) using ghostscript
+ps2pdf14 (1)         - Convert PostScript to PDF 1.4 (Acrobat 5-and-later compatible) using ghostscript
+ps2pdfwr (1)         - Convert PostScript to PDF without specifying CompatibilityLevel, using ghostscript
+ps2ps (1)            - Ghostscript PostScript "distiller"
+psbook (1)           - rearrange pages in PostScript file into signatures
+pscap (8)            - a program to see capabilities
+psfaddtable (1)      - add a Unicode character table to a console font
+psfgettable (1)      - extract the embedded Unicode character table from a console font
+psfstriptable (1)    - remove the embedded Unicode character table from a console font
+psfxtable (1)        - handle Unicode character tables for console fonts
+psidtopgm (1)        - convert PostScript 'image' data to a PGM image
+psktool (1)          - GnuTLS PSK tool
+psmandup (1)         - print duplex on non duplex printers
+psmerge (1)          - filter to merge several PostScript files into one
+psnup (1)            - multiple pages per sheet
+pspell-config (1)    - prints information about a libpspell installation
+psql (1)             - PostgreSQL interactive terminal
+psresize (1)         - multiple pages per sheet
+psselect (1)         - select pages from a PostScript file
+psset (1)            - insert page device request in PostScript files
+pstoedit (1)         - a tool converting PostScript and PDF files into various vector graphic formats
+pstopnm (1)          - convert a PostScript file to a PNM image
+pstops (1)           - shuffle pages in a PostScript file
+pstree (1)           - display a tree of processes
+pth-config (1)       - Pth library build utility
+ptx (1)              - produce a permuted index of file contents
+pulseaudio (1)       - The PulseAudio Sound System
+pwd (n)              - Return the absolute path of the current working directory
+pwd (1p)             - return working directory name
+pwd (1)              - print name of current/working directory
+pwdx (1)             - report current working directory of a process
+pylint (1)           - python code static checker
+pylint-gui (1)       - Tkinker gui for pylint
+pyreverse (1)        - parse python sources files and extract diagrams from them.
+python2 (1)          - an interpreted, interactive, object-oriented programming language
+python2.7 (1)        - an interpreted, interactive, object-oriented programming language
+python3 (1)          - an interpreted, interactive, object-oriented programming language
+python3.3 (1)        - an interpreted, interactive, object-oriented programming language
+qpdf (1)             - PDF transformation software
+qpdfview (1)         - tabbed PDF viewer
+qrttoppm (1)         - convert output from the QRT ray tracer to a PPM image
+quest (1)            - Xapian command line search tool
+quvi (1)             - query media tool
+rake (1)             - Ruby Make
+ranger (1)           - visual file manager
+ranlib (1)           - generate index to archive.
+rapper (1)           - Raptor RDF parsing and serializing utility
+ras2tiff (1)         - create a TIFF file from a Sun rasterfile
+rasqal-config (1)    - script to get information about the installed version of the RDF query library
+rasttopnm (1)        - convert a Sun rasterfile to a PNM image
+raw2tiff (1)         - create a TIFF file from a raw data
+rawtopgm (1)         - convert raw grayscale bytes to a PGM image
+rawtoppm (1)         - convert a stream of raw RGB bytes to a PPM image
+rcp (1)              - Remote copy
+rdesktop (1)         - Remote Desktop Protocol client
+rdfproc (1)          - Redland RDF processor utility
+rdiff (1)            - compute and apply signature-based file differences
+rdiffdir (1)         - compute and apply signatures and diffs to directories
+rdjpgcom (1)         - display text comments from a JPEG file
+readcd (1)           - read or write data Compact Discs
+readelf (1)          - Displays information about ELF files.
+readlink (3p)        - read the contents of a symbolic link
+readlink (1)         - print resolved symbolic links or canonical file names
+readlink (2)         - read value of a symbolic link
+readmult (1)         - a multitrack wrapper for cdda2wav
+readom (1)           - read or write data Compact Discs
+realpath (3p)        - resolve a pathname
+realpath (3)         - return the canonicalized absolute pathname
+realpath (1)         - print the resolved path
+recode (1)           - manual page for recode 3.6
+recode-sr-latin (1)  - convert Serbian text from Cyrillic to Latin script
+redland-config (1)   - script to get information about the installed version of Redland
+redland-db-upgrade (1) - upgrade older Redland databases to 0.9.12 format
+redshift (1)         - Set color temperature of display according to time of day.
+refer (1)            - preprocess bibliographic references for groff
+regedit (1)          - Wine registry editor
+regsvr32 (1)         - Wine DLL Registration Server
+reindexdb (1)        - reindex a PostgreSQL database
+rename (3p)          - rename a file
+rename (n)           - Rename or delete a command
+rename (1)           - rename files
+rename (2)           - change the name or location of a file
+renamexm (1)         - file rename tool
+renice (1)           - alter priority of running processes
+renice (1p)          - set nice values of running processes
+repo-add (8)         - package database maintenance utility
+repo-remove (8)      - package database maintenance utility
+RESET (7)            - restore the value of a run-time parameter to the default value
+reset (1)            - terminal initialization
+resgen (1)           - Mono/CLI Resource Generator
+resize (1)           - set environment and terminal settings to current xterm window size
+resizecons (8)       - change kernel idea of the console size
+reswrap (1)          - wrap icon resources into C code
+rev (1)              - reverse lines of a file or files
+rgb2ycbcr (1)        - convert non-YCbCr TIFF images to a YCbCr TIFF image
+rgb3toppm (1)        - combine three PGM images (R, G, B) into one PPM image
+rgview (1)           - Vi IMproved, a programmers text editor
+rgvim (1)            - Vi IMproved, a programmers text editor
+ri (1)               - Ruby API reference front end
+rifle (1)            - ranger's file opener
+rlatopam (1)         - convert Alias/Wavefront RLA and RPF image files to PAM image files.
+rletopnm (1)         - convert a Utah Raster Tools RLE image file to a PNM image file.
+rlogin (1)           - Remote login
+rlwrap (1)           - readline wrapper
+rm (1p)              - remove directory entries
+rm (1)               - remove files or directories
+rmdir (3p)           - remove a directory
+rmdir (1p)           - remove directories
+rmdir (1)            - remove empty directories
+rmdir (2)            - delete a directory
+rmic (1)             - The Java RMI Compiler
+rmid (1)             - The Java RMI Activation System Daemon
+rmiregistry (1)      - The Java Remote Object Registry
+rmmod (8)            - Simple program to remove a module from the Linux Kernel
+rnano (1)            - Restricted mode for Nano's ANOther editor, an enhanced free Pico clone
+roff2dvi (1)         - transform roff code into dvi mode
+roff2html (1)        - transform roff code into html mode
+roff2pdf (1)         - transform roff code into pdf mode
+roff2ps (1)          - transform roff code into ps mode
+roff2text (1)        - transform roff code into text mode
+roff2x (1)           - transform roff code into x mode
+roqet (1)            - Rasqal RDF query utility
+rpcclient (1)        - tool for executing client side MS-RPC functions
+rrdcached (1)        - Data caching daemon for rrdtool
+rrdcgi (1)           - Create web pages containing RRD graphs based on templates
+rrdtool (1)          - Round Robin Database Tool
+rrdupdate (1)        - Store a new set of values into the RRD
+rsh (1)              - Remote shell client
+rsvg-convert (1)     - turn SVG files into raster images.
+rsync (1)            - a fast, versatile, remote (and local) file-copying tool
+rtmpdump (1)         - RTMP streaming media client
+rtorrent (1)         - a BitTorrent client for ncurses
+ruby (1)             - Interpreted object-oriented scripting language
+runcon (1)           - run command with specified security context
+run-parts (8)        - run scripts or programs in a directory
+run-with-aspell (1)  - script to help use GNU Aspell as an ispell replacement
+rview (1)            - Vi IMproved, a programmers text editor
+rvim (1)             - Vi IMproved, a programmers text editor
+sadf (1)             - Display data collected by sar in multiple formats.
+sane-config (1)      - get information about the installed version of libsane
+sane-find-scanner (1) - find SCSI and USB scanners and their device files
+sar (1)              - Collect, report, or save system activity information.
+sbigtopgm (1)        - convert an SBIG CCDOPS file to PGM
+scanimage (1)        - scan an image
+scanmem (1)          - locate and modify a variable in an executing process.
+sccmap (1)           - extract strongly connected components of directed graphs
+scdaemon (1)         - Smartcard daemon for the GnuPG system
+schemagen (1)        - Java(TM) Architecture for XML Binding Schema Generator
+sclient (1)          - sample Kerberos version 5 client
+scp (1)              - secure copy (remote file copy program)
+screen (1)           - screen manager with VT100/ANSI terminal emulation
+script (1)           - make typescript of terminal session
+scriptreplay (1)     - play back typescripts, using timing information
+sdiff (1)            - side-by-side merge of file differences
+secret-tool (1)      - Store and retrieve passwords
+secutil (1)          - Extract X.509 certificates and strongnames from assemblies.
+sed (1p)             - stream editor
+sed (1)              - stream editor for filtering and transforming text
+sendiso (1)          - send IEEE 1394 isochronous packets from dump file
+sensors (1)          - print sensors information
+seq (1)              - print a sequence of numbers
+serialver (1)        - The Serial Version Command
+servertool (1)       - The Java(TM) IDL Server Tool
+sessreg (1)          - manage utmp/wtmp entries for non-init clients
+setarch (8)          - change reported architecture in new program environment and set personality flags
+setcifsacl (1)       - Userspace helper to alter an ACL in a security descriptor for Common Internet File System (CIFS)
+setfacl (1)          - set file access control lists
+setfattr (1)         - set extended attributes of filesystem objects
+setfont (8)          - load EGA/VGA console screen font
+setkeycodes (8)      - load kernel scancode-to-keycode mapping table entries
+setleds (1)          - set the keyboard leds
+setmetamode (1)      - define the keyboard meta key handling
+setreg (1)           - Change settings for public key cryptography
+setsid (3p)          - create session and set process group ID
+setsid (1)           - run a program in a new session
+setsid (2)           - creates a session and sets the process group ID
+setterm (3x)         - curses interfaces to terminfo database
+setterm (1)          - set terminal attributes
+setvtrgb (8)         - set the virtual terminal RGB colors
+setxkbmap (1)        - set the keyboard using the X Keyboard Extension
+sfdp (1)             - filter for drawing large undirected graphs
+sftp (1)             - secure file transfer program
+sg (1)               - execute command as different group ID
+sg_compare_and_write (8) - send the SCSI COMPARE AND WRITE command
+sg_copy_results (8)  - send SCSI RECEIVE COPY RESULTS command (XCOPY related)
+sg_dd (8)            - copy data to and from files and devices, especially SCSI devices
+sg_decode_sense (8)  - decode SCSI sense data
+sgdisk (8)           - Command-line GUID partition table (GPT) manipulator for Linux and Unix
+sg_emc_trespass (8)  - change ownership of SCSI LUN from another Service-Processor to this one
+sgen (1)             - Mono XML Serializer GENerator
+sg_format (8)        - format or resize a SCSI disk (perhaps change its block size)
+sg_get_config (8)    - send SCSI GET CONFIGURATION command (MMC-4 +)
+sg_get_lba_status (8) - send SCSI GET LBA STATUS command
+sg_ident (8)         - send SCSI REPORT/SET IDENTIFYING INFORMATION command
+sginfo (8)           - access mode page information for a SCSI (or ATAPI) device
+sg_inq (8)           - issue SCSI INQUIRY command, output and decode response
+sgitopnm (1)         - convert a SGI image file to PNM
+sg_logs (8)          - access log pages with SCSI LOG SENSE command
+sg_luns (8)          - send SCSI REPORT LUNS command
+sg_map (8)           - displays mapping between linux sg and other SCSI devices
+sg_map26 (8)         - map SCSI generic (sg) device to corresponding device names
+sgm_dd (8)           - copy data to and from files and devices, especially SCSI devices
+sg_modes (8)         - reads mode pages with SCSI MODE SENSE command
+sg_opcodes (8)       - report supported SCSI commands or task management functions
+sgp_dd (8)           - copy data to and from files and devices, especially SCSI devices
+sg_persist (8)       - use SCSI PERSISTENT RESERVE command to access registrations and reservations
+sg_prevent (8)       - send SCSI PREVENT ALLOW MEDIUM REMOVAL command
+sg_raw (8)           - send arbitrary SCSI command to a device
+sg_rbuf (8)          - reads data using SCSI READ BUFFER command
+sg_rdac (8)          - display or modify SCSI RDAC Redundant Controller mode page
+sg_read (8)          - read multiple blocks of data, optionally with SCSI READ commands
+sg_read_block_limits (8) - send SCSI READ BLOCK LIMITS command
+sg_read_buffer (8)   - send SCSI READ BUFFER command
+sg_readcap (8)       - send SCSI READ CAPACITY command
+sg_read_long (8)     - send a SCSI READ LONG command
+sg_reassign (8)      - send SCSI REASSIGN BLOCKS command
+sg_referrals (8)     - send SCSI REPORT REFERRALS command
+sg_requests (8)      - send one or more SCSI REQUEST SENSE commands
+sg_reset (8)         - sends SCSI device, target, bus or host reset; or checks reset state
+sg_rmsn (8)          - send SCSI READ MEDIA SERIAL NUMBER command
+sg_rtpg (8)          - send SCSI REPORT TARGET PORT GROUPS command
+sg_safte (8)         - access SCSI Accessed Fault-Tolerant Enclosure (SAF-TE) device
+sg_sanitize (8)      - remove all user data from disk with SCSI SANITIZE command
+sg_sat_identify (8)  - send ATA IDENTIFY DEVICE command via SCSI to ATA Translation (SAT) layer
+sg_sat_phy_event (8) - use ATA READ LOG EXT via a SAT pass-through to fetch SATA phy event counters
+sg_sat_set_features (8) - use ATA SET FEATURES command via a SCSI to ATA Translation (SAT) layer
+sg_scan (8)          - scans sg devices (or SCSI/ATAPI/ATA devices) and prints results
+sg_senddiag (8)      - performs a SCSI SEND DIAGNOSTIC command
+sg_ses (8)           - access a SCSI Enclosure Services (SES) device
+sg_start (8)         - send SCSI START STOP UNIT command: start, stop, load or eject medium
+sg_stpg (8)          - send SCSI SET TARGET PORT GROUPS command
+sg_sync (8)          - send SCSI SYNCHRONIZE CACHE command
+sg_test_rwbuf (8)    - test a SCSI host adapter by issuing dummy writes and reads
+sg_turs (8)          - send one or more SCSI TEST UNIT READY commands
+sg_unmap (8)         - send SCSI UNMAP command (known as 'trim' in ATA specs)
+sg_verify (8)        - invoke SCSI VERIFY command(s) on a block device
+sg_vpd (8)           - fetch Vital Product Data (VPD) pages via a SCSI INQUIRY command
+sg_write_buffer (8)  - send SCSI WRITE BUFFER command
+sg_write_long (8)    - send SCSI WRITE LONG command
+sg_write_same (8)    - send SCSI WRITE SAME command
+sg_wr_mode (8)       - write (modify) SCSI mode page
+sg_xcopy (8)         - copy data to and from files and devices using SCSI EXTENDED COPY (XCOPY)
+sha1deep (1)         - Compute and compare SHA-1 message digests
+sha1sum (1)          - compute and check SHA1 message digest
+sha224sum (1)        - compute and check SHA224 message digest
+sha256deep (1)       - Compute and compare SHA-256 message digests
+sha256sum (1)        - compute and check SHA256 message digest
+sha384sum (1)        - compute and check SHA384 message digest
+sha512sum (1)        - compute and check SHA512 message digest
+shapeclustering (1)  - shape clustering training for Tesseract
+shell-fm (1)         - Lightweight, console-based player for Last.FM radio streams.
+showconsolefont (8)  - Show the current EGA/VGA console screen font
+showfigfonts (6)     - prints a list of available figlet fonts
+showkey (1)          - examine the codes sent by the keyboard
+shred (1)            - overwrite a file to hide its contents, and optionally delete it
+shuf (1)             - generate random permutations
+shutterbug (1)       - screen snapshot application
+signcode (1)         - Digitally sign an PE executable using an X.509 certificate.
+__gnu_pbds::detail::binary_heap_const_iterator_ (3) - (unknown subject)
+sirtopnm (1)         - convert a Solitaire file to PNM
+size (1)             - list section sizes and total size.
+slabtop (1)          - display kernel slab cache information in real time
+sldtoppm (1)         - convert an AutoCAD slide file to a PPM image
+sleep (3)            - sleep for the specified number of seconds
+sleep (3p)           - suspend execution for an interval of time
+sleep (1)            - delay for a specified amount of time
+sleep (1p)           - suspend execution for an interval
+sliceprint (1)       - slice documents with long lines.
+slogin (1)           - OpenSSH SSH client (remote login program)
+slsh (1)             - Interpreter for S-Lang scripts
+smbcacls (1)         - Set or get ACLs on an NT file or directory names
+smbclient (1)        - ftp-like client to access SMB/CIFS resources on servers
+smbcquotas (1)       - Set or get QUOTAs of NTFS 5 shares
+smbget (1)           - wget-like utility for download files over SMB
+smbtar (1)           - shell script for backing up SMB/CIFS shares directly to UNIX tape drives
+smbtree (1)          - A text based smb network browser
+smem (8)             - Report memory usage with shared memory divided proportionally.
+smime_keys (1)       - Utility to add S/MIME certificate to the internal database used by mutt
+smplayer (1)         - The best GUI frontend for MPlayer
+sn (1)               - Digitally sign/verify/compare strongnames on CLR assemblies.
+sndfile-cmp (1)      - compares two audio files
+sndfile-concat (1)   - concatenates two or more audio files
+sndfile-convert (1)  - convert a sound files from one format to another
+sndfile-deinterleave (1) - split a multi-channel into multiple single channel files
+sndfile-info (1)     - display information about a sound file
+sndfile-interleave (1) - convert multiple single channel files into a multi-channel file
+sndfile-metadata-get (1) - retrieve metadata from a sound file
+sndfile-metadata-set (1) - set metadata in a sound file
+sndfile-play (1)     - play a sound file
+snmp-bridge-mib (1)  - provide Linux bridge information via SNMP
+snmpbulkget (1)      - communicates with a network entity using SNMP GETBULK requests.
+snmpbulkwalk (1)     - retrieve a subtree of management values using SNMP GETBULK requests
+snmpconf (1)         - creates and modifies SNMP configuration files
+snmpdelta (1)        - Monitor delta differences in SNMP Counter values
+snmpdf (1)           - display disk space usage on a network entity via SNMP
+snmpget (1)          - communicates with a network entity using SNMP GET requests
+snmpgetnext (1)      - communicates with a network entity using SNMP GETNEXT requests
+snmpinform (1)       - sends an SNMP notification to a manager
+snmpnetstat (1)      - display networking status and configuration information from a network entity via SNMP
+snmpset (1)          - communicates with a network entity using SNMP SET requests
+snmpstatus (1)       - retrieves a fixed set of management information from a network entity
+snmptable (1)        - retrieve an SNMP table and display it in tabular form
+snmptest (1)         - communicates with a network entity using SNMP requests
+snmptranslate (1)    - translate MIB OID names between numeric and textual forms
+snmptrap (1)         - sends an SNMP notification to a manager
+snmpusm (1)          - creates and maintains SNMPv3 users on a network entity
+snmpvacm (1)         - creates and maintains SNMPv3 View-based Access Control entries on a network entity
+snmpwalk (1)         - retrieve a subtree of management values using SNMP GETNEXT requests
+soapsuds (1)         - Mono's Remoting Proxy Generator
+soelim (1)           - interpret .so requests in groff input
+sort (3perl)         - perl pragma to control sort() behaviour
+sort (1p)            - sort, merge, or sequence check text files
+sort (1)             - sort lines of text files
+spctoppm (1)         - convert an Atari compressed Spectrum file to a PPM
+speaker-test (1)     - command-line speaker test tone generator for ALSA
+speexdec (1)         - The reference implementation speex decoder.
+speexenc (1)         - The reference implementation speex encoder.
+tkspline (3tk)       - additional smoothing method for canvas items.
+spline (1)           - interpolate datasets using splines under tension
+split (n)            - Split a string into a proper Tcl list
+split (1)            - split a file into pieces
+split (1p)           - split files into pieces
+spottopgm (1)        - convert SPOT satellite images to a PGM image
+sputoppm (1)         - convert an Atari uncompressed Spectrum file to a PPM image
+sqlite3 (1)          - A command line interface for SQLite version 3
+sqlite3 (n)          - an interface to the SQLite3 database engine
+sqlsharp (1)         - Mono SQL Query command-line tool
+srptool (1)          - GnuTLS SRP tool
+ssh (1)              - OpenSSH SSH client (remote login program)
+ssh-add (1)          - adds private key identities to the authentication agent
+ssh-agent (1)        - authentication agent
+ssh-copy-id (1)      - use locally available keys to authorise logins on a remote machine
+sshfs (1)            - filesystem client based on ssh
+ssh-keygen (1)       - authentication key generation, management and conversion
+ssh-keyscan (1)      - gather ssh public keys
+start-pulseaudio-kde (1) - PulseAudio Sound Server KDE Startup Script
+start-pulseaudio-x11 (1) - PulseAudio Sound Server X11 Startup Script
+startx (1)           - initialize an X session
+stat (3p)            - get file status
+stat (1)             - display file or file system status
+stat (2)             - get file status
+states (1)           - awk alike text processing tool
+stdbuf (1)           - Run COMMAND, with modified buffering operations for its standard streams.
+steam (6)            - a launcher for the Steam client from Valve Corporation
+strace (1)           - trace system calls and signals
+stream (1)           - a lightweight tool to stream one or more pixel components of the image or portion of the imag...
+strings (1)          - print the strings of printable characters in files.
+strings (1p)         - find printable strings in files
+strip (1)            - Discard symbols from object files.
+strip (1p)           - remove unnecessary information from executable files (DEVELOPMENT)
+stty (1p)            - set the options for a terminal
+stty (1)             - change and print terminal line settings
+stty (2)             - unimplemented system calls
+stunnel (8)          - universal SSL tunnel
+sudo (8)             - execute a command as another user
+sudoedit (8)         - execute a command as another user
+sudoreplay (8)       - replay sudo session logs
+sum (1)              - checksum and count the blocks in a file
+svn (1)              - Subversion command line client tool
+svnadmin (1)         - Subversion repository administration tool
+svndumpfilter (1)    - Filter a subversion repository 'dumpfile'.
+svnlook (1)          - Subversion repository examination tool
+svnrdump (1)         - Subversion remote repository dumper and loader
+svnserve (8)         - Server for the 'svn' repository access method
+svnsync (1)          - Subversion repository synchronization tool
+svnversion (1)       - Produce a compact version number for a working copy.
+sxpm (1)             - Show an XPM (X PixMap) file and/or convert XPM 1 or 2 files to XPM 3.
+symcryptrun (1)      - Call a simple symmetric encryption tool
+symilar (1)          - tool for checking similarities in different files
+sync (3p)            - schedule file system updates
+sync (1)             - flush file system buffers
+sync (8)             - synchronize data on disk with memory
+sync (2)             - commit buffer cache to disk
+syslinux (1)         - install the SYSLINUX bootloader on a FAT filesystem
+syslinux2ansi (1)    - converts a syslinux-format screen to pc-ansi
+systemctl (1)        - Control the systemd system and service manager
+systemd-analyze (1)  - Analyze system boot-up performance
+systemd-ask-password (1) - Query the user for a system password
+systemd-cat (1)      - Connect a pipeline or program's output with the journal
+systemd-cgls (1)     - Recursively show control group contents
+systemd-cgtop (1)    - Show top control groups by their resource usage
+systemd-coredumpctl (1) - Retrieve coredumps from the journal
+systemd-delta (1)    - Find overridden configuration files
+systemd-detect-virt (1) - Detect execution in a virtualized environment
+systemd-inhibit (1)  - Execute a program with an inhibition lock taken
+systemd-machine-id-setup (1) - Initialize the machine ID in /etc/machine-id
+systemd-notify (1)   - Notify service manager about start-up completion and other daemon status changes
+systemd-nspawn (1)   - Spawn a namespace container for debugging, testing and building
+systemd-tmpfiles (8) - Creates, deletes and cleans up volatile and temporary files and directories
+systemd-tty-ask-password-agent (1) - List or process pending systemd password requests
+systool (1)          - view system device information by bus, class, and topology
+tabs (1)             - set tabs on a terminal
+tabs (1p)            - set terminal tabs
+tac (1)              - concatenate and print files in reverse
+tail (1)             - output the last part of files
+tail (1p)            - copy the last part of a file
+tailf (1)            - follow the growth of a log file
+talk (1)             - Talk client
+talk (1p)            - talk to another user
+task (1)             - A command line todo manager.
+taskset (1)          - retrieve or set a process's CPU affinity
+tbl (1)              - format tables for troff
+tclsh (1)            - Simple shell containing Tcl interpreter
+tdbbackup (8)        - tool for backing up and for validating the integrity of samba .tdb files
+tdbdump (8)          - tool for printing the contents of a TDB file
+tdbrestore (8)       - tool for creating a TDB file out of a tdbdump output
+tdbtool (8)          - manipulate the contents TDB files
+tee (1)              - read from standard input and write to standard output and files
+tee (1p)             - duplicate standard input
+tee (2)              - duplicating pipe content
+tek2plot (1)         - translate Tektronix files to other graphics formats
+telnet (1)           - User interface to TELNET
+terminator (1)       - Multiple GNOME terminals in one window
+tesseract (1)        - command-line OCR engine
+Test (3perl)         - provides a simple framework for writing test scripts
+test (1)             - check file types and compare values
+test (1p)            - evaluate expression
+testlibraw (1)       - run basic functionality tests on libraw1394
+texi2any (1)         - translate Texinfo documents
+texi2dvi (1)         - convert Texinfo documents to DVI or PDF
+texi2dvi4a2ps (1)    - Compile Texinfo and LaTeX files to DVI or PDF
+texi2pdf (1)         - convert Texinfo documents to DVI or PDF
+texindex (1)         - sort Texinfo index files
+tfmtodit (1)         - create font files for use with groff - Tdvi
+tgatoppm (1)         - convert TrueVision Targa file to a PPM image
+thinkjettopbm (1)    - convert HP ThinkJet printer commands file to PBM
+thumbnail (1)        - create a TIFF file with thumbnail images
+Thunar (1)           - File Manager for the Xfce Desktop Environment
+tic (1m)             - the terminfo entry-description compiler
+tiff2bw (1)          - convert a color TIFF image to greyscale
+tiff2pdf (1)         - convert a TIFF image to a PDF document
+tiff2ps (1)          - convert a TIFF image to
+tiff2rgba (1)        - convert a TIFF image to RGBA color space
+tiffcmp (1)          - compare two TIFF files
+tiffcp (1)           - copy (and possibly convert) a TIFF file
+tiffcrop (1)         - select, copy, crop, convert, extract, and/or process one or more TIFF files.
+tiffdither (1)       - convert a greyscale image to bilevel using dithering
+tiffdump (1)         - print verbatim information about TIFF files
+tiffgt (1)           - display an image stored in a TIFF file (Silicon Graphics version)
+tifficc (1)          - little cms ICC profile applier for TIFF.
+tiffinfo (1)         - print information about TIFF files
+tiffmedian (1)       - apply the median cut algorithm to data in a TIFF file
+tiffset (1)          - set a field in a TIFF header
+tiffsplit (1)        - split a multi-image TIFF into single-image TIFF files
+tifftopnm (1)        - convert a TIFF file into a PNM image
+tificc (1)           - little cms ICC profile applier for TIFF.
+tigerdeep (1)        - Compute and compare Tiger message digests
+timedatectl (1)      - Control the system time and date
+timeout (3x)         - curses input options
+timeout (1)          - run a command with a time limit
+tkmib (1)            - an interactive graphical MIB browser for SNMP
+tload (1)            - graphic representation of system load average
+tmux (1)             - terminal multiplexer
+tnameserv (1)        - (unknown subject)
+toast (1)            - GSM 06.10 lossy sound compression
+toe (1m)             - table of (terminfo) entries
+top (1)              - display Linux processes
+tor (1)              - The second-generation onion router
+tor-gencert (1)      - Generate certs and keys for Tor directory authorities
+torify (1)           - wrapper for torsocks or tsocks and tor
+tor-resolve (1)      - resolve a hostname to an IP address via tor
+totem (1)            - GNOME desktop movie player based on GStreamer
+totem-video-thumbnailer (1) - video thumbnailer for the GNOME desktop
+touch (1)            - change file timestamps
+touch (1p)           - change file access and modification times
+tput (1p)            - change terminal characteristics
+tput (1)             - initialize a terminal or query terminfo database
+tr (1p)              - translate characters
+tr (1)               - translate or delete characters
+traceroute (8)       - print the route packets trace to network host
+traptoemail (1)      - snmptrapd handler script to convert snmp traps into emails
+tred (1)             - transitive reduction filter for directed graphs
+trietool-0.2 (1)     - trie manipulation tool
+troff (1)            - the troff processor of the groff text formatting system
+true (1p)            - return true value
+true (1)             - do nothing, successfully
+truncate (3p)        - truncate a file to a specified length
+TRUNCATE (7)         - empty a table or set of tables
+truncate (1)         - shrink or extend the size of a file to the specified size
+truncate (2)         - truncate a file to a specified length
+tset (1)             - terminal initialization
+tsocks (1)           - Shell wrapper to simplify the use of the tsocks(8) library to transparently allow an applicat...
+tsocks (8)           - Library for intercepting outgoing network connections and redirecting them through a SOCKS se...
+tsort (1p)           - topological sort
+tsort (1)            - perform topological sort
+tty (4)              - controlling terminal
+tty (1)              - print the file name of the terminal connected to standard input
+tty (1p)             - return user's terminal name
+twm (1)              - Tab Window Manager for the X Window System
+twopi (1)            - filter for radial layouts of graphs
+tzselect (8)         - select a timezone
+uconv (1)            - convert data from one encoding to another
+ucs2any (1)          - generate BDF fonts containing subsets of ISO 10646-1 codepoints
+udevadm (8)          - udev management tool
+udisks (7)           - Storage Management
+udisks (1)           - udisks command line tool
+udisks (8)           - Disk Manager
+udisksctl (1)        - The udisks command line tool
+udisks-tcp-bridge (1) - udisks TCP/IP bridge
+uil (1)              - compiler
+ul (1)               - do underlining
+uname (3p)           - get the name of the current system
+uname (1p)           - return system name
+uname (1)            - print system information
+uname (2)            - get name and information about current kernel
+uncompress (1p)      - expand compressed data
+unexpand (1p)        - convert spaces to tabs
+unexpand (1)         - convert spaces to tabs
+unflatten (1)        - adjust directed graphs to improve layout aspect ratio
+unicharset_extractor (1) - extract unicharset from Tesseract boxfiles
+unicode_start (1)    - put keyboard and console in unicode mode
+unicode_stop (1)     - revert keyboard and console from unicode mode
+uniq (1)             - report or omit repeated lines
+uniq (1p)            - report or filter out repeated lines in a file
+units (7)            - decimal and binary prefixes
+units (1)            - unit conversion and calculation program
+unix2dos (1)         - DOS/Mac to Unix and vice versa text file format converter
+unix2mac (1)         - DOS/Mac to Unix and vice versa text file format converter
+unlink (3p)          - remove a directory entry
+unlink (1)           - call the unlink function to remove the specified file
+unlink (1p)          - call the unlink function
+unlink (2)           - delete a name and possibly the file it refers to
+unlzma (1)           - Compress or decompress .xz and .lzma files
+unoconv (1)          - convert any document from and to any LibreOffice supported format
+unopkg (1)           - LibreOffice Extension Manager
+unpack200 (1)        - JAR Unpacking tool
+unpaper (1)          - Post-processing tool for scanned sheets of paper.
+unrtf (1)            - converts document in RTF format to other formats
+unshare (1)          - run program with some namespaces unshared from parent
+unshare (2)          - disassociate parts of the process execution context
+unxz (1)             - Compress or decompress .xz and .lzma files
+unzip (1)            - list, test and extract compressed files in a ZIP archive
+unzipsfx (1)         - self-extracting stub for prepending to ZIP archives
+update-alternatives (8) - maintain symbolic links determining default commands
+update-desktop-database (1) - Build cache database of MIME types handled by desktop files
+update-mime-database (1) - a program to build the Shared MIME-Info database cache
+UPower (7)           - System-wide Power Management
+upower (1)           - UPower command line tool
+uptime (1)           - Tell how long the system has been running.
+usb-devices (1)      - print USB device details
+usbhid-dump (8)      - dump USB HID device report descriptors and streams
+users (1)            - print the user names of users currently logged in to the current host
+utmpdump (1)         - dump UTMP and WTMP files in raw format
+uuidgen (1)          - create a new UUID value
+uxterm (1)           - X terminal emulator for Unicode (UTF-8) environments
+vacuumdb (1)         - garbage-collect and analyze a PostgreSQL database
+vacuumlo (1)         - remove orphaned large objects from a PostgreSQL database
+vbindiff (1)         - hexadecimal file display and comparison
+vdir (1)             - list directory contents
+vedit (1)            - screen oriented (visual) display editor based on ex
+vercmp (8)           - version comparison utility
+vi (1p)              - screen-oriented (visual) display editor
+vi (1)               - screen oriented (visual) display editor based on ex
+view (1)             - screen oriented (visual) display editor based on ex
+viewnior (1)         - simple, fast and elegant image viewer
+vim (1)              - Vi IMproved, a programmers text editor
+vimdiff (1)          - edit two, three or four versions of a file with Vim and show differences
+vimdot (1)           - Combined text editor and dot viewer
+vimtutor (1)         - the Vim tutor
+visual-regexp (1)    - program to visualise and debug regular expressions
+vlc-wrapper (1)      - a wrapper to drop priviledges with VLC
+vlock (1)            - Virtual Console lock program
+vmstat (8)           - Report virtual memory statistics
+vncconfig (1)        - configure and control a VNC server
+vncpasswd (1)        - change the VNC password
+vncserver (1)        - start or stop a VNC server
+vncviewer (1)        - VNC viewer for X
+w (1)                - Show who is logged on and what they are doing.
+w3m (1)              - a text based Web browser and pager
+w3mman (1)           - an interface to the on-line reference manuals by w3m(1)
+wall (1)             - write a message to users
+Wand-config (1)      - get information about the installed version of the Magick Wand
+watch (1)            - execute a program periodically, showing output fullscreen
+watchgnupg (1)       - Read and print logs from a socket
+wavpack (1)          - encode wav files to wavpack
+wbmptopbm (1)        - convert a wireless bitmap (wbmp) file to a PBM
+wc (1)               - print newline, word, and byte counts for each file
+wc (1p)              - word, line, and byte or character count
+wftopfa (1)          - Convert a Wadalab base font to Postscript .PFA (or .PFB) format using ghostscript
+wget (1)             - The non-interactive network downloader.
+whatis (1)           - display manual page descriptions
+whereis (1)          - locate the binary, source, and manual page files for a command
+which (1)            - shows the full path of (shell) commands.
+whiptail (1)         - display dialog boxes from shell scripts
+whirlpooldeep (1)    - Compute and compare Whirlpool message digests
+who (1)              - show who is logged on
+who (1p)             - display who is on the system
+whoami (1)           - print effective userid
+whois (1)            - client for the whois directory service
+widl (1)             - Wine Interface Definition Language (IDL) compiler
+wildmidi (1)         - example player for libWildMidi
+wine (1)             - run Windows programs on Unix
+wineboot (1)         - perform Wine initialization, startup, and shutdown tasks
+winebuild (1)        - Wine dll builder
+winecfg (1)          - Wine Configuration Editor
+wineconsole (1)      - The Wine console
+winecpp (1)          - Wine C and C++ MinGW Compatible Compiler
+winedbg (1)          - Wine's debugger
+winedump (1)         - A Wine DLL tool
+winefile (1)         - Wine File Manager
+wineg++ (1)          - Wine C and C++ MinGW Compatible Compiler
+winegcc (1)          - Wine C and C++ MinGW Compatible Compiler
+winemaker (1)        - generate a build infrastructure for compiling Windows programs on Unix
+winemine (1)         - Wine Minesweeper game
+winepath (1)         - Tool to convert Unix paths to/from Win32 paths
+wineserver (1)       - the Wine server
+winetricks (1)       - manage virtual windows environments using wine
+winicontoppm (1)     - convert a Windows .ico image into 1 or more PPM images
+wish (1)             - Simple windowing shell
+wmc (1)              - Wine Message Compiler
+wmctrl (1)           - interact with a EWMH/NetWM compatible X Window Manager.
+wodim (1)            - write data to optical disk media
+wordlist2dawg (1)    - convert a wordlist to a DAWG for Tesseract
+word-list-compress (1) - word list compressor/decompressor for GNU Aspell
+wordview (1)         - displays text contained in MS-Word file in X window
+wrc (1)              - Wine Resource Compiler
+write (3p)           - write on a file
+write (1p)           - write to another user
+write (1)            - send a message to another user
+write (2)            - write to a file descriptor
+wrjpgcom (1)         - insert text comments into a JPEG file
+wsdl (1)             - Mono's Web Service Proxy Generator
+wsgen (1)            - Java(TM) API for XML Web Services (JAX-WS) 2.0
+wsimport (1)         - Java(TM) API for XML Web Services (JAX-WS) 2.0
+wtpt (1)             - Show media white of profiles, identifying black body locus.
+wvgain (1)           - adds ReplayGain information to wavpack files
+wvunpack (1)         - decodes wavpack encoded files
+wxcas (1)            - wx c aMule statistics
+x0vncserver (1)      - TigerVNC Server for X displays
+x86_64 (8)           - change reported architecture in new program environment and set personality flags
+xapian-check (1)     - Check the consistency of a database or table
+xapian-chert-update (1) - Update a chert database to the new format keys
+xapian-compact (1)   - Compact a database, or merge and compact several
+xapian-config (1)    - report information about the installed version of xapian
+xapian-inspect (1)   - Inspect the contents of a flint table for development or debugging
+xapian-metadata (1)  - Read and write user metadata
+xapian-progsrv (1)   - Piped server for use with Xapian's remote backend
+xapian-replicate (1) - Replicate a database from a master server to a local copy
+xapian-replicate-server (1) - Service database replication requests from clients
+xapian-tcpsrv (1)    - TCP daemon for use with Xapian's remote backend
+xargs (1p)           - construct argument lists and invoke utility
+xargs (1)            - build and execute command lines from standard input
+xauth (1)            - X authority file utility
+xbacklight (1)       - adjust backlight brightness using RandR extension
+xbmtopbm (1)         - convert an X11 or X10 bitmap to a PBM image
+xbuild (1)           - Mono's tool to build MSBuild project files
+xclip (1)            - command line interface to X selections (clipboard)
+xclip-copyfile (1)   - copy and move files via the X clipboard
+xclock (1)           - analog / digital clock for X
+xcmsdb (1)           - Device Color Characterization utility for X Color Management System
+xdg-desktop-icon (1) - command line tool for (un)installing icons to the desktop
+xdg-desktop-menu (1) - command line tool for (un)installing desktop menu items
+xdg-email (1)        - command line tool for sending mail using the user's preferred e-mail composer
+xdg-icon-resource (1) - command line tool for (un)installing icon resources
+xdg-mime (1)         - command line tool for querying information about file type handling and adding descriptions f...
+xdg-open (1)         - opens a file or URL in the user's preferred application
+xdg-screensaver (1)  - command line tool for controlling the screensaver
+xdg-settings (1)     - get various settings from the desktop environment
+xdotool (1)          - command-line X11 automation tool
+xdpyinfo (1)         - display information utility for X
+xdriinfo (1)         - query configuration information of DRI drivers
+xev (1)              - print contents of X events
+xfce4-mixer (1)      - adjust volume levels
+xfce4-notifyd-config (1) - configuration GUI for xfce4-notifyd
+xfce4-power-manager (1) - The Xfce 4 Power manager
+xfce4-power-manager-settings (1) - Settings dialog for the Xfce 4 Power manager
+xfce4-session (1)    - Starts up the Xfce Desktop Environment
+xfce4-session-logout (1) - Logs out from Xfce
+xfce4-terminal (1)   - A Terminal emulator for X
+xfdesktop (1)        - The Xfce 4 Desktop Environment's desktop manager
+xfe (1)              - A lightweight file manager for X Window
+xfi (1)              - A simple image viewer for X Window
+xfp (1)              - A simple package manager for X Window
+xfv (1)              - A simple text viewer for X Window
+xfw (1)              - A simple text editor for X Window
+xgamma (1)           - Alter a monitor's gamma correction through the X server
+xgettext (1)         - extract gettext strings from source
+xhost (1)            - server access control program for X
+ximtoppm (1)         - convert an Xim file to a PPM image
+xinit (1)            - X Window System initializer
+xinput (1)           - utility to configure and test X input devices
+xjc (1)              - Java(TM) Architecture for XML Binding
+xkbcomp (1)          - compile XKB keyboard description
+xkill (1)            - kill a client by its X resource
+xlinks (1)           - lynx-like alternative character mode WWW browser
+xls2csv (1)          - reads MS-Excel file and puts its content as comma-separated data on standard output
+xlsatoms (1)         - list interned atoms defined on server
+xlsclients (1)       - list client applications running on a display
+xmbind (1)           - configures the virtual key bindings of LessTif applications
+xmessage (1)         - display a message or query in a window (X-based /bin/echo)
+xml2-config (1)      - script to get information about the installed version of GNOME-XML
+xmlcatalog (1)       - Command line tool to parse and manipulate XML or SGML catalog files.
+xmllint (1)          - command line XML tool
+xml-rpc-api2cpp (1)  - Make a C++ wrapper class for an XML-RPC API
+xml-rpc-api2txt (1)  - Print out a description of an XML-RPC API as text
+xmlwf (1)            - Determines if an XML document is well-formed
+xmode2 (1)           - shows the pulse/space length of infrared signals
+xmodmap (1)          - utility for modifying keymaps and pointer button mappings in X
+Xorg (1)             - X11R7 X server
+xpdf (1)             - Portable Document Format (PDF) file viewer for X (version 3.03)
+xpmtoppm (1)         - convert an X11 pixmap to a PPM image
+xprop (1)            - property displayer for X
+Xrandr (3)           - X Resize, Rotate and Reflection extension.
+xrandr (1)           - primitive command line interface to RandR extension
+xrdb (1)             - X server resource database utility
+xrdp-sesrun (8)      - sesman(8) session launcher
+xrefresh (1)         - refresh all or part of an X screen
+xsane (1)            - scanner frontend for SANE
+XScreenSaverRegister (3) - X11 Screen Saver extension client library
+xscreensaver (1)     - extensible screen saver framework, plus locking
+xscreensaver-command (1) - control a running xscreensaver process
+xscreensaver-demo (1) - interactively control the background xscreensaver daemon
+xscreensaver-getimage (1) - put some randomly-selected image on the root window
+xscreensaver-getimage-file (1) - put a randomly-selected image on the root window
+xscreensaver-getimage-video (1) - put a video frame on the root window
+xscreensaver-gl-helper (6) - figure out which X visual to use for GL programs
+xscreensaver-text (1) - prints some text to stdout, for use by screen savers.
+xsd (1)              - Mono's utility for generating schema or class files
+xset (1)             - user preference utility for X
+xsetroot (1)         - root window parameter setting utility for X
+xsltproc (1)         - command line XSLT processor
+xterm (1)            - terminal emulator for X
+xvinfo (1)           - Print out X-Video extension adaptor information
+xvminitoppm (1)      - convert an XV 'thumbnail' picture to PPM
+Xvnc (1)             - the X VNC server
+xwdtopnm (1)         - convert an X11 or X10 window dump file to a PNM image
+xwininfo (1)         - window information utility for X
+xxd (1)              - make a hexdump or do the reverse.
+xz (1)               - Compress or decompress .xz and .lzma files
+xzcat (1)            - Compress or decompress .xz and .lzma files
+xzcmp (1)            - compare compressed files
+xzdec (1)            - Small .xz and .lzma decompressors
+xzdiff (1)           - compare compressed files
+xzegrep (1)          - search compressed files for a regular expression
+xzfgrep (1)          - search compressed files for a regular expression
+xzgrep (1)           - search compressed files for a regular expression
+xzless (1)           - view xz or lzma compressed (text) files
+xzmore (1)           - view xz or lzma compressed (text) files
+y4mcolorbars (1)     - Create a YUV4MPEG2 stream containing a colorbar test pattern
+y4mdenoise (1)       - Motion-compensating YUV4MPEG-frame denoiser
+y4mtopnm (1)         - Convert a YUV4MPEG2 stream to PNM images
+y4mtoppm (1)         - Convert YUV4MPEG2 stream to PPM images
+y4munsharp (1)       - Unsharp filter for YUV4MPEG2 streams
+yacc (1)             - GNU Project parser generator
+yacc (1p)            - yet another compiler compiler (DEVELOPMENT)
+yaourt (8)           - more than a frontend to pacman
+ybmtopbm (1)         - convert a Bennet Yee 'face' file to PBM
+yes (1)              - output a string repeatedly until killed
+youtube-dl (1)       - (unknown subject)
+yuv2lav (1)          - encodes lavtool's raw YUV frame streams into MJPEG files
+yuv4mpeg (5)         - video stream format used by pipe-based MJPEGtools
+yuvdenoise (1)       - Motion-Compensating-YUV4MPEG2-frame-denoiser
+yuvfps (1)           - Converts to a different frame rate
+yuvinactive (1)      - Set a part of the video to a defined state
+yuvkineco (1)        - revert 2-3 pulldown movie
+yuvmedianfilter (1)  - A filter for yuv images produced by the mjpeg tools
+yuvplay (1)          - Display YUV4MPEG2 streams (using SDL)
+yuvscaler (1)        - UPscales or DOWNscales a YUV4MPEG2 stream to a specified format
+yuvsplittoppm (1)    - convert separate Y, U, and V files into a PPM image
+yuvtoppm (1)         - convert Abekas YUV bytes to PPM
+yuvycsnoise (1)      - Noise filter specialized for NTSC Y/C separation noise
+zathura (1)          - a document viewer
+zcat (1p)            - expand and concatenate data
+zcat (1)             - compress or expand files
+zcmp (1)             - compare compressed files
+zdiff (1)            - compare compressed files
+zeisstopnm (1)       - convert a Zeiss confocal file to PNM
+zenity (1)           - display GTK+ dialogs
+zenmap (1)           - Graphical Nmap frontend and results viewer
+zforce (1)           - force a '.gz' extension on all gzip files
+zgrep (1)            - search possibly compressed files for a regular expression
+zipgrep (1)          - search files in a ZIP archive for lines matching a pattern
+zipinfo (1)          - list detailed information about a ZIP archive
+zless (1)            - file perusal filter for crt viewing of compressed text
+zlib-flate (1)       - raw zlib compression program
+zmore (1)            - file perusal filter for crt viewing of compressed text
+znew (1)             - recompress .Z files to .gz files
+zsoelim (1)          - satisfy .so requests in roff input
+zvbi-atsc-cc (1)     - ATSC Closed Caption decoder
+zvbi-chains (1)      - VBI proxy wrapper
+zvbi-ntsc-cc (1)     - closed caption decoder

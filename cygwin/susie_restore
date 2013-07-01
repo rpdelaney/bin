@@ -1,0 +1,4 @@
+echo "Restoring to sandbox from dump..."
+pg_restore -h ryanpd.me -p 54320 -U ryan -d susie $1
+pgrestore_exit=$?
+echo "pg_restore process returned exit code: "$pgrestore_exit
