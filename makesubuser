@@ -1,0 +1,21 @@
+#!/usr/bin/bash
+# 
+# creates a new user with limited rights and resources for running applications, or other purposes
+# 
+
+# 
+# create a group
+#
+
+
+# 
+# create the user
+# 
+
+
+
+# 
+# limit resources (to prevent fork bombing DOS attacks, runaway processes that lag the system) using /usr/bin/ulimit
+# see also: http://mywiki.wooledge.org/BashFAQ/059
+
+
