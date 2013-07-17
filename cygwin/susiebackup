@@ -8,27 +8,22 @@ current_date=$(date +%Y-%m-%d__%H-%M-%S)
 backup_file=$dump_path$current_date".backup"
 log_file=$dump_path$current_date".log"
 
-echo "Backup file: "
-stat $backup_file
-echo "Log file:    "
-stat $log_file
+#create the backup
+source ~/bin/cygwin/susie_dump $backup_file $log_file
 
-until [ $input == "y" ]; do
+until [ $INPUT == "y" ]; do
         echo "Continue? (y/n)"
         read INPUT
 
         case $INPUT in
                y)
-                        ;;              #nothing
+                        ;;     #nothing
                n)
                exit 1          #exit with error
                         ;;
                 *)
         esac
 done
-
-#create the backup
-source ~/bin/cygwin/susie_dump $backup_file $log_file
 
 #drop the sandbox
 source ~/bin/cygwin/susie_drop
