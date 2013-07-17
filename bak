@@ -1,0 +1,25 @@
+#!/bin/bash
+#
+# bak -- backups files
+# Copyright (C) 2010-2012  Alan SCHNEIDER
+#                          <shk.schneider[at]gmail.com>
+#
+# This program comes with ABSOLUTELY NO WARRANTY.
+# This is free software, and you are welcome to redistribute it
+# under certain conditions.
+#
+
+[ $# -ne 1 ] && echo "Usage: bak <file> [..]" >&2 && exit 1
+
+[ ! -f "$1" -a ! -d "$1" ] && echo "bak: $1: no such file or directory" >&2 && exit 1
+[ ! -e "$1" ] && echo "bak: $1: permission denied" >&2 && exit 1
+[ ! -w "`dirname "$1"`" ] && echo "bak: `dirname "$1"`: Permission denied" >&2 && exit 1
+
+for argv in $@ ; do
+    file=$(readlink -f "$argv")
+    backup_file="$file.`date +%Y%m%d-%H%m%S`"
+    echo "`basename "$file"` -> `basename "$backup_file"`"
+    cp -rp "$file" "$backup_file"
+done
+
+# EOF
