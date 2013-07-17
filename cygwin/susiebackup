@@ -2,7 +2,7 @@
 
 #set variables
 pg_dump="/home/Ryan/pgsql/bin/pg_dump.exe"
-dump_path="D:/Users/Ryan/Dropbox/Sierra/Backup/"
+dump_path="C:/susie/"
 current_date=$(date +%Y-%m-%d__%H-%M-%S)
 
 backup_file=$dump_path$current_date".backup"
