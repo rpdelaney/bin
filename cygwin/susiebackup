@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 #set variables
 pg_dump="/home/Ryan/pgsql/bin/pg_dump.exe"
-dump_path="C:/susie/"
+dump_path="D:/Users/Ryan/Dropbox/Sierra/backup/"
 current_date=$(date +%Y-%m-%d__%H-%M-%S)
 
 backup_file=$dump_path$current_date".backup"
@@ -11,7 +11,9 @@ log_file=$dump_path$current_date".log"
 #create the backup
 source ~/bin/cygwin/susie_dump $backup_file $log_file
 
-until [ $INPUT == "y" ]; do
+stat $backup_file
+
+until [[ "$INPUT" == "y" ]]; do
         echo "Continue? (y/n)"
         read INPUT
 
