@@ -1,4 +1,5 @@
 echo "Creating sandbox database..."
-createdb -h ryanpd.me -p 54320 -U ryan susie
+echo "--"
+createdb -h -v ryanpd.me -p 54320 -U ryan susie
 createdb_exit=$?
 echo "createdb process returned exit code: "$createdb_exit

@@ -1,4 +1,5 @@
 echo "Dropping sandbox database..."
-dropdb -h ryanpd.me -p 54320 -U ryan susie
+echo "--"
+dropdb -h -v ryanpd.me -p 54320 -U ryan susie
 dropdb_exit=$?
 echo "dropdb process returned exit code: "$dropdb_exit
