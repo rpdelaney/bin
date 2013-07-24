@@ -1,9 +1,33 @@
 #!/usr/bin/bash
 
+set -x
+
 #set variables
 pg_dump="/home/Ryan/pgsql/bin/pg_dump.exe"
-dump_path="D:/Users/Ryan/Dropbox/Sierra/backup/"
+dump_path="C:/Dropbox/Sierra/backup/"
 current_date=$(date +%Y-%m-%d__%H-%M-%S)
+
+fatal="0"
+echo "$fatal"
+
+if [[ ! -d "$dump_path" ]]; then
+	echo "Dump path not found:""$dump_path";
+	fatal=1
+fi
+
+if [[ ! -f "$pg_dump" ]]; then
+	echo "pg_dump not found:""$pg_dump";
+	fatal=1
+fi
+
+echo "Fatality: ""$fatal"
+if [[ "$fatal" ]]; then
+	echo "FATAL: Critical files not found.";
+	exit 1
+fi
+
+echo "Success."
+exit 0
 
 backup_file=$dump_path$current_date".backup"
 log_file=$dump_path$current_date".log"
@@ -23,7 +47,7 @@ until [[ "$INPUT" == "y" ]]; do
                n)
                exit 1          #exit with error
                         ;;
-                *)
+               *)
         esac
 done
 
