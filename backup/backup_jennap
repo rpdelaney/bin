@@ -1,8 +1,0 @@
-#!/bin/sh
-
-START=$(date +%s)
-rsync -aAXHlhPi --exclude-from=backup_jennap.excludes --delete --delete-excluded /media/disk ryan@192.168.11.41:/media/vault/backup/jennap
-FINISH=$(date +%s)
-echo "total time: $(( ($FINISH-$START) / 60 )) minutes, $(( ($FINISH-$START) % 60 )) seconds"
-
-echo $(date) > $1"/backup_time"
