@@ -1,40 +1,41 @@
 #!/usr/bin/bash
 
-set -x
-
 #set variables
 pg_dump="/home/Ryan/pgsql/bin/pg_dump.exe"
 dump_path="C:/Dropbox/Sierra/backup/"
 current_date=$(date +%Y-%m-%d__%H-%M-%S)
 
 fatal="0"
-echo "$fatal"
 
-if [[ ! -d "$dump_path" ]]; then
+if [ ! -d "$dump_path" ]; then
 	echo "Dump path not found:""$dump_path";
 	fatal=1
 fi
 
-if [[ ! -f "$pg_dump" ]]; then
+if [ ! -f "$pg_dump" ]; then
 	echo "pg_dump not found:""$pg_dump";
 	fatal=1
 fi
 
-echo "Fatality: ""$fatal"
-if [[ "$fatal" ]]; then
+if [ "$fatal" = 1 ]; then
 	echo "FATAL: Critical files not found.";
 	exit 1
 fi
-
-echo "Success."
-exit 0
 
 backup_file=$dump_path$current_date".backup"
 log_file=$dump_path$current_date".log"
 
 #create the backup
 source ~/bin/cygwin/susie_dump $backup_file $log_file
+dump_error="$?"
 
+#terminate on error
+if [[ "$dump_error" -ne "0" ]]; then
+	echo "pg_dump returned exit code ""$dump_error" ;
+	exit "$dump_error"
+fi
+
+#show backup stats so we don't restore something absurdly huge
 stat $backup_file
 
 until [[ "$INPUT" == "y" ]]; do
@@ -51,11 +52,5 @@ until [[ "$INPUT" == "y" ]]; do
         esac
 done
 
-#drop the sandbox
-source ~/bin/cygwin/susie_drop
-
-#create the sandbox
-source ~/bin/cygwin/susie_create
-
-#restore to sandbox
-source ~/bin/cygwin/susie_restore
+#drop the sandbox, create the remote, restore to sandbox
+source ~/bin/cygwin/susie_drop && source ~/bin/cygwin/susie_create && source ~/bin/cygwin/susie_restore
