@@ -1,0 +1,65 @@
+#!/usr/bin/bash
+#
+# bash function to decompress archives
+#
+
+if [ -f "$@" ] ; then
+    case "$@" in
+        *.tar.bz2)
+            DEP="tar"
+            CMD="tar xvjf ""$@"
+            ;;
+        *.tar.gz) 
+            DEP="tar"
+            CMD="tar xvzf ""$@"
+            ;;
+        *.bz2) 
+            bunzip2 "$@"
+            ;;
+        *.rar) 
+            DEP="unrar"
+            unrar x "$@"
+            ;;
+        *.gz) 
+            DEP="gunzip"
+            CMD="gunzip ""$@"
+            ;;
+        *.tar) 
+            DEP="tar"
+            CMD="tar xvf ""$@"
+            ;;
+        *.tbz2) 
+            DEP="tar"
+            CMD="tar xvjf ""$@"
+            ;;
+        *.tgz) 
+            DEP="tar"
+            CMD="tar xvzf ""$@"
+            ;;
+        *.zip) 
+            DEP="unzip"
+            CMD="unzip ""$@"
+            ;;
+        *.Z)
+            DEP="uncompress"
+            CMD="uncompress ""$@"
+            ;;
+        *.7z) 
+            DEP="7za"
+            CMD="7za x ""$@"
+            ;;
+        *) 
+            echo "'"$@"' cannot be extracted via >extract<" 
+            ;;
+    esac 
+    
+    #Check for missing dependency
+    type -P "$DEP" > /dev/null || { echo "Missing dependency: ""$DEP"; exit 1; }
+    
+    #Run the extraction command
+    bash -c "$CMD"
+    
+else
+    echo "'"$@"' is not a valid file"
+    exit 1
+fi
