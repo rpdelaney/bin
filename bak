@@ -17,7 +17,7 @@
 
 for argv in $@ ; do
     file=$(readlink -f "$argv")
-    backup_file="$file.`date +%Y%m%d-%H%m%S`"
+    backup_file="$file.bak""`date +%Y%m%d-%H%m%S`"
     echo "`basename "$file"` -> `basename "$backup_file"`"
     cp -rp "$file" "$backup_file"
 done

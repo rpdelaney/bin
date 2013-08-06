@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+#
+# print a horizontal rule
+#
+
+printf "%$(tput cols)s\n"|tr ' ' '-'
