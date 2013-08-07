@@ -4,57 +4,67 @@
 #
 
 if [ -f "$@" ] ; then
-    case "$@" in
-        *.tar.bz2)
+    
+    file=$(basename "$@")
+    ext="${file##*.}"
+    lext="${ext,,}"
+    
+    #extension must not be zero-length
+    [ -n "$ext" ] && echo "'"$@"' zero-length file extension" & exit 1 ;
+    
+    #since it's not, see if we can recognize it
+    case "$lext" in
+        bz2) 
+            bunzip2 "$@"
+            ;;
+        tar.bz2)
             DEP="tar"
             CMD="tar xvjf ""$@"
             ;;
-        *.tar.gz) 
+        tar.gz) 
             DEP="tar"
             CMD="tar xvzf ""$@"
             ;;
-        *.bz2) 
-            bunzip2 "$@"
-            ;;
-        *.rar) 
-            DEP="unrar"
-            unrar x "$@"
-            ;;
-        *.gz) 
-            DEP="gunzip"
-            CMD="gunzip ""$@"
-            ;;
-        *.tar) 
+        tar) 
             DEP="tar"
             CMD="tar xvf ""$@"
             ;;
-        *.tbz2) 
+        rar) 
+            DEP="unrar"
+            unrar x "$@"
+            ;;
+        gz) 
+            DEP="gunzip"
+            CMD="gunzip ""$@"
+            ;;
+        tbz2) 
             DEP="tar"
             CMD="tar xvjf ""$@"
             ;;
-        *.tgz) 
+        tgz) 
             DEP="tar"
             CMD="tar xvzf ""$@"
             ;;
-        *.zip) 
+        zip) 
             DEP="unzip"
             CMD="unzip ""$@"
             ;;
-        *.Z)
+        Z)
             DEP="uncompress"
             CMD="uncompress ""$@"
             ;;
-        *.7z) 
+        7z) 
             DEP="7za"
             CMD="7za x ""$@"
             ;;
         *) 
-            echo "'"$@"' cannot be extracted via >extract<" 
+            echo "'"$@"' unrecognized file extension"
+            exit 1
             ;;
     esac 
     
     #Check for missing dependency
-    type -P "$DEP" > /dev/null || { echo "Missing dependency: ""$DEP"; exit 1; }
+    [[ "$DEP" ]] && type -P "$DEP" > /dev/null || { echo "Missing dependency: ""$DEP"; exit 1; }
     
     #Run the extraction command
     bash -c "$CMD"
