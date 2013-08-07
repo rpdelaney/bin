@@ -28,32 +28,33 @@ log_file="$dump_path""$current_date"".log"
 echo "creating backup file... ""$backup_file"
 echo "creating log file...""$log_file"
 
-#create the backup
+#create the backup#############################################
 source ~/bin/cygwin/susie_dump "$backup_file" "$log_file"
-dump_error="$?"
+error="$?"
 
 #terminate on error
-if [[ "$dump_error" -ne "0" ]]; then
-	echo "pg_dump returned exit code ""$dump_error" ;
-	exit "$dump_error"
+if [[ "$error" -ne "0" ]]; then
+	echo "pg_dump returned exit code ""$error" ;
+	exit "$error"
 fi
 
 #show backup stats so we don't restore something absurdly huge
 stat $backup_file
 
-until [[ "$INPUT" == "y" ]]; do
-        echo "Do you want to attempt to restore? (y/n)"
-        read INPUT
+confirm "Do you want to attempt to restore? (y/n)"
 
-        case $INPUT in
-               y)
-                        ;;     #nothing
-               n)
-               exit 1          #exit with error
-                        ;;
-               *)
-        esac
-done
+#drop the sandbox##############################################
+source ~/bin/cygwin/susie_drop 
 
-#drop the sandbox, create the remote, restore to sandbox
-source ~/bin/cygwin/susie_drop && source ~/bin/cygwin/susie_create && source ~/bin/cygwin/susie_restore "$backup_file"
+#create the sandbox############################################
+source ~/bin/cygwin/susie_create 
+error="$?"
+
+#terminate on error
+if [[ "$error" -ne "0" ]]; then
+	echo "pg_create returned exit code ""$error" ;
+	exit "$error"
+fi
+
+#restore to sandbox############################################
+source ~/bin/cygwin/susie_restore "$backup_file"
