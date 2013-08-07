@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+#
+# print a quick summary of raid array health
+#
+
+awk '/^md/ {printf "%s: ", $1}; /blocks/ {print $NF}' </proc/mdstat
