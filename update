@@ -10,10 +10,8 @@ fi
 # now that we have ssh kanged up, upload our crap
 # 
 git add .
-
-confirm
-
 git status
+confirm || exit 1
 git commit -m "$(curl -s http://whatthecommit.com/index.txt)"
 git pull
 git push
