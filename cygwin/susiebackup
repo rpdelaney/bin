@@ -7,17 +7,17 @@ current_date=$(date +%Y-%m-%d__%H-%M-%S)
 
 fatal="0"
 
-if [ ! -d "$dump_path" ]; then
+if [[ ! -d "$dump_path" ]]; then
 	echo "Dump path not found:""$dump_path";
 	fatal=1
 fi
 
-if [ ! -f "$pg_dump" ]; then
+if [[ ! -f "$pg_dump" ]]; then
 	echo "pg_dump not found:""$pg_dump";
 	fatal=1
 fi
 
-if [ "$fatal" = 1 ]; then
+if [[ "$fatal" = 1 ]]; then
 	echo "FATAL: Critical files not found.";
 	exit 1
 fi

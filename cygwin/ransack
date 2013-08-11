@@ -18,14 +18,14 @@
 
 # INITIALIZE #
 ##############
-if [ $1 = "" ]; then
+if [[ "$@" = "" ]]; then
 	HAYSTACK=$(pwd)
 else
-	HAYSTACK=$1
-	if [ ! -d "$1" ]; then
+	HAYSTACK="$@"
+	if [[ ! -d "$@" ]]; then
 		echo "Invalid or nonexistent path."
 		HAYSTACK=""
 	fi
 fi
 
-echo $HAYSTACK
+echo "$HAYSTACK"
