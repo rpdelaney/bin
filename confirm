@@ -6,7 +6,7 @@
 
 QUERY="$@"
 
-[ -n "$@" ] && QUERY="Do you want to continue? (y/n)" ;
+[[ -n "$@" ]] && QUERY="$@"" (y/n)" || QUERY="Continue? (y/n)" ;
 
 until [[ "$INPUT" == "y" ]]; do
         echo "$QUERY"
