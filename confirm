@@ -1,0 +1,23 @@
+#!/usr/bin/bash
+#
+# ask the user to confirm if they want to continue
+# arguments passed will be the query question
+#
+
+QUERY="$@"
+
+[ -n "$@" ] && QUERY="Do you want to continue? (y/n)" ;
+
+until [[ "$INPUT" == "y" ]]; do
+        echo "$QUERY"
+        read INPUT
+
+        case $INPUT in
+               y)
+                        ;;     #nothing
+               n)
+               exit 1          #exit with error
+                        ;;
+               *)
+        esac
+done

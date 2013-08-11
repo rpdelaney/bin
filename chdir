@@ -18,6 +18,5 @@ if [ "$error_msg" ]; then       #if there was an error message, then
     unset error_msg
 else
     builtin cd "$new_dir"
-    timeout 3 git_branch="$(parse_git_branch 2>> /dev/null)" 2>> /dev/null
-    /usr/bin/ls --color=always --format=across --group-directories-first
+    timeout 3 /usr/bin/ls --color=always --format=across --group-directories-first
 fi
