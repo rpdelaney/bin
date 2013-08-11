@@ -1,25 +1,33 @@
 #!/usr/bin/bash
+#
+# renames all files underneath the PWD to replace unwanted characters such as:
+#       whitespace
+#       parentheses
+#       underscores
+#
 
+#make sure extended globbing is on
 shopt -s extglob;
 
-while IFS= read -rd '' file_full_path; do
+#for each file
+ewhile IFS= read -rd '' file_full_path; do
 
-    #printf "Step 0: %s\n" "$file_full_path"
+    [[ "$DEBUG"]] && printf "Step 0: %s\n" "$file_full_path"
     filename="${file_full_path##*/}"                   # fill $filename from parsed $file_full_path
 
-    #printf "Step 1: %s\n" "$filename"
+    [[ "$DEBUG"]] && printf "Step 1: %s\n" "$filename"
     filename="${filename//+( )/.}"                     # substitute ' ' with '.' in $filename
 
-    #printf "Step 2: %s\n" "$filename"
+    [[ "$DEBUG"]] && printf "Step 2: %s\n" "$filename"
     #filename="${filename//_/.}"                       # substitute '_' with '.' in $filename
 
-    #printf "Step 3: %s\n" "$filename"
+    [[ "$DEBUG"]] && printf "Step 3: %s\n" "$filename"
     filename="${filename//.-./..}"                     # substitute '.-.' with '..' in $filename
 
-    #printf "Step 4: %s\n" "$filename"
+    [[ "$DEBUG"]] && printf "Step 4: %s\n" "$filename"
     filename="${filename//\(/_}"                       # substitute '(' with '_'
 
-    #printf "Step 5: %s\n" "$filename"
+    [[ "$DEBUG"]] && printf "Step 5: %s\n" "$filename"
     filename="${filename//\)/_}"                       # substitute '(' with '_'
 
     #printf "New name: %s\n" "$filename"
