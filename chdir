@@ -18,5 +18,5 @@ if [ "$error_msg" ]; then       #if there was an error message, then
     unset error_msg
 else
     builtin cd "$new_dir"
-    timeout 3 /usr/bin/ls --color=always --format=across --group-directories-first
+    timeout 3 /usr/bin/ls --color=always --format=across --group-directories-first || echo "Timeout listing directory contents."
 fi

@@ -1,3 +1,11 @@
 #!/usr/bin/bash
+#
+# send a notification when a process has completed
+#
 
-$@ && notify-send $@": Process finished. Exit code:" $?
+"$@"
+err="$?"
+
+STRING="Process finished with error code ""$err"": ""$@"
+
+notify-send "$STRING"

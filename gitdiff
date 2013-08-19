@@ -4,16 +4,8 @@
 #
 
 #if no arguments were passed figure out a better pager
-if [ -n "$@" ]; then
-    [[ $(type less 2> /dev/null) ]] && page="less"
-    [[ $(type most 2> /dev/null) ]] && page="most"
-    [[ $(type pager 2> /dev/null) ]] && page="pager"
-fi
+[[ $(type less 2> /dev/null) ]] && page="less"
+[[ $(type most 2> /dev/null) ]] && page="most"
+[[ $(type pager 2> /dev/null) ]] && page="pager"
 
-#use the best diff application available
-
-[[ $(type diff 2> /dev/null) ]] && dif="diff"
-[[ $(type colordiff 2> /dev/null) ]] && dif="colordiff"
-[[ $(type cdiff 2> /dev/null) ]] && dif="cdiff"
-
-"$dif" -y $2 $5 | "$page"
+diff -y $2 $5 | pager

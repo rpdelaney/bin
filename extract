@@ -1,75 +1,72 @@
 #!/usr/bin/bash
 #
-# bash function to decompress archives
+# decompress archives
 #
 
-if [ -f "$@" ] ; then
+if [[ -f "$1" ]] ; then
+      
+    #get the mime type
+    mime=$(file -Lb --mime-type "$1")
     
-    file=$(basename "$@")
-    ext="${file##*.}"
-    lext="${ext,,}"
-    
-    #extension must not be zero-length
-    [ -n "$ext" ] && echo "'"$@"' zero-length file extension" & exit 1 ;
-    
-    #since it's not, see if we can recognize it
-    case "$lext" in
-        bz2) 
-            bunzip2 "$@"
+    case ${mime#*-} in
+        bzip2)
+            cmd=(bunzip2 "$1")
             ;;
         tar.bz2)
-            DEP="tar"
-            CMD="tar xvjf ""$@"
+            dep="tar"
+            cmd=(tar kxjfv "$1")
             ;;
-        tar.gz) 
-            DEP="tar"
-            CMD="tar xvzf ""$@"
+        tar.gz)
+            dep="tar"
+            cmd=(tar kxzfv "$1")
             ;;
-        tar) 
-            DEP="tar"
-            CMD="tar xvf ""$@"
+        tar)
+            dep="tar"
+            cmd=(tar kxfv "$1")
             ;;
-        rar) 
-            DEP="unrar"
-            unrar x "$@"
+        tbz2)
+            dep="tar"
+            cmd=(tar kxjfv "$1")
             ;;
-        gz) 
-            DEP="gunzip"
-            CMD="gunzip ""$@"
+        tgz)
+            dep="tar"
+            cmd=(tar kxzfv "$1")
             ;;
-        tbz2) 
-            DEP="tar"
-            CMD="tar xvjf ""$@"
+        rar)
+            dep="unrar"
+            cmd=(unrar x "$1")
             ;;
-        tgz) 
-            DEP="tar"
-            CMD="tar xvzf ""$@"
+        gzip)
+            dep="gzip"
+            cmd=(gzip -d --keep "$1")
             ;;
-        zip) 
-            DEP="unzip"
-            CMD="unzip ""$@"
+        zip)
+            dep="unzip"
+            cmd=(unzip "$1")
             ;;
         Z)
-            DEP="uncompress"
-            CMD="uncompress ""$@"
+            dep="uncompress"
+            cmd=(uncompress "$1")
             ;;
-        7z) 
-            DEP="7za"
-            CMD="7za x ""$@"
+        7z-compressed)
+            dep="7za"
+            cmd=(7za x "$1")
             ;;
-        *) 
-            echo "'"$@"' unrecognized file extension"
+        *)
+            echo "$mime unrecognized mimetype"
             exit 1
             ;;
-    esac 
+    esac
     
     #Check for missing dependency
-    [[ "$DEP" ]] && type -P "$DEP" > /dev/null || { echo "Missing dependency: ""$DEP"; exit 1; }
+    [[ "$dep" ]] && type -P "$dep" > /dev/null || { echo "Missing dependency: $dep"; exit 1; }
     
     #Run the extraction command
-    bash -c "$CMD"
+    "${cmd[@]}"
+    
+    [[ -e "$1" ]] || echo "WARNING: $1 was removed after extracting."
     
 else
-    echo "'"$@"' is not a valid file"
+    echo "$1 is not a valid file"
     exit 1
 fi
