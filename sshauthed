@@ -1,0 +1,21 @@
+#!/usr/bin/bash
+#
+# returns the number of identities in the current ssh-agent.
+#
+# use -q switch for quiet output: returns true if identified, false for all others
+
+ssh-add -L &> /tmp/ssh_count
+
+result="$(</tmp/ssh_count)"
+
+case "$result" in
+    "Could not open a connection to your authentication agent.")
+        exit 1
+        ;;
+    "The agent has no identities.")
+        exit 1
+        ;;
+    *)
+        exit 0
+        ;;
+esac
