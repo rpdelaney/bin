@@ -53,20 +53,20 @@ if [[ -f "$1" ]] ; then
             cmd=(7za x "$1")
             ;;
         *)
-            echo "$mime unrecognized mimetype"
+            echo "extract: $mime unrecognized mimetype"
             exit 1
             ;;
     esac
     
     #Check for missing dependency
-    [[ "$dep" ]] && type -P "$dep" > /dev/null || { echo "Missing dependency: $dep"; exit 1; }
+    [[ "$dep" ]] && type -P "$dep" > /dev/null || { echo "extract: Missing dependency: $dep"; exit 1; }
     
     #Run the extraction command
     "${cmd[@]}"
     
-    [[ -e "$1" ]] || echo "WARNING: $1 was removed after extracting."
+    [[ -e "$1" ]] || echo "extract: WARNING! $1 was removed after extracting."
     
 else
-    echo "$1 is not a valid file"
+    echo "extract: $1 is not a valid file"
     exit 1
 fi
