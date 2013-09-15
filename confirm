@@ -14,10 +14,12 @@ until [[ "$INPUT" == "y" ]]; do
 
         case $INPUT in
                y)
-                        ;;     #nothing
+               exit "0"
+               ;;
                n)
-               exit 1          #exit with error
-                        ;;
+               exit "1"        #exit with error
+               ;;
                *)
+               ;;
         esac
 done

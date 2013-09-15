@@ -10,12 +10,17 @@ result="$(</tmp/ssh_count)"
 
 case "$result" in
     "Could not open a connection to your authentication agent.")
+        echo "0"
         exit 1
         ;;
     "The agent has no identities.")
+        echo "0"
         exit 1
         ;;
     *)
+        wc -l /tmp/ssh_count
         exit 0
         ;;
 esac
+
+rm /tmp/ssh_count
