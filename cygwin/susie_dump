@@ -1,3 +1,5 @@
+#!/usr/bin/bash
+
 #$1 is path to the backup file
 #$2 is path to the log file
 echo "Executing pg_dump..."
