@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 #
-#augmented 'cd'
+#augmented cd
 #provides enhanced directory changing behavior
 #
 
@@ -10,21 +10,20 @@ if [[ ! "$1" ]]; then           #if there's no argument
     new_dir=""                  #stay put
 elif [[ -d "$1" ]]; then        #if the argument is an existing directory, then
     new_dir="$1"                #set new_dir to that path
-elif [[ -d ."$1" ]]; then       #if the a hidden directory matches the argument, then
-    new_dir=".""$1"             #set new_dir to the hidden path
+elif [[ -d ".$1" ]]; then       #if the a hidden directory matches the argument, then
+    new_dir=".$1"               #set new_dir to the hidden path
 elif [[ "$1" == '-' ]]; then    #if we passed '-' as the argument, then
     new_dir="-"                 #act like cd
 else
-    error_msg="cd: directory $red$bold$1$reset not found."    #say we can't find it
+    error_msg="chdir: directory $red$bold$1$reset not found."    #say we can't find it
 fi
 
 if [[ -n "$error_msg" ]]; then     #if there was an error message, then
     echo "chdir: $error_msg" 1>&2  #tell me what it was
     unset error_msg                #and unset this for no reason :V
-    exit 1
 else
     builtin cd "$new_dir"
-    timeout 1 ls --color=always --format=across --group-directories-first || echo "chdir: Timeout listing directory contents."
+    timeout 1 ls --color=auto --format=across --group-directories-first || echo "chdir: Timeout listing directory contents."
 fi
 
 }
