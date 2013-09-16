@@ -1,0 +1,31 @@
+#!/usr/bin/bash
+#Converts all symbolic links in a directory to hard links.
+
+proc_name="symlink2hardlink"
+
+if [[ -d "$1" ]] ; then
+    confirm "$proc_name: About to convert all symlinks in $1. Continue?"
+    if [[ "$?" == "0" ]]; then
+        for file in "$1"/* ; do
+            if [[ -L "$file" ]]; then
+                target=$(readlink -e "$file")
+                if [[ -e "$target" ]] ; then
+                    mv "$file" "$file.old" &&
+                    cp -l "$target" "$1"/ &&
+                    rm "$file.old"
+                else
+                    echo "$proc_name: $file is a broken symlink, skipping"
+                fi
+            fi
+        done
+    else
+        echo "$proc_name: Exiting. No changes made."
+        exit 0
+    fi
+else
+    echo "$proc_name: $1 is not a directory, exiting."
+    exit 1
+fi
+
+exit 0
+
