@@ -15,7 +15,7 @@ elif [[ -d ".$1" ]]; then       #if the a hidden directory matches the argument,
 elif [[ "$1" == '-' ]]; then    #if we passed '-' as the argument, then
     new_dir="-"                 #act like cd
 else
-    error_msg="chdir: directory $red$bold$1$reset not found."    #say we can't find it
+    error_msg="directory \`$red$bold$1$reset' not found."    #say we cant find it
 fi
 
 if [[ -n "$error_msg" ]]; then     #if there was an error message, then
