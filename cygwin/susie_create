@@ -1,5 +1,6 @@
+#!/usr/bin/bash
+
 echo "Creating sandbox database..."
-echo "--"
 createdb --host=ryanpd.me --port=54320 --username=ryan susie
 createdb_exit=$?
 echo "createdb process returned exit code: "$createdb_exit
