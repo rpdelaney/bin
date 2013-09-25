@@ -1,14 +1,14 @@
 #!/usr/bin/bash
 #
-# decompress archives
+# decompress archives based on mimetype
 #
 
 if [[ -f "$1" ]] ; then
       
     #get the mime type
-    mime=$(file -Lb --mime-type "$1")
+    mime="$(file -Lb --mime-type $1)"
     
-    case ${mime#*-} in
+    case "${mime#*-}" in
         bzip2)
             cmd=(bunzip2 "$1")
             ;;
@@ -59,14 +59,14 @@ if [[ -f "$1" ]] ; then
     esac
     
     #Check for missing dependency
-    [[ "$dep" ]] && type -P "$dep" > /dev/null || { echo "extract: Missing dependency: $dep"; exit 1; }
+    [[ "$dep" ]] && type -P "$dep" > /dev/null || { echo "$(realpath $0): Missing dependency: $dep"; exit 1; }
     
     #Run the extraction command
     "${cmd[@]}"
     
-    [[ -e "$1" ]] || echo "extract: WARNING! $1 was removed after extracting."
+    [[ -e "$1" ]] || echo "$(realpath $0): WARNING! $1 was removed after extracting."
     
 else
-    echo "extract: $1 is not a valid file"
+	echo "$(realpath $0): $1 is not a valid file"
     exit 1
 fi

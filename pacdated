@@ -1,0 +1,16 @@
+#!/usr/bin/bash
+#
+# return the number of outdated packages
+#
+
+#Make sure pacman exists
+type pacman > /dev/null 2>&1 || { echo "$(realpath $0): pacman not found. Aborting."; exit 1; }
+
+#Store a count of out of date packages
+count=$(pacman -Qu | wc -l)
+
+#Return the count
+echo "$count"
+
+#If outdated packages were found, exit with an error code. Otherwise, don't.
+[[ "$count" ]] && exit 1 || exit 0

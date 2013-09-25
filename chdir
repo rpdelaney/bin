@@ -15,15 +15,15 @@ elif [[ -d ".$1" ]]; then       #if the a hidden directory matches the argument,
 elif [[ "$1" == '-' ]]; then    #if we passed '-' as the argument, then
     new_dir="-"                 #act like cd
 else
-    error_msg="directory \`$red$bold$1$reset' not found."    #say we cant find it
+	error_msg="$(realpath $0): directory \`$red$bold$1$reset' not found."    #say we cant find it
 fi
 
-if [[ -n "$error_msg" ]]; then     #if there was an error message, then
-    echo "chdir: $error_msg" 1>&2  #tell me what it was
-    unset error_msg                #and unset this for no reason :V
+if [[ -n "$error_msg" ]]; then              #if there was an error message, then
+    echo "$(realpath $0): $error_msg" 1>&2  #tell me what it was
+    unset error_msg           	            #and unset this for no reason :V
 else
     builtin cd "$new_dir"
-    timeout 1 ls --color=auto --format=across --group-directories-first || echo "chdir: Timeout listing directory contents."
+    timeout 1 ls --color=auto --format=across --group-directories-first || echo "$(realpath $0): Timeout listing directory contents."
 fi
 
 }
