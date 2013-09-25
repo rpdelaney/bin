@@ -7,20 +7,11 @@ current_date=$(date +%Y-%m-%d__%H-%M-%S)
 
 fatal="0"
 
-if [[ ! -d "$dump_path" ]]; then
-	echo "Dump path not found:""$dump_path";
-	fatal=1
-fi
+[[ ! -d "$dump_path" ]] && { echo "Dump path not found:""$dump_path"; fatal=1; }
 
-if [[ ! -f "$pg_dump" ]]; then
-	echo "pg_dump not found:""$pg_dump";
-	fatal=1
-fi
+[[ ! -f "$pg_dump" ]] && { echo "pg_dump not found:""$pg_dump"; fatal=1 ; }
 
-if [[ "$fatal" = 1 ]]; then
-	echo "FATAL: Critical files not found.";
-	exit 1
-fi
+[[ "$fatal" = 1 ]] && { echo "$(realpath $0): Critical files not found."; exit 1 }
 
 backup_file="$dump_path""$current_date"".backup"
 log_file="$dump_path""$current_date"".log"
@@ -34,14 +25,16 @@ error="$?"
 
 #terminate on error
 if [[ "$error" -ne "0" ]]; then
-	echo "pg_dump returned exit code ""$error" ;
+	echo "pg_dump returned exit code $error" ;
 	exit "$error"
 fi
 
 #show backup stats so we don't restore something absurdly huge
-stat $backup_file
+#then ask if we want to continue or not
+stat "$backup_file"
 
 confirm "Do you want to attempt to restore? (y/n)"
+[[ $? ]] || exit
 
 #drop the sandbox##############################################
 source ~/bin/cygwin/susie_drop 
