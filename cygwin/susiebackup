@@ -11,7 +11,7 @@ fatal="0"
 
 [[ ! -f "$pg_dump" ]] && { echo "pg_dump not found:""$pg_dump"; fatal=1 ; }
 
-[[ "$fatal" = 1 ]] && { echo "$(realpath $0): Critical files not found."; exit 1 }
+[[ "$fatal" = 1 ]] && { echo "$(realpath $0): Critical files not found."; exit 1; }
 
 backup_file="$dump_path""$current_date"".backup"
 log_file="$dump_path""$current_date"".log"
