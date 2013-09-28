@@ -33,8 +33,8 @@ fi
 #then ask if we want to continue or not
 stat "$backup_file"
 
-confirm "Do you want to attempt to restore? (y/n)"
-[[ $? ]] || exit
+confirm "Do you want to attempt to restore?"
+[[ "$?" = 0 ]] || exit 0
 
 #drop the sandbox##############################################
 source ~/bin/cygwin/susie_drop 
