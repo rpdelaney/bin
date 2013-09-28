@@ -5,7 +5,7 @@
 
 echo "Executing pg_dump..."
 
-pg_dump --host 192.168.68.2 --port 5432 --username "susie" --format tar --encoding UTF8 --verbose --file "$1" "susie" &>> "$2"
+pg_dump --host 192.168.68.27 --port 5432 --username "susie" --format tar --encoding UTF8 --verbose --file "$1" "susie" &>> "$2"
 pgdump_exit=$?
 
 echo "pg_dump process returned exit code: "$pgdump_exit | tee --append $2
