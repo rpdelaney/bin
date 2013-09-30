@@ -5,23 +5,18 @@ pg_dump="/home/Ryan/pgsql/bin/pg_dump.exe"
 dump_path="C:\\Users\\ryan\\Documents\\Dropbox\\Sierra\\Backup\\"
 current_date=$(date +%Y-%m-%d__%H-%M-%S)
 
-fatal="0"
+[[ ! -d "$dump_path" ]] && { echo "Directory not found: $dump_path";  echo "$(realpath $0): FATAL. Files not found."; exit 1; }
+[[ ! -f "$pg_dump" ]] && { echo "pg_dump not found: $pg_dump"; echo "$(realpath $0): FATAL. Files not found."; exit 1 ; }
 
-[[ ! -d "$dump_path" ]] && { echo "Dump path not found:""$dump_path"; fatal=1; }
+backup_file="$dump_path$current_date.backup"
+log_file="$dump_path$current_date.log"
 
-[[ ! -f "$pg_dump" ]] && { echo "pg_dump not found:""$pg_dump"; fatal=1 ; }
-
-[[ "$fatal" = 1 ]] && { echo "$(realpath $0): Critical files not found."; exit 1; }
-
-backup_file="$dump_path""$current_date"".backup"
-log_file="$dump_path""$current_date"".log"
-
-echo "creating backup file... ""$backup_file"
-echo "creating log file...""$log_file"
+echo "creating backup file... $backup_file"
+echo "creating log file... $log_file"
 
 #create the backup#############################################
 source ~/bin/cygwin/susie_dump "$backup_file" "$log_file"
-error="$?"
+error = "$?"
 
 #terminate on error
 if [[ "$error" -ne "0" ]]; then
@@ -33,21 +28,22 @@ fi
 #then ask if we want to continue or not
 stat "$backup_file"
 
-confirm "Do you want to attempt to restore?"
-[[ "$?" = 0 ]] || exit 0
+confirm "Do you want to attempt to restore?" && {
 
 #drop the sandbox##############################################
-source ~/bin/cygwin/susie_drop 
+source ~/bin/cygwin/susie_drop ;
 
 #create the sandbox############################################
-source ~/bin/cygwin/susie_create 
-error="$?"
-
-#terminate on error
-if [[ "$error" -ne "0" ]]; then
-	echo "pg_create returned exit code ""$error" ;
-	exit "$error"
-fi
+source ~/bin/cygwin/susie_create ; 
 
 #restore to sandbox############################################
-source ~/bin/cygwin/susie_restore "$backup_file"
+source ~/bin/cygwin/susie_restore "$backup_file" ; }
+
+#compress the backup###########################################
+if type bzip2; then
+	bzip2 -v "$backup_file"
+	bzip2 -v "$log_file"
+else
+	echo "$(realpath $0): ERROR. bzip2 archiver not found."
+fi
+
