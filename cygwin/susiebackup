@@ -16,13 +16,6 @@ echo "creating log file... $log_file"
 
 #create the backup#############################################
 source ~/bin/cygwin/susie_dump "$backup_file" "$log_file"
-error = "$?"
-
-#terminate on error
-if [[ "$error" -ne "0" ]]; then
-	echo "pg_dump returned exit code $error" ;
-	exit "$error"
-fi
 
 #show backup stats so we don't restore something absurdly huge
 #then ask if we want to continue or not
