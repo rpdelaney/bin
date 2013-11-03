@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+#
+# import a PGP public key by fingerprint
+#
+
+gpg --keyserver pgp.mit.edu --recv-key $1

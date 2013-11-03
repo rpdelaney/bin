@@ -15,8 +15,10 @@ shopt -s extglob;
 #for each file
 while IFS= read -rd '' file_full_path; do
 
-    [[ "$DEBUG" ]] && printf "Step 0: %s\n" "$file_full_path"
+    [[ "$DEBUG" ]] && printf "Step -0: %s\n" "$file_full_path"
     filename="${file_full_path##*/}"                   # fill $filename from parsed $file_full_path
+
+    filename="${filename//'!'/#}"                      # substitute '!' with '#'
 
     [[ "$DEBUG" ]] && printf "Step 1: %s\n" "$filename"
     filename="${filename//+( )/.}"                     # substitute ' ' with '.' in $filename
@@ -28,10 +30,16 @@ while IFS= read -rd '' file_full_path; do
     filename="${filename//\(/_}"                       # substitute '(' with '_'
 
     [[ "$DEBUG" ]] && printf "Step 4: %s\n" "$filename"
-    filename="${filename//\)/_}"                       # substitute '(' with '_'
+    filename="${filename//\)/_}"                       # substitute ')' with '_'
 
     [[ "$DEBUG" ]] && printf "Step 5: %s\n" "$filename"
     filename="${filename//;/_}"                        # substitute ';' with '_'
+
+    [[ "$DEBUG" ]] && printf "Step 6: %s\n" "$filename"
+    filename="${filename//\[/_}"                        # substitute '[' with '_'
+
+    [[ "$DEBUG" ]] && printf "Step 7: %s\n" "$filename"
+    filename="${filename//\]/_}"                        # substitute '[' with '_'
 
     #printf "New name: %s\n" "$filename"
 

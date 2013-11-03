@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+
+sandbox="/mnt/l4d2/LTD/l4d2/left4dead2/left4dead2/logs"
+
+find $sandbox -type f -name "*.log" -print0 | while IFS= read -r -d '' log; do
+    echo "$log"
+done

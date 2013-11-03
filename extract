@@ -2,14 +2,18 @@
 #
 # decompress archives based on mimetype
 #
+set -x
 
 if [[ -f "$1" ]] ; then
       
     #get the mime type
-    mime="$(file -Lb --mime-type $1)"
+    echo "Determining mimetype..."
+    mime=$(file -Lb --mime-type "$1")
+    echo "mimetype is: $mime"
     
     case "${mime#*-}" in
         bzip2)
+	    dep="bunzip2"
             cmd=(bunzip2 "$1")
             ;;
         tar.bz2)
@@ -40,26 +44,26 @@ if [[ -f "$1" ]] ; then
             dep="gzip"
             cmd=(gzip -d --keep "$1")
             ;;
-        zip)
+        application/zip)
             dep="unzip"
-            cmd=(unzip "$1")
+	    cmd=(unzip -n -v "$1")
             ;;
         Z)
-            dep="uncompress"
-            cmd=(uncompress "$1")
+            dep="gzip"
+            cmd=(gzip -vd --keep "$1")
             ;;
         7z-compressed)
             dep="7za"
             cmd=(7za x "$1")
             ;;
         *)
-            echo "extract: $mime unrecognized mimetype"
+	    echo "$(realpath $0) unrecognized mimetype $mime"
             exit 1
             ;;
     esac
     
     #Check for missing dependency
-    [[ "$dep" ]] && type -P "$dep" > /dev/null || { echo "$(realpath $0): Missing dependency: $dep"; exit 1; }
+    [[ "$dep" ]] && type -P "$dep" > /dev/null || { echo "$(realpath $0): Missing dependency for MIME type $mime: $dep"; exit 1; }
     
     #Run the extraction command
     "${cmd[@]}"

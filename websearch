@@ -7,5 +7,5 @@ ddgourl="http://duckduckgo.com/?q="
 
 query="$@"
 AGENT="Mozilla/4.0"
-stream=$(curl -A "$AGENT" -skLm 10 "${ddgourl}\"${Q/\ /+}\"" | grep -oP '\/url\?q=.+?&amp' | sed 's/\/url?q=//;s/&amp//')
+stream=$(curl -A "$AGENT" -skLm 10 "${googurl}\"${Q/\ /+}\"" | grep -oP '\/url\?q=.+?&amp' | sed 's/\/url?q=//;s/&amp//')
 echo -e "${stream//\%/\x}"
