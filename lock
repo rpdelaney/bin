@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#
+# lock the terminal screen
+#
+
+clear
+[[ $(type away) ]] && away -m "See you later!"
