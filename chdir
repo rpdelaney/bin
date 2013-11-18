@@ -4,8 +4,11 @@
 #provides enhanced directory changing behavior
 #
 
-ch() {
+#script=`realpath $0`
+#scriptPath=`dirname $script`
+scriptPath="chdir"
 
+ch() {
 if [[ ! "$1" ]]; then           #if there's no argument
     new_dir=""                  #stay put
 elif [[ -d "$1" ]]; then        #if the argument is an existing directory, then
@@ -15,15 +18,15 @@ elif [[ -d ".$1" ]]; then       #if the a hidden directory matches the argument,
 elif [[ "$1" == '-' ]]; then    #if we passed '-' as the argument, then
     new_dir="-"                 #act like cd
 else
-	error_msg="$(realpath $0): directory \`$red$bold$1$reset' not found."    #say we cant find it
+	error_msg="directory \`$red$bold$1$reset' not found."    #say we cant find it
 fi
 
-if [[ -n "$error_msg" ]]; then              #if there was an error message, then
-    echo "$(realpath $0): $error_msg" 1>&2  #tell me what it was
-    unset error_msg           	            #and unset this for no reason :V
+if [[ -n "$error_msg" ]]; then                  #if there was an error message, then
+    echo "$scriptPath: $error_msg" 1>&2  #tell me what it was
+    unset error_msg           	                #and unset this for no reason :V
 else
     builtin cd "$new_dir"
-    timeout 1 ls --color=auto --format=across --group-directories-first || echo "$(realpath $0): Timeout listing directory contents."
+    timeout 1 ls --color=auto --format=across --group-directories-first || echo "$scriptPath: Timeout listing directory contents."
 fi
 
 }

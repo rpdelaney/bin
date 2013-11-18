@@ -5,3 +5,4 @@
 
 clear
 [[ $(type away) ]] && away -m "See you later!"
+
