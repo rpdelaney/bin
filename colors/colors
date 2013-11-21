@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/usr/bin/env bash
 #
 esc="\033["
 echo -n " _ _ _ _ _40 _ _ _ 41_ _ _ _42 _ _ _ 43" 
