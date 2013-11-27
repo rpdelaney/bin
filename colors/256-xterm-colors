@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 
 # Ruby script to show all 256 xterm colors in the terminal/bash
 
@@ -32,3 +32,6 @@
   print "\n" if (i + 1) <= 16 ? ((i + 1) % 8 == 0)  : (((i + 1) - 16) % 6 == 0)
   print "\n" if (i + 1) <= 16 ? ((i + 1) % 16 == 0) : (((i + 1) - 16) % 36 == 0)
 end
+
+    # Reset everything
+print "\033[m"

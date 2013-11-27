@@ -11,13 +11,17 @@ def echo(msg):
     os.system('echo -n "' + str(msg) + '"')
 
 def out(n):
+    os.system("tput setaf 7")
     os.system("tput setab " + str(n) + "; echo -n " + ("\"% 4d\"" % n))
     os.system("tput setab 0")
 
-if os.getenv("TERM") in ("xterm", "screen"):
-    os.putenv("TERM", os.getenv("TERM") + "-256color")
+#if os.getenv("TERM") in ("xterm", "screen"):
+#    os.putenv("TERM", os.getenv("TERM") + "-256color")
 
 try:
+    echo("\n")
+    os.system("echo TERM is $TERM")
+    echo("\n")
     # normal colors 1 - 16
     os.system("tput setaf 16")
     for n in range(8):
@@ -40,5 +44,4 @@ try:
 
     echo("\n")
 finally:
-    os.system("tput init")
-
+    os.system("tput op")
