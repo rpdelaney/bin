@@ -5,15 +5,15 @@
 set -x
 
 if [[ -f "$1" ]] ; then
-      
+
     #get the mime type
     echo "Determining mimetype..."
+        #this should use xdg-mime query filetype "$1" instead
     mime=$(file -Lb --mime-type "$1")
     echo "mimetype is: $mime"
-    
     case "${mime#*-}" in
         bzip2)
-	    dep="bunzip2"
+        dep="bunzip2"
             cmd=(bunzip2 "$1")
             ;;
         tar.bz2)
@@ -46,7 +46,7 @@ if [[ -f "$1" ]] ; then
             ;;
         application/zip)
             dep="unzip"
-	    cmd=(unzip -n -v "$1")
+        cmd=(unzip -n -v "$1")
             ;;
         Z)
             dep="gzip"
@@ -57,7 +57,7 @@ if [[ -f "$1" ]] ; then
             cmd=(7za x "$1")
             ;;
         *)
-	    echo "$(realpath $0) unrecognized mimetype $mime"
+        echo "$(realpath $0) unrecognized mimetype $mime"
             exit 1
             ;;
     esac
@@ -71,6 +71,6 @@ if [[ -f "$1" ]] ; then
     [[ -e "$1" ]] || echo "$(realpath $0): WARNING! $1 was removed after extracting."
     
 else
-	echo "$(realpath $0): $1 is not a valid file"
+    echo "$(realpath $0): $1 is not a valid file"
     exit 1
 fi
