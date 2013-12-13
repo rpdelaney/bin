@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#
+# A wrapper script for sysyzy_tb by Ronald de Man (syzygy_tb@yahoo.com)
+# Upstream URL: https://github.com/syzygy1/tb
+#
+# - Invokes rtgentb or rtgentbp as appropriate
+# - TODO: Accepts multiple arguments
+# - TODO: Attempts to recursively generate tbs with the -r flag
+#
+
+rtbgen $@ || rtbgenp $@
