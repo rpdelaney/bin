@@ -1,6 +1,0 @@
-#!/usr/bin/bash
-#
-# print free memory
-#
-
-grep '^MemFree:' /proc/meminfo | awk '{ mem=($2)/(1024) ; printf "%0.0f MB\n", mem }'
