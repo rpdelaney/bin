@@ -2,8 +2,6 @@
 #
 # decompress archives based on mimetype
 #
-set -x
-
 if [[ -f "$1" ]] ; then
 
     #get the mime type
@@ -61,15 +59,15 @@ if [[ -f "$1" ]] ; then
             exit 1
             ;;
     esac
-    
+
     #Check for missing dependency
     [[ "$dep" ]] && type -P "$dep" > /dev/null || { echo "$(realpath $0): Missing dependency for MIME type $mime: $dep"; exit 1; }
-    
+
     #Run the extraction command
     "${cmd[@]}"
-    
+
     [[ -e "$1" ]] || echo "$(realpath $0): WARNING! $1 was removed after extracting."
-    
+
 else
     echo "$(realpath $0): $1 is not a valid file"
     exit 1
