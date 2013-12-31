@@ -1,5 +1,0 @@
-#!/usr/bin/bash
-echo "Dropping sandbox database..."
-dropdb --host=ryanpd.me --port=54320 --username=postgres susie
-dropdb_exit=$?
-echo "dropdb process returned exit code: "$dropdb_exit
