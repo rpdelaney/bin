@@ -1,9 +1,0 @@
-#!/usr/bin/bash
-#
-
-echo "Restoring to sandbox from dump..."
-pg_restore --verbose --host=ryanpd.me --port=54320 --username=postgres --dbname=susie "$@"
-pgrestore_exit=$?
-echo "pg_restore process returned exit code: "$pgrestore_exit
-
-

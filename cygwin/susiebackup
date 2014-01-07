@@ -1,42 +1,68 @@
 #!/usr/bin/bash
 
-#set variables
+  # set variables
 pg_dump="/home/Ryan/pgsql/bin/pg_dump.exe"
-dump_path="C:\\Users\\ryan\\Documents\\Dropbox\\Sierra\\Backup\\"
+dump_path="/cygdrive/c/Users/ryan/Documents/Dropbox/Sierra/Backup/"
 current_date=$(date +%Y-%m-%d__%H-%M-%S)
 
+  # check dependencies
 [[ ! -d "$dump_path" ]] && { echo "Directory not found: $dump_path";  echo "$(realpath $0): FATAL. Files not found."; exit 1; }
 [[ ! -f "$pg_dump" ]] && { echo "pg_dump not found: $pg_dump"; echo "$(realpath $0): FATAL. Files not found."; exit 1 ; }
 
 backup_file="$dump_path$current_date.backup"
 log_file="$dump_path$current_date.log"
 
-echo "creating backup file... $backup_file"
-echo "creating log file... $log_file"
+echo "creating backup file... $(cygpath -w $backup_file)"
+echo "creating log file... $(cygpath -w $log_file)"
 
-#create the backup#############################################
-source ~/bin/cygwin/susie_dump "$backup_file" "$log_file"
+#
+# create the backup
+#
+echo "Executing pg_dump..."
+pg_dump --host 192.168.68.27 --port 5432 --username "postgres" --format tar --encoding UTF8 --verbose --file "$(cygpath -w $backup_file)" susie &>> "$log_file"
+pgdump_exit="$?"
+echo "pg_dump process returned exit code: "$pgdump_exit | tee --append "$log_file"
 
-#show backup stats so we don't restore something absurdly huge
-#then ask if we want to continue or not
-stat "$backup_file"
-
-confirm "Do you want to attempt to restore?" && {
-
-#drop the sandbox##############################################
-source ~/bin/cygwin/susie_drop ;
-
-#create the sandbox############################################
-source ~/bin/cygwin/susie_create ; 
-
-#restore to sandbox############################################
-source ~/bin/cygwin/susie_restore "$backup_file" ; }
-
-#compress the backup###########################################
-if type bzip2; then
-	bzip2 -v "$backup_file"
-	bzip2 -v "$log_file"
+#
+# compress the backup
+#
+if type bzip2 &> /dev/null; then
+    bzip2 -v "$backup_file"
+    backup_file="$backup_file".bz2
+    bzip2 -v "$log_file"
+    log_file="$log_file".bz2
 else
-	echo "$(realpath $0): ERROR. bzip2 archiver not found."
+    echo "$(realpath $0): ERROR. bzip2 archiver not found."
 fi
 
+  # show backup stats so we don't restore something absurdly huge
+stat "$backup_file"
+
+set -x
+  # then ask if we want to continue or not
+if confirm "Do you want to attempt to restore?"; then
+{
+    # drop the sandbox
+  echo "Dropping sandbox database..."
+  ssh -q -x mothership 'psql -U postgres -c "drop database susie;"'
+  dropdb_exit=$?
+  echo "dropdb process returned exit code: "$dropdb_exit
+
+    # create the sandbox
+  echo "Creating sandbox database..."
+  ssh -q -x mothership 'psql -U postgres -c "create database susie;"'
+  createdb_exit=$?
+  echo "createdb process returned exit code: "$createdb_exit
+
+    # restore to sandbox
+  backup_basename="$(basename $backup_file)"
+  echo "Uploading dump..."
+  scp "$backup_file" ryan@mothership:/tmp/
+  echo "Extracting dump..."
+  ssh -q -x mothership 'bzip2 -d /tmp/'"$backup_basename"
+  echo "Restoring to sandbox from dump..."
+  ssh -q -x mothership "pg_restore -U postgres /tmp/${backup_basename%.bz2}"
+  pgrestore_exit=$?
+  echo "pg_restore process returned exit code: "$pgrestore_exit
+}
+fi
