@@ -26,13 +26,13 @@ echo "pg_dump process returned exit code: "$pgdump_exit | tee --append "$log_fil
 #
 # compress the backup
 #
-if type bzip2 &> /dev/null; then
-    bzip2 -v "$backup_file"
-    backup_file="$backup_file".bz2
-    bzip2 -v "$log_file"
-    log_file="$log_file".bz2
+if type xz &> /dev/null; then
+    xz -v "$backup_file"
+    backup_file="$backup_file".xz
+    xz -v "$log_file"
+    log_file="$log_file".xz
 else
-    echo "$(realpath $0): ERROR. bzip2 archiver not found."
+    echo "$(realpath $0): FATAL. Archiver not found."
 fi
 
   # show backup stats so we don't restore something absurdly huge
