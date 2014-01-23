@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+#
+
+  # Usage
+usage() {
+cat <<EOD
+network-test
+Copyright (C) 2014 by Ryan Delaney. All rights reserved. network-test comes with
+ABSOLUTELY NO WARRANTY.  This is free software, and you are welcome to
+redistribute it under certain conditions.  See the GNU General Public Licence
+version 3 for details.
+Web site: http://github.com/rpdelaney
+
+network-test performs some basic tests of local and wide-access internet connectivity.
+
+Usage: network-test [OPTION]
+
+Options
+  -?, --help                  print this help and exit
+  -v, --verbose               increase verbosity
+EOD
+exit 1
+}
+
+    # Variables
+verbose=0
+
+    # Read in command line arguments
+while :
+do
+    case $1 in
+        --help | -\?)
+            #  Call your Help() or usage() function here.
+            usage
+            exit 0
+            ;;
+        -v | --verbose)
+            # Each instance of -v adds 1 to verbosity
+            verbose=$((verbose+1))
+            shift
+            ;;
+        --) # End of all options
+            shift
+            break
+            ;;
+        -*)
+            echo "WARN: Unknown option (ignored): $1" >&2
+            shift
+            ;;
+        *)  # no more options. Stop while loop
+            break
+            ;;
+    esac
+done
+
+  #
+  # Functions
+  #
+sendout() { if [[ $verbose == "1" ]]; then echo "$1"; fi; }
+shortping() { ping "$1" -q -c 5 -W 0.5 -i 0.2 -l 3 > /dev/null ; }
+longping()  { ping "$1" -q -c 3 -W 1.0 -i 0.5 -l 3 > /dev/null ; }
+
+  # Check that dhcpcd is working and internet is up
+sendout "localhost:"
+if shortping localhost; then sendout "OK."; else sendout "FAIL!"; fi
+  # Check that we can ping the gateway
+sendout "gatekeeper:"
+if shortping gatekeeper; then sendout "OK."; else sendout "FAIL!"; fi
+  # Check that we can ping the printer/scanner
+sendout "epson:"
+if shortping epson; then sendout "OK."; else sendout "FAIL!"; fi
+  # Check that we can ping google
+sendout "google:"
+if shortping google.com; then sendout "OK."; else sendout "FAIL!"; fi
+  # Check tor connections
+sendout "tor:"
+if curl -s --socks5-hostname localhost:9050 ifconfig.me &> /dev/null; then sendout "OK."; else sendout "FAIL!"; fi
