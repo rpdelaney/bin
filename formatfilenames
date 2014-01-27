@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 #
 # renames all files underneath the PWD to replace unwanted characters such as:
 #       whitespace

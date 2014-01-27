@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 #retrieved from http://www.tofu.org/drupal/node/181 on Fri Jan 24 12:33:30 PST 2014
 ################################################################################
 # tmuxlogin - Open multiple tmux panes, each logged into a different server

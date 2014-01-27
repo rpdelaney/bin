@@ -1,5 +1,5 @@
-###########################################################
-#!/usr/bin/bash
+#!/usr/bin/env bash
+#
 #saves hash values of a directory and all the files in it
 #submits the hash values to team cymru for analysis and saves the output
 #

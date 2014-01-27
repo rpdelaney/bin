@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 #
 # returns the number of identities in the current ssh-agent.
 #
