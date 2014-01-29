@@ -8,17 +8,24 @@
 
   # Validate that we are working with a file
 if [[ ! -f "$1" ]] ; then
-    echo "$(realpath $0): FATAL no such file $1"
+    echo "extract:: FATAL no such file $1"
     exit 1
 fi
 
   # get the filename
-filename="$(basename $1)"
+filename="$(basename $1)"   # Full filename
+extension="${filename##*.}" # Outer (last) extension only
+shortname="${filename%.*}"  # Filename without the outer extension
   # get the mime type
     # this should use xdg-mime query filetype "$1" instead
 mime=$(file -Lb --mime-type "$1")
 echo "mimetype is: $mime"
 case "${mime#*-}" in
+    tar)
+        # TODO: Move this to a second step (for one-pass tar extraction) --R. Delaney 2014-01-29T09:35-0800 OpenGPG: 0D98863B4E1D07B6
+        dep="tar"
+        cmd=(tar kxfv "$1")
+        ;;
     bzip2)
     dep="bunzip2"
         cmd=(bunzip2 "$1")
@@ -30,10 +37,6 @@ case "${mime#*-}" in
     tar.gz)
         dep="tar"
         cmd=(tar kxzfv "$1")
-        ;;
-    tar)
-        dep="tar"
-        cmd=(tar kxfv "$1")
         ;;
     tbz2)
         dep="tar"
@@ -56,8 +59,9 @@ case "${mime#*-}" in
         cmd=(gzip -d --keep "$1")
         ;;
     application/zip)
+        # Extracts to directory OK
         dep="unzip"
-        cmd=(unzip -n -v "$1") # TODO: use '-d' switch to extract to a directory
+        cmd=(unzip "$1")
         ;;
     Z)
         dep="gzip"
@@ -68,16 +72,17 @@ case "${mime#*-}" in
         cmd=(7za x "$1")
         ;;
     *)
-    echo "$(realpath $0) unrecognized mimetype $mime"
+    echo "extract: unrecognized mimetype $mime"
         exit 1
         ;;
 esac
 
 #Check for missing dependency
-[[ "$dep" ]] && type -P "$dep" > /dev/null || { echo "$(realpath $0): Missing dependency for MIME type $mime: $dep"; exit 1; }
+[[ "$dep" ]] && type -P "$dep" > /dev/null || { echo "extract:: Missing dependency for MIME type $mime: $dep"; exit 1; }
 
 #Run the extraction command
 "${cmd[@]}"
 
-[[ -e "$1" ]] || echo "$(realpath $0): WARNING! $1 was removed after extracting."
+# Warn me if I deleted the file somehow
+[[ -e "$1" ]] || echo "extract:: WARNING! $1 was removed after extracting."
 
