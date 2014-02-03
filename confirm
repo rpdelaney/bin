@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 #
 # ask the user to confirm if they want to continue
 # arguments passed will be the query question

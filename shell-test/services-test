@@ -1,0 +1,89 @@
+#!/usr/bin/env bash
+#
+# Check that necessary services are up
+#
+
+#
+# Usage
+#
+usage() {
+cat <<EOD
+services-test
+© Copyright 2014-01-22 Ryan Delaney. All rights reserved. This work is
+distributed WITHOUT ANY WARRANTY whatsoever; without even the implied warranty
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See README for
+additional terms and conditions on your use of this software.
+Web site: http://github.com/rpdelaney
+
+services-test performs some tests to verify that desired systemctl services are
+installed and working.
+
+Usage: services-test [OPTION]
+
+Options
+  -?, --help                  print this help and exit
+  -v, --verbose               increase verbosity
+EOD
+exit 1
+}
+
+#
+# Read in shell arguments
+#
+while :
+do
+    case $1 in
+        --help | -\?)
+            usage
+            exit 0
+            ;;
+        -v | --verbose)
+            # Each instance of -v adds 1 to verbosity
+            verbose=$((verbose+1))
+            shift
+            ;;
+        --) # End of all options
+            shift
+            break
+            ;;
+        -*)
+            echo "WARN: Unknown option (ignored): $1" >&2
+            shift
+            ;;
+        *)  # no more options. Stop while loop
+            break
+            ;;
+    esac
+done
+
+#
+# Functions
+#
+sysctlstatus() { systemctl status "$1" > /dev/null ; }
+sendout() { if [[ $verbose == "1" ]]; then echo "$1"; fi; }
+
+#
+# Tests
+#
+  # Test tor
+sendout "Tor:"
+if sysctlstatus tor; then sendout "OK."; else sendout "FAIL!"; fi
+  # Test dhcpcd
+sendout "dhcpcd:"
+if sysctlstatus dhcpcd; then sendout "OK."; else sendout "FAIL!"; fi
+  # Test CUPS
+sendout "CUPS:"
+if sysctlstatus cups; then sendout "OK."; else sendout "FAIL!"; fi
+  # Test postgresql
+sendout "postgresql:"
+if sysctlstatus postgres; then sendout "OK."; else sendout "FAIL!"; fi
+  # Test dbus
+sendout "dbus:"
+if sysctlstatus dbus; then sendout "OK."; else sendout "FAIL!"; fi
+  # Test cron
+sendout "cron:"
+if sysctlstatus cronie; then sendout "OK."; else sendout "FAIL!"; fi
+  # Test Mozilla sync server
+sendout "Mozilla Sync:"
+if sysctlstatus ffsync; then sendout "OK."; else sendout "FAIL!"; fi
+

@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 #Converts all symbolic links in a directory to hard links.
 
 proc_name="symlink2hardlink"

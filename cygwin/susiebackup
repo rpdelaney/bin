@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
   # set variables
 pg_dump="/home/Ryan/pgsql/bin/pg_dump.exe"
