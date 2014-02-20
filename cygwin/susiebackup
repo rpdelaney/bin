@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-
   # set variables
 pg_dump="/home/Ryan/pgsql/bin/pg_dump.exe"
 dump_path="/cygdrive/c/Users/ryan/Documents/Dropbox/Sierra/Backup/"
-current_date=$(date +%Y-%m-%d__%H-%M-%S)
-backup_file="$dump_path$current_date.backup"
+hostip="192.168.68.27"
+current_date="$(date +%Y-%m-%d__%H-%M-%S)"
+backup_file="/tmp/$current_date.backup"
 log_file="$dump_path$current_date.log"
 
 # Are we in cygwin?
@@ -27,7 +27,7 @@ echo "using backup file... $backup_file"
 echo "using log file... $log_file"
 
 echo "Executing pg_dump..."
-pg_dump --host 192.168.68.27 --port 5432 --username "postgres" --format tar --encoding UTF8 --verbose --file $backup_file susie &>> "$log_file"
+pg_dump --host "$hostip" --port 5432 --username "postgres" --format tar --encoding UTF8 --verbose --file "$backup_file" susie &>> "$log_file"
 pgdump_exit="$?"
 echo "pg_dump process returned exit code: "$pgdump_exit | tee --append "$log_file"
 
@@ -35,16 +35,31 @@ echo "pg_dump process returned exit code: "$pgdump_exit | tee --append "$log_fil
 # compress the backup
 #
 if type xz &> /dev/null; then
-    xz -v "$backup_file"
-    backup_file="$backup_file".xz
-    xz -v "$log_file"
-    log_file="$log_file".xz
+    xz -v "$backup_file" && backup_file="$backup_file".xz
+    xz -v "$log_file" && log_file="$log_file".xz
 else
     echo "$(realpath $0): FATAL. Archiver not found."
+    exit 1
 fi
 
-  # show backup stats so we don't restore something absurdly huge
-stat "$backup_file"
+#
+# encrypt the backup
+#
+if type gpg &> /dev/null; then
+  if gpg -v --output "$backup_file.gpg" --encrypt --recipient 0D98863B4E1D07B6 "$backup_file"; then backup_file="$backup_file.gpg"; fi
+  if gpg -v --output "$log_file.gpg"    --encrypt --recipient 0D98863B4E1D07B6 "$log_file";    then log_file="$log_file.gpg"; fi
+else
+  echo "$(realpath $0): WARNING. The backup was not encrypted."
+fi
+
+#
+# store the backup
+#
+if mv -v "$backup_file" "$dump_path"; then
+  echo "Success."
+else
+  echo "FAILURE!"
+fi
 
 #
 # restoring doesn't really work right now
@@ -53,6 +68,9 @@ stat "$backup_file"
 #
 #
 #
+  # show backup stats so we don't restore something absurdly huge
+stat "$backup_file"
+
   # then ask if we want to continue or not
 if confirm "Do you want to attempt to restore?"; then
 {
@@ -61,13 +79,13 @@ if confirm "Do you want to attempt to restore?"; then
   echo "Dropping sandbox database..."
   ssh -q -x mothership 'psql -U postgres -c "drop database susie;"'
   dropdb_exit=$?
-  echo "dropdb process returned exit code: "$dropdb_exit
+  echo "dropdb process returned exit code: $dropdb_exit"
 
     # create the sandbox
   echo "Creating sandbox database..."
   ssh -q -x mothership 'psql -U postgres -c "create database susie;"'
   createdb_exit=$?
-  echo "createdb process returned exit code: "$createdb_exit
+  echo "createdb process returned exit code: $createdb_exit"
 
     # restore to sandbox
   backup_basename="$(basename $backup_file)"
@@ -78,6 +96,6 @@ if confirm "Do you want to attempt to restore?"; then
   echo "Restoring to sandbox from dump..."
   ssh -q -x mothership "pg_restore -U postgres /tmp/${backup_basename%.bz2}"
   pgrestore_exit=$?
-  echo "pg_restore process returned exit code: "$pgrestore_exit
+  echo "pg_restore process returned exit code: $pgrestore_exit"
 }
 fi
