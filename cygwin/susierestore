@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# this doesn't really work
+exit 1
+  # set variables
+if confirm "Do you want to attempt to restore?"; then
+{
+  set -x
+    # drop the sandbox
+  echo "Dropping sandbox database..."
+  ssh -q -x mothership 'psql -U postgres -c "drop database susie;"'
+  dropdb_exit=$?
+  echo "dropdb process returned exit code: $dropdb_exit"
+
+    # create the sandbox
+  echo "Creating sandbox database..."
+  ssh -q -x mothership 'psql -U postgres -c "create database susie;"'
+  createdb_exit=$?
+  echo "createdb process returned exit code: $createdb_exit"
+
+    # restore to sandbox
+  backup_basename="$(basename $backup_file)"
+  echo "Uploading dump..."
+  scp "$backup_file" ryan@mothership:/tmp/
+  echo "Extracting dump..."
+  ssh -q -x mothership 'bzip2 -d /tmp/'"$backup_basename"
+  echo "Restoring to sandbox from dump..."
+  ssh -q -x mothership "pg_restore -U postgres /tmp/${backup_basename%.bz2}"
+  pgrestore_exit=$?
+  echo "pg_restore process returned exit code: $pgrestore_exit"
+}
+fi
