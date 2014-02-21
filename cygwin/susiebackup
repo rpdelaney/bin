@@ -5,7 +5,7 @@ dump_path="/cygdrive/c/Users/ryan/Documents/Dropbox/Sierra/Backup/"
 hostip="192.168.68.27"
 current_date="$(date +%Y-%m-%d__%H-%M-%S)"
 backup_file="/tmp/$current_date.backup"
-log_file="$dump_path$current_date.log"
+log_file="/tmp/$current_date.log"
 
 # Are we in cygwin?
 if echo "$(uname -o)" == "Cygwin"; then
@@ -35,8 +35,8 @@ echo "pg_dump process returned exit code: "$pgdump_exit | tee --append "$log_fil
 # compress the backup
 #
 if type xz &> /dev/null; then
-    xz -v "$backup_file" && backup_file="$backup_file".xz
-    xz -v "$log_file" && log_file="$log_file".xz
+    if xz -v "$backup_file"; then backup_file="$backup_file".xz; else exit 1; fi
+    if xz -v "$log_file"; then log_file="$log_file".xz; else exit 1; fi
 else
     echo "$(realpath $0): FATAL. Archiver not found."
     exit 1
@@ -46,16 +46,25 @@ fi
 # encrypt the backup
 #
 if type gpg &> /dev/null; then
-  if gpg -v --output "$backup_file.gpg" --encrypt --recipient 0D98863B4E1D07B6 "$backup_file"; then backup_file="$backup_file.gpg"; fi
-  if gpg -v --output "$log_file.gpg"    --encrypt --recipient 0D98863B4E1D07B6 "$log_file";    then log_file="$log_file.gpg"; fi
+  if gpg -v --output "$backup_file.gpg" --encrypt --recipient 0D98863B4E1D07B6 "$backup_file"; then
+    backup_file="$backup_file.gpg"
+    gpg -v --detach-sign "$backup_file"
+  fi
+  if gpg -v --output "$log_file.gpg"    --encrypt --recipient 0D98863B4E1D07B6 "$log_file"; then
+    log_file="$log_file.gpg"
+    gpg -v --detach-sign "$backup_file"
+  fi
 else
   echo "$(realpath $0): WARNING. The backup was not encrypted."
 fi
 
+  # show backup stats
+stat "$backup_file"
+
 #
 # store the backup
 #
-if mv -v "$backup_file" "$dump_path"; then
+if mv -v "$backup_file" "$dump_path" && mv -v "$log_file" "$dump_path"; then
   echo "Success."
 else
   echo "FAILURE!"
@@ -68,8 +77,6 @@ fi
 #
 #
 #
-  # show backup stats so we don't restore something absurdly huge
-stat "$backup_file"
 
   # then ask if we want to continue or not
 if confirm "Do you want to attempt to restore?"; then
