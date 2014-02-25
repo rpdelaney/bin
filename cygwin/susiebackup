@@ -1,3 +1,5 @@
+# TODO!! MOVE THE DETATCHED SIGNATURES
+#
 #!/usr/bin/env bash
   # set variables
 pg_dump="/home/Ryan/pgsql/bin/pg_dump.exe"
@@ -69,3 +71,8 @@ if mv -v "$backup_file" "$dump_path" && mv -v "$log_file" "$dump_path"; then
 else
   echo "FAILURE!"
 fi
+
+#
+# pause
+#
+confirm
