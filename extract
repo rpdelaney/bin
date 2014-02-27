@@ -1,10 +1,18 @@
 #!/usr/bin/env bash
+# GNU bash, version 4.2.45(2)-release (x86_64-unknown-linux-gnu)
+#
+# © Copyright 2014 Ryan Delaney. All rights reserved.  This work is
+# distributed WITHOUT ANY WARRANTY whatsoever; without even the implied
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# README file for additional terms and conditions on your use of this
+# software.
 #
 # decompress archives based on mimetype
 #
 # TODO: confirm that all commands extract to a directory named after
 #       the archive
-#
+# TODO: confirm that extraction never over-writes existing files
+
 
   # Validate that we are working with a file
 if [[ ! -f "$1" ]] ; then
@@ -22,12 +30,11 @@ mime=$(file -Lb --mime-type "$1")
 echo "mimetype is: $mime"
 case "${mime#*-}" in
     tar)
-        # TODO: Move this to a second step (for one-pass tar extraction) --R. Delaney 2014-01-29T09:35-0800 OpenGPG: 0D98863B4E1D07B6
         dep="tar"
         cmd=(tar kxfv "$1")
         ;;
     bzip2)
-    dep="bunzip2"
+        dep="bunzip2"
         cmd=(bunzip2 "$1")
         ;;
     tar.bz2)
@@ -55,17 +62,16 @@ case "${mime#*-}" in
         cmd=(unrar x "$1")
         ;;
     gzip)
-        dep="gzip"
-        cmd=(gzip -d --keep "$1")
+        dep="tar"
+        cmd=(tar kxzfv "$1")
         ;;
     application/zip)
-        # Extracts to directory OK
         dep="unzip"
         cmd=(unzip "$1")
         ;;
     Z)
-        dep="gzip"
-        cmd=(gzip -vd --keep "$1")
+        dep="tar"
+        cmd=(tar kxzfv "$1")
         ;;
     7z-compressed)
         dep="7za"
@@ -77,11 +83,21 @@ case "${mime#*-}" in
         ;;
 esac
 
-#Check for missing dependency
+  # Check for missing dependency
 [[ "$dep" ]] && type -P "$dep" > /dev/null || { echo "extract:: Missing dependency for MIME type $mime: $dep"; exit 1; }
 
-#Run the extraction command
+#
+# Do your business
+#
+  # make a folder to extract into
+mkdir "$shortname"
+cd "$shortname"
+cp ../"$filename" .
+  # Run the extraction command
 "${cmd[@]}"
+  # Remove the old file
+rm "$filename"
+cd ..
 
 # Warn me if I deleted the file somehow
 [[ -e "$1" ]] || echo "extract:: WARNING! $1 was removed after extracting."
