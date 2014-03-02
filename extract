@@ -13,6 +13,7 @@
 #       the archive
 # TODO: confirm that extraction never over-writes existing files
 
+# Usage {{{1
 usage() {
 cat <<EOD
 extract
@@ -32,8 +33,7 @@ EOD
 exit 1
 }
 
-#
-# Read in shell arguments
+# Arguments {{{1
 #
 while :
 do
@@ -41,7 +41,7 @@ do
     --help | -\?)
       #  Call your Help() or usage() function here.
       usage
-      exit 0
+      exit 1
       ;;
     -v | --verbose)
       # Each instance of -v adds 1 to verbosity
@@ -50,6 +50,7 @@ do
       ;;
     -n | --dry-run)
       dryrun="1"
+      shift
       ;;
     --) # End of all options
       shift
@@ -66,7 +67,7 @@ do
 done
 
 # Parameters {{{1
-if [[ "$verbose" != "0" ]]; then
+if [[ -n "$verbose" ]]; then
   set -x
 fi
 
@@ -164,6 +165,8 @@ if [[ -z "$dryrun" ]]; then
     # Remove the old file
   rm "$filename"
   cd ..
+else
+  echo "Extraction command was: ${cmd[@]}"
 fi
 
 # Cleanup {{{1
