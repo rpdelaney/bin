@@ -166,7 +166,8 @@ if [[ -z "$dryrun" ]]; then
   rm "$filename"
   cd ..
 else
-  echo "Extraction command was: ${cmd[@]}"
+  [[ -n "$verbose" ]] && echo "Extraction command was: ${cmd[@]}"
+  exit 0
 fi
 
 # Cleanup {{{1
