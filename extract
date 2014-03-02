@@ -13,82 +13,143 @@
 #       the archive
 # TODO: confirm that extraction never over-writes existing files
 
+usage() {
+cat <<EOD
+extract
+© Copyright 2014-03-01 Ryan Delaney. All rights reserved.
+Web site: http://github.com/rpdelaney
 
-  # Validate that we are working with a file
+extract attempts to identify an archived file type and extract it to a
+directory.
+
+Usage: extract [OPTION]
+
+Options
+  -?, --help                  print this help and exit
+  -v, --verbose               increase verbosity
+EOD
+exit 1
+}
+
+#
+# Read in shell arguments
+#
+while :
+do
+  case $1 in
+    --help | -\?)
+      #  Call your Help() or usage() function here.
+      usage
+      exit 0
+      ;;
+    -v | --verbose)
+      # Each instance of -v adds 1 to verbosity
+      verbose=$((verbose+1))
+      shift
+      ;;
+    --) # End of all options
+      shift
+      break
+      ;;
+    -*)
+      echo "WARN: Unknown option (ignored): $1" >&2
+      shift
+      ;;
+    *)  # no more options. Stop while loop
+      break
+      ;;
+  esac
+done
+
+# Parameters {{{1
+if [[ "$verbose" != "0" ]]; then
+  set -x
+fi
+
+# Validate {{{1
+  # that we are working with a file
 if [[ ! -f "$1" ]] ; then
-    echo "extract:: FATAL no such file $1"
+    echo "extract:: FATAL no such file $myfile"
     exit 1
+else
+  myfile="$1"
 fi
 
   # get the filename
-filename="$(basename $1)"   # Full filename
-extension="${filename##*.}" # Outer (last) extension only
-shortname="${filename%.*}"  # Filename without the outer extension
+filename="$(basename $myfile)"  # Full filename
+extension="${filename##*.}"     # Outer (last) extension only
+shortname="${filename%.*}"      # Filename without the outer extension
+
   # get the mime type
-    # this should use xdg-mime query filetype "$1" instead
-mime=$(file -Lb --mime-type "$1")
+    # this should use xdg-mime query filetype "$myfile" instead
+mime=$(file -Lb --mime-type "$myfile")
 echo "mimetype is: $mime"
+
+  # Identify {{{1
 case "${mime#*-}" in
+    text/PGP)
+      dep="gpg"
+      cmd=(gpg --output ${myfile/.gpg/} --decrypt $myfile)
+      ;;
     tar)
-        dep="tar"
-        cmd=(tar kxfv "$1")
-        ;;
+      dep="tar"
+      cmd=(tar kxfv "$myfile")
+      ;;
     bzip2)
-        dep="bunzip2"
-        cmd=(bunzip2 "$1")
-        ;;
+      dep="bunzip2"
+      cmd=(bunzip2 "$myfile")
+      ;;
     tar.bz2)
-        dep="tar"
-        cmd=(tar kxjfv "$1")
-        ;;
+      dep="tar"
+      cmd=(tar kxjfv "$myfile")
+      ;;
     tar.gz)
-        dep="tar"
-        cmd=(tar kxzfv "$1")
-        ;;
+      dep="tar"
+      cmd=(tar kxzfv "$myfile")
+      ;;
     tbz2)
-        dep="tar"
-        cmd=(tar kxjfv "$1")
-        ;;
+      dep="tar"
+      cmd=(tar kxjfv "$myfile")
+      ;;
     tgz)
-        dep="tar"
-        cmd=(tar kxzfv "$1")
-        ;;
+      dep="tar"
+      cmd=(tar kxzfv "$myfile")
+      ;;
     xz)
-        dep="xz"
-        cmd=(xz -dk "$1")
-        ;;
+      dep="xz"
+      cmd=(xz -dk "$myfile")
+      ;;
     rar)
-        dep="unrar"
-        cmd=(unrar x "$1")
-        ;;
+      dep="unrar"
+      cmd=(unrar x "$myfile")
+      ;;
     gzip)
-        dep="tar"
-        cmd=(tar kxzfv "$1")
-        ;;
+      dep="tar"
+      cmd=(tar kxzfv "$myfile")
+      ;;
     application/zip)
-        dep="unzip"
-        cmd=(unzip "$1")
-        ;;
+      dep="unzip"
+      cmd=(unzip "$myfile")
+      ;;
     Z)
-        dep="tar"
-        cmd=(tar kxzfv "$1")
-        ;;
+      dep="tar"
+      cmd=(tar kxzfv "$myfile")
+      ;;
     7z-compressed)
-        dep="7za"
-        cmd=(7za x "$1")
-        ;;
+      dep="7za"
+      cmd=(7za x "$myfile")
+      ;;
     *)
-    echo "extract: unrecognized mimetype $mime"
-        exit 1
-        ;;
+      echo "extract: unrecognized mimetype $mime"
+      exit 1
+      ;;
 esac
 
   # Check for missing dependency
 [[ "$dep" ]] && type -P "$dep" > /dev/null || { echo "extract:: Missing dependency for MIME type $mime: $dep"; exit 1; }
 
-#
-# Do your business
-#
+# Extraction {{{1
+
   # make a folder to extract into
 mkdir "$shortname"
 cd "$shortname"
@@ -99,6 +160,10 @@ cp ../"$filename" .
 rm "$filename"
 cd ..
 
-# Warn me if I deleted the file somehow
-[[ -e "$1" ]] || echo "extract:: WARNING! $1 was removed after extracting."
+# Cleanup {{{1
 
+  # Warn me if I deleted the file somehow
+[[ -e "$myfile" ]] || echo "extract:: WARNING! $1 was removed after extracting."
+
+# Modelines {{{1
+# vim: ft=sh foldmethod=marker
