@@ -27,6 +27,7 @@ Usage: extract [OPTION]
 Options
   -?, --help                  print this help and exit
   -v, --verbose               increase verbosity
+  -n, --dry-run               don't extract: test compatibility
 EOD
 exit 1
 }
@@ -46,6 +47,9 @@ do
       # Each instance of -v adds 1 to verbosity
       verbose=$((verbose+1))
       shift
+      ;;
+    -n | --dry-run)
+      dryrun="1"
       ;;
     --) # End of all options
       shift
@@ -150,15 +154,17 @@ esac
 
 # Extraction {{{1
 
-  # make a folder to extract into
-mkdir "$shortname"
-cd "$shortname"
-cp ../"$filename" .
-  # Run the extraction command
-"${cmd[@]}"
-  # Remove the old file
-rm "$filename"
-cd ..
+if [[ -z "$dryrun" ]]; then
+    # make a folder to extract into
+  mkdir "$shortname"
+  cd "$shortname"
+  cp ../"$filename" .
+    # Run the extraction command
+  "${cmd[@]}"
+    # Remove the old file
+  rm "$filename"
+  cd ..
+fi
 
 # Cleanup {{{1
 
