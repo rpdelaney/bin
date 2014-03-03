@@ -1,7 +1,68 @@
 #!/usr/bin/env bash
 #
+# © Copyright 2014 Ryan Delaney. All rights reserved. This work is
+# distributed WITHOUT ANY WARRANTY whatsoever; without even the implied
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# README file for terms and conditions on your use of this software.
+#
 #augmented cd
 #provides enhanced directory changing behavior
+#
+
+#
+# Usage {{{1
+#
+usage() {
+cat <<EOD
+chdir
+© Copyright 2014 Ryan Delaney. All rights reserved.
+Web site: http://github.com/rpdelaney
+
+chdir provides enhanced directory changing behavior.
+
+Usage: chdir [PATH]
+
+Options
+  -?, --help                  print this help and exit
+  -v, --verbose               increase verbosity
+EOD
+exit 1
+}
+
+#
+# Shell arguments {{{1
+#
+while :
+do
+  case $1 in
+    --help | -\?)
+      #  Call your Help() or usage() function here.
+      usage
+      exit 0
+      ;;
+    -v | --verbose)
+      # Each instance of -v adds 1 to verbosity
+      verbose=$((verbose+1))
+      shift
+      ;;
+    --) # End of all options
+      shift
+      break
+      ;;
+    -*)
+      echo "WARN: Unknown option (ignored): $1" >&2
+      shift
+      ;;
+    *)  # no more options. Stop while loop
+      break
+      ;;
+  esac
+done
+
+
+
+#
+# Do your business
 #
 
 #script=`realpath $0`
@@ -9,21 +70,21 @@
 scriptPath="chdir"
 
 ch() {
-if [[ ! "$1" ]]; then           #if there's no argument
-    new_dir=""                  #stay put
-elif [[ -d "$1" ]]; then        #if the argument is an existing directory, then
-    new_dir="$1"                #set new_dir to that path
-elif [[ -d ".$1" ]]; then       #if the a hidden directory matches the argument, then
-    new_dir=".$1"               #set new_dir to the hidden path
-elif [[ "$1" == '-' ]]; then    #if we passed '-' as the argument, then
-    new_dir="-"                 #act like cd
+if [[ ! "$1" ]]; then           # if there's no argument
+    new_dir=""                  # stay put
+elif [[ -d "$1" ]]; then        # if the argument is an existing directory, then
+    new_dir="$1"                # set new_dir to that path
+elif [[ -d ".$1" ]]; then       # if the a hidden directory matches the argument, then
+    new_dir=".$1"               # set new_dir to the hidden path
+elif [[ "$1" == '-' ]]; then    # if we passed '-' as the argument, then
+    new_dir="-"                 # act like cd
 else
-	error_msg="directory \`$red$bold$1$reset' not found."    #say we cant find it
+    error_msg="directory \`$red$bold$1$reset' not found."    #say we cant find it
 fi
 
-if [[ -n "$error_msg" ]]; then                  #if there was an error message, then
-    echo "$scriptPath: $error_msg" 1>&2  #tell me what it was
-    unset error_msg           	                #and unset this for no reason :V
+if [[ -n "$error_msg" ]]; then                  # if there was an error message, then
+    echo "$scriptPath: $error_msg" 1>&2         # tell me what it was
+    unset error_msg                             # and unset this for no reason :V
 else
     builtin cd "$new_dir"
     timeout 1 ls --color=auto --format=across --group-directories-first || echo "$scriptPath: Timeout listing directory contents."
