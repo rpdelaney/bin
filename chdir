@@ -31,6 +31,7 @@ Usage: chdir [PATH]
 Options
   -?, --help                  print this help and return
   -v, --verbose               increase verbosity
+  -u, --up=N                  move up N directories
 EOD
 return 1
 }
@@ -41,13 +42,16 @@ while :
 do
   case $1 in
     --help | -\?)
-      #  Call your Help() or usage() function here.
       usage
       return 0
       ;;
     -v | --verbose)
       # Each instance of -v adds 1 to verbosity
-      verbose=$((verbose+1))
+      local verbose=$((verbose+1))
+      shift
+      ;;
+    -u | --up=) # move up n directories
+      local moveup="$2"
       shift
       ;;
     --) # End of all options
@@ -66,6 +70,8 @@ done
 
 # Action {{{1
 
+  # If -u argument was passed, move up N directories.
+if [[ -z "$moveup" ]]; then
   if [[ ! "$1" ]]; then           # if there's no argument
       new_dir=""                  # stay put
   elif [[ -d "$1" ]]; then        # if the argument is an existing directory, then
@@ -77,14 +83,20 @@ done
   else
       error_msg="directory \`$red$bold$1$reset' not found."    #say we cant find it
   fi
+else
+  for i in seq 1 "$moveup"; do
+    cd ..
+  done
+fi
 
-  if [[ -n "$error_msg" ]]; then                  # if there was an error message, then
-      echo "chdir: $error_msg" 1>&2               # tell me what it was
-      unset error_msg                             # and unset this for no reason :V
-  else
-      builtin cd "$new_dir"
-      timeout 1 ls --color=auto --format=across --group-directories-first || echo "$scriptPath: Timeout listing directory contents."
-  fi
+
+if [[ -n "$error_msg" ]]; then                  # if there was an error message, then
+    echo "chdir: $error_msg" 1>&2               # tell me what it was
+    unset error_msg                             # and unset this for no reason :V
+else
+    builtin cd "$new_dir"
+    timeout 1 ls --color=auto --format=across --group-directories-first || echo "$scriptPath: Timeout listing directory contents."
+fi
 }
 
 # Modelines {{{1
