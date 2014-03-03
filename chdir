@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
+# GNU bash, version 4.2.45(2)-release (x86_64-unknown-linux-gnu)
 #
 # © Copyright 2014 Ryan Delaney. All rights reserved. This work is
 # distributed WITHOUT ANY WARRANTY whatsoever; without even the implied
 # warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 # README file for terms and conditions on your use of this software.
-#
-#augmented cd
-#provides enhanced directory changing behavior
 #
 
 #
@@ -59,10 +57,7 @@ do
   esac
 done
 
-
-
-#
-# Do your business
+# Action {{{1
 #
 
 #script=`realpath $0`
@@ -91,3 +86,7 @@ else
 fi
 
 }
+
+# Modelines {{{1
+#
+# vim: ft=sh foldmethod=marker
