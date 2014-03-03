@@ -10,7 +10,7 @@
 # Validation {{{0
 # Check that the function does not exist
 if type ch &> /dev/null; then
-  echo 'FATAL: function ch() is defined. Unset it with `unset ch`.'
+  echo 'FATAL: function ch() is defined. Unset it with `unset ch`.' >&2
   return 1
 fi
 
