@@ -12,8 +12,6 @@
 if type ch &> /dev/null; then
   echo 'FATAL: function ch() is defined. Unset it with `unset ch`.'
   return 1
-else
-  echo "ch() has been defined."
 fi
 
 # Function {{{0
