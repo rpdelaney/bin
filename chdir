@@ -7,6 +7,15 @@
 # README file for terms and conditions on your use of this software.
 #
 
+# Validation {{{0
+# Check that the function does not exist
+if type ch &> /dev/null; then
+  echo 'FATAL: function ch() is defined. Unset it with `unset ch`.'
+  return 1
+else
+  echo "ch() has been defined."
+fi
+
 # Function {{{0
 ch() {
 # Usage {{{1
@@ -22,10 +31,10 @@ ch provides enhanced directory changing behavior.
 Usage: chdir [PATH]
 
 Options
-  -?, --help                  print this help and exit
+  -?, --help                  print this help and return
   -v, --verbose               increase verbosity
 EOD
-exit 1
+return 1
 }
 
 # Parameters {{{1
@@ -36,7 +45,7 @@ do
     --help | -\?)
       #  Call your Help() or usage() function here.
       usage
-      exit 0
+      return 0
       ;;
     -v | --verbose)
       # Each instance of -v adds 1 to verbosity
