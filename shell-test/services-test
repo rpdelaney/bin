@@ -60,30 +60,41 @@ done
 # Functions
 #
 sysctlstatus() { systemctl status "$1" > /dev/null ; }
-sendout() { if [[ $verbose == "1" ]]; then echo "$1"; fi; }
+testresult() { 
+  if [[ $verbose == "1" ]]; then echo "$1"; fi
+  case testresult in
+    OK) 
+      exitcode="0"
+      ;;
+    FAIL) 
+      exitcode=$exitcode+1
+    ;;
+  esac
+}
 
 #
 # Tests
 #
   # Test tor
-sendout "Tor:"
-if sysctlstatus tor; then sendout "OK."; else sendout "FAIL!"; fi
+testresult "Tor:"
+if sysctlstatus tor; then testresult "OK"; else testresult "FAIL"; fi
   # Test dhcpcd
-sendout "dhcpcd:"
-if sysctlstatus dhcpcd; then sendout "OK."; else sendout "FAIL!"; fi
+testresult "dhcpcd:"
+if sysctlstatus dhcpcd; then testresult "OK"; else testresult "FAIL"; fi
   # Test CUPS
-sendout "CUPS:"
-if sysctlstatus cups; then sendout "OK."; else sendout "FAIL!"; fi
+testresult "CUPS:"
+if sysctlstatus cups; then testresult "OK"; else testresult "FAIL"; fi
   # Test postgresql
-sendout "postgresql:"
-if sysctlstatus postgres; then sendout "OK."; else sendout "FAIL!"; fi
+testresult "postgresql:"
+if sysctlstatus postgres; then testresult "OK"; else testresult "FAIL"; fi
   # Test dbus
-sendout "dbus:"
-if sysctlstatus dbus; then sendout "OK."; else sendout "FAIL!"; fi
+testresult "dbus:"
+if sysctlstatus dbus; then testresult "OK"; else testresult "FAIL"; fi
   # Test cron
-sendout "cron:"
-if sysctlstatus cronie; then sendout "OK."; else sendout "FAIL!"; fi
+testresult "cron:"
+if sysctlstatus cronie; then testresult "OK"; else testresult "FAIL"; fi
   # Test Mozilla sync server
-sendout "Mozilla Sync:"
-if sysctlstatus ffsync; then sendout "OK."; else sendout "FAIL!"; fi
+testresult "Mozilla Sync:"
+if sysctlstatus ffsync; then testresult "OK"; else testresult "FAIL"; fi
 
+exit $exitcode
