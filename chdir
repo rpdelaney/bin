@@ -1,32 +1,104 @@
 #!/usr/bin/env bash
+# GNU bash, version 4.2.45(2)-release (x86_64-unknown-linux-gnu)
 #
-#augmented cd
-#provides enhanced directory changing behavior
+# © Copyright 2014 Ryan Delaney. All rights reserved. This work is
+# distributed WITHOUT ANY WARRANTY whatsoever; without even the implied
+# warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# README file for terms and conditions on your use of this software.
 #
 
-#script=`realpath $0`
-#scriptPath=`dirname $script`
-scriptPath="chdir"
-
-ch() {
-if [[ ! "$1" ]]; then           #if there's no argument
-    new_dir=""                  #stay put
-elif [[ -d "$1" ]]; then        #if the argument is an existing directory, then
-    new_dir="$1"                #set new_dir to that path
-elif [[ -d ".$1" ]]; then       #if the a hidden directory matches the argument, then
-    new_dir=".$1"               #set new_dir to the hidden path
-elif [[ "$1" == '-' ]]; then    #if we passed '-' as the argument, then
-    new_dir="-"                 #act like cd
-else
-	error_msg="directory \`$red$bold$1$reset' not found."    #say we cant find it
+# Validation {{{0
+# Check that the function does not exist
+if type ch &> /dev/null; then
+  echo 'FATAL: function ch() is defined. Unset it with `unset ch`.' >&2
+  return 1
 fi
 
-if [[ -n "$error_msg" ]]; then                  #if there was an error message, then
-    echo "$scriptPath: $error_msg" 1>&2  #tell me what it was
-    unset error_msg           	                #and unset this for no reason :V
+# Function {{{0
+ch() {
+# Usage {{{1
+#
+usage() {
+cat <<EOD
+ch
+© Copyright 2014 Ryan Delaney. All rights reserved.
+Web site: http://github.com/rpdelaney
+
+ch provides enhanced directory changing behavior.
+
+Usage: chdir [PATH]
+
+Options
+  -?, --help                  print this help and return
+  -v, --verbose               increase verbosity
+  -u, --up=N                  move up N directories
+EOD
+return 1
+}
+
+# Parameters {{{1
+#
+while :
+do
+  case $1 in
+    --help | -\?)
+      usage
+      return 0
+      ;;
+    -v | --verbose)
+      # Each instance of -v adds 1 to verbosity
+      local verbose=$((verbose+1))
+      shift
+      ;;
+    -u | --up=) # move up n directories
+      local moveup="$2"
+      shift
+      ;;
+    --) # End of all options
+      shift
+      break
+      ;;
+    -*)
+      echo "WARN: Unknown option (ignored): $1" >&2
+      shift
+      ;;
+    *)  # no more options. Stop while loop
+      break
+      ;;
+  esac
+done
+
+# Action {{{1
+
+  # If -u argument was passed, move up N directories.
+if [[ -z "$moveup" ]]; then
+  if [[ ! "$1" ]]; then           # if there's no argument
+      new_dir=""                  # stay put
+  elif [[ -d "$1" ]]; then        # if the argument is an existing directory, then
+      new_dir="$1"                # set new_dir to that path
+  elif [[ -d ".$1" ]]; then       # if the a hidden directory matches the argument, then
+      new_dir=".$1"               # set new_dir to the hidden path
+  elif [[ "$1" == '-' ]]; then    # if we passed '-' as the argument, then
+      new_dir="-"                 # act like cd
+  else
+      error_msg="directory \`$red$bold$1$reset' not found."    #say we cant find it
+  fi
+else
+  for i in seq 1 "$moveup"; do
+    cd ..
+  done
+fi
+
+
+if [[ -n "$error_msg" ]]; then                  # if there was an error message, then
+    echo "chdir: $error_msg" 1>&2               # tell me what it was
+    unset error_msg                             # and unset this for no reason :V
 else
     builtin cd "$new_dir"
     timeout 1 ls --color=auto --format=across --group-directories-first || echo "$scriptPath: Timeout listing directory contents."
 fi
-
 }
+
+# Modelines {{{1
+#
+# vim: ft=sh foldmethod=marker foldlevel=0

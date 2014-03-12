@@ -1,10 +1,89 @@
 #!/usr/bin/env bash
+# GNU bash, version 4.2.45(2)-release (x86_64-unknown-linux-gnu)
 #
-# don't type passwords a bunch of times. we are lazy.
+# © Copyright 2014-02-12 Ryan Delaney. All rights reserved.
+# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the README file for additional terms and conditions on your use of this
+# software.
+#
+# don't type passwords a bunch of times when using git as a glorified backup tool.
+# we are lazy.
 #
 
-message="$(curl -s http://whatthecommit.com/index.txt)"
-if [[ "$message" == "" ]]; then message="this update is unusually unfunny"; fi
+usage() {
+cat <<EOD
+update-git
+© Copyright 2014 Ryan Delaney. All rights reserved.
+Web site: http://github.com/rpdelaney
+
+update-git updates local github repositories in an automated and rather messy way.
+
+Usage: update-git [OPTION]
+
+Options
+  -?, --help                  print this help and exit
+  -v, --verbose               increase verbosity
+  -y, --assume-yes            don't ask for user input: make something up
+EOD
+exit 1
+}
+
+#
+# Read in shell arguments
+#
+while :
+do
+  case $1 in
+    --help | -\?)
+      #  Call your Help() or usage() function here.
+      usage
+      exit 0
+      ;;
+    -v | --verbose)
+      # Each instance of -v adds 1 to verbosity
+      verbose=$((verbose+1))
+      shift
+      ;;
+    -m | --message)
+      # Use a ridiculous commit message
+      whatthecommit="1"
+      shift
+      ;;
+    --)
+      # End of all options
+      shift
+      break
+      ;;
+    -*)
+      echo "WARN: Unknown option (ignored): $1" >&2
+      shift
+      ;;
+    *)  # no more options. Stop while loop
+      break
+      ;;
+  esac
+done
+
+
+#
+# Read in parameters
+#
+if [[ $verbose != "0" ]]; then set -x; fi
+
+#
+# Do your business
+#
+if [[ "$whatthecommit" = "1" ]]; then
+  message="$(timeout --foreground 2s curl -s http://whatthecommit.com/index.txt)"
+  if [[ "$message" == "" ]]; then message="this update is unusually unfunny"; fi
+else
+  message="$@"
+  if [[ "$message" == "" ]]; then echo "IDIOT: Give me a commit message or use -m to have it auto-filled."; exit 1; fi
+fi
+
+echo "$message"
+exit 0
 
     # if there's a keychain, then double-check that it has been run on the current env
 [[ $(type keychain 2> /dev/null) ]] && keychain -q
@@ -20,9 +99,7 @@ if [[ $(ssh-add -L) == "The agent has no identities." ]]; then
 fi
 
     # now that we have ssh kanged up, upload our crap
-git add . -A
+if ! git add . -A; then echo 'FATAL: Git add failed. WTF have you done?'; exit 1; fi
 git status
 confirm || exit 1
-git commit -m "$message"
-git pull
-git push
+git commit -m "$message" && git pull && git push
