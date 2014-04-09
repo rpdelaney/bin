@@ -60,13 +60,14 @@ done
 # Functions
 #
 sysctlstatus() { systemctl status "$1" > /dev/null ; }
-testresult() { 
+
+testresult() {
   if [[ $verbose == "1" ]]; then echo "$1"; fi
   case testresult in
-    OK) 
+    OK)
       exitcode="0"
       ;;
-    FAIL) 
+    FAIL)
       exitcode=$exitcode+1
     ;;
   esac
@@ -96,5 +97,8 @@ if sysctlstatus cronie; then testresult "OK"; else testresult "FAIL"; fi
   # Test Mozilla sync server
 testresult "Mozilla Sync:"
 if sysctlstatus ffsync; then testresult "OK"; else testresult "FAIL"; fi
+  # Test dnsmasq
+testresult "dnsmasq:"
+if sysctlstatus dnsmasq; then testresult "OK"; else testresult "FAIL"; fi
 
 exit $exitcode
