@@ -63,15 +63,21 @@ longping()  { ping "$1" -q -c 3 -W 1.0 -i 0.5 -l 3 > /dev/null ; }
   # Check that dhcpcd is working and internet is up
 sendout "localhost:"
 if shortping localhost; then sendout "OK."; else sendout "FAIL!"; fi
+
   # Check that we can ping the gateway
 sendout "gatekeeper:"
 if shortping gatekeeper; then sendout "OK."; else sendout "FAIL!"; fi
+  # TODO: Check that the gateway has been rebooted within 48 hours (172800 seconds)
+  # $(ssh gatekeeper cat /proc/uptime | cut [everything after the first number] ) < 172800
+
   # Check that we can ping the printer/scanner
 sendout "epson:"
 if shortping epson; then sendout "OK."; else sendout "FAIL!"; fi
+
   # Check that we can ping google
 sendout "google:"
 if shortping google.com; then sendout "OK."; else sendout "FAIL!"; fi
+
   # Check tor connections
 sendout "tor:"
 if curl -s --socks5-hostname localhost:9050 ifconfig.me &> /dev/null; then sendout "OK."; else sendout "FAIL!"; fi
