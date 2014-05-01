@@ -12,6 +12,7 @@
 # TODO: confirm that all commands extract to a directory named after
 #       the archive
 # TODO: confirm that extraction never over-writes existing files
+# TODO: Can we use trap to run the command after shell exit?
 
 # Usage {{{1
 usage() {
@@ -91,6 +92,13 @@ mime=$(file -Lb --mime-type "$myfile")
 echo "mimetype is: $mime"
 
   # Identify {{{1
+case "$extension" in
+  vpk)
+    dep="vpk"
+    cmd=(vpk "$myfile")
+    ;;
+esac
+
 case "${mime#*-}" in
     text/PGP)
       dep="gpg"
@@ -145,10 +153,13 @@ case "${mime#*-}" in
       cmd=(7za x "$myfile")
       ;;
     *)
-      echo "extract: unrecognized mimetype $mime"
-      exit 1
       ;;
 esac
+
+if [[ -z "$dep" ]]; then
+  echo "extract: unrecognized mimetype $mime"
+  exit 1
+fi
 
   # Check for missing dependency
 [[ "$dep" ]] && type -P "$dep" > /dev/null || { echo "extract:: Missing dependency for MIME type $mime: $dep"; exit 1; }
