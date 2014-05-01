@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # bak -- backups files
 # Copyright (C) 2010-2012  Alan SCHNEIDER
@@ -24,7 +24,7 @@
 [ ! -e "$1" ] && echo "bak: $1: permission denied" >&2 && exit 1
 [ ! -w "`dirname "$1"`" ] && echo "bak: `dirname "$1"`: Permission denied" >&2 && exit 1
 
-for argv in $@ ; do
+for argv in "$@" ; do
     file=$(readlink -f "$argv")
     backup_file="$file.bak""`date +%Y%m%d-%H%m%S`"
     echo "`basename "$file"` -> `basename "$backup_file"`"
