@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+# GNU bash, version 4.3.11(1)-release (x86_64-unknown-linux-gnu)
+#
+# © Copyright 2014 Ryan Delaney. All rights reserved.
+# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the README file for additional terms and conditions on your use of this
+# software.
+#
+
+# Functions {{{1
+verbose() {
+  if [[ "$verbose" = "1" ]]; then
+    echo "$1" >&2
+  fi
+}
+
+error () {
+  echo "$1" >&2
+}
+# }}}
+# Usage {{{1
+#
+usage() {
+cat <<EOD
+countlines
+© Copyright 2014 Ryan Delaney. All rights reserved.
+Web site: http://github.com/rpdelaney
+
+countlines reads from standard input and returns a running tally of counted
+lines.
+
+Usage: countlines [OPTION]
+
+Options
+  -?, --help                  print this help and exit
+  -v, --verbose               increase verbosity
+EOD
+exit 1
+}
+# }}}
+# Exception handling {{{1
+# Always print a newline after exiting
+trap 'echo -ne "\n"' INT QUIT TERM EXIT 0 1 2 3 6 9 14 15
+# }}}
+
+# Business {{{1
+lines="0"
+while read line; do
+  ((lines++))
+  echo -ne "Read $lines lines\r"
+done
+
+# }}}
+
+# vim: ft=sh foldmethod=marker
