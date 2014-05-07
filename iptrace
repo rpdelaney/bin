@@ -1,0 +1,89 @@
+#!/usr/bin/env bash
+# GNU bash, version 4.3.11(1)-release (x86_64-unknown-linux-gnu)
+#
+# © Copyright 2014 Ryan Delaney
+# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the README file for additional terms and conditions on your use of this
+# software.
+#
+# TODO: Reduce streaming complexity (eliminate unnecessarily complex chained pipes)
+
+# Functions {{{1
+verbose() {
+  if [[ "$verbose" = "1" ]]; then
+    echo "$1" >&2
+  fi
+}
+
+error () {
+  echo "$1" >&2
+}
+# }}}
+# Usage {{{1
+#
+usage() {
+cat <<EOD
+iptrace
+© Copyright 2014 Ryan Delaney
+Web site: http://github.com/rpdelaney
+
+iptrace prints a traceroute and geolocation of an internet address
+
+Usage: iptrace [OPTION] [TARGET]
+
+Options
+  -?, --help                  print this help and exit
+  -v, --verbose               increase verbosity
+EOD
+exit 1
+}
+# }}}
+# Parameters {{{1
+#
+while :
+do
+  case $1 in
+    --help | -\?)
+      usage
+      exit 0
+      ;;
+    -v | --verbose)
+      # Each instance of -v adds 1 to verbosity
+      local verbose=$((verbose+1))
+      shift
+      ;;
+    --) # End of all options
+      shift
+      break
+      ;;
+    -*)
+      echo "FATAL: Unknown option : $1" >&2
+      exit 1
+      shift
+      ;;
+    *)  # no more options. Stop while loop
+      break
+      ;;
+  esac
+done
+
+target="$1"
+# }}}
+# Dependencies {{{
+if ! type mtr &> /dev/null; then echo "ERROR: Missing dependency: mtr" 1>&2; exit 1; fi
+if ! type lynx &> /dev/null; then echo "ERROR: Missing dependency: lynx" 1>&2; exit 1; fi
+if ! type grep &> /dev/null; then echo "ERROR: Missing dependency: grep" 1>&2; exit 1; fi
+if ! type sed &> /dev/null; then echo "ERROR: Missing dependency: sed" 1>&2; exit 1; fi
+# }}}
+# Work {{{
+if mtr -o RSDA -r -c 1 -b "$target"; then
+  lynx -dump http://www.ip-adress.com/ip_tracer/?QRY=$1 | \
+  grep address --color=never | \
+  grep -P --color=never 'city|state|country' | \
+  awk '{print $3,$4,$5,$6,$7,$8}' | \
+  sed -r 's@ip\saddress\sflag\s@@g' | \
+  sed 's@My@@'
+fi
+# }}}
+# vim: ft=sh foldmethod=marker:
