@@ -1,9 +1,7 @@
-© Copyright 2013 Ryan Delaney. All rights reserved. This work is
-distributed WITHOUT ANY WARRANTY whatsoever; without even the implied
-warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-
 LICENSE
 =======
+© Copyright 2013-2014 Ryan Delaney.
+
 This program is free software: you can redistribute it and/or modify it
 under the terms of the GNU General Public License as published by the
 Free Software Foundation, either version 3 of the License, or (at your
@@ -44,8 +42,6 @@ courts shall apply local law that most closely approximates an absolute
 waiver of all civil liability in connection with the Program, unless a
 warranty or assumption of liability accompanies a copy of the Program in
 return for a fee.
-
-END OF TERMS AND CONDITIONS
 
 <!-- 
 vim: ft=markdown wrapmargin=79 
