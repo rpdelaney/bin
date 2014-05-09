@@ -23,30 +23,16 @@ shopt -s extglob;
 while IFS= read -rd '' file_full_path; do
 
     [[ "$DEBUG" ]] && printf "Step -0: %s\n" "$file_full_path"
-    filename="${file_full_path##*/}"                   # fill $filename from parsed $file_full_path
-
-    filename="${filename//'!'/#}"                      # substitute '!' with '#'
-
-    [[ "$DEBUG" ]] && printf "Step 1: %s\n" "$filename"
-    filename="${filename//+( )/.}"                     # substitute ' ' with '.' in $filename
-
-    [[ "$DEBUG" ]] && printf "Step 2: %s\n" "$filename"
-    filename="${filename//.-./..}"                     # substitute '.-.' with '..' in $filename
-
-    [[ "$DEBUG" ]] && printf "Step 3: %s\n" "$filename"
-    filename="${filename//\(/_}"                       # substitute '(' with '_'
-
-    [[ "$DEBUG" ]] && printf "Step 4: %s\n" "$filename"
-    filename="${filename//\)/_}"                       # substitute ')' with '_'
-
-    [[ "$DEBUG" ]] && printf "Step 5: %s\n" "$filename"
-    filename="${filename//;/_}"                        # substitute ';' with '_'
-
-    [[ "$DEBUG" ]] && printf "Step 6: %s\n" "$filename"
+    filename="${file_full_path##*/}"                    # fill $filename from parsed $file_full_path
+    filename="${filename//'!'/#}"                       # substitute '!' with '#'
+    filename="${filename//+( )/.}"                      # substitute ' ' with '.' in $filename
+    filename="${filename//.-./..}"                      # substitute '.-.' with '..' in $filename
+    filename="${filename//\(/_}"                        # substitute '(' with '_'
+    filename="${filename//\)/_}"                        # substitute ')' with '_'
+    filename="${filename//;/_}"                         # substitute ';' with '_'
     filename="${filename//\[/_}"                        # substitute '[' with '_'
-
-    [[ "$DEBUG" ]] && printf "Step 7: %s\n" "$filename"
     filename="${filename//\]/_}"                        # substitute '[' with '_'
+    filename="${filename//&/and}"                       # substitute '&' with 'and'
 
     #printf "New name: %s\n" "$filename"
 
@@ -55,3 +41,288 @@ while IFS= read -rd '' file_full_path; do
 done < <(find . -depth \( -type d -o -type f \) \( -name "* *" -o -name "*_*" -o -name '*.-.*' -o -name "*;*" \) -print0);
 
 find . -depth \( -type d -o -type f \) \( -name "* *" -o -name '*.-.*' \) -print0;
+
+exit 0
+
+# vim: ft=sh foldmethod=marker
+
+Character   ##    HTML Name      ##      HTML Code
+            ##                   ##      &amp;#32;
+!           ##                   ##      &amp;#33;
+â   ##    &amp;quot;     ##      &amp;#34;
+#           ##                   ##      &amp;#35;
+$           ##                   ##      &amp;#36;
+%           ##                   ##      &amp;#37;
+&amp;       ##    &amp;amp;      ##      &amp;#38;
+'           ##                   ##      &amp;#39;
+(           ##                   ##      &amp;#40;
+)           ##                   ##      &amp;#41;
+*           ##                   ##      &amp;#42;
++           ##                   ##      &amp;#43;
+&#44;       ##                   ##      &amp;#44;
+-           ##                   ##      &amp;#45;
+.           ##    </td>          ##      </td> &amp;#46;
+/           ##                   ##      &amp;#47;
+0           ##                   ##      &amp;#48;
+1           ##                   ##      &amp;#49;
+2           ##                   ##      &amp;#50;
+3           ##                   ##      &amp;#51;
+4           ##                   ##      &amp;#52;
+5           ##                   ##      &amp;#53;
+6           ##                   ##      &amp;#54;
+7           ##                   ##      &amp;#55;
+8           ##                   ##      &amp;#56;
+9           ##                   ##      &amp;#57;
+:           ##                   ##      &amp;#58;
+;           ##                   ##      &amp;#59;
+&lt;        ##    &amp;lt;       ##      &amp;#60;
+=           ##                   ##      &amp;#61;
+&gt;        ##    &amp;gt;       ##      &amp;#62;
+?           ##                   ##      &amp;#63;
+@           ##                   ##      &amp;#64;
+[           ##                   ##      &amp;#91;
+\           ##                   ##      &amp;#92;
+]           ##                   ##      &amp;#93;
+^           ##    </td>          ##      </td> &amp;#94;
+_           ##                   ##      &amp;#95;
+`           ##                   ##      &amp;#96;
+{           ##                   ##      &amp;#123;
+|           ##   al bar </td>    ##            </td> &amp;#124;
+}           ##                   ##      &amp;#125;
+~           ##    </td>          ##      </td> &amp;#126;
+Å       ##    &amp;OElig;    ##      &amp;#338;
+Å       ##    &amp;oelig;    ##      &amp;#339;
+Å           ##    &amp;Scaron;   ##      &amp;#352;
+Å¡          ##    &amp;scaron;   ##      &amp;#353;
+Å¸          ##    &amp;Yuml;     ##      &amp;#376;
+Æ       ##    &amp;fnof;     ##      &amp;#402;
+Ë       ##    &amp;circ;     ##      &amp;#710;
+Ë       ##    &amp;tilde;    ##      &amp;#732;
+â   ##    &amp;ensp;     ##      &amp;#8194;
+â   ##    &amp;emsp;     ##      &amp;#8195;
+â   ##    &amp;thinsp;   ##      &amp;#8201;
+â   ##    &amp;zwnj;     ##      &amp;#8204;
+â   ##    &amp;zwj;      ##      &amp;#8205;
+â   ##    &amp;lrm;      ##      &amp;#8206;
+â   ##    &amp;rlm;      ##      &amp;#8207;
+â   ##    &amp;ndash;    ##      &amp;#8211;
+â   ##    &amp;mdash;    ##      &amp;#8212;
+â   ##    &amp;lsquo;    ##      &amp;#8216;
+â   ##    &amp;rsquo;    ##      &amp;#8217;
+â   ##    &amp;sbquo;    ##      &amp;#8218;
+â   ##    &amp;ldquo;    ##      &amp;#8220;
+â   ##    &amp;rdquo;    ##      &amp;#8221;
+â   ##    &amp;bdquo;    ##      &amp;#8222;
+â       ##    &amp;dagger;   ##      &amp;#8224;
+â¡      ##    &amp;Dagger;   ##      &amp;#8225;
+â¢      ##    &amp;bull;     ##      &amp;#8226;
+â¦      ##    &amp;hellip;   ##      &amp;#8230;
+â°      ##    &amp;permil;   ##      &amp;#8240;
+â²      ##    &amp;prime;    ##      &amp;#8242;
+â³      ##    &amp;Prime;    ##      &amp;#8243;
+â¹      ##    &amp;lsaquo;   ##      &amp;#8249;
+âº      ##    &amp;rsaquo;   ##      &amp;#8250;
+â¾      ##    &amp;oline;    ##      &amp;#8254;
+â¬      ##    &amp;euro;     ##      &amp;#8364;
+â¢      ##    &amp;trade;    ##      &amp;#8482; or &amp;#153;
+â   ##    &amp;larr;     ##      &amp;#8592;
+â   ##    &amp;uarr;     ##      &amp;#8593;
+â   ##    &amp;rarr;     ##      &amp;#8594;
+â   ##    &amp;darr;     ##      &amp;#8595;
+â   ##    &amp;harr;     ##      &amp;#8596;
+âµ      ##    &amp;crarr;    ##      &amp;#8629;
+â   ##    &amp;lceil;    ##      &amp;#8968;
+â   ##    &amp;rceil;    ##      &amp;#8969;
+â   ##    &amp;lfloor;   ##      &amp;#8970;
+â   ##    &amp;rfloor;   ##      &amp;#8971;
+â   ##    &amp;loz;      ##      &amp;#9674;
+â       ##    &amp;spades;   ##      &amp;#9824;
+â£      ##    &amp;clubs;    ##      &amp;#9827;
+â¥      ##    &amp;hearts;   ##      &amp;#9829;
+â¦      ##    &amp;diams;    ##      &amp;#9830;
+            ##    &amp;nbsp;     ##      &amp;#160;
+Â¡          ##    &amp;iexcl;    ##      &amp;#161;
+Â¢          ##    &amp;cent;     ##      &amp;#162;
+Â£          ##    &amp;pound;    ##      &amp;#163;
+Â¤          ##    &amp;curren;   ##      &amp;#164;
+Â¥          ##    &amp;yen;      ##      &amp;#165;
+Â¦          ##    &amp;brvbar;   ##      &amp;#166;
+section     ##    &amp;#167;
+Â¨          ##    &amp;uml;      ##      &amp;#168;
+Â©          ##    &amp;copy;     ##      &amp;#169;
+Âª          ##    &amp;ordf;     ##      &amp;#170;
+Â«          ##    &amp;laquo;    ##      &amp;#171;
+Â¬          ##    &amp;not;      ##      &amp;#172;
+            ##    &amp;shy;      ##      &amp;#173;
+Â®          ##    &amp;reg;      ##      &amp;#174;
+Â¯          ##    &amp;macr;     ##      &amp;#175;
+Â°          ##    &amp;deg;      ##      &amp;#176;
+Â±          ##    &amp;plusmn;   ##      &amp;#177;
+Â²          ##    &amp;sup2;     ##      &amp;#178;
+Â³          ##    &amp;sup3;     ##      &amp;#179;
+Â´          ##    &amp;acute;    ##      &amp;#180;
+Âµ          ##    &amp;micro;    ##      &amp;#181;
+Â¶          ##    &amp;para;     ##      &amp;#182;
+Â·          ##    &amp;middot;   ##      &amp;#183;
+Â¸          ##    &amp;cedil;    ##      &amp;#184;
+Â¹          ##    &amp;sup1;     ##      &amp;#185;
+Âº          ##    &amp;ordm;     ##      &amp;#186;
+Â»          ##    &amp;raquo;    ##      &amp;#187;
+Â¼          ##    &amp;frac14;   ##      &amp;#188;
+Â½          ##    &amp;frac12;   ##      &amp;#189;
+Â¾          ##    &amp;frac34;   ##      &amp;#190;
+Â¿          ##    &amp;iquest;   ##      &amp;#191;
+Ã       ##    &amp;times;    ##      &amp;#215;
+Ã·          ##    &amp;divide;   ##      &amp;#247;
+Ã       ##    &amp;Agrave;   ##      &amp;#192;
+Ã       ##    &amp;Aacute;   ##      &amp;#193;
+Ã       ##    &amp;Acirc;    ##      &amp;#194;
+Ã       ##    &amp;Atilde;   ##      &amp;#195;
+Ã       ##    &amp;Auml;     ##      &amp;#196;
+Ã       ##    &amp;Aring;    ##      &amp;#197;
+Ã       ##    &amp;AElig;    ##      &amp;#198;
+Ã       ##    &amp;Ccedil;   ##      &amp;#199;
+Ã       ##    &amp;Egrave;   ##      &amp;#200;
+Ã       ##    &amp;Eacute;   ##      &amp;#201;
+Ã       ##    &amp;Ecirc;    ##      &amp;#202;
+Ã       ##    &amp;Euml;     ##      &amp;#203;
+Ã       ##    &amp;Igrave;   ##      &amp;#204;
+Ã       ##    &amp;Iacute;   ##      &amp;#205;
+Ã       ##    &amp;Icirc;    ##      &amp;#206;
+Ã       ##    &amp;Iuml;     ##      &amp;#207;
+Ã       ##    &amp;ETH;      ##      &amp;#208;
+Ã       ##    &amp;Ntilde;   ##      &amp;#209;
+Ã       ##    &amp;Ograve;   ##      &amp;#210;
+Ã       ##    &amp;Oacute;   ##      &amp;#211;
+Ã       ##    &amp;Ocirc;    ##      &amp;#212;
+Ã       ##    &amp;Otilde;   ##      &amp;#213;
+Ã       ##    &amp;Ouml;     ##      &amp;#214;
+Ã       ##    &amp;Oslash;   ##      &amp;#216;
+Ã       ##    &amp;Ugrave;   ##      &amp;#217;
+Ã       ##    &amp;Uacute;   ##      &amp;#218;
+Ã       ##    &amp;Ucirc;    ##      &amp;#219;
+Ã       ##    &amp;Uuml;     ##      &amp;#220;
+Ã       ##    &amp;Yacute;   ##      &amp;#221;
+Ã       ##    &amp;THORN;    ##      &amp;#222;
+Ã       ##    &amp;szlig;    ##      &amp;#223;
+Ã           ##    &amp;agrave;   ##      &amp;#224;
+Ã¡          ##    &amp;aacute;   ##      &amp;#225;
+Ã¢          ##    &amp;acirc;    ##      &amp;#226;
+Ã£          ##    &amp;atilde;   ##      &amp;#227;
+Ã¤          ##    &amp;auml;     ##      &amp;#228;
+Ã¥          ##    &amp;aring;    ##      &amp;#229;
+Ã¦          ##    &amp;aelig;    ##      &amp;#230;
+Ã§          ##    &amp;ccedil;   ##      &amp;#231;
+Ã¨          ##    &amp;egrave;   ##      &amp;#232;
+Ã©          ##    &amp;eacute;   ##      &amp;#233;
+Ãª          ##    &amp;ecirc;    ##      &amp;#234;
+Ã«          ##    &amp;euml;     ##      &amp;#235;
+Ã¬          ##    &amp;igrave;   ##      &amp;#236;
+Ã­          ##    &amp;iacute;   ##      &amp;#237;
+Ã®          ##    &amp;icirc;    ##      &amp;#238;
+Ã¯          ##    &amp;iuml;     ##      &amp;#239;
+Ã°          ##    &amp;eth;      ##      &amp;#240;
+Ã±          ##    &amp;ntilde;   ##      &amp;#241;
+Ã²          ##    &amp;ograve;   ##      &amp;#242;
+Ã³          ##    &amp;oacute;   ##      &amp;#243;
+Ã´          ##    &amp;ocirc;    ##      &amp;#244;
+Ãµ          ##    &amp;otilde;   ##      &amp;#245;
+Ã¶          ##    &amp;ouml;     ##      &amp;#246;
+Ã¸          ##    &amp;oslash;   ##      &amp;#248;
+Ã¹          ##    &amp;ugrave;   ##      &amp;#249;
+Ãº          ##    &amp;uacute;   ##      &amp;#250;
+Ã»          ##    &amp;ucirc;    ##      &amp;#251;
+Ã¼          ##    &amp;uuml;     ##      &amp;#252;
+Ã½          ##    &amp;yacute;   ##      &amp;#253;
+Ã¾          ##    &amp;thorn;    ##      &amp;#254;
+Ã¿          ##    &amp;yuml;     ##      &amp;#255;
+â   ##    &amp;forall;   ##      &amp;#8704;
+â   ##    &amp;part;     ##      &amp;#8706;
+â   ##    &amp;exist;    ##      &amp;#8707;
+â   ##    &amp;empty;    ##      &amp;#8709;
+â   ##    &amp;nabla;    ##      &amp;#8711;
+â   ##    &amp;isin;     ##      &amp;#8712;
+â   ##    &amp;notin;    ##      &amp;#8713;
+â   ##    &amp;ni;       ##      &amp;#8715;
+â   ##    &amp;prod;     ##      &amp;#8719;
+â   ##    &amp;sum;      ##      &amp;#8721;
+â   ##    &amp;minus;    ##      &amp;#8722;
+â   ##    &amp;lowast;   ##      &amp;#8727;
+â   ##    &amp;radic;    ##      &amp;#8730;
+â   ##    &amp;prop;     ##      &amp;#8733;
+â   ##    &amp;infin;    ##      &amp;#8734;
+â       ##    &amp;ang;      ##      &amp;#8736;
+â§      ##    &amp;and;      ##      &amp;#8743;
+â¨      ##    &amp;or;       ##      &amp;#8744;
+â©      ##    &amp;cap;      ##      &amp;#8745;
+âª      ##    &amp;cup;      ##      &amp;#8746;
+â«      ##    &amp;int;      ##      &amp;#8747;
+â´      ##    &amp;there4;   ##      &amp;#8756;
+â¼      ##    &amp;sim;      ##      &amp;#8764;
+â   ##    &amp;cong;     ##      &amp;#8773;
+â   ##    &amp;asymp;    ##      &amp;#8776;
+â       ##    &amp;ne;       ##      &amp;#8800;
+â¡      ##    &amp;equiv;    ##      &amp;#8801;
+â¤      ##    &amp;le;       ##      &amp;#8804;
+â¥      ##    &amp;ge;       ##      &amp;#8805;
+â   ##    &amp;sub;      ##      &amp;#8834;
+â   ##    &amp;sup;      ##      &amp;#8835;
+â   ##    &amp;nsub;     ##      &amp;#8836;
+â   ##    &amp;sube;     ##      &amp;#8838;
+â   ##    &amp;supe;     ##      &amp;#8839;
+â   ##    &amp;oplus;    ##      &amp;#8853;
+â   ##    &amp;otimes;   ##      &amp;#8855;
+â¥      ##    &amp;perp;     ##      &amp;#8869;
+â   ##    &amp;sdot;     ##      &amp;#8901;
+Î       ##    &amp;Alpha;    ##      &amp;#913;
+Î       ##    &amp;Beta;     ##      &amp;#914;
+Î       ##    &amp;Gamma;    ##      &amp;#915;
+Î       ##    &amp;Delta;    ##      &amp;#916;
+Î       ##    &amp;Epsilon;  ##      &amp;#917;
+Î       ##    &amp;Zeta;     ##      &amp;#918;
+Î       ##    &amp;Eta;      ##      &amp;#919;
+Î       ##    &amp;Theta;    ##      &amp;#920;
+Î       ##    &amp;Iota;     ##      &amp;#921;
+Î       ##    &amp;Kappa;    ##      &amp;#922;
+Î       ##    &amp;Lambda;   ##      &amp;#923;
+Î       ##    &amp;Mu;       ##      &amp;#924;
+Î       ##    &amp;Nu;       ##      &amp;#925;
+Î       ##    &amp;Xi;       ##      &amp;#926;
+Î       ##    &amp;Omicron;  ##      &amp;#927;
+Î           ##    &amp;Pi;       ##      &amp;#928;
+Î¡          ##    &amp;Rho;      ##      &amp;#929;
+Î£          ##    &amp;Sigma;    ##      &amp;#931;
+Î¤          ##    &amp;Tau;      ##      &amp;#932;
+Î¥          ##    &amp;Upsilon;  ##      &amp;#933;
+Î¦          ##    &amp;Phi;      ##      &amp;#934;
+Î§          ##    &amp;Chi;      ##      &amp;#935;
+Î¨          ##    &amp;Psi;      ##      &amp;#936;
+Î©          ##    &amp;Omega;    ##      &amp;#937;
+Î±          ##    &amp;alpha;    ##      &amp;#945;
+Î²          ##    &amp;beta;     ##      &amp;#946;
+Î³          ##    &amp;gamma;    ##      &amp;#947;
+Î´          ##    &amp;delta;    ##      &amp;#948;
+Îµ          ##    &amp;epsilon;  ##      &amp;#949;
+Î¶          ##    &amp;zeta;     ##      &amp;#950;
+Î·          ##    &amp;eta;      ##      &amp;#951;
+Î¸          ##    &amp;theta;    ##      &amp;#952;
+Î¹          ##    &amp;iota;     ##      &amp;#953;
+Îº          ##    &amp;kappa;    ##      &amp;#954;
+Î»          ##    &amp;lambda;   ##      &amp;#955;
+Î¼          ##    &amp;mu;       ##      &amp;#956;
+Î½          ##    &amp;nu;       ##      &amp;#957;
+Î¾          ##    &amp;xi;       ##      &amp;#958;
+Î¿          ##    &amp;omicron;  ##      &amp;#959;
+Ï       ##    &amp;pi;       ##      &amp;#960;
+Ï       ##    &amp;rho;      ##      &amp;#961;
+Ï       ##    &amp;sigmaf;   ##      &amp;#962;
+Ï       ##    &amp;sigma;    ##      &amp;#963;
+Ï       ##    &amp;tau;      ##      &amp;#964;
+Ï       ##    &amp;upsilon;  ##      &amp;#965;
+Ï       ##    &amp;phi;      ##      &amp;#966;
+Ï       ##    &amp;chi;      ##      &amp;#967;
+Ï       ##    &amp;psi;      ##      &amp;#968;
+Ï       ##    &amp;omega;    ##      &amp;#969;
+Ï       ##    &amp;thetasym; ##      &amp;#977;
+Ï       ##    &amp;upsih;    ##      &amp;#978;
+Ï       ##    &amp;piv;      ##      &amp;#982;
