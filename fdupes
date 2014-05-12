@@ -1,0 +1,92 @@
+#!/usr/bin/env bash
+# GNU bash, version 4.3.11(1)-release (x86_64-unknown-linux-gnu)
+#
+# © Copyright 2014 Ryan Delaney. All rights reserved.
+# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the README file for additional terms and conditions on your use of this
+# software.
+#
+# TODO: Find Duplicate Files (based on size first, then MD5 hash)
+# find -not -empty -type f -printf "%s\n" | sort -rn | uniq -d | xargs -I{} -n1 find -type f -size {}c -print0 | xargs -0 md5sum | sort | uniq -w32 --all-repeated=separate
+#
+# Functions {{{1
+verbose() {
+  if [[ "$verbose" = "1" ]]; then
+    echo "$1" >&2
+  fi
+}
+
+error () {
+  echo "$1" >&2
+}
+# }}}
+# Usage {{{1
+#
+usage() {
+cat <<EOD
+fdupes
+© Copyright 2014 Ryan Delaney. All rights reserved.
+Web site: http://github.com/rpdelaney
+
+fdupes finds duplicate files in a directory according to md5sum
+
+Usage: fdupes [OPTION] [PATH]
+
+Options
+  -?, --help                  print this help and exit
+  -v, --verbose               increase verbosity
+  -r, --recursive             search recursively
+EOD
+exit 1
+}
+# }}}
+# Parameters {{{1
+#
+while :
+do
+  case $1 in
+    --help | -\?)
+      usage
+      exit 0
+      ;;
+    -v | --verbose)
+      # Each instance of -v adds 1 to verbosity
+      local verbose=$((verbose+1))
+      shift
+      ;;
+    -r | --recursive)
+      recursive="1"
+      shift
+      ;;
+    --) # End of all options
+      shift
+      break
+      ;;
+    -*)
+      echo "FATAL: Unknown option : $1" >&2
+      exit 1
+      shift
+      ;;
+    *)  # no more options. Stop while loop
+      break
+      ;;
+  esac
+done
+
+haystack="$1"
+# }}}
+# Dependencies {{{1
+if ! type md5sum &> /dev/null; then
+  error "FATAL: missing dependency: md5sum" && exit 1
+fi
+
+if [[ ! -d "$haystack" ]]; then
+  error "FATAL: directory not found: $haystack" && exit 1
+fi
+# }}}
+# Work {{{1
+cd "$haystack"
+find -L -type f -exec md5sum '{}' ';' | sort | uniq --all-repeated=separate -w 33 | cut -c 35-
+# }}}
+# vim: ft=sh foldmethod=marker:
