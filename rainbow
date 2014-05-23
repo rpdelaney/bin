@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+n=0
+# printf '\x1b[37;47m'
+
+for i in {0..15}; do
+  if [[ "$n" -eq "8" ]]; then
+    printf "\n"
+    n="0"
+  fi
+  printf "\x1b[38;5;${i}m%03i " $i
+  ((n++))
+done
+
+printf "\n"
+
+n=0
+for i in {16..255}; do
+  if [[ "$n" -eq "6" ]]; then
+    printf "\n"
+    n="0"
+  fi
+  printf "\x1b[38;5;${i}m%03i " $i
+  ((n++))
+done
