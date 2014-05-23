@@ -43,7 +43,6 @@ exit 1
 # Always print a newline after exiting
 trap 'echo -ne "\n"' INT QUIT TERM EXIT 0 1 2 3 6 9 14 15
 # }}}
-
 # Business {{{1
 lines="0"
 while read line; do
