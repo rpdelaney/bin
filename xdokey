@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# GNU bash, version 4.3.8(1)-release (x86_64-unknown-linux-gnu)
+#
+# © Copyright 2014 Ryan Delaney. All rights reserved.
+# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the README file for additional terms and conditions on your use of this
+# software.
+#
+
+words="$1"
+
+if [[ -z "$words" ]]; then
+  while read words; do
+    while test -n "$words"; do
+      c=${words:0:1}     # Get the first character
+      xdotool key $c
+      words=${words:1}   # trim the first character
+    done
+  done
+else
+  while test -n "$words"; do
+    c=${words:0:1}     # Get the first character
+    xdotool key $c
+    words=${words:1}   # trim the first character
+  done
+fi
+
