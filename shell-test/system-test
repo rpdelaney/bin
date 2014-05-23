@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# GNU bash, version 4.3.11(1)-release (x86_64-unknown-linux-gnu)
+#
+# © Copyright 2014 Ryan Delaney. All rights reserved.
+# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the README file for additional terms and conditions on your use of this
+# software.
+#
+
+# Verify integrity {{{
+# group files {{{
+#grpck -r
+# }}}
+# password files {{{
+#pwck -r
+# }}}
+
+# vim: ft=sh foldmethod=marker:
