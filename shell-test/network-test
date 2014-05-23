@@ -69,9 +69,16 @@ testcmd shortping localhost
 
   # Check that we can ping the gateway
 verbose "gatekeeper:"
-testcmd shortping gatekeeper
-  # TODO: Check that the gateway has been rebooted within 48 hours (172800 seconds)
-  # $(ssh gatekeeper cat /proc/uptime | cut [everything after the first number] ) < 172800
+if testcmd shortping gatekeeper; then
+    # Check that the gateway has been rebooted within 48 hours (172800 seconds)
+  if uptime="$(ssh -q gatekeeper cat /proc/uptime | tail -1 | cut -d"." -f1 -)" ; then
+    if [[ uptime -ge 172800 ]]; then
+      error "Gatekeeper uptime exceeded threshold: $uptime"
+    fi
+  else
+    error "FATAL: Gatekeeper uptime could not be read."
+  fi
+fi
 
   # Check that we can ping the printer/scanner
 verbose "epson:"
