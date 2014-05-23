@@ -140,13 +140,19 @@ notification="$@"
 if type tmux &> /dev/null; then
   if [[ "$urgency" == "critical" ]]; then
     while read line; do
-      tmux display-message -t "$line" "$notification"
-      tmux display-message -p -t "$line" "$notification"
+#     tmux set-option -ga display-time 10s
+      tmux display-message -t "$line" "$notification" 2> /dev/null
+      tmux display-message -p -t "$line" "$notification" 2> /dev/null
+
     done < <(tmux list-windows -F "#I")
 
 #   wall "$notification"
   else
-    tmux display-message "$(alignc "$notification")"
+    if type alignc &> /dev/null; then
+      tmux display-message "$(alignc "$notification")" 2> /dev/null
+    else
+      tmux display-message "$notification" 2> /dev/null
+    fi
   fi
 fi
 
