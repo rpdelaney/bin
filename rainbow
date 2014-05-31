@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# GNU bash, version 4.3.11(1)-release (x86_64-unknown-linux-gnu)
+#
+# © Copyright 2014 Ryan Delaney. All rights reserved.
+# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the README file for additional terms and conditions on your use of this
+# software.
+#
+
+column=0
+
+for code in {0..15}; do
+  ((column++))
+  if [[ "$column" -eq 9 ]]; then
+    printf '\r\n'
+    column=0
+  fi
+
+  printf "\e[38;05;${code}m %03d" $code
+done
+
+column=0
+printf '\r\n'
+
+for code in {16..255}; do
+  if [[ "$column" -eq 6 ]]; then
+    printf '\r\n'
+    column=0
+  fi
+
+  printf "\e[38;05;${code}m %03d" $code
+  ((column++))
+done
+
+printf '\r\n'
