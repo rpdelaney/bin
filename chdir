@@ -7,12 +7,25 @@
 # README file for terms and conditions on your use of this software.
 #
 
+# Functions {{{1
+verbose() {
+  if [[ "$verbose" = "1" ]]; then
+    echo "$1" >&2
+  fi
+}
+
+error() {
+  echo "$1" >&2
+}
+# }}}
+
 # Validation {{{0
 # Check that the function does not exist
 if type ch &> /dev/null; then
-  echo 'FATAL: function ch() is defined. Unset it with `unset ch`.' >&2
+  error 'ERROR: function ch() is defined. Unset it with `unset ch`.'
   return 1
 fi
+# }}}
 
 # Function {{{0
 ch() {
@@ -99,6 +112,6 @@ else
 fi
 }
 
-# Modelines {{{1
-#
+# }}}
+
 # vim: ft=sh foldmethod=marker foldlevel=0
