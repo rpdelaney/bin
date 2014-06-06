@@ -77,10 +77,18 @@ do
       ;;
     *)  # no more options. Stop while loop
       break
+      shift
       ;;
   esac
 done
-
+# }}}
+# Validation {{{1
+if [[ -z "$1" ]]; then
+  error "ERROR: Argument not optional."
+  error "Try ch -? for usage instructions."
+  return 1
+fi
+# }}}
 # Action {{{1
 
   # If -u argument was passed, move up N directories.
