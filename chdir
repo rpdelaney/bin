@@ -93,12 +93,12 @@ fi
 
   # If -u argument was passed, move up N directories.
 if [[ -z "$moveup" ]]; then
-  if [[ ! "$1" ]]; then           # if there's no argument
-      new_dir=""                  # stay put
-  elif [[ -d "$1" ]]; then        # if the argument is an existing directory, then
+  if [[ -d "$1" ]]; then          # if the argument is an existing directory, then
       new_dir="$1"                # set new_dir to that path
   elif [[ -d ".$1" ]]; then       # if the a hidden directory matches the argument, then
       new_dir=".$1"               # set new_dir to the hidden path
+  elif [[ -d "$(dirname "$1")" ]]; then # if the directory under it exists, then
+      new_dir="$(dirname "$1")"   # go there
   elif [[ "$1" == '-' ]]; then    # if we passed '-' as the argument, then
       new_dir="-"                 # act like cd
   else
