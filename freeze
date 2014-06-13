@@ -10,4 +10,4 @@
 
 amixer sset Master off
 xset dpms force off
-xlock && morning
+xlock && thaw
