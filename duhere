@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+# GNU bash, version 4.3.18(1)-release (x86_64-unknown-linux-gnu)
+#
+# © Copyright 2014 Ryan Delaney.
+# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the README file for additional terms and conditions on your use of this
+# software.
+#
+# Shows disk usage of folders at pwd
+
+# Functions {{{1
+verbose() {
+  if [[ "$verbose" = "1" ]]; then
+    echo "$1" >&2
+  fi
+}
+
+error() {
+  echo "$1" >&2
+}
+# }}}
+# Usage {{{1
+#
+usage() {
+cat <<EOD
+duhere
+© Copyright 2014 Ryan Delaney.
+Web site: http://github.com/rpdelaney
+
+duhere is a wrapper for du that shows human-readable disk usage of files in the
+current working directory.
+
+Usage: duhere [OPTION]
+
+Options
+  -?, --help                  print this help and exit
+  -v, --verbose               increase verbosity
+EOD
+exit 1
+}
+# }}}
+
+\du -h -d 1 | sort -h -r
+
+# vim: ft=sh foldmethod=marker:
