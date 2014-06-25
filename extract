@@ -13,6 +13,7 @@
 #       the archive
 # TODO: confirm that extraction never over-writes existing files
 # TODO: Can we use trap to run the command after shell exit?
+# TODO: Leverage pv to display info about the output
 
 # Usage {{{1
 usage() {
