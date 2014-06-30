@@ -6,6 +6,6 @@
 source ~/.bash_styles
 
 namei "$PWD" -x -m | \
-sed -r 's@f\:\s(.*)@'$bold$green'\1'$reset'@' | \
-sed -r 's@^\s(\s*)D@'$bold$yellow'\1Mn'$reset'@' | \
-sed -r 's@^\s(\s*)l@'$bold$cyan'\1Ln'$reset'@'
+sed -r 's@f\:\s(.*)@'"$bold$green"'\1'$reset'@' | \
+sed -r 's@^\s(\s*)D@'"$bold$yellow"'\1Mn'$reset'@' | \
+sed -r 's@^\s(\s*)l@'"$bold$cyan"'\1Ln'$reset'@'
