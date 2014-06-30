@@ -41,6 +41,6 @@ exit 1
 }
 # }}}
 
-\du -h -d 1 | sort -h -r
+du -h -d 1 | sort -h -r
 
 # vim: ft=sh foldmethod=marker:
