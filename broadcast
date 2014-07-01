@@ -1,0 +1,173 @@
+#!/usr/bin/env bash
+# GNU bash, version 4.3.11(1)-release (x86_64-unknown-linux-gnu)
+#
+# © Copyright 2014 Ryan Delaney. All rights reserved.
+#
+# This program is free software: you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by the
+# Free Software Foundation, either version 3 of the License, or (at your
+# option) any later version.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# Send a tmux, desktop, and audio notification after the completion
+# of the given command when using tmux.
+#
+# Requires: tmux
+# Recommended: espeak, libnotify
+#
+# TODO: Get the rest of the parameters working
+
+# Functions {{{1
+verbose() {
+  if [[ "$verbose" = "1" ]]; then
+    echo "$1" >&2
+  fi
+}
+
+error() {
+  echo "$1" >&2
+}
+# }}}
+# Usage {{{1
+#
+usage() {
+cat <<EOD
+broadcast
+© Copyright 2014 Ryan Delaney.
+This program is free software: you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the
+Free Software Foundation, either version 3 of the License, or (at your
+option) any later version.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+Web site: http://github.com/rpdelaney
+
+broadcast sends a notification via various notification daemons simultaneously
+
+Usage: broadcast [OPTION] MESSAGE
+
+Options
+  -?, --help                        print this help and exit
+  -v, --verbose                     increase verbosity
+  -u, --urgency=LEVEL               specifies the urgency level (low, normal, critical).
+  -t, --expire-time=TIME            specifies the timeout in milliseconds
+  -a, --app-name=APP_NAME           specifies the app name for the icon
+  -i, --icon=ICON[,ICON...]         specifies an icon filename or stock icon to display.
+  -c, --category=TYPE[,TYPE...]     specifies the notification category.
+  -h, --hint=type:name:value        specifies basic extra data to pass. valid
+                                    types are int, double, string and byte.
+EOD
+exit 1
+}
+# }}}
+# Parameters {{{1
+#
+urgency=""
+
+while :
+do
+  case $1 in
+    --help | -\?)
+      usage
+      exit 0
+      ;;
+    -v | --verbose)
+      # Each instance of -v adds 1 to verbosity
+      local verbose=$((verbose+1))
+      shift
+      ;;
+    -u | --urgency=)
+      shift
+      urgency="$1"
+      shift
+      ;;
+    -t | --expire-time=)
+      shift
+      expiretime="$1"
+      shift
+      ;;
+    -a | --app-name=)
+      shift
+      appname="$1"
+      shift
+      ;;
+    -i | --icon=)
+      shift
+      icon="$1"
+      shift
+      ;;
+    -c | --category=)
+      shift
+      category="$1"
+      shift
+      ;;
+    -h | --hint=)
+      shift
+      hint="$1"
+      shift
+      ;;
+    --) # End of all options
+      shift
+      break
+      ;;
+    -*)
+      echo "FATAL: Unknown option : $1" >&2
+      exit 1
+      shift
+      ;;
+    *)  # no more options. Stop while loop
+      break
+      ;;
+  esac
+done
+# }}}
+# Business {{{1
+# Build the notification string
+notification="$@"
+
+# tmux
+if type tmux &> /dev/null; then
+  if [[ "$urgency" == "critical" ]]; then
+    while read line; do
+#     tmux set-option -ga display-time 10s
+      tmux display-message -t "$line" "$notification" 2> /dev/null
+      tmux display-message -p -t "$line" "$notification" 2> /dev/null
+
+    done < <(tmux list-windows -F "#I")
+
+#   wall "$notification"
+  else
+    if type alignc &> /dev/null; then
+      tmux display-message "$(alignc "$notification")" 2> /dev/null
+    else
+      tmux display-message "$notification" 2> /dev/null
+    fi
+  fi
+fi
+
+# notify-send
+if type notify-send &> /dev/null; then
+  notify-send "$notification"
+fi
+
+# espeak
+if type espeak &> /dev/null; then
+  if [[ "$urgency" == "critical" ]]; then
+#   espeak "$notification"
+    espeak -s 175 -k 20 -v en-french "$notification"
+  fi
+fi
+# }}}
+
+# vim: ft=sh foldmethod=marker:

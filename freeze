@@ -8,29 +8,6 @@
 # software.
 #
 
-column=0
-
-for code in {0..15}; do
-  ((column++))
-  if [[ "$column" -eq 9 ]]; then
-    printf '\r\n'
-    column=0
-  fi
-
-  printf "\e[38;05;${code}m %03d" $code
-done
-
-column=0
-printf '\r\n'
-
-for code in {16..255}; do
-  if [[ "$column" -eq 6 ]]; then
-    printf '\r\n'
-    column=0
-  fi
-
-  printf "\e[38;05;${code}m %03d" $code
-  ((column++))
-done
-
-printf '\r\n'
+amixer sset Master off
+xset dpms force off
+xlock && thaw
