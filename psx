@@ -1,20 +1,69 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# GNU bash, version 4.3.18(1)-release (x86_64-unknown-linux-gnu)
 #
-# psx -- ps aux | grep alias-like script
-# Copyright (C) 2011-2012  Alan SCHNEIDER
-#                          <shk.schneider[at]gmail.com>
-#
-# This program comes with ABSOLUTELY NO WARRANTY.
-# This is free software, and you are welcome to redistribute it
-# under certain conditions.
-#
+# © Copyright 2014 Ryan Delaney. All rights reserved.
+# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the README file for additional terms and conditions on your use of this
+# software.
 
-if [ $# -eq 0 ] ; then
-    ps aux | grep -v "/bin/bash $0"
-else
-    for argv in $@ ; do
-        ps aux | grep "$argv" | grep -v "grep $argv" | grep -v "/bin/bash $0 $*"
-    done
+# Functions {{{1
+verbose() {
+  if [[ "$verbose" = "1" ]]; then
+    echo "$1" >&2
+  fi
+}
+
+error() {
+  echo "$1" >&2
+}
+# }}}
+# Parameters {{{1
+#
+while :
+do
+  case $1 in
+    --help | -\?)
+      usage
+      exit 0
+      ;;
+    -v | --verbose)
+      # Each instance of -v adds 1 to verbosity
+      verbose=$((verbose+1))
+      shift
+      ;;
+    --) # End of all options
+      shift
+      break
+      ;;
+    -*)
+      echo "FATAL: Unknown option : $1" >&2
+      exit 1
+      shift
+      ;;
+    *)  # no more options. Stop while loop
+      break
+      ;;
+  esac
+done
+# }}}
+
+# Main {{{1
+word="$1"
+
+# turn 'firefox' into '[f]irefox'
+# this is so that the grep process won't match itself
+word="[${word:0:1}]${word:1}"
+
+# remember what this app is called
+myname="$(basename $0)"
+
+if [[ "$verbose" -ge "1" ]]; then
+  ps aux | grep "$word" | grep -v "grep $word" | grep -v "/bin/bash $0 $*"
+  exit 0
 fi
 
-# EOF
+ps ax | grep "$word" | cut -d ' ' -f 1
+# }}}
+
+# vim: ft=sh foldmethod=marker:
