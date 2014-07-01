@@ -1,0 +1,9 @@
+[submodule "fdupes"]
+	path = fdupes
+	url = git@github.com:tobiasschulz/fdupes.git
+[submodule "aurvote"]
+	path = aurvote
+	url = https://github.com/rpdelaney/aurvote
+[submodule "shellcheck"]
+	path = shellcheck
+	url = https://github.com/koalaman/shellcheck.git

@@ -7,12 +7,25 @@
 # README file for terms and conditions on your use of this software.
 #
 
+# Functions {{{1
+verbose() {
+  if [[ "$verbose" = "1" ]]; then
+    echo "$1" >&2
+  fi
+}
+
+error() {
+  echo "$1" >&2
+}
+# }}}
+
 # Validation {{{0
 # Check that the function does not exist
 if type ch &> /dev/null; then
-  echo 'FATAL: function ch() is defined. Unset it with `unset ch`.' >&2
+  error 'ERROR: function ch() is defined. Unset it with `unset ch`.'
   return 1
 fi
+# }}}
 
 # Function {{{0
 ch() {
@@ -31,6 +44,7 @@ Usage: chdir [PATH]
 Options
   -?, --help                  print this help and return
   -v, --verbose               increase verbosity
+  -s, --strict                don't recursively search for a suitable path
   -u, --up=N                  move up N directories
 EOD
 return 1
@@ -64,41 +78,67 @@ do
       ;;
     *)  # no more options. Stop while loop
       break
+      shift
       ;;
   esac
 done
+# }}}
+# Validation {{{1
+if [[ -z "$1" ]]; then
+  error "ERROR: Argument not optional."
+  error "Try ch -? for usage instructions."
+  return 1
+fi
+# }}}
+finddir() { # {{{1
+  new_dir="$1"
 
-# Action {{{1
-
-  # If -u argument was passed, move up N directories.
-if [[ -z "$moveup" ]]; then
-  if [[ ! "$1" ]]; then           # if there's no argument
-      new_dir=""                  # stay put
-  elif [[ -d "$1" ]]; then        # if the argument is an existing directory, then
-      new_dir="$1"                # set new_dir to that path
-  elif [[ -d ".$1" ]]; then       # if the a hidden directory matches the argument, then
-      new_dir=".$1"               # set new_dir to the hidden path
-  elif [[ "$1" == '-' ]]; then    # if we passed '-' as the argument, then
-      new_dir="-"                 # act like cd
-  else
-      error_msg="directory \`$red$bold$1$reset' not found."    #say we cant find it
+  if [[ "$new_dir" == '-' ]]; then
+    return 0
   fi
-else
-  for i in seq 1 "$moveup"; do
-    cd ..
+
+  while [[ -z "$norecurse" ]]; do
+    if [[ "$new_dir" == "$PWD" ]] || [[ "$new_dir" == "/" ]]; then
+      error "Hit the ceiling at $new_dir"
+      return 0
+    elif [[ -d "$new_dir" ]]; then
+      return 0
+    elif [[ -d ".$new_dir" ]]; then
+      new_dir=".$new_dir"
+      return 0
+    else
+      error "No suitable target found at $new_dir"
+      error " Recursing up the directory tree..."
+      new_dir="$(dirname "$new_dir")"
+    fi
   done
-fi
 
-
-if [[ -n "$error_msg" ]]; then                  # if there was an error message, then
-    echo "chdir: $error_msg" 1>&2               # tell me what it was
-    unset error_msg                             # and unset this for no reason :V
+if [[ -d "$new_dir" ]]; then
+  return 0
 else
-    builtin cd "$new_dir"
-    timeout 1 ls --color=auto --format=across --group-directories-first || echo "$scriptPath: Timeout listing directory contents."
+  return 1
 fi
-}
+} # 1}}}
+moveupdir() { # {{{1
+    for i in seq 1 "$moveup"; do
+      cd .. || return 1
+    done
+    return 0
+} # }}}
 
-# Modelines {{{1
-#
+if [[ -n "$moveup" ]]; then
+  # If -u argument was passed, move up N directories.
+  moveupdir "$1"
+  return 0
+fi
+if finddir "$1"; then
+  builtin cd "$new_dir" && { timeout 1 ls --color=auto --format=across --group-directories-first || echo "$scriptPath: Timeout listing directory contents." ; }
+else
+  error "FATAL: Directory not found."
+fi
+
+unset usage
+unset finddir 
+
+}
 # vim: ft=sh foldmethod=marker foldlevel=0

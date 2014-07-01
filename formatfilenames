@@ -1,12 +1,21 @@
 #!/usr/bin/env bash
 # GNU bash, version 4.2.45(2)-release (x86_64-unknown-linux-gnu)
 #
-# © Copyright 2014 Ryan Delaney. All rights reserved.
-# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
-# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the README file for additional terms and conditions on your use of this
-# software.
 #
+# © Copyright 2014 Ryan Delaney.
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+# 
+# This program is free software: you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by the
+# Free Software Foundation, either version 3 of the License, or (at your
+# option) any later version.
+# 
+# You should have received a copy of the GNU General Public License along
+# with this program.  If not, see <http://www.gnu.org/licenses/>.
+# 
 # renames all files underneath the PWD to replace unwanted characters such as:
 #       whitespace
 #       parentheses
@@ -17,41 +26,412 @@
 #make sure extended globbing is on
 shopt -s extglob;
 
-#debug?
+# Functions {{{1
+verbose() {
+  if [[ "$verbose" = "1" ]]; then
+    echo "$1" >&2
+  fi
+}
 
-#for each file
-while IFS= read -rd '' file_full_path; do
+error() {
+  echo "$1" >&2
+}
 
-    [[ "$DEBUG" ]] && printf "Step -0: %s\n" "$file_full_path"
-    filename="${file_full_path##*/}"                   # fill $filename from parsed $file_full_path
+getfilenames() 
+{
+  if [[ -z "$filetypes" ]]; then
+    find . -maxdepth "$maxdepth" || exit 1
+  else
+    find . -maxdepth "$maxdepth" $filetypes || exit 1
+  fi
+}
+# }}}
+# Usage {{{1
+#
+usage() {
+cat <<EOD
+formatfilenames
+© Copyright 2014 Ryan Delaney. All rights reserved.
+Web site: http://github.com/rpdelaney
 
-    filename="${filename//'!'/#}"                      # substitute '!' with '#'
+formatfilenames removes annoying characters from filenames.
+Maxdepth defaults to 1 (the current working directory). It will
+never rename directories.
 
-    [[ "$DEBUG" ]] && printf "Step 1: %s\n" "$filename"
-    filename="${filename//+( )/.}"                     # substitute ' ' with '.' in $filename
+Usage: formatfilenames [OPTION] [MAXDEPTH]
 
-    [[ "$DEBUG" ]] && printf "Step 2: %s\n" "$filename"
-    filename="${filename//.-./..}"                     # substitute '.-.' with '..' in $filename
+Options
+  -?, --help                  print this help and exit
+  -v, --verbose               increase verbosity
+  -d, --directory             change directory names too
+  -n, --dry-run               don't change anything
+EOD
+exit 1
+}
+# }}}
+# Parameters {{{1
+#
+while :
+do
+  case $1 in
+    --help | -\?)
+      usage
+      exit 0
+      ;;
+    -n | --dry-run)
+      dryrun="1"
+      shift
+      ;;
+    -d | --directory)
+      renamedirs="1"
+      shift
+      ;;
+    -v | --verbose)
+      # Each instance of -v adds 1 to verbosity
+      local verbose=$((verbose+1))
+      shift
+      ;;
+    --) # End of all options
+      shift
+      break
+      ;;
+    -*)
+      echo "FATAL: Unknown option : $1" >&2
+      exit 1
+      shift
+      ;;
+    *)  # no more options. Stop while loop
+      break
+      ;;
+  esac
+done
 
-    [[ "$DEBUG" ]] && printf "Step 3: %s\n" "$filename"
-    filename="${filename//\(/_}"                       # substitute '(' with '_'
+# Maxdepth defaults to 1
+if [[ -n "$1" ]]; then
+  maxdepth="$1"
+else
+  maxdepth=1
+fi
+# }}}
+# Main {{{1
+if [[ -z "$renamedirs" ]]; then
+  # If renamedirs is unset, then restrict to files only (no directories)
+  filetypes="-type f"
+fi
 
-    [[ "$DEBUG" ]] && printf "Step 4: %s\n" "$filename"
-    filename="${filename//\)/_}"                       # substitute ')' with '_'
+while read file; do
 
-    [[ "$DEBUG" ]] && printf "Step 5: %s\n" "$filename"
-    filename="${filename//;/_}"                        # substitute ';' with '_'
+  if [[ "$file" != "." ]]; then
+    # Store the newfile in another variable
+    # newfile="${file##*/}"
+      newfile="$file"
+    # Do our substitutions
+      newfile="${newfile//'!'/#}"
+      newfile="${newfile//+( )/.}"
+      newfile="${newfile//.-./..}"
+      newfile="${newfile//\(/_}"
+      newfile="${newfile//\)/_}"
+      newfile="${newfile//;/_}"
+      newfile="${newfile//\[/_}"
+      newfile="${newfile//\]/_}"
+      newfile="${newfile//~/}"
+      newfile="${newfile//&/and}"
 
-    [[ "$DEBUG" ]] && printf "Step 6: %s\n" "$filename"
-    filename="${filename//\[/_}"                        # substitute '[' with '_'
+    # If the substitutions are different from the newfile, rename the file
+      if [[ "$file" != "$newfile" ]]; then
+        if [[ -z "$dryrun" ]]; then
+          mv -v -n "$file" "$newfile"
+        else
+          echo "$file -> $newfile"
+        fi
+      fi
+    fi
 
-    [[ "$DEBUG" ]] && printf "Step 7: %s\n" "$filename"
-    filename="${filename//\]/_}"                        # substitute '[' with '_'
+done < <(getfilenames);
+# 1}}}
 
-    #printf "New name: %s\n" "$filename"
+exit 0
 
-    mv -v -n "$file_full_path" "${file_full_path%/*}/$filename"
 
-done < <(find . -depth \( -type d -o -type f \) \( -name "* *" -o -name "*_*" -o -name '*.-.*' -o -name "*;*" \) -print0);
-
-find . -depth \( -type d -o -type f \) \( -name "* *" -o -name '*.-.*' \) -print0;
+# Character   ##    HTML Name      ##      HTML Code
+#             ##                   ##      #32;
+# !           ##                   ##      #33;
+# â           ##    quot;     ##      #34;
+# #           ##                   ##      #35;
+# $           ##                   ##      #36;
+# %           ##                   ##      #37;
+# &           ##    amp;      ##      #38;
+# '           ##                   ##      #39;
+# (           ##                   ##      #40;
+# )           ##                   ##      #41;
+# *           ##                   ##      #42;
+# +           ##                   ##      #43;
+# &#44;       ##                   ##      #44;
+# -           ##                   ##      #45;
+# .           ##              ##       #46;
+# /           ##                   ##      #47;
+# 0           ##                   ##      #48;
+# 1           ##                   ##      #49;
+# 2           ##                   ##      #50;
+# 3           ##                   ##      #51;
+# 4           ##                   ##      #52;
+# 5           ##                   ##      #53;
+# 6           ##                   ##      #54;
+# 7           ##                   ##      #55;
+# 8           ##                   ##      #56;
+# 9           ##                   ##      #57;
+# :           ##                   ##      #58;
+# ;           ##                   ##      #59;
+# &lt;        ##    lt;       ##      #60;
+# =           ##                   ##      #61;
+# &gt;        ##    gt;       ##      #62;
+# ?           ##                   ##      #63;
+# @           ##                   ##      #64;
+# [           ##                   ##      #91;
+# \           ##                   ##      #92;
+# ]           ##                   ##      #93;
+# ^           ##              ##       #94;
+# _           ##                   ##      #95;
+# `           ##                   ##      #96;
+# {           ##                   ##      #123;
+# |           ##   al bar     ##             #124;
+# }           ##                   ##      #125;
+# ~           ##              ##       #126;
+# Å           ##    OElig;    ##      #338;
+# Å           ##    oelig;    ##      #339;
+# Å           ##    Scaron;   ##      #352;
+# Å¡          ##    scaron;   ##      #353;
+# Å¸          ##    Yuml;     ##      #376;
+# Æ       ##    fnof;     ##      #402;
+# Ë       ##    circ;     ##      #710;
+# Ë       ##    tilde;    ##      #732;
+# â   ##    ensp;     ##      #8194;
+# â   ##    emsp;     ##      #8195;
+# â   ##    thinsp;   ##      #8201;
+# â   ##    zwnj;     ##      #8204;
+# â   ##    zwj;      ##      #8205;
+# â   ##    lrm;      ##      #8206;
+# â   ##    rlm;      ##      #8207;
+# â   ##    ndash;    ##      #8211;
+# â   ##    mdash;    ##      #8212;
+# â   ##    lsquo;    ##      #8216;
+# â   ##    rsquo;    ##      #8217;
+# â   ##    sbquo;    ##      #8218;
+# â   ##    ldquo;    ##      #8220;
+# â   ##    rdquo;    ##      #8221;
+# â   ##    bdquo;    ##      #8222;
+# â       ##    dagger;   ##      #8224;
+# â¡      ##    Dagger;   ##      #8225;
+# â¢      ##    bull;     ##      #8226;
+# â¦      ##    hellip;   ##      #8230;
+# â°      ##    permil;   ##      #8240;
+# â²      ##    prime;    ##      #8242;
+# â³      ##    Prime;    ##      #8243;
+# â¹      ##    lsaquo;   ##      #8249;
+# âº      ##    rsaquo;   ##      #8250;
+# â¾      ##    oline;    ##      #8254;
+# â¬      ##    euro;     ##      #8364;
+# â¢      ##    trade;    ##      #8482; or #153;
+# â   ##    larr;     ##      #8592;
+# â   ##    uarr;     ##      #8593;
+# â   ##    rarr;     ##      #8594;
+# â   ##    darr;     ##      #8595;
+# â   ##    harr;     ##      #8596;
+# âµ      ##    crarr;    ##      #8629;
+# â   ##    lceil;    ##      #8968;
+# â   ##    rceil;    ##      #8969;
+# â   ##    lfloor;   ##      #8970;
+# â   ##    rfloor;   ##      #8971;
+# â   ##    loz;      ##      #9674;
+# â       ##    spades;   ##      #9824;
+# â£      ##    clubs;    ##      #9827;
+# â¥      ##    hearts;   ##      #9829;
+# â¦      ##    diams;    ##      #9830;
+#             ##    nbsp;     ##      #160;
+# Â¡          ##    iexcl;    ##      #161;
+# Â¢          ##    cent;     ##      #162;
+# Â£          ##    pound;    ##      #163;
+# Â¤          ##    curren;   ##      #164;
+# Â¥          ##    yen;      ##      #165;
+# Â¦          ##    brvbar;   ##      #166;
+# section     ##    #167;
+# Â¨          ##    uml;      ##      #168;
+# Â©          ##    copy;     ##      #169;
+# Âª          ##    ordf;     ##      #170;
+# Â«          ##    laquo;    ##      #171;
+# Â¬          ##    not;      ##      #172;
+#             ##    shy;      ##      #173;
+# Â®          ##    reg;      ##      #174;
+# Â¯          ##    macr;     ##      #175;
+# Â°          ##    deg;      ##      #176;
+# Â±          ##    plusmn;   ##      #177;
+# Â²          ##    sup2;     ##      #178;
+# Â³          ##    sup3;     ##      #179;
+# Â´          ##    acute;    ##      #180;
+# Âµ          ##    micro;    ##      #181;
+# Â¶          ##    para;     ##      #182;
+# Â·          ##    middot;   ##      #183;
+# Â¸          ##    cedil;    ##      #184;
+# Â¹          ##    sup1;     ##      #185;
+# Âº          ##    ordm;     ##      #186;
+# Â»          ##    raquo;    ##      #187;
+# Â¼          ##    frac14;   ##      #188;
+# Â½          ##    frac12;   ##      #189;
+# Â¾          ##    frac34;   ##      #190;
+# Â¿          ##    iquest;   ##      #191;
+# Ã       ##    times;    ##      #215;
+# Ã·          ##    divide;   ##      #247;
+# Ã       ##    Agrave;   ##      #192;
+# Ã       ##    Aacute;   ##      #193;
+# Ã       ##    Acirc;    ##      #194;
+# Ã       ##    Atilde;   ##      #195;
+# Ã       ##    Auml;     ##      #196;
+# Ã       ##    Aring;    ##      #197;
+# Ã       ##    AElig;    ##      #198;
+# Ã       ##    Ccedil;   ##      #199;
+# Ã       ##    Egrave;   ##      #200;
+# Ã       ##    Eacute;   ##      #201;
+# Ã       ##    Ecirc;    ##      #202;
+# Ã       ##    Euml;     ##      #203;
+# Ã       ##    Igrave;   ##      #204;
+# Ã       ##    Iacute;   ##      #205;
+# Ã       ##    Icirc;    ##      #206;
+# Ã       ##    Iuml;     ##      #207;
+# Ã       ##    ETH;      ##      #208;
+# Ã       ##    Ntilde;   ##      #209;
+# Ã       ##    Ograve;   ##      #210;
+# Ã       ##    Oacute;   ##      #211;
+# Ã       ##    Ocirc;    ##      #212;
+# Ã       ##    Otilde;   ##      #213;
+# Ã       ##    Ouml;     ##      #214;
+# Ã       ##    Oslash;   ##      #216;
+# Ã       ##    Ugrave;   ##      #217;
+# Ã       ##    Uacute;   ##      #218;
+# Ã       ##    Ucirc;    ##      #219;
+# Ã       ##    Uuml;     ##      #220;
+# Ã       ##    Yacute;   ##      #221;
+# Ã       ##    THORN;    ##      #222;
+# Ã       ##    szlig;    ##      #223;
+# Ã           ##    agrave;   ##      #224;
+# Ã¡          ##    aacute;   ##      #225;
+# Ã¢          ##    acirc;    ##      #226;
+# Ã£          ##    atilde;   ##      #227;
+# Ã¤          ##    auml;     ##      #228;
+# Ã¥          ##    aring;    ##      #229;
+# Ã¦          ##    aelig;    ##      #230;
+# Ã§          ##    ccedil;   ##      #231;
+# Ã¨          ##    egrave;   ##      #232;
+# Ã©          ##    eacute;   ##      #233;
+# Ãª          ##    ecirc;    ##      #234;
+# Ã«          ##    euml;     ##      #235;
+# Ã¬          ##    igrave;   ##      #236;
+# Ã­          ##    iacute;   ##      #237;
+# Ã®          ##    icirc;    ##      #238;
+# Ã¯          ##    iuml;     ##      #239;
+# Ã°          ##    eth;      ##      #240;
+# Ã±          ##    ntilde;   ##      #241;
+# Ã²          ##    ograve;   ##      #242;
+# Ã³          ##    oacute;   ##      #243;
+# Ã´          ##    ocirc;    ##      #244;
+# Ãµ          ##    otilde;   ##      #245;
+# Ã¶          ##    ouml;     ##      #246;
+# Ã¸          ##    oslash;   ##      #248;
+# Ã¹          ##    ugrave;   ##      #249;
+# Ãº          ##    uacute;   ##      #250;
+# Ã»          ##    ucirc;    ##      #251;
+# Ã¼          ##    uuml;     ##      #252;
+# Ã½          ##    yacute;   ##      #253;
+# Ã¾          ##    thorn;    ##      #254;
+# Ã¿          ##    yuml;     ##      #255;
+# â   ##    forall;   ##      #8704;
+# â   ##    part;     ##      #8706;
+# â   ##    exist;    ##      #8707;
+# â   ##    empty;    ##      #8709;
+# â   ##    nabla;    ##      #8711;
+# â   ##    isin;     ##      #8712;
+# â   ##    notin;    ##      #8713;
+# â   ##    ni;       ##      #8715;
+# â   ##    prod;     ##      #8719;
+# â   ##    sum;      ##      #8721;
+# â   ##    minus;    ##      #8722;
+# â   ##    lowast;   ##      #8727;
+# â   ##    radic;    ##      #8730;
+# â   ##    prop;     ##      #8733;
+# â   ##    infin;    ##      #8734;
+# â       ##    ang;      ##      #8736;
+# â§      ##    and;      ##      #8743;
+# â¨      ##    or;       ##      #8744;
+# â©      ##    cap;      ##      #8745;
+# âª      ##    cup;      ##      #8746;
+# â«      ##    int;      ##      #8747;
+# â´      ##    there4;   ##      #8756;
+# â¼      ##    sim;      ##      #8764;
+# â   ##    cong;     ##      #8773;
+# â   ##    asymp;    ##      #8776;
+# â       ##    ne;       ##      #8800;
+# â¡      ##    equiv;    ##      #8801;
+# â¤      ##    le;       ##      #8804;
+# â¥      ##    ge;       ##      #8805;
+# â   ##    sub;      ##      #8834;
+# â   ##    sup;      ##      #8835;
+# â   ##    nsub;     ##      #8836;
+# â   ##    sube;     ##      #8838;
+# â   ##    supe;     ##      #8839;
+# â   ##    oplus;    ##      #8853;
+# â   ##    otimes;   ##      #8855;
+# â¥      ##    perp;     ##      #8869;
+# â   ##    sdot;     ##      #8901;
+# Î       ##    Alpha;    ##      #913;
+# Î       ##    Beta;     ##      #914;
+# Î       ##    Gamma;    ##      #915;
+# Î       ##    Delta;    ##      #916;
+# Î       ##    Epsilon;  ##      #917;
+# Î       ##    Zeta;     ##      #918;
+# Î       ##    Eta;      ##      #919;
+# Î       ##    Theta;    ##      #920;
+# Î       ##    Iota;     ##      #921;
+# Î       ##    Kappa;    ##      #922;
+# Î       ##    Lambda;   ##      #923;
+# Î       ##    Mu;       ##      #924;
+# Î       ##    Nu;       ##      #925;
+# Î       ##    Xi;       ##      #926;
+# Î       ##    Omicron;  ##      #927;
+# Î           ##    Pi;       ##      #928;
+# Î¡          ##    Rho;      ##      #929;
+# Î£          ##    Sigma;    ##      #931;
+# Î¤          ##    Tau;      ##      #932;
+# Î¥          ##    Upsilon;  ##      #933;
+# Î¦          ##    Phi;      ##      #934;
+# Î§          ##    Chi;      ##      #935;
+# Î¨          ##    Psi;      ##      #936;
+# Î©          ##    Omega;    ##      #937;
+# Î±          ##    alpha;    ##      #945;
+# Î²          ##    beta;     ##      #946;
+# Î³          ##    gamma;    ##      #947;
+# Î´          ##    delta;    ##      #948;
+# Îµ          ##    epsilon;  ##      #949;
+# Î¶          ##    zeta;     ##      #950;
+# Î·          ##    eta;      ##      #951;
+# Î¸          ##    theta;    ##      #952;
+# Î¹          ##    iota;     ##      #953;
+# Îº          ##    kappa;    ##      #954;
+# Î»          ##    lambda;   ##      #955;
+# Î¼          ##    mu;       ##      #956;
+# Î½          ##    nu;       ##      #957;
+# Î¾          ##    xi;       ##      #958;
+# Î¿          ##    omicron;  ##      #959;
+# Ï       ##    pi;       ##      #960;
+# Ï       ##    rho;      ##      #961;
+# Ï       ##    sigmaf;   ##      #962;
+# Ï       ##    sigma;    ##      #963;
+# Ï       ##    tau;      ##      #964;
+# Ï       ##    upsilon;  ##      #965;
+# Ï       ##    phi;      ##      #966;
+# Ï       ##    chi;      ##      #967;
+# Ï       ##    psi;      ##      #968;
+# Ï       ##    omega;    ##      #969;
+# Ï       ##    thetasym; ##      #977;
+# Ï       ##    upsih;    ##      #978;
+# Ï       ##    piv;      ##      #982;
+# 
+# # vim: ft=sh foldmethod=marker
