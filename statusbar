@@ -42,13 +42,13 @@ exit 1
 # }}}
 # Main {{{1
 while sleep 2; do
-  date="$(date --iso-8601=minutes)"
+  date="$(date +'%R %a %b %d')"
 
   if [[ "$database" ]]; then
     db=""
   fi
 
-  echo "$db$date" || exit 1
+  echo "$db $date" || exit 1
 done
 # }}}
 
