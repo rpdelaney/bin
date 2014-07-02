@@ -10,6 +10,36 @@
 # shell script to produce my statusbar mesage way better than i3bar
 #
 #
+# Functions {{{1
+verbose() {
+  if [[ "$verbose" = "1" ]]; then
+    echo "$1" >&2
+  fi
+}
+
+error() {
+  echo "$1" >&2
+}
+# }}}
+# Usage {{{1
+#
+usage() {
+cat <<EOD
+statusbar
+© Copyright 2014 Ryan Delaney. All rights reserved.
+Web site: http://github.com/rpdelaney
+
+statusbar prints out a status bar just how I like it.
+
+Usage: statusbar [OPTION]
+
+Options
+  -?, --help                  print this help and exit
+  -v, --verbose               increase verbosity
+EOD
+exit 1
+}
+# }}}
 
 # Business {{{1
 config="/home/ryan/.config/i3status/i3status.conf"
@@ -18,3 +48,6 @@ i3status -c "$config" | while read line; do
     echo "$line" || exit 1
 done
 # }}}
+
+
+# vim: ft=sh foldmethod=marker:
