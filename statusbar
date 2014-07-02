@@ -53,7 +53,13 @@ while sleep 2; do
 #   note=U+f1b6
   fi
 
-  echo "$db $date" || exit 1
+  if [[ "$printer" ]]; then
+    :
+#   print=U+f1cc
+#   print=U+f1cd
+  fi
+
+  echo "$db $music $printer $date" || exit 1
 done
 # }}}
 
