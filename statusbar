@@ -48,6 +48,11 @@ while sleep 2; do
     db=""
   fi
 
+  if [[ "$music" ]]; then
+    :
+#   note=U+f1b6
+  fi
+
   echo "$db $date" || exit 1
 done
 # }}}
