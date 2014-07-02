@@ -58,11 +58,11 @@ word="$1"
 word="[${word:0:1}]${word:1}"
 
 if [[ -z "$verbose" ]]; then
+  pgrep "$word" || exit 1
+else
   ps aux | grep "$word" | grep -v "grep $word" | grep -Pv "psx (-v)? $word"
-  exit 0
 fi
 
-pgrep "$word" || exit 1
 # }}}
 
 # vim: ft=sh foldmethod=marker:
