@@ -47,6 +47,9 @@ do
   esac
 done
 # }}}
+# Validation {{{1
+if ! type pgrep &> /dev/null; then echo "ERROR: Missing dependency: pgrep" 1>&2; exit 1; fi
+# 1}}}
 # Main {{{1
 word="$1"
 
