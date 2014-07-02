@@ -41,7 +41,7 @@ exit 1
 }
 # }}}
 
-# Business {{{1
+# Main {{{1
 config="/home/ryan/.config/i3status/i3status.conf"
 
 i3status -c "$config" | while read line; do
