@@ -47,7 +47,6 @@ do
   esac
 done
 # }}}
-
 # Main {{{1
 word="$1"
 
@@ -63,7 +62,7 @@ if [[ "$verbose" -ge "1" ]]; then
   exit 0
 fi
 
-ps ax | grep "$word" | cut -d ' ' -f 1
+pgrep "$word" || exit 1
 # }}}
 
 # vim: ft=sh foldmethod=marker:
