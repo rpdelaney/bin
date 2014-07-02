@@ -44,6 +44,7 @@ exit 1
 while sleep 2; do
   date="$(date +'%R %a %b %d')"
 
+  # Glyphs {{{2
   if [[ -n "$database" ]]; then
     db=""
   else
@@ -64,7 +65,9 @@ while sleep 2; do
   else
     unset print
   fi
-
+  # 2}}}
+  # Tests {{{2
+  # }}}
   echo "$db $music $print $date" || exit 1
 done
 # }}}
