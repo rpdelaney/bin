@@ -57,11 +57,8 @@ word="$1"
 # this is so that the grep process won't match itself
 word="[${word:0:1}]${word:1}"
 
-# remember what this app is called
-myname="$(basename $0)"
-
-if [[ "$verbose" -ge "1" ]]; then
-  ps aux | grep "$word" | grep -v "grep $word" | grep -v "/bin/bash $0 $*"
+if [[ -z "$verbose" ]]; then
+  ps aux | grep "$word" | grep -v "grep $word" | grep -Pv "psx (-v)? $word"
   exit 0
 fi
 
