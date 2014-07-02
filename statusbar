@@ -40,12 +40,15 @@ EOD
 exit 1
 }
 # }}}
-
 # Main {{{1
-config="/home/ryan/.config/i3status/i3status.conf"
+while sleep 2; do
+  date="$(date --iso-8601=minutes)"
 
-i3status -c "$config" | while read line; do
-    echo "$line" || exit 1
+  if [[ "$database" ]]; then
+    db=""
+  fi
+
+  echo "$db$date" || exit 1
 done
 # }}}
 
