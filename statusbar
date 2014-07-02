@@ -2,7 +2,6 @@
 # shell script to prepend i3status with more stuff
 
 # Business {{{1
-bar="i3status"
 config="/home/ryan/.config/i3status/i3status.conf"
 
 i3status -c "$config" | while read line; do
