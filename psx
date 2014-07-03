@@ -60,7 +60,8 @@ word="[${word:0:1}]${word:1}"
 if [[ -z "$verbose" ]]; then
   pgrep "$word" || exit 1
 else
-  ps aux | grep "$word" | grep -v "grep $word" | grep -Pv "psx (-v)? $word"
+  ps u -p $(pgrep "$word" || exit 1)
+# ps aux | grep "$word" | grep -v "grep $word" | grep -Pv "psx (-v)? $word"
 fi
 
 # }}}
