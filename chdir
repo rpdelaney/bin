@@ -100,12 +100,12 @@ finddir() { # {{{1
   while [[ -z "$norecurse" ]]; do
     if [[ "$new_dir" == "$PWD" ]] || [[ "$new_dir" == "/" ]]; then
       error "Hit the ceiling at $new_dir"
-      return 0
+      break
     elif [[ -d "$new_dir" ]]; then
-      return 0
+      break
     elif [[ -d ".$new_dir" ]]; then
       new_dir=".$new_dir"
-      return 0
+      break
     else
       error "No suitable target found at $new_dir"
       error " Recursing up the directory tree..."
@@ -126,19 +126,21 @@ moveupdir() { # {{{1
     return 0
 } # }}}
 
-if [[ -n "$moveup" ]]; then
-  # If -u argument was passed, move up N directories.
-  moveupdir "$1"
+# If -u argument was passed, move up N directories.
+if [[ -n "$moveup" ]] && moveupdir "$1" ; then
   return 0
+else
+  return 1
 fi
-if finddir "$1"; then
+
+if finddir "$1" ; then
   builtin cd "$new_dir" && { timeout 1 ls --color=auto --format=across --group-directories-first || echo "$scriptPath: Timeout listing directory contents." ; }
 else
   error "FATAL: Directory not found."
 fi
 
 unset usage
-unset finddir 
-
+unset finddir
+unset moveupdir
 }
 # vim: ft=sh foldmethod=marker foldlevel=0
