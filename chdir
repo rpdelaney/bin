@@ -98,7 +98,7 @@ finddir() { # {{{1
   fi
 
   while [[ -z "$norecurse" ]]; do
-    if [[ "$new_dir" == "$PWD" ]] || [[ "$new_dir" == "/" ]]; then
+    if [[ "$new_dir" != "." ]] || [[ "$new_dir" == "/" ]]; then
       error "Hit the ceiling at $new_dir"
       break
     elif [[ -d "$new_dir" ]]; then
