@@ -132,7 +132,9 @@ if [[ -n "$moveup" ]] && moveupdir "$1" ; then
 fi
 
 if finddir "$1" ; then
-  builtin cd "$new_dir" && { timeout 1 ls --color=auto --format=across --group-directories-first || echo "$scriptPath: Timeout listing directory contents." ; }
+  if [[ "$new_dir" != '.' ]] && builtin cd "$new_dir" ; then
+    timeout 1 ls --color=auto --format=across --group-directories-first || echo "$scriptPath: Timeout listing directory contents."
+  fi
 else
   error "FATAL: Directory not found."
 fi
