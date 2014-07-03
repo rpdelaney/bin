@@ -120,17 +120,15 @@ else
 fi
 } # 1}}}
 moveupdir() { # {{{1
-    for i in seq 1 "$moveup"; do
-      cd .. || return 1
-    done
-    return 0
+  for i in seq 1 "$moveup"; do
+    cd .. || return 1
+  done
+  return 0
 } # }}}
 
 # If -u argument was passed, move up N directories.
 if [[ -n "$moveup" ]] && moveupdir "$1" ; then
   return 0
-else
-  return 1
 fi
 
 if finddir "$1" ; then
