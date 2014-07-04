@@ -98,18 +98,23 @@ finddir() { # {{{1
   fi
 
   while [[ -z "$norecurse" ]]; do
+    # If new_dir exists, then we're done
+    if [[ -d "$new_dir" ]]; then
+      break
+    fi
+    # If hidden new_dir exists, then we're done
+    if [[ -d ".$new_dir" ]]; then
+      new_dir=".$new_dir"
+      break
+    fi
+
+    error "No suitable target found at $new_dir"
+    new_dir="$(dirname "$new_dir")"
+    error " Recursing up the directory tree..."
+
     if [[ "$new_dir" != "." ]] || [[ "$new_dir" == "/" ]]; then
       error "Hit the ceiling at $new_dir"
       break
-    elif [[ -d "$new_dir" ]]; then
-      break
-    elif [[ -d ".$new_dir" ]]; then
-      new_dir=".$new_dir"
-      break
-    else
-      error "No suitable target found at $new_dir"
-      error " Recursing up the directory tree..."
-      new_dir="$(dirname "$new_dir")"
     fi
   done
 
