@@ -47,7 +47,9 @@ do
   esac
 done
 # }}}
-
+# Validation {{{1
+if ! type pgrep &> /dev/null; then echo "ERROR: Missing dependency: pgrep" 1>&2; exit 1; fi
+# 1}}}
 # Main {{{1
 word="$1"
 
@@ -55,15 +57,13 @@ word="$1"
 # this is so that the grep process won't match itself
 word="[${word:0:1}]${word:1}"
 
-# remember what this app is called
-myname="$(basename $0)"
-
-if [[ "$verbose" -ge "1" ]]; then
-  ps aux | grep "$word" | grep -v "grep $word" | grep -v "/bin/bash $0 $*"
-  exit 0
+if [[ -z "$verbose" ]]; then
+  pgrep "$word" || exit 1
+else
+  ps u -p $(pgrep "$word" || exit 1)
+# ps aux | grep "$word" | grep -v "grep $word" | grep -Pv "psx (-v)? $word"
 fi
 
-ps ax | grep "$word" | cut -d ' ' -f 1
 # }}}
 
 # vim: ft=sh foldmethod=marker:
