@@ -3,4 +3,5 @@
 # print a quick summary of raid array health
 #
 
+# verbose: sudo mdadm --misc --detail /dev/md[012] | less
 awk '/^md/ {printf "%s: ", $1}; /blocks/ {print $NF}' </proc/mdstat
