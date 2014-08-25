@@ -9,5 +9,11 @@
 #
 
 amixer sset Master off
-xset dpms force off
-xlock && thaw
+#xset dpms force off
+xlock 
+
+while pgrep i3lock; do
+  sleep 2s
+done
+
+thaw
