@@ -48,6 +48,11 @@ while sleep 2; do
     printf ""
   fi
 
+  if [[ -n "$steam" ]]; then
+  :
+#   printf ""
+  fi
+
   if [[ -n "$music" ]]; then
     :
 #   printf U+f1b6
