@@ -7,3 +7,6 @@
 [submodule "shellcheck"]
 	path = shellcheck
 	url = https://github.com/koalaman/shellcheck.git
+[submodule "git-extras"]
+	path = git-extras
+	url = git@github.com:visionmedia/git-extras.git
