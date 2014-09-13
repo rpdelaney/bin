@@ -68,11 +68,6 @@ do
   esac
 done
 
-# Parameters {{{1
-if [[ -n "$verbose" ]]; then
-  set -x
-fi
-
 # Validate {{{1
   # that we are working with a file
 if [[ ! -f "$1" ]] ; then
@@ -163,7 +158,7 @@ if [[ -z "$dep" ]]; then
 fi
 
   # Check for missing dependency
-[[ "$dep" ]] && type -P "$dep" > /dev/null || { echo "extract:: Missing dependency for MIME type $mime: $dep"; exit 1; }
+if ! type "$dep" &> /dev/null; then echo "extract:: Missing dependency for MIME type $mime: $dep" 1>&2; exit 1; fi
 
 # Extraction {{{1
 
