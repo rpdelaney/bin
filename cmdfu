@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+# GNU bash, version 4.3.24(1)-release (i686-pc-linux-gnu)
+#
+# © Copyright 2014 Ryan Delaney. All rights reserved.
+# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the README file for additional terms and conditions on your use of this
+# software.
+#
+# Usage {{{1
+#
+usage() {
+cat <<EOD
+cmdfu
+© Copyright 2014 Ryan Delaney. All rights reserved.
+Web site: http://github.com/rpdelaney
+
+cmdfu searches commandlinefu and prints results to STDOUT.
+
+Usage: cmdfu [OPTION] KEYWORD
+
+Options
+  -?, --help                  print this help and exit
+  -v, --verbose               increase verbosity
+  -q, --quiet                 suppress all output (ignores -v)
+EOD
+exit 1
+}
+# 1}}}
+# Parameters {{{1
+#
+while :
+do
+  case $1 in
+    --help | -\?)
+      usage
+      exit 0
+      ;;
+    -v | --verbose)
+      # Each instance of -v adds 1 to verbosity
+      verbose=$((verbose+1))
+      shift
+      ;;
+    -q | --quiet)
+      quiet="1"
+      shift
+      ;;
+    --) # End of all options
+      shift
+      break
+      ;;
+    -*)
+      echo "FATAL: Unknown option : $1" >&2
+      exit 1
+      shift
+      ;;
+    *)  # no more options. Stop while loop
+      break
+      ;;
+  esac
+done
+# 1}}}
+# Validation {{{1
+if ! type curl &> /dev/null; then echo "ERROR: Missing dependency: curl" 1>&2; exit 1; fi
+if ! type openssl &> /dev/null; then echo "ERROR: Missing dependency: openssl" 1>&2; exit 1; fi
+
+if [[ -z $verbose ]]; then
+  verbosity="--silent"
+# verbosity="--fail"
+fi
+#1}}}
+# Main {{{1
+needle="$*"
+maxtime="10"
+url="http://www.commandlinefu.com/commands/matching/$needle/$(echo -n "$needle" | openssl base64)/plaintext"
+
+curl "$verbosity" --max-time "$maxtime" "$url"
+#1}}}
+# vim: ft=sh foldmethod=marker
