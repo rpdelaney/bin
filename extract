@@ -78,7 +78,7 @@ else
 fi
 
   # get the filename
-filename="$(basename $myfile)"  # Full filename
+filename="$(basename "$myfile")"  # Full filename
 extension="${filename##*.}"     # Outer (last) extension only
 shortname="${filename%.*}"      # Filename without the outer extension
 
@@ -98,7 +98,7 @@ esac
 case "${mime#*-}" in
     text/PGP)
       dep="gpg"
-      cmd=(gpg --output ${myfile/.gpg/} --decrypt $myfile)
+      cmd=(gpg --output ${myfile/.gpg/} --decrypt "$myfile")
       ;;
     tar)
       dep="tar"
@@ -164,16 +164,16 @@ if ! type "$dep" &> /dev/null; then echo "extract:: Missing dependency for MIME 
 
 if [[ -z "$dryrun" ]]; then
     # make a folder to extract into
-  mkdir "$shortname"
-  cd "$shortname"
-  cp ../"$filename" .
+  mkdir "$shortname" || exit 1
+  cd "$shortname" || exit 1
+  cp ../"$filename" . || exit 1
     # Run the extraction command
   "${cmd[@]}"
     # Remove the old file
   rm "$filename"
   cd ..
 else
-  [[ -n "$verbose" ]] && echo "Extraction command was: ${cmd[@]}"
+  [[ -n "$verbose" ]] && echo "Extraction command was: ${cmd[*]}"
   exit 0
 fi
 
