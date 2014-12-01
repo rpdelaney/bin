@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# GNU bash, version 4.3.24(1)-release (x86_64-unknown-linux-gnu)
+#
+# © Copyright 2014 Ryan Delaney. All rights reserved.
+# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the README file for additional terms and conditions on your use of this
+# software.
+#
+
+# Functions {{{1
+verbose() {
+  if [[ "$verbose" -ge "1" ]] && [[ -z "$quiet" ]]; then
+    echo "$1" >&2 || return 1
+  fi
+}
+
+error() {
+  if [[ -z "$quiet" ]]; then
+    echo "$1" >&2 || return 1
+  fi
+}
+# 1}}}
+
+if [[ -d "/media/apps/wine32" ]]; then
+  prefix="/media/apps/wine32"
+else
+  error "Prefix directory not found: $prefix"
+  exit 1
+fi
+
+export WINEPREFIX="$prefix"
+export WINEARCH=win32
+
+wine "$@"
+
+# vim: ft=sh foldmethod=marker:
