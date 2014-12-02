@@ -51,17 +51,20 @@ done
 if ! type pgrep &> /dev/null; then echo "ERROR: Missing dependency: pgrep" 1>&2; exit 1; fi
 # 1}}}
 # Main {{{1
-word="$1"
+word="$*"
 
 # turn 'firefox' into '[f]irefox'
 # this is so that the grep process won't match itself
-word="[${word:0:1}]${word:1}"
+#word="[${word:0:1}]${word:1}"
 
-if [[ -z "$verbose" ]]; then
-  pgrep "$word" || exit 1
-else
-  ps u -p $(pgrep "$word" || exit 1)
-# ps aux | grep "$word" | grep -v "grep $word" | grep -Pv "psx (-v)? $word"
+matches="$(pgrep "$word")"
+
+if [[ -n "$matches" ]]; then
+  if [[ -z "$verbose" ]]; then
+    echo "$matches"
+  else
+    ps u -p "$matches"
+  fi
 fi
 
 # }}}
