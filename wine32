@@ -32,6 +32,8 @@ fi
 export WINEPREFIX="$prefix"
 export WINEARCH=win32
 
-wine "$@"
+if [[ -n "$@" ]]; then
+  wine "$@"
+fi
 
 # vim: ft=sh foldmethod=marker:
