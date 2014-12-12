@@ -63,7 +63,7 @@ if [[ -n "$matches" ]]; then
   if [[ -z "$verbose" ]]; then
     echo "$matches"
   else
-    ps u -p "$matches"
+    ps u -p $matches
   fi
 fi
 
