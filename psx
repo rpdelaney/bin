@@ -55,6 +55,7 @@ word="$*"
 
 # turn 'firefox' into '[f]irefox'
 # this is so that the grep process won't match itself
+# (now obviated by proper use of pgrep)
 #word="[${word:0:1}]${word:1}"
 
 matches="$(pgrep "$word")"
