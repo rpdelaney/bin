@@ -1,0 +1,112 @@
+#!/usr/bin/env bash
+# GNU bash, version 4.3.33(1)-release (x86_64-unknown-linux-gnu)
+#
+# © Copyright 2015 Ryan Delaney. All rights reserved.
+# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the README file for additional terms and conditions on your use of this
+# software.
+#
+# take a column of countegers and return the average
+
+# Functions {{{1
+verbose() {
+  if [[ "$verbose" -ge "1" ]] && [[ -z "$quiet" ]]; then
+    echo "$1" >&2 || return 1
+  fi
+}
+
+error() {
+  if [[ -z "$quiet" ]]; then
+    echo "$1" >&2 || return 1
+  fi
+}
+# 1}}}
+# Usage {{{1
+#
+usage() {
+cat <<EOD
+avg
+© Copyright 2015 Ryan Delaney. All rights reserved.
+Web site: http://github.com/rpdelaney
+
+avg reads a stream of integers from STDIN and prints the average to STDOUT
+
+Usage: avg [OPTION]
+
+Options
+  -?, --help                  print this help and exit
+  -v, --verbose               increase verbosity
+  -q, --quiet                 suppress all output (ignores -v)
+  -p, --precision             digits of precision for the output (default: 3)
+EOD
+exit 1
+}
+# 1}}}
+# Parameters {{{1
+#
+while :
+do
+  case $1 in
+    --help | -\?)
+      usage
+      exit 0
+      ;;
+    -v | --verbose)
+      # Each instance of -v adds 1 to verbosity
+      verbose=$((verbose+1))
+      shift
+      ;;
+    -q | --quiet)
+      quiet="1"
+      shift
+      ;;
+    -p | --precision)
+      readonly precision="$1"
+      shift 2
+      ;;
+    --) # End of all options
+      shift
+      break
+      ;;
+    -*)
+      echo "FATAL: Unknown option : $1" >&2
+      exit 1
+      shift
+      ;;
+    *)  # no more options. Stop while loop
+      break
+      ;;
+  esac
+done
+# 1}}}
+# Declaration {{{1
+  # Count of items processed so far
+count=0
+# 1}}}
+
+while read line; do
+  if [[ -z "$line" ]]; then
+    break
+  fi
+
+  if [[ -z "$avg" ]]; then
+    avg="$line"
+  else
+  # average = ( (previous average * previous count) + new integer ) / new count
+#   set -vx
+    avg=$(echo "scale=${precision:-5};( ($avg * $count) + $line ) / ($count + 1)" | bc) || exit 1
+#   set +xv
+  fi
+
+  ((count++))
+
+  verbose "average: $avg"
+  verbose "count: $count"
+  verbose "last input: $line"
+  verbose ""
+done
+
+echo "$avg"
+
+# vim: ft=sh foldmethod=marker:
