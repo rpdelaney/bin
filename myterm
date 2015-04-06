@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+# GNU bash, version 4.3.18(1)-release (x86_64-unknown-linux-gnu)
+#
+# © Copyright 2014 Ryan Delaney. All rights reserved.
+# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the README file for additional terms and conditions on your use of this
+# software.
+#
+# Loads a new urxvt terminal session with command-line settings the way I like it
+
+# Font {{{1
+# Normal {{{2
+fontnormal="xft:Inconsolata\-g for Powerline:style=g:pixelsize=20"
+fontnormal="$fontnormal,xft:Consolas:style=Regular:pixelsize=20"
+fontnormal="$fontnormal,xft:Ubuntu Mono:style=regular:pixelsize=20"
+fontnormal="$fontnormal,xft:FreeMono:pixelsize=20:style=regular"
+#2}}}
+# Bold {{{2
+fontbold="xft:Consolas:style=Bold"
+#2}}}
+  # Disable built-in glyphs and just rely on what fonts provide
+skipbuiltinglyphs="-sbg"
+  # Lines (pixel height) to insert between each row. For font rendering issues
+#linespace="-lsp 2"
+  # Adjust computed character width to control letter spacing. Negative tightens, positive opens
+#letterspace="-letsp 1"
+#1}}}
+# Effects {{{1
+visualbell="+vb"
+#scrollbar="-sb"
+cursorblink="-bc"
+# 1}}}
+# Misc {{{1
+  # Turn on/off hold window after exit support. If enabled, urxvt will not
+  # immediately destroy its window when the program executed within it exits.
+  # Instead, it will wait till it is being killed or closed by the user;
+  # resource hold.
+holdwindow="+hold"
+  # Set the terminal type loaded in the TERM environment variable. Must exist
+  # in termcap(5)
+termname="-tn rxvt-unicode-256color"
+  # Number of scrollback lines to save
+scrollback="-sl 5000"
+  # Capture system console messages"
+#capture="-C"
+  # Enables most of the escape sequences that echo strings
+insecure="-insecure"
+#1}}}
+  # Execute a command in the window
+if [[ -n "$*" ]]; then
+  execute="-e bash -c $*"
+fi
+  # Window title
+title="-title urxvt"
+  # Sets the working directory for the shell
+chdir="-cd $HOME"
+  # Remap a key symbol
+keysym="-keysym.sym string"
+  # Perl exetension scripts to use (or not use)
+perlext="-pe default,clipboard,url-select,keyboard-select"
+
+urxvt -fn "$fontnormal" -fb "$fontbold" \
+  $visualbell \
+  $scrollbar \
+  $cursorblink \
+  $scrollback \
+  $capture \
+  $insecure \
+  $skipbuiltinglyphs \
+  $linespace \
+  $letterspace \
+  $termname \
+  $title \
+  $chdir \
+  $perlext \
+  $holdwindow \
+  $execute
+
+# vim: ft=sh foldmethod=marker:
