@@ -6,6 +6,6 @@
 "$@"
 err="$?"
 
-STRING="Process finished with error code ""$err"": ""$@"
+string="Process finished with error code ""$err"": ""$*"
 
-notify-send "$STRING"
+notify-send "$string"
