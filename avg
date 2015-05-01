@@ -84,7 +84,7 @@ done
   # Count of items processed so far
 count=0
 # 1}}}
-
+# Main {{{1
 while read line; do
   if [[ -z "$line" ]]; then
     break
@@ -94,19 +94,13 @@ while read line; do
     avg="$line"
   else
   # average = ( (previous average * previous count) + new integer ) / new count
-#   set -vx
     avg=$(echo "scale=${precision:-5};( ($avg * $count) + $line ) / ($count + 1)" | bc) || exit 1
-#   set +xv
   fi
 
   ((count++))
-
-  verbose "average: $avg"
-  verbose "count: $count"
-  verbose "last input: $line"
-  verbose ""
 done
 
 echo "$avg"
+# Main 1}}}
 
 # vim: ft=sh foldmethod=marker:
