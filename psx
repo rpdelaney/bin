@@ -8,16 +8,35 @@
 # software.
 
 # Functions {{{1
+# verbose() {{{2
 verbose() {
-  if [[ "$verbose" = "1" ]]; then
-    echo "$1" >&2
+  # $1 is the message to be printed
+  local message="$1"
+  # $2 is the verbosity threshold (default: 1)
+  local threshold="$2"
+
+  if [[ "$verbose" -ge "$threshold" ]] && [[ -z "$quiet" ]]; then
+    echo "$message" >&2 || return 1
   fi
 }
-
+# verbose() 2}}}
+# error() {{{2
 error() {
-  echo "$1" >&2
+  #  is the message to be printed
+  local message="$1"
+
+  if [[ -z "$quiet" ]]; then
+    echo "$message" >&2 || return 1
+  fi
 }
-# }}}
+# error() 2}}}
+# psx_getpids() {{{2
+psx_getpids() {
+  pgrep "$word"
+}
+# psx_getpids() 2}}}
+# Functions 1}}}
+
 # Parameters {{{1
 #
 while :
@@ -47,24 +66,50 @@ do
   esac
 done
 # }}}
+
+# Usage {{{1
+usage() {
+cat <<EOD
+Usage: psx [OPTION]
+
+Options
+  -?, --help                  print this help and exit
+  -v, --verbose               increase verbosity
+EOD
+exit 1
+}
+# Usage 1}}}
+
 # Validation {{{1
 if ! type pgrep &> /dev/null; then echo "ERROR: Missing dependency: pgrep" 1>&2; exit 1; fi
 # 1}}}
+
 # Main {{{1
 word="$*"
+tmpfile="$(mktemp)"
+pids="$(psx_getpids)"
 
-# turn 'firefox' into '[f]irefox'
-# this is so that the grep process won't match itself
-# (now obviated by proper use of pgrep)
-#word="[${word:0:1}]${word:1}"
+if [[ -z "$verbose" ]]; then
+  # just get the pids
+  echo "$pids"
+else
+  {
+    read line
+    echo "$line" # > "$tmpfile"
 
-matches="$(pgrep "$word")"
+    while read line; do
+      echo "$line" >> "$tmpfile"
+    done
+  } < <( ps u --sort=uid,pid -p ${pids:="0"} )
 
-if [[ -n "$matches" ]]; then
-  if [[ -z "$verbose" ]]; then
-    echo "$matches"
+  cols=${COLUMNS:="$(tput cols)"}
+
+  if [[ "$verbose" -le 1 ]] && [[ -n "$cols" ]]; then
+    # print the rest, with output trimmed to terminal width
+    cut -c1-"$cols" "$tmpfile"
   else
-    ps u -p $matches
+    # print everything
+    cat "$tmpfile"
   fi
 fi
 
