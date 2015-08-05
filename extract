@@ -105,7 +105,7 @@ shortname="${filename%.*}"      # Filename without the outer extension
   # get the mime type
 #mime=$(file -Lb --mime-type "$myfile")
 mime=$(xdg-mime query filetype "$myfile")
-echo "mimetype is: $mime"
+verbose "mimetype is: $mime"
 
   # Identify {{{1
 case "$extension" in
