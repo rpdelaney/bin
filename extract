@@ -19,13 +19,8 @@
 usage() {
 cat <<EOD
 extract
-© Copyright 2014-03-01 Ryan Delaney. All rights reserved.
-Web site: http://github.com/rpdelaney
 
-extract attempts to identify an archived file type and extract it to a
-directory.
-
-Usage: extract [OPTION]
+Usage: extract [OPTION] FILE
 
 Options
   -?, --help                  print this help and exit
