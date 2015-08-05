@@ -14,6 +14,30 @@
 # TODO: confirm that extraction never over-writes existing files
 # TODO: Can we use trap to run the command after shell exit?
 # TODO: Leverage pv to display info about the output
+# Functions {{{1
+# verbose() {{{2
+verbose() {
+  # $1 is the message to be printed
+  local message="$1"
+  # $2 is the verbosity threshold (default: 1)
+  local threshold="$2"
+
+  if [[ "$verbose" -ge "$threshold" ]] && [[ -z "$quiet" ]]; then
+    echo "$message" >&2 || return 1
+  fi
+}
+# verbose() 2}}}
+# error() {{{2
+error() {
+  #  is the message to be printed
+  local message="$1"
+
+  if [[ -z "$quiet" ]]; then
+    echo "$message" >&2 || return 1
+  fi
+}
+# error() 2}}}
+# Functions 1}}}
 
 # Usage {{{1
 usage() {
