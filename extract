@@ -87,6 +87,7 @@ do
       ;;
   esac
 done
+# Arguments 1}}}
 
 # Validate {{{1
   # that we are working with a file
@@ -106,67 +107,68 @@ shortname="${filename%.*}"      # Filename without the outer extension
 #mime=$(file -Lb --mime-type "$myfile")
 mime=$(xdg-mime query filetype "$myfile")
 verbose "mimetype is: $mime"
+# Validate 1}}}
 
   # Identify {{{1
 case "$extension" in
   vpk)
     dep="vpk"
-    cmd=(vpk "$myfile")
+    extractcommand=(vpk "$myfile")
     ;;
 esac
 
 case "${mime#*-}" in
     text/PGP)
       dep="gpg"
-      cmd=(gpg --output ${myfile/.gpg/} --decrypt "$myfile")
+      extractcommand=(gpg --output ${myfile/.gpg/} --decrypt "$myfile")
       ;;
     tar)
       dep="tar"
-      cmd=(tar kxfv "$myfile")
+      extractcommand=(tar kxfv "$myfile")
       ;;
     bzip2)
       dep="bunzip2"
-      cmd=(bunzip2 "$myfile")
+      extractcommand=(bunzip2 "$myfile")
       ;;
     tar.bz2)
       dep="tar"
-      cmd=(tar kxjfv "$myfile")
+      extractcommand=(tar kxjfv "$myfile")
       ;;
     tar.gz)
       dep="tar"
-      cmd=(tar kxzfv "$myfile")
+      extractcommand=(tar kxzfv "$myfile")
       ;;
     tbz2)
       dep="tar"
-      cmd=(tar kxjfv "$myfile")
+      extractcommand=(tar kxjfv "$myfile")
       ;;
     tgz)
       dep="tar"
-      cmd=(tar kxzfv "$myfile")
+      extractcommand=(tar kxzfv "$myfile")
       ;;
     xz)
       dep="xz"
-      cmd=(xz -dk "$myfile")
+      extractcommand=(xz -dk "$myfile")
       ;;
     rar)
       dep="unrar"
-      cmd=(unrar x "$myfile")
+      extractcommand=(unrar x "$myfile")
       ;;
     gzip)
       dep="tar"
-      cmd=(tar kxzfv "$myfile")
+      extractcommand=(tar kxzfv "$myfile")
       ;;
     application/zip)
       dep="unzip"
-      cmd=(unzip "$myfile")
+      extractcommand=(unzip "$myfile")
       ;;
     Z)
       dep="tar"
-      cmd=(tar kxzfv "$myfile")
+      extractcommand=(tar kxzfv "$myfile")
       ;;
     7z-compressed)
       dep="7za"
-      cmd=(7za x "$myfile")
+      extractcommand=(7za x "$myfile")
       ;;
     *)
       ;;
@@ -188,12 +190,12 @@ if [[ -z "$dryrun" ]]; then
   cd "$shortname" || exit 1
   cp ../"$filename" . || exit 1
     # Run the extraction command
-  "${cmd[@]}"
+  "${extractcommand[@]}"
     # Remove the old file
   rm "$filename"
   cd ..
 else
-  [[ -n "$verbose" ]] && echo "Extraction command was: ${cmd[*]}"
+  [[ -n "$verbose" ]] && echo "Extraction command was: ${extractcommand[*]}"
   exit 0
 fi
 
