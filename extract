@@ -53,6 +53,7 @@ Options
 EOD
 exit 1
 }
+# Usage 1}}}
 
 # Arguments {{{1
 #
@@ -90,7 +91,7 @@ done
 # Validate {{{1
   # that we are working with a file
 if [[ ! -f "$1" ]] ; then
-    echo "extract:: FATAL no such file $myfile"
+    error "extract:: FATAL no such file $myfile"
     exit 1
 else
   myfile="$1"
