@@ -79,7 +79,7 @@ do
       break
       ;;
     -*)
-      echo "WARN: Unknown option (ignored): $1" >&2
+      error "WARN: Unknown option (ignored): $1" >&2
       shift
       ;;
     *)  # no more options. Stop while loop
@@ -175,12 +175,12 @@ case "${mime#*-}" in
 esac
 
 if [[ -z "$dep" ]]; then
-  echo "extract: unrecognized mimetype $mime"
+  error "extract: unrecognized mimetype $mime"
   exit 1
 fi
 
   # Check for missing dependency
-if ! type "$dep" &> /dev/null; then echo "extract:: Missing dependency for MIME type $mime: $dep" 1>&2; exit 1; fi
+if ! type "$dep" &> /dev/null; then error "extract:: Missing dependency for MIME type $mime: $dep" 1>&2; exit 1; fi
 
 # Extraction {{{1
 
@@ -201,7 +201,7 @@ fi
 # Cleanup {{{1
 
   # Warn me if I deleted the file somehow
-[[ -e "$myfile" ]] || echo "extract:: WARNING! $1 was removed after extracting."
+[[ -e "$myfile" ]] || error "extract:: WARNING! $1 was removed after extracting."
 
 # Modelines {{{1
 # vim: ft=sh foldmethod=marker
