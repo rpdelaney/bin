@@ -195,7 +195,7 @@ if [[ -z "$dryrun" ]]; then
   rm "$filename"
   cd ..
 else
-  [[ -n "$verbose" ]] && echo "Extraction command was: ${extractcommand[*]}"
+  verbose "Extraction command was: ${extractcommand[*]}"
   exit 0
 fi
 
