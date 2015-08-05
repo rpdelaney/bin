@@ -103,8 +103,8 @@ extension="${filename##*.}"     # Outer (last) extension only
 shortname="${filename%.*}"      # Filename without the outer extension
 
   # get the mime type
-    # this should use xdg-mime query filetype "$myfile" instead
-mime=$(file -Lb --mime-type "$myfile")
+#mime=$(file -Lb --mime-type "$myfile")
+mime=$(xdg-mime query filetype "$myfile")
 echo "mimetype is: $mime"
 
   # Identify {{{1
