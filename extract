@@ -113,66 +113,65 @@ verbose "mimetype is: $mime"
 case "$extension" in
   vpk)
     dep="vpk"
-    extractcommand=(vpk "$myfile")
     ;;
 esac
 
 case "${mime#*-}" in
     text/PGP)
       dep="gpg"
-      extractcommand=(gpg --output ${myfile/.gpg/} --decrypt "$myfile")
+      args="--output ${myfile/.gpg/} --decrypt"
       ;;
     tar)
       dep="tar"
-      extractcommand=(tar kxfv "$myfile")
+      args="kxfv"
       ;;
     bzip2)
       dep="bunzip2"
-      extractcommand=(bunzip2 "$myfile")
       ;;
     tar.bz2)
       dep="tar"
-      extractcommand=(tar kxjfv "$myfile")
+      args="kxjfv"
       ;;
     tar.gz)
       dep="tar"
-      extractcommand=(tar kxzfv "$myfile")
+      args="kxzfv"
       ;;
     tbz2)
       dep="tar"
-      extractcommand=(tar kxjfv "$myfile")
+      args="kxjfv"
       ;;
     tgz)
       dep="tar"
-      extractcommand=(tar kxzfv "$myfile")
+      args="kxzfv"
       ;;
     xz)
       dep="xz"
-      extractcommand=(xz -dk "$myfile")
+      args="-dk"
       ;;
     rar)
       dep="unrar"
-      extractcommand=(unrar x "$myfile")
+      args="x"
       ;;
     gzip)
       dep="tar"
-      extractcommand=(tar kxzfv "$myfile")
+      args="kxzfv"
       ;;
     application/zip)
       dep="unzip"
-      extractcommand=(unzip "$myfile")
       ;;
     Z)
       dep="tar"
-      extractcommand=(tar kxzfv "$myfile")
+      args="kxzfv"
       ;;
     7z-compressed)
       dep="7za"
-      extractcommand=(7za x "$myfile")
+      args="x"
       ;;
     *)
       ;;
 esac
+
+command="$dep $args $myfile"
 
 if [[ -z "$dep" ]]; then
   error "extract: unrecognized mimetype $mime"
@@ -190,12 +189,12 @@ if [[ -z "$dryrun" ]]; then
   cd "$shortname" || exit 1
   cp ../"$filename" . || exit 1
     # Run the extraction command
-  "${extractcommand[@]}"
+  eval "$command"
     # Remove the old file
   rm "$filename"
   cd ..
 else
-  verbose "Extraction command was: ${extractcommand[*]}"
+  verbose "Extraction command was: $command"
 fi
 
 # Cleanup {{{1
