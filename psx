@@ -30,11 +30,6 @@ error() {
   fi
 }
 # error() 2}}}
-# psx_getpids() {{{2
-psx_getpids() {
-  pgrep "$word"
-}
-# psx_getpids() 2}}}
 # Functions 1}}}
 
 # Parameters {{{1
@@ -84,35 +79,35 @@ exit 1
 if ! type pgrep &> /dev/null; then echo "ERROR: Missing dependency: pgrep" 1>&2; exit 1; fi
 # 1}}}
 
-# Main {{{1
 word="$*"
-tmpfile="$(mktemp)"
-pids="$(psx_getpids)"
+pids="$(pgrep "$word")"
 
-if [[ -z "$verbose" ]]; then
-  # just get the pids
-  echo "$pids"
-else
-  {
-    read line
-    echo "$line" # > "$tmpfile"
-
-    while read line; do
-      echo "$line" >> "$tmpfile"
-    done
-  } < <( ps u --sort=uid,pid -p ${pids:="0"} )
-
-  cols=${COLUMNS:="$(tput cols)"}
-
-  if [[ "$verbose" -le 1 ]] && [[ -n "$cols" ]]; then
-    # print the rest, with output trimmed to terminal width
-    cut -c1-"$cols" "$tmpfile"
+if [[ -n "$pids" ]]; then
+  if [[ -z "$verbose" ]]; then
+    # just get the pids
+    echo "$pids"
   else
-    # print everything
-    cat "$tmpfile"
+    tmpfile="$(mktemp)"
+    {
+      read line
+      echo "$line" # > "$tmpfile"
+
+      while read line; do
+        echo "$line" >> "$tmpfile"
+      done
+    } < <( ps u --sort=uid,pid -p $pids )
+
+    cols=${COLUMNS:="$(tput cols)"}
+
+    if [[ "$verbose" -le 1 ]] && [[ -n "$cols" ]]; then
+      # print the rest, with output trimmed to terminal width
+      cut -c1-"$cols" "$tmpfile"
+    else
+      # print everything
+      cat "$tmpfile"
+    fi
   fi
 fi
 
-# }}}
 
 # vim: ft=sh foldmethod=marker:
