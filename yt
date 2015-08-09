@@ -9,6 +9,10 @@
 #
 # :command! yt -js  { dactyl.execute(';yt'); dactyl.execute('command2'); }
 
-mplayer -loop 0 -fixed-vo -softvol -msgcolor -fs -quiet "$(youtube-dl -g "$1")"
+# Trap the first line of the output from youtube-dl -g
+read video < <(youtube-dl -g "$1")
+
+#\mplayer -loop 0 -fixed-vo -softvol -msgcolor -fs -quiet "$video"
+mpv "$video"
 
 # vim: filetype=sh foldmethod=marker shiftwidth=2 expandtab softtabstop=4:
