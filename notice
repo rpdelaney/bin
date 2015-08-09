@@ -1,20 +1,6 @@
 #!/usr/bin/env bash
 # GNU bash, version 4.3.11(1)-release (x86_64-unknown-linux-gnu)
 #
-# © Copyright 2014 Ryan Delaney. All rights reserved.
-#
-# This program is free software: you can redistribute it and/or modify it
-# under the terms of the GNU General Public License as published by the
-# Free Software Foundation, either version 3 of the License, or (at your
-# option) any later version.
-#
-# This program is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-# General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License along
-# with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # Send a tmux, desktop, and audio notification after the completion
 # of the given command when using tmux.
@@ -39,23 +25,9 @@ error() {
 #
 usage() {
 cat <<EOD
-broadcast
-© Copyright 2014 Ryan Delaney.
-This program is free software: you can redistribute it and/or modify it
-under the terms of the GNU General Public License as published by the
-Free Software Foundation, either version 3 of the License, or (at your
-option) any later version.
+$(basename $0) sends a message via various notification daemons simultaneously
 
-This program is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-General Public License for more details.
-
-Web site: http://github.com/rpdelaney
-
-broadcast sends a notification via various notification daemons simultaneously
-
-Usage: broadcast [OPTION] MESSAGE
+Usage: $(basename $0) [OPTION] MESSAGE
 
 Options
   -?, --help                        print this help and exit
@@ -93,38 +65,31 @@ do
       shift
       ;;
     -t | --expire-time=)
-      shift
       expiretime="$1"
       shift
       ;;
     -a | --app-name=)
-      shift
       appname="$1"
       shift
       ;;
     -i | --icon=)
-      shift
       icon="$1"
       shift
       ;;
     -c | --category=)
-      shift
       category="$1"
       shift
       ;;
     -h | --hint=)
-      shift
       hint="$1"
       shift
       ;;
     --) # End of all options
-      shift
       break
       ;;
     -*)
       echo "FATAL: Unknown option : $1" >&2
       exit 1
-      shift
       ;;
     *)  # no more options. Stop while loop
       break
