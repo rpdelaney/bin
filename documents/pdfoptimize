@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-#
-# optimize pdf files for screen reading
-#
-echo "this doesn't do anything."
