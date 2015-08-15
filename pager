@@ -1,2 +1,7 @@
 #!/usr/bin/env sh
-/usr/bin/less -R -X ${1-:</dev/stdin}
+
+if [ "$1" = "" ]; then
+  /usr/bin/less -R -X < /dev/stdin
+else
+  /usr/bin/less -R -X -- "$1"
+fi
