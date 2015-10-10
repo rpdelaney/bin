@@ -8,4 +8,4 @@
 # software.
 #
 
-i3lock -u -c 3f3f3f
+i3lock --ignore-empty-password --show-failed-attempts --pointer=win --no-unlock-indicator --color=3f3f3f --beep
