@@ -3,7 +3,7 @@
 #
 
 # Send a tmux, desktop, and audio notification after the completion
-# of the given command when using tmux.
+# of the given command when using tmux and libnotify.
 #
 # Requires: tmux
 # Recommended: espeak, libnotify
@@ -66,25 +66,26 @@ do
       ;;
     -t | --expire-time=)
       expiretime="$1"
-      shift
+      shift 2
       ;;
     -a | --app-name=)
       appname="$1"
-      shift
+      shift 2
       ;;
     -i | --icon=)
       icon="$1"
-      shift
+      shift 2
       ;;
     -c | --category=)
       category="$1"
-      shift
+      shift 2
       ;;
     -h | --hint=)
       hint="$1"
-      shift
+      shift 2
       ;;
     --) # End of all options
+      shift
       break
       ;;
     -*)
@@ -99,7 +100,7 @@ done
 # }}}
 # Business {{{1
 # Build the notification string
-notification="$@"
+notification="$*"
 
 # tmux
 if type tmux &> /dev/null; then
@@ -123,7 +124,11 @@ fi
 
 # notify-send
 if type notify-send &> /dev/null; then
-  notify-send "$notification"
+  if [[ -z "$urgency" ]]; then
+    notify-send "$notification"
+  else
+    notify-send -u "$urgency" "$notification"
+  fi
 fi
 
 # espeak
