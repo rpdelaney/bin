@@ -1,2 +1,3 @@
-#!/usr/bin/env sh
-/usr/bin/less -R -X ${1-:</dev/stdin}
+#!/usr/bin/env bash
+#/usr/bin/less -R -X ${1-:</dev/stdin}
+/usr/bin/less -R -X ${1}
