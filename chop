@@ -16,6 +16,6 @@ else
   exit 1
 fi
 
-confirm "Delete the file?" && rm "$1" || exit 0
+confirm "Delete the file?" && >"$1" || exit 0
 
 # vim: filetype=sh foldmethod=marker shiftwidth=2 expandtab softtabstop=4:
