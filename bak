@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 # GNU bash, version 4.3.42(1)-release (x86_64-apple-darwin14.5.0)
 #
-# © Copyright 2016 Boku, Inc. All rights reserved.
+# © Copyright 2016 Ryan Delaney. All rights reserved.
+# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the README file for additional terms and conditions on your use of this
+# software.
 #
 
 for file in "$@"; do
