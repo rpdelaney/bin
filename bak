@@ -9,9 +9,10 @@
 #
 
 for file in "$@"; do
-  date="$(date +%Y%m%d-%H%m%S)"
-  newname="$file".bak."$date"
-  cp "$file" "$newname"
+  date="$(date +%Y%m%d-%H%m%S)" || exit 1
+  oldname="$(readlink -f "$file")" || exit 1
+  newname="$oldname".bak."$date"
+  cp "$file" "$newname" || exit 1
 done
 
 # vim: filetype=sh foldmethod=marker shiftwidth=2 expandtab softtabstop=4:
