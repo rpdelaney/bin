@@ -77,6 +77,7 @@ exit 1
 
 # Validation {{{1
 if ! type pgrep &> /dev/null; then echo "ERROR: Missing dependency: pgrep" 1>&2; exit 1; fi
+if ! type mktemp &> /dev/null; then echo "Missing dependency: mktemp" 1>&2; exit 1; fi
 # 1}}}
 
 word="$*"

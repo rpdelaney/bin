@@ -1,34 +1,18 @@
 #!/usr/bin/env bash
+# GNU bash, version 4.3.42(1)-release (x86_64-apple-darwin14.5.0)
 #
-# bak -- backups files
-# Copyright (C) 2010-2012  Alan SCHNEIDER
-#                          <shk.schneider[at]gmail.com>
+# © Copyright 2016 Ryan Delaney. All rights reserved.
+# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the README file for additional terms and conditions on your use of this
+# software.
 #
-# This program is free software; you can redistribute it and/or
-# modify it under the terms of the GNU General Public License
-# as published by the Free Software Foundation; either version 2
-# of the License, or (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-[ $# -ne 1 ] && echo "Usage: bak <file> [..]" >&2 && exit 1
-
-[ ! -f "$1" -a ! -d "$1" ] && echo "bak: $1: no such file or directory" >&2 && exit 1
-[ ! -e "$1" ] && echo "bak: $1: permission denied" >&2 && exit 1
-[ ! -w "`dirname "$1"`" ] && echo "bak: `dirname "$1"`: Permission denied" >&2 && exit 1
-
-for argv in "$@" ; do
-    file=$(readlink -f "$argv")
-    backup_file="$file.bak""`date +%Y%m%d-%H%m%S`"
-    echo "`basename "$file"` -> `basename "$backup_file"`"
-    cp -rp "$file" "$backup_file"
+for file in "$@"; do
+  date="$(date +%Y%m%d-%H%m%S)" || exit 1
+  oldname="$(readlink -f "$file")" || exit 1
+  newname="$oldname".bak."$date"
+  cp "$file" "$newname" || exit 1
 done
 
-# EOF
+# vim: filetype=sh foldmethod=marker shiftwidth=2 expandtab softtabstop=4:
