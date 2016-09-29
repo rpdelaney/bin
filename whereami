@@ -3,7 +3,8 @@
 #where the heck am I?
 #
 
-source ~/.bash_styles
+styles="$HOME/.bash_styles"
+if [[ -f "$styles" ]]; then source ~/.bash_styles; fi
 
 namei "$PWD" -x -m | \
 sed -r 's@f\:\s(.*)@'"$bold$green"'\1'$reset'@' | \
