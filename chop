@@ -12,10 +12,10 @@
 if [[ -r "$1" ]]; then
   mpv "$1"
 else
-  error "$1 is not a readable file."
+  echo "$1 is not a readable file." 1>&2
   exit 1
 fi
 
-confirm "Delete the file?" && >"$1" || exit 0
+confirm "Delete the file? $1 " && >"$1" || exit 0
 
 # vim: filetype=sh foldmethod=marker shiftwidth=2 expandtab softtabstop=4:
