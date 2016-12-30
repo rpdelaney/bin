@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# GNU bash, version 4.3.42(1)-release (x86_64-unknown-linux-gnu)
+#
+# © Copyright 2015 Ryan Delaney. All rights reserved.
+# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the README file for additional terms and conditions on your use of this
+# software.
+#
+# Changes filename(s) to UTF-8 lower case
+
+if ! type convmv &> /dev/null; then echo "ERROR: Missing dependency: convmv" 1>&2; exit 1; fi
+
+convmv --lower -f UTF-8 --notest "$@"
+
+# vim: filetype=sh foldmethod=marker shiftwidth=2 expandtab softtabstop=4:
