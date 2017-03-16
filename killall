@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# GNU bash, version 4.4.12(1)-release (x86_64-unknown-linux-gnu)
+#
+# © Copyright 2017 Ryan Delaney. All rights reserved.
+# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the README file for additional terms and conditions on your use of this
+# software.
+#
+if ! type psx &> /dev/null; then echo "Missing dependency: psx" 1>&2; exit 1; fi
+
+while read -r line; do
+  kill "$line"
+done < <(psx "$1")
+
+# vim: filetype=sh foldmethod=marker shiftwidth=2 expandtab softtabstop=4:
