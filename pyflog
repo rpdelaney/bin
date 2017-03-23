@@ -49,13 +49,15 @@ boilerplate() {
   printf '%s\n' '# -*- coding: UTF-8 -*-'
   printf '%s %s\n' '#' "$(python --version)"
   printf '%s\n' '#'
-  printf '%s %s %s\n' '# © Copyright' "$(date +'%Y')" 'Ryan Delaney. All rights reserved.'
+  printf '__author__ = "%s"\n' 'Ryan Delaney (ryan DOT delaney AT gmail DOT com)'
+  printf '__date__ = "%s"\n' "$(date +'%Y-%m-%d')"
+  printf '__copyright__ = %s %s %s\n' '"""© Copyright' "$(date +'%Y')" 'Ryan Delaney. All rights reserved.'
 cat <<EOD
-# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
-# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the README file for additional terms and conditions on your use of this
-# software.
-#
+ This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
+ implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ See the README file for additional terms and conditions on your use of this
+ software.
+"""
 
 pass
 
