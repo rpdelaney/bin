@@ -12,7 +12,7 @@ amixer sset Master off
 #xset dpms force off
 xlock 
 
-while pgrep i3lock; do
+while pgrep i3lock &> /dev/null; do
   sleep 2s
 done
 
