@@ -7,7 +7,7 @@
 # See the README file for additional terms and conditions on your use of this
 # software.
 #
-# take a column of countegers and return the average
+# take a column of integers and return the average
 
 # Functions {{{1
 verbose() {

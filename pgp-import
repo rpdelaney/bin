@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-#
-# import a PGP public key by fingerprint
-#
-
-gpg --recv-key $1

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# GNU bash, version 4.3.42(1)-release (x86_64-apple-darwin14.5.0)
+# GNU bash, version 4.3.42(1)-release (x86_64-unknown-linux-gnu)
 #
 # © Copyright 2016 Ryan Delaney. All rights reserved.
 # This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
@@ -7,12 +7,15 @@
 # See the README file for additional terms and conditions on your use of this
 # software.
 #
+#   Try to open a file, and then ask me if I want to delete it.
 
-for file in "$@"; do
-  date="$(date +%Y%m%d-%H%m%S)" || exit 1
-  oldname="$(readlink -f "$file")" || exit 1
-  newname="$oldname".bak."$date"
-  cp "$file" "$newname" || exit 1
-done
+if [[ -r "$1" ]]; then
+  mpv "$1"
+else
+  echo "$1 is not a readable file." 1>&2
+  exit 1
+fi
+
+confirm "Delete the file? $1 " && >"$1" || exit 0
 
 # vim: filetype=sh foldmethod=marker shiftwidth=2 expandtab softtabstop=4:
