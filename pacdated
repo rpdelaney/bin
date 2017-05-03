@@ -4,13 +4,17 @@
 #
 
 #Make sure pacman exists
-type pacman > /dev/null 2>&1 || { echo "$(realpath $0): pacman not found. Aborting."; exit 1; }
+if ! type pacman &> /dev/null; then echo "Missing dependency: pacman" 1>&2; exit 1; fi
 
 #Store a count of out of date packages
-count=$(pacman -Qu | wc -l)
+count="$(pacman -Qu | wc -l)"
 
 #Return the count
 echo "$count"
 
 #If outdated packages were found, exit with an error code. Otherwise, don't.
-[[ "$count" ]] && exit 1 || exit 0
+if [[ "$count" -ne 0 ]]; then
+  exit 1
+else
+  exit 0
+fi

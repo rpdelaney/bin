@@ -1,0 +1,87 @@
+#!/usr/bin/env bash
+# GNU bash, version 4.3.18(1)-release (x86_64-unknown-linux-gnu)
+#
+# © Copyright 2014 Ryan Delaney. All rights reserved.
+# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the README file for additional terms and conditions on your use of this
+# software.
+#
+
+# Functions {{{1
+verbose() {
+  if [[ "$verbose" = "1" ]]; then
+    echo "$1" >&2
+  fi
+}
+
+error() {
+  echo "$1" >&2
+}
+# }}}
+# Usage {{{1
+#
+usage() {
+cat <<EOD
+speedtest
+© Copyright 2014 Ryan Delaney. All rights reserved.
+Web site: http://github.com/rpdelaney
+
+speedtest produces quick and dirty bandwidth reports using ssh
+
+Usage: speedtest [OPTION]
+
+Options
+  -?, --help                  print this help and exit
+  -v, --verbose               increase verbosity
+EOD
+exit 1
+}
+# }}}
+# Parameters {{{1
+#
+while :
+do
+  case $1 in
+    --help | -\?)
+      usage
+      exit 0
+      ;;
+    -v | --verbose)
+      # Each instance of -v adds 1 to verbosity
+      verbose=$((verbose+1))
+      shift
+      ;;
+    --) # End of all options
+      shift
+      break
+      ;;
+    -*)
+      echo "FATAL: Unknown option : $1" >&2
+      exit 1
+      shift
+      ;;
+    *)  # no more options. Stop while loop
+      break
+      ;;
+  esac
+done
+# }}}
+# Validation {{{1
+
+# }}}
+if [[ -z "$1" ]]; then
+  host="localhost"
+else
+  host="$1"
+fi
+
+if [[ -z "$2" ]]; then
+  size="20M"
+else
+  size="$2"
+fi
+
+yes | pv --wait --name "$host" --size "$size" --stop-at-size | ssh "$host" "cat > /dev/null"
+
+# vim: ft=sh foldmethod=marker:

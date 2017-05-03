@@ -1,1 +1,0 @@
-curl -# -F file1=@"$1" http://ompldr.org/upload > output # | awk '/Info:|File:|Thumbnail:|BBCode:/{gsub(/<[^<]*?\/?>/,"");$1=$1;print}'
