@@ -2,6 +2,9 @@
 #
 #where the heck am I?
 #
+if ! type namei &> /dev/null; then echo "Missing dependency: namei" 1>&2; exit 1; fi
+
+if type gsed &> /dev/null; then echo "using gsed"; alias sed='gsed'; fi
 
 styles="$HOME/.bash_styles"
 if [[ -f "$styles" ]]; then source ~/.bash_styles; fi
