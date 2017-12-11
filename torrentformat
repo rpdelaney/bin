@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# GNU bash, version 4.3.18(1)-release (x86_64-unknown-linux-gnu)
+#
+# Renames torrent files according to the description (usually the filename)
+
+# Validation
+if ! type transmission-show &> /dev/null; then echo "ERROR: Missing dependency: transmission-show" 1>&2; exit 1; fi
+if ! type grep &> /dev/null; then echo "ERROR: Missing dependency: grep" 1>&2; exit 1; fi
+if ! type sed &> /dev/null; then echo "ERROR: Missing dependency: sed" 1>&2; exit 1; fi
+
+# Main
+for file in *.torrent; do
+  newname="$(transmission-show "$file" | grep '^Name:' | sed 's/Name: //').torrent" || exit 1
+
+  if [[ -n "$newname" ]] && [[ "$file" != "$newname" ]]; then
+    mv "$file" "$newname"
+  else
+    echo "Did not rename $file"
+  fi
+done
+
+# Try to kill evil characters with formatfilenames
+if ! formatfilenames 1; then exit 1; fi

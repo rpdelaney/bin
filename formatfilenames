@@ -127,6 +127,7 @@ while read file; do
       newfile="$file"
     # Do our substitutions
       newfile="${newfile//'!'/#}"
+      newfile="${newfile//'"'/#}"
       newfile="${newfile//+( )/.}"
       newfile="${newfile//.-./..}"
       newfile="${newfile//\(/_}"
