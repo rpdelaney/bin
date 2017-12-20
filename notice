@@ -9,6 +9,7 @@
 # Recommended: espeak, libnotify
 #
 # TODO: Get the rest of the parameters working
+set -x
 
 # Functions {{{1
 verbose() {
@@ -136,6 +137,15 @@ if type espeak &> /dev/null; then
   if [[ "$urgency" == "critical" ]]; then
 #   espeak "$notification"
     espeak -s 175 -k 20 -v en-french "$notification"
+  fi
+fi
+
+# terminal-notifier (osx)
+if type terminal-notifier &> /dev/null; then
+  if [[ "$urgency" == "critical" ]]; then
+    terminal-notifier -sound Basso -ignoreDnD -title "CRITICAL" -message "$notification"
+  else
+    terminal-notifier -message "$notification"
   fi
 fi
 # }}}
