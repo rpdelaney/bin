@@ -9,7 +9,6 @@
 # Recommended: espeak, libnotify
 #
 # TODO: Get the rest of the parameters working
-set -x
 
 # Functions {{{1
 verbose() {
