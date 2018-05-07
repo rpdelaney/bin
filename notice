@@ -138,6 +138,15 @@ if type espeak &> /dev/null; then
     espeak -s 175 -k 20 -v en-french "$notification"
   fi
 fi
+
+# terminal-notifier (osx)
+if type terminal-notifier &> /dev/null; then
+  if [[ "$urgency" == "critical" ]]; then
+    terminal-notifier -sound Basso -ignoreDnD -title "CRITICAL" -message "$notification"
+  else
+    terminal-notifier -message "$notification"
+  fi
+fi
 # }}}
 
 # vim: ft=sh foldmethod=marker:
