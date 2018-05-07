@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+# GNU bash, version 4.4.19(1)-release (x86_64-unknown-linux-gnu)
+#
+# © Copyright 2018 Ryan Delaney. All rights reserved.
+# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the README file for additional terms and conditions on your use of this
+# software.
+#
+# Displays a notification according to the battery level
+
+# Dependencies
+if ! type notify-send &> /dev/null; then echo "Missing dependency: notify-send" 1>&2; exit 1; fi
+if ! pacman -Q libnotify &> /dev/null; then echo "Missing dependency: libnotify" 1>&2; exit 1; fi
+
+AC="$(acpi -a)"
+ACPOWER="$(echo $AC | sed -r 's@Adapter 0: @@')"
+BATT="$(acpi -b)"
+BATTLVL="$(echo $BATT | sed -e 's@Battery 0: @@ ; s@Full, @@ ; s@%@@')"
+
+# Battery icon {{{1
+# Figure out which battery icon we should use, depending on criteria:
+#   - Are we charging?
+#   - What is the current battery level?
+if [[ "$ACPOWER" == "on-line" ]]; then
+  if [[ $BATTLVL -gt 80 ]]; then
+    BATT_STATUS_ICON='battery-full-charging'
+  elif [[ $BATTLVL -gt 50 ]]; then
+    BATT_STATUS_ICON='battery-good-charging'
+  elif [[ $BATTLVL -gt 20 ]]; then
+    BATT_STATUS_ICON='battery-low-charging'
+  else
+    BATT_STATUS_ICON='battery-caution-charging'
+  fi
+else
+  if [[ $BATTLVL -gt 80 ]]; then
+    BATT_STATUS_ICON='battery-full'
+  elif [[ $BATTLVL -gt 50 ]]; then
+    BATT_STATUS_ICON='battery-good'
+  elif [[ $BATTLVL -gt 20 ]]; then
+    BATT_STATUS_ICON='battery-low'
+  else
+    BATT_STATUS_ICON='battery-caution'
+  fi
+fi
+# Battery icon 1}}}
+# Thermal data {{{1
+# Thermal 0: ok, 54.5 degrees C # acpi -t
+THERMAL="$(acpi -t)"
+THERMALTEMP="$(echo $THERMAL | grep -Po '[0-9.]+\.[0-9] degrees [CF]')"
+if echo $THERMAL | grep -q 'ok,'; then
+  THERMALOK=0
+else
+  THERMALOK=1
+fi
+# Thermal data 1}}}
+
+# Icons {{{1
+ICON_CRITICAL='messagebox_critical'
+ICON_WARNING='messagebox_warning'
+ICON_INFO='messagebox_info'
+# 1}}}
+
+main() {
+  if [[ $THERMALOK -ne 0 ]]; then
+    notify-send "TEMPERATURE CRITICAL" "$THERMALTEMP" -u critical -i "$CRITICAL"
+  else
+    notify-send "$BATTLVL"% -u low -i "$BATT_STATUS_ICON"
+  fi
+}
+
+main
+# vim: filetype=sh foldmethod=marker shiftwidth=2 expandtab softtabstop=4:
