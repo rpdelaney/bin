@@ -63,9 +63,9 @@ ICON_INFO='messagebox_info'
 
 main() {
   if [[ $THERMALOK -ne 0 ]]; then
-    notify-send "TEMPERATURE CRITICAL" "$THERMALTEMP" -u critical -i "$CRITICAL"
+    notify-send "TEMPERATURE CRITICAL" "$THERMALTEMP" -u critical -i "$CRITICAL" || exit 1
   else
-    notify-send "$BATTLVL"% -u low -i "$BATT_STATUS_ICON"
+    notify-send "$BATTLVL"% -u low -i "$BATT_STATUS_ICON" || exit 1
   fi
 }
 
