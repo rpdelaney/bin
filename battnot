@@ -70,7 +70,7 @@ fi
 # Battery icon 1}}}
 # Urgency {{{1
 URGENCY=low
-if [[ $BATTHOUR -lt 1 ]]; then
+if [[ $ACPOWER != "on-line" ]] && [[ $BATTHOUR -lt 1 ]]; then
   if [[ $BATTMIN -lt 10 ]]; then
     URGENCY="critical"
   elif [[ $BATTMIN -lt 30 ]]; then
