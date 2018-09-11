@@ -25,6 +25,15 @@ if type ch &> /dev/null; then
   error 'ERROR: function ch() is defined. Unset it with `unset ch`.'
   return 1
 fi
+
+if type gtimeout &> /dev/null; then
+  alias timeout='gtimeout'
+fi
+
+cmd="ls"
+if type gls &> /dev/null; then
+  cmd="gls"
+fi
 # }}}
 
 # Function {{{0
@@ -136,9 +145,11 @@ if [[ -n "$moveup" ]] && moveupdir "$1" ; then
   return 0
 fi
 
+cmd="$cmd --color=auto --format=across --group-directories-first"
+
 if finddir "$1" ; then
   if [[ "$new_dir" != '.' ]] && builtin cd "$new_dir" ; then
-    timeout 1 ls --color=auto --format=across --group-directories-first || echo "$scriptPath: Timeout listing directory contents."
+    timeout 1 $cmd || echo "$scriptPath: Timeout listing directory contents."
   fi
 else
   error "FATAL: Directory not found."
