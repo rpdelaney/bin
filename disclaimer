@@ -7,6 +7,11 @@
 # software.
 #
 
+if [ -n "$DISCLAIMER" ]; then
+  echo "$DISCLAIMER" && exit 0
+  exit 1
+fi
+
 cat <<EOD
 This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
 implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
