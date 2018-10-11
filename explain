@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#
+# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the README file for additional terms and conditions on your use of this
+# software.
+#
+if ! command -v w3m >/dev/null 2>&1; then echo "Missing dependency: w3m" 1>&2; exit 1; fi
+
+cmd="$(tr ' ' '+' <<< "$@")"
+response="$(w3m -dump "http://explainshell.com/explain?cmd=$cmd")"
+grep -v -e explainshell -e • -e □ -e "source manpages" <<< "$response"
+
+# vim: filetype=sh foldmethod=marker shiftwidth=2 expandtab softtabstop=4:
