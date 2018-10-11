@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# GNU bash, version 4.4.23(1)-release (x86_64-apple-darwin17.5.0)
+#
+# © Copyright 2018 Ryan Delaney. All rights reserved.
+# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the README file for additional terms and conditions on your use of this
+# software.
+#
+
+main() {
+  # Parse YouTube url (get youtube video id)
+  url="$*"
+
+  # dear god this is a pile of crap, where did we get this lmao
+  for i in ".*youtu\.be/\([^\/&?#]\+\)" ".*youtu.\+v[=/]\([^\/&?#]\+\)" ".*youtu.\+embed/\([^\/&?#]\+\)"; do
+    vid="$(expr "${url}" : "${i}")"
+    if [[ -n "$vid" ]]; then
+      echo "$vid"
+    fi
+  done
+}
+
+main "$@"
+# vim: filetype=sh foldmethod=marker shiftwidth=2 expandtab softtabstop=4:
