@@ -67,7 +67,8 @@ def main():
 if __name__ == "__main__":
     main()
 
-# vim: ft=python expandtab smarttab shiftwidth=4 softtabstop=4 fileencoding=UTF-8:
+# vim: ft=python expandtab smarttab shiftwidth=4 softtabstop=4
+# vim: fileencoding=UTF-8
 EOD
 }
 
