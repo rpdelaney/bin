@@ -47,7 +47,7 @@ fi
 boilerplate() {
   printf '%s\n' '#!/usr/bin/env python3'
   printf '%s\n' '# -*- coding: UTF-8 -*-'
-  printf '%s %s\n' '#' "$(python --version)"
+  printf '%s %s\n' '#' "$(python3 --version)"
   printf '%s\n' '#'
   printf '__author__ = "%s"\n' 'Ryan Delaney (ryan DOT delaney AT gmail DOT com)'
   printf '__date__ = "%s"\n' "$(date +'%Y-%m-%d')"
@@ -67,7 +67,8 @@ def main():
 if __name__ == "__main__":
     main()
 
-# vim: ft=python expandtab smarttab shiftwidth=4 softtabstop=4 fileencoding=UTF-8:
+# vim: ft=python expandtab smarttab shiftwidth=4 softtabstop=4
+# vim: fileencoding=UTF-8
 EOD
 }
 

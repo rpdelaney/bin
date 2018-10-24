@@ -1,0 +1,57 @@
+#!/usr/bin/env python3
+# -*- coding: UTF-8 -*-
+# Python 3.7.0
+#
+__author__ = "Ryan Delaney (ryan DOT delaney AT gmail DOT com)"
+__date__ = "2018-10-17"
+__copyright__ = """© Copyright 2018 Ryan Delaney. All rights reserved.
+ This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
+ implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ See the README file for additional terms and conditions on your use of this
+ software.
+"""
+
+import appdirs
+import os
+import subprocess
+import sys
+
+
+def find_pwstore():
+    """ Try to find out where the password store directory is """
+    trydir = os.environ.get('PWSTORE_DIR')
+    if trydir is not None and os.path.isdir(trydir):
+        return trydir
+
+    return appdirs.user_data_dir('pwstore')
+
+
+def main():
+    """ This is a stupid placeholder until I get off my rear end and build this
+    functionality directly into pwstore itself """
+
+    # Go to the pwstore directory
+    pwstore_dir = find_pwstore()
+    os.chdir(pwstore_dir)
+
+    # Assert that the repo is not dirty
+    status = subprocess.run(["git", "status", "--porcelain"],
+                            capture_output=True)
+
+    try:
+        assert len(status.stdout) == 0  # the pwstore must not be dirty
+        assert len(status.stderr) == 0  # the pwstore must not be dirty
+    except AssertionError:
+        print("FATAL: pwstore must not be dirty.", file=sys.stderr)
+        sys.exit(1)
+
+    # Do the syncing
+    subprocess.run(["git", "pull"], check=True)
+    subprocess.run(["git", "push"], check=True)
+
+
+if __name__ == "__main__":
+    main()
+
+# vim: ft=python expandtab smarttab shiftwidth=4 softtabstop=4
+# vim: fileencoding=UTF-8
