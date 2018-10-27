@@ -7,10 +7,11 @@
 # See the README file for additional terms and conditions on your use of this
 # software.
 #
+if ! command -v i3lock > /dev/null 2>&1 ; then echo "Missing dependency: i3lock" 1>&2 ; exit 1 ; fi
 
 i3lock --ignore-empty-password \
   --show-failed-attempts \
   --pointer=win \
   --color=3f3f3f \
   --beep \
-  --no-unlock-indicator
+# --no-unlock-indicator
