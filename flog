@@ -24,10 +24,6 @@ error() {
 #
 usage() {
 cat <<EOD
-flog
-© Copyright 2015 Ryan Delaney. All rights reserved.
-Web site: http://github.com/rpdelaney
-
 flog initializes a new bash script with vim modelines, shebang, and the like.
 
 Usage: flog [OPTION] FILENAME

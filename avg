@@ -26,10 +26,6 @@ error() {
 #
 usage() {
 cat <<EOD
-avg
-© Copyright 2015 Ryan Delaney. All rights reserved.
-Web site: http://github.com/rpdelaney
-
 avg reads a stream of integers from STDIN and prints the average to STDOUT
 
 Usage: avg [OPTION]
