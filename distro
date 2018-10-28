@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+# GNU bash, version 4.4.23(1)-release (x86_64-unknown-linux-gnu)
+#
+# © Copyright 2018 Ryan Delaney. All rights reserved.
+# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the README file for additional terms and conditions on your use of this
+# software.
+#
+
+if ! command -v ostype > /dev/null 2>&1 ; then echo "Missing dependency: ostype" 1>&2 ; exit 1 ; fi
+
+main() {
+  local ostype
+  ostype="$(ostype)"
+
+  if [[ "$ostype" == "linux" ]]; then
+    [[ -f /etc/redhat-release ]] && echo "redhat" && return 0
+    [[ -f /etc/fedora-release ]] && echo "fedora" && return 0
+    [[ -f /etc/SuSE-release ]] && echo "suse" && return 0
+    [[ -f /etc/debian_version ]] && echo "debian" && return 0
+    [[ -f /etc/arch-release ]] && echo "arch" && return 0
+    [[ -f /etc/gentoo-release ]] && echo "gentoo" && return 0
+    [[ -f /etc/slackware-version ]] && echo "slackware" && return 0
+    [[ -f /etc/frugalware-release ]] && echo "frugalware" && return 0
+    [[ -f /etc/altlinux-release ]] && echo "altlinux" && return 0
+    [[ -f /etc/mandriva-release ]] && echo "mandriva" && return 0
+    [[ -f /etc/meego-release ]] && echo "meego" && return 0
+    [[ -f /etc/angstrom-version ]] && echo "angstrom" && return 0
+    [[ -f /etc/mageia-release ]] && echo "mageia" && return 0
+
+    # https://www.freedesktop.org/software/systemd/man/os-release.html
+    if [[ -r /etc/os-release ]]; then
+      id="$(grep 'ID=' /etc/os-release | cut -d'=' -f 2)"
+      [[ -n "$id" ]] && echo "$id" && return 0
+    fi
+  else
+    return 1
+  fi
+}
+
+main "$@"
+exit $?
+# vim: filetype=sh foldmethod=marker shiftwidth=2 expandtab softtabstop=4:
