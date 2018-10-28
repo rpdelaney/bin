@@ -119,7 +119,7 @@ if [[ -z "$renamedirs" ]]; then
   filetypes="-type f"
 fi
 
-while read file; do
+while read -r file; do
 
   if [[ "$file" != "." ]]; then
     # Store the newfile in another variable
