@@ -33,10 +33,6 @@ ch() {
 #
 usage() {
 cat <<EOD
-ch
-© Copyright 2014 Ryan Delaney. All rights reserved.
-Web site: http://github.com/rpdelaney
-
 ch provides enhanced directory changing behavior.
 
 Usage: chdir [PATH]

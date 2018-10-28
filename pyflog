@@ -24,10 +24,6 @@ error() {
 #
 usage() {
 cat <<EOD
-pyflog
-© Copyright 2017 Ryan Delaney. All rights reserved.
-Web site: http://github.com/rpdelaney
-
 pyflog initializes a new python script with vim modelines, shebang, and the like.
 
 Usage: pyflog [OPTION] FILENAME

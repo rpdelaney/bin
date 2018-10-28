@@ -1,21 +1,12 @@
 #!/usr/bin/env bash
 # GNU bash, version 4.2.45(2)-release (x86_64-unknown-linux-gnu)
 #
-#
 # © Copyright 2014 Ryan Delaney.
 # This program is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 # General Public License for more details.
-# 
-# This program is free software: you can redistribute it and/or modify it
-# under the terms of the GNU General Public License as published by the
-# Free Software Foundation, either version 3 of the License, or (at your
-# option) any later version.
-# 
-# You should have received a copy of the GNU General Public License along
-# with this program.  If not, see <http://www.gnu.org/licenses/>.
-# 
+#
 # renames all files underneath the PWD to replace unwanted characters such as:
 #       whitespace
 #       parentheses
@@ -50,10 +41,6 @@ getfilenames()
 #
 usage() {
 cat <<EOD
-formatfilenames
-© Copyright 2014 Ryan Delaney. All rights reserved.
-Web site: http://github.com/rpdelaney
-
 formatfilenames removes annoying characters from filenames.
 Maxdepth defaults to 1 (the current working directory). It will
 never rename directories.
