@@ -1,25 +1,23 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 #
 # ask the user to confirm if they want to continue
 # arguments passed will be the query question
 #
 
-QUERY="$@"
+[ -n "$*" ] && QUERY="$*"" (y/n)" || QUERY="Continue? (y/n)"
 
-[[ -n "$@" ]] && QUERY="$@"" (y/n)" || QUERY="Continue? (y/n)" ;
+until [ "$INPUT" = "y" ]; do
+  echo "$QUERY"
+  read -r INPUT
 
-until [[ "$INPUT" == "y" ]]; do
-        echo "$QUERY"
-        read INPUT
-
-        case $INPUT in
-               y)
-               exit "0"
-               ;;
-               n)
-               exit "1"        #exit with error
-               ;;
-               *)
-               ;;
-        esac
+  case $INPUT in
+          y)
+          exit "0"
+          ;;
+          n)
+          exit "1"
+          ;;
+          *)
+          ;;
+  esac
 done
