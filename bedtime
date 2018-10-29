@@ -26,7 +26,7 @@ error() {
 tmux_nightstyle="/home/ryan/.config/tmux/color-slate.conf"
 bedtime_tone="/media/vault/public/audio/effects/pdsounds/Zymbel_The_Real_Horst-1113884951.mp3"
 
-broadcast Lights out
+notice Lights out
 if [[ -f "$tmux_nightstyle" ]]; then
   tmux source-file "$tmux_nightstyle" 1> /dev/null
 else

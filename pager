@@ -1,7 +1,12 @@
 #!/usr/bin/env sh
+#
+# © Copyright 2018 Ryan Delaney. All rights reserved.
+# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the README file for additional terms and conditions on your use of this
+# software.
+#
 
-if [ "$1" = "" ]; then
-  /usr/bin/less -R -X < /dev/stdin
-else
-  /usr/bin/less -R -X -- "$1"
-fi
+less -R -X < "${1:-/dev/stdin}"
+
+# vim: filetype=sh foldmethod=marker shiftwidth=2 expandtab softtabstop=4:
