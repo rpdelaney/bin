@@ -7,8 +7,8 @@
 # software.
 #
 
-if [ -n "$DISCLAIMER" ]; then
-  echo "$DISCLAIMER" && exit 0
+if [ -n "$DISCLAIMER" ] ; then
+  printf "%s" "$DISCLAIMER" && exit 0
   exit 1
 fi
 
