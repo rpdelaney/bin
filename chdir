@@ -22,6 +22,7 @@ error() {
 # Validation {{{0
 # Check that the function does not exist
 if type ch &> /dev/null; then
+  # shellcheck disable=SC2016
   error 'ERROR: function ch() is defined. Unset it with `unset ch`.'
   return 1
 fi
@@ -93,7 +94,7 @@ finddir() { # {{{1
     return 0
   fi
 
-  while [[ -z "$norecurse" ]]; do
+  while true; do
     # If new_dir exists, then we're done
     if [[ -d "$new_dir" ]]; then
       break
@@ -121,6 +122,8 @@ else
 fi
 } # 1}}}
 moveupdir() { # {{{1
+  # this is stupid, but, whatever
+  # shellcheck disable=SC2034
   for i in seq 1 "$moveup"; do
     cd .. || return 1
   done
@@ -134,7 +137,7 @@ fi
 
 if finddir "$1" ; then
   if [[ "$new_dir" != '.' ]] && builtin cd "$new_dir" ; then
-    timeout 1 exa --long --header --git --links --group-directories-first || echo "$scriptPath: Timeout listing directory contents."
+    timeout 1 exa --long --header --git --links --group-directories-first || echo "$(basename "$0"): Timeout listing directory contents."
   fi
 else
   error "FATAL: Directory not found."
