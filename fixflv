@@ -23,10 +23,6 @@ error () {
 #
 usage() {
 cat <<EOD
-fixflv
-© Copyright 2014 Ryan Delaney. All rights reserved.
-Web site: http://github.com/rpdelaney
-
 fixflv fixes some errors in flash video files that prevent seeking.
 
 Usage: fixflv [OPTION] [INPUTFILE] [OUTPUTFILE]

@@ -90,10 +90,10 @@ if [[ -n "$pids" ]]; then
   else
     tmpfile="$(mktemp)"
     {
-      read line
+      read -r line
       echo "$line" # > "$tmpfile"
 
-      while read line; do
+      while read -r line; do
         echo "$line" >> "$tmpfile"
       done
     } < <( psgrep $pids )

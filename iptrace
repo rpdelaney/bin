@@ -24,10 +24,6 @@ error () {
 #
 usage() {
 cat <<EOD
-iptrace
-© Copyright 2014 Ryan Delaney
-Web site: http://github.com/rpdelaney
-
 iptrace prints a traceroute and geolocation of an internet address
 
 Usage: iptrace [OPTION] [TARGET]

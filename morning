@@ -27,7 +27,7 @@ error() {
 tmux_daystyle="/home/ryan/.config/tmux/color-cool.conf"
 morning_tone="/media/vault/public/audio/effects/pdsounds/STE-003.mp3"
 
-broadcast Good morning
+notice Good morning
 if [[ -f "$tmux_daystyle" ]]; then
   tmux source-file "$tmux_daystyle" 1> /dev/null
 else
