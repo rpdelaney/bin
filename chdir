@@ -22,9 +22,8 @@ error() {
 # Validation {{{0
 # Check that the function does not exist
 if type ch &> /dev/null; then
-  # shellcheck disable=SC2016
-  error 'ERROR: function ch() is defined. Unset it with `unset ch`.'
-  return 1
+  error 'WARNING: function ch() is defined. It will be redefined.'
+  unset ch
 fi
 # }}}
 
@@ -122,7 +121,7 @@ else
 fi
 } # 1}}}
 moveupdir() { # {{{1
-  # this is stupid, but, whatever
+  # this is stupid but, hey, whatever
   # shellcheck disable=SC2034
   for i in seq 1 "$moveup"; do
     cd .. || return 1
