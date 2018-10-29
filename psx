@@ -1,37 +1,11 @@
 #!/usr/bin/env bash
 # GNU bash, version 4.3.18(1)-release (x86_64-unknown-linux-gnu)
 #
-# © Copyright 2014 Ryan Delaney. All rights reserved.
+# © Copyright 2014-2018 Ryan Delaney. All rights reserved.
 # This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 # See the README file for additional terms and conditions on your use of this
 # software.
-
-# Functions {{{1
-# verbose() {{{2
-verbose() {
-  # $1 is the message to be printed
-  local message="$1"
-  # $2 is the verbosity threshold (default: 1)
-  local threshold="$2"
-
-  # shellcheck disable=SC2154
-  if [[ "$verbose" -ge "$threshold" ]] && [[ -z "$quiet" ]]; then
-    echo "$message" >&2 || return 1
-  fi
-}
-# verbose() 2}}}
-# error() {{{2
-error() {
-  #  is the message to be printed
-  local message="$1"
-
-  if [[ -z "$quiet" ]]; then
-    echo "$message" >&2 || return 1
-  fi
-}
-# error() 2}}}
-# Functions 1}}}
 
 # Parameters {{{1
 #
