@@ -138,7 +138,7 @@ fi
 
 if finddir "$1" ; then
   if [[ "$new_dir" != '.' ]] && builtin cd "$new_dir" ; then
-    timeout 1 ls --color=auto --format=across --group-directories-first || echo "$scriptPath: Timeout listing directory contents."
+    timeout 1 exa --long --header --git --links --group-directories-first || echo "$scriptPath: Timeout listing directory contents."
   fi
 else
   error "FATAL: Directory not found."
