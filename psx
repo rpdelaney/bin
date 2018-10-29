@@ -15,6 +15,7 @@ verbose() {
   # $2 is the verbosity threshold (default: 1)
   local threshold="$2"
 
+  # shellcheck disable=SC2154
   if [[ "$verbose" -ge "$threshold" ]] && [[ -z "$quiet" ]]; then
     echo "$message" >&2 || return 1
   fi
@@ -77,38 +78,14 @@ exit 1
 
 # Validation {{{1
 if ! type psgrep &> /dev/null; then echo "ERROR: Missing dependency: psgrep" 1>&2; exit 1; fi
-if ! type mktemp &> /dev/null; then echo "Missing dependency: mktemp" 1>&2; exit 1; fi
 # 1}}}
 
 word="$*"
-pids="$(psgrep -d "$word")"
 
-if [[ -n "$pids" ]]; then
-  if [[ -z "$verbose" ]]; then
-    # just get the pids
-    echo "$pids"
-  else
-    tmpfile="$(mktemp)"
-    {
-      read -r line
-      echo "$line" # > "$tmpfile"
-
-      while read -r line; do
-        echo "$line" >> "$tmpfile"
-      done
-    } < <( psgrep $pids )
-
-    cols=${COLUMNS:="$(tput cols)"}
-
-    if [[ "$verbose" -le 1 ]] && [[ -n "$cols" ]]; then
-      # print the rest, with output trimmed to terminal width
-      cut -c1-"$cols" "$tmpfile"
-    else
-      # print everything
-      cat "$tmpfile"
-    fi
-  fi
+if [[ -z "$verbose" ]]; then
+  psgrep -d "$word"
+else
+  psgrep "$word"
 fi
-
 
 # vim: ft=sh foldmethod=marker:
