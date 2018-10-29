@@ -12,6 +12,8 @@ if [ -n "$DISCLAIMER" ] ; then
   exit 1
 fi
 
+[ -z "${DISCLAIMER-unset}" ] && exit 0
+
 cat <<EOD
 This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
 implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
