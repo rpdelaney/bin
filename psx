@@ -1,36 +1,11 @@
 #!/usr/bin/env bash
 # GNU bash, version 4.3.18(1)-release (x86_64-unknown-linux-gnu)
 #
-# © Copyright 2014 Ryan Delaney. All rights reserved.
+# © Copyright 2014-2018 Ryan Delaney. All rights reserved.
 # This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 # See the README file for additional terms and conditions on your use of this
 # software.
-
-# Functions {{{1
-# verbose() {{{2
-verbose() {
-  # $1 is the message to be printed
-  local message="$1"
-  # $2 is the verbosity threshold (default: 1)
-  local threshold="$2"
-
-  if [[ "$verbose" -ge "$threshold" ]] && [[ -z "$quiet" ]]; then
-    echo "$message" >&2 || return 1
-  fi
-}
-# verbose() 2}}}
-# error() {{{2
-error() {
-  #  is the message to be printed
-  local message="$1"
-
-  if [[ -z "$quiet" ]]; then
-    echo "$message" >&2 || return 1
-  fi
-}
-# error() 2}}}
-# Functions 1}}}
 
 # Parameters {{{1
 #
@@ -76,39 +51,15 @@ exit 1
 # Usage 1}}}
 
 # Validation {{{1
-if ! type pgrep &> /dev/null; then echo "ERROR: Missing dependency: pgrep" 1>&2; exit 1; fi
-if ! type mktemp &> /dev/null; then echo "Missing dependency: mktemp" 1>&2; exit 1; fi
+if ! type psgrep &> /dev/null; then echo "ERROR: Missing dependency: psgrep" 1>&2; exit 1; fi
 # 1}}}
 
 word="$*"
-pids="$(pgrep "$word")"
 
-if [[ -n "$pids" ]]; then
-  if [[ -z "$verbose" ]]; then
-    # just get the pids
-    echo "$pids"
-  else
-    tmpfile="$(mktemp)"
-    {
-      read line
-      echo "$line" # > "$tmpfile"
-
-      while read line; do
-        echo "$line" >> "$tmpfile"
-      done
-    } < <( ps u --sort=uid,pid -p $pids )
-
-    cols=${COLUMNS:="$(tput cols)"}
-
-    if [[ "$verbose" -le 1 ]] && [[ -n "$cols" ]]; then
-      # print the rest, with output trimmed to terminal width
-      cut -c1-"$cols" "$tmpfile"
-    else
-      # print everything
-      cat "$tmpfile"
-    fi
-  fi
+if [[ -z "$verbose" ]]; then
+  psgrep -d "$word"
+else
+  psgrep "$word"
 fi
-
 
 # vim: ft=sh foldmethod=marker:

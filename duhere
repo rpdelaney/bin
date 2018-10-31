@@ -24,10 +24,6 @@ error() {
 #
 usage() {
 cat <<EOD
-duhere
-© Copyright 2014 Ryan Delaney.
-Web site: http://github.com/rpdelaney
-
 duhere is a wrapper for du that shows human-readable disk usage of files in the
 current working directory.
 
