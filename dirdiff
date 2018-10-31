@@ -26,10 +26,6 @@ dirfiles() {
 #
 usage() {
 cat <<EOD
-dirdiff
-© Copyright 2014 Ryan Delaney. All rights reserved.
-Web site: http://github.com/rpdelaney
-
 dirdiff prints the difference between two directories
 
 Usage: dirdiff [OPTION] [PATH] [PATH]

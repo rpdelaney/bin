@@ -9,26 +9,25 @@
 #
 
 main() {
-  # from http://stackoverflow.com/a/8597411/1266551
-  if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    echo "linux"
-  elif [[ "$OSTYPE" == "darwin"* ]]; then
-    echo "macos"
-          # Mac OSX
-  elif [[ "$OSTYPE" == "cygwin" ]]; then
-    echo "cygwin"
-      # POSIX compatibility layer and Linux environment emulation for Windows
-  elif [[ "$OSTYPE" == "msys" ]]; then
-    echo "msys"
+  case "$OSTYPE" in
+    "linux-gnu")
+      echo "linux" ;;
+    "darwin"*)
+      echo "macos" ;;
+    "cygwin")
+      echo "cygwin" ;;
+    "msys")
       # Lightweight shell and GNU utilities compiled for Windows (part of MinGW)
-  elif [[ "$OSTYPE" == "win32" ]]; then
-    echo "mingw"
+      echo "msys" ;;
+    "win32")
       # I'm not sure this can happen.
-  elif [[ "$OSTYPE" == "freebsd"* ]]; then
-    echo "bsd"
-  else
-    return 1
-  fi
+      echo "mingw" ;;
+    "freebsd"*)
+      echo "bsd" ;;
+    *)
+      echo "unknown" ;
+      return 1 ;;
+  esac
   return 0
 }
 

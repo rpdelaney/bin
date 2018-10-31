@@ -11,10 +11,6 @@
 #
 usage() {
 cat <<EOD
-cmdfu
-© Copyright 2014 Ryan Delaney. All rights reserved.
-Web site: http://github.com/rpdelaney
-
 cmdfu searches commandlinefu and prints results to STDOUT.
 
 Usage: cmdfu [OPTION] KEYWORD

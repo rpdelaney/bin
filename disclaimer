@@ -7,10 +7,12 @@
 # software.
 #
 
-if [ -n "$DISCLAIMER" ]; then
-  echo "$DISCLAIMER" && exit 0
+if [ -n "$DISCLAIMER" ] ; then
+  printf "%s" "$DISCLAIMER" && exit 0
   exit 1
 fi
+
+[ -z "${DISCLAIMER-unset}" ] && exit 0
 
 cat <<EOD
 This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
