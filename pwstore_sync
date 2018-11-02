@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: UTF-8 -*-
 # Python 3.7.0
 #
 __author__ = "Ryan Delaney (ryan DOT delaney AT gmail DOT com)"
@@ -17,6 +16,34 @@ import subprocess
 import sys
 
 
+DOTFILES_DIR = os.path.join(os.environ['HOME'], ".dotfiles")
+LSCOLORS_DIR = os.path.join(DOTFILES_DIR, "LS_COLORS")
+BIN_DIR = os.path.join(os.environ['HOME'], "bin")
+
+
+def git_sync(target_dir):
+    """ Synchronize a git repo """
+
+    # Go to the directory
+    os.chdir(target_dir)
+
+    # Assert that the repo is not dirty
+    status = subprocess.run(["git", "diff", "--shortstat"],
+                            capture_output=True)
+
+    try:
+        assert len(status.stdout) == 0  # the pwstore must not be dirty
+        assert len(status.stderr) == 0  # the pwstore must not be dirty
+    except AssertionError:
+        print("FATAL: repo must not be dirty: ", target_dir, file=sys.stderr)
+        raise
+
+    # Do the syncing
+    print("Synchronizing git repository: ", target_dir)
+    subprocess.run(["git", "pull"], check=True)
+    subprocess.run(["git", "push"], check=True)
+
+
 def find_pwstore():
     """ Try to find out where the password store directory is """
     trydir = os.environ.get('PWSTORE_DIR')
@@ -30,28 +57,18 @@ def main():
     """ This is a stupid placeholder until I get off my rear end and build this
     functionality directly into pwstore itself """
 
-    # Go to the pwstore directory
     pwstore_dir = find_pwstore()
-    os.chdir(pwstore_dir)
-
-    # Assert that the repo is not dirty
-    status = subprocess.run(["git", "status", "--porcelain"],
-                            capture_output=True)
-
-    try:
-        assert len(status.stdout) == 0  # the pwstore must not be dirty
-        assert len(status.stderr) == 0  # the pwstore must not be dirty
-    except AssertionError:
-        print("FATAL: pwstore must not be dirty.", file=sys.stderr)
-        sys.exit(1)
-
-    # Do the syncing
-    subprocess.run(["git", "pull"], check=True)
-    subprocess.run(["git", "push"], check=True)
+    git_sync(pwstore_dir)
+    git_sync(LSCOLORS_DIR)
+    # commit any changes to LS_COLORS
+    os.chdir(DOTFILES_DIR)
+    subprocess.run(["git", "commit", "LS_COLORS", "-m",
+                    "Update LS_COLORS submodule"], capture_output=True)
+    git_sync(DOTFILES_DIR)
+    git_sync(BIN_DIR)
 
 
 if __name__ == "__main__":
     main()
 
 # vim: ft=python expandtab smarttab shiftwidth=4 softtabstop=4
-# vim: fileencoding=UTF-8
