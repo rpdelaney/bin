@@ -1,5 +1,0 @@
-#Touches some files on the local network in hopes of keeping the connection alive
-
-touch "Z:\Quote Logs\Utility Quote Log.xls"
-touch "Z:\Quote Logs\QuoteLog.xls"
-touch "Z:\PG&E\PG&E Spreadsheets\PG&E Valmont.mdb"
