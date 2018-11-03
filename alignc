@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env sh
 #
 # alignc -- center text in a terminal
 # Copyright (C) 2010-2012  Alan SCHNEIDER
@@ -11,11 +11,13 @@
 
 [ $# -eq 0 ] && echo "Usage: alignc <text [...]>" >&2 && exit 1
 
-columns=$(echo `tput cols`"/2" | bc -q)
+columns=$(echo "$(tput cols)/2" | bc -q)
 for argv in "$@" ; do
-    offset=$(echo `echo $argv | wc -c`"/2" | bc -q)
+    offset=$(echo "${#argv}/2" | bc -q)
+    # we will actually want to fix this SC2004 but I cba right now
+    # shellcheck disable=SC2004
     cols=$(($columns + $offset + 1))
-    printf "%${cols}s\n" "$argv"
+    printf "%${cols}s\\n" "$argv"
 done
 
 # EOF
