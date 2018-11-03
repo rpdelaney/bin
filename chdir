@@ -25,6 +25,10 @@ if type ch &> /dev/null; then
   error 'WARNING: function ch() is defined. It will be redefined.'
   unset ch
 fi
+
+if type gtimeout &> /dev/null; then
+  alias timeout='gtimeout'
+fi
 # }}}
 
 # Function {{{0
