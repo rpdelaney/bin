@@ -10,11 +10,20 @@
 
 if ! command -v ostype > /dev/null 2>&1 ; then echo "Missing dependency: ostype" 1>&2 ; exit 1 ; fi
 
+_macos_version() {
+  if ! command -v system_profiler >/dev/null 2>&1 ; then echo "Missing dependency: system_profiler" 1>&2 ; return 1 ; fi
+  if ! command -v awk >/dev/null 2>&1 ; then echo "Missing dependency: awk" 1>&2 ; return 1 ; fi
+
+  system_profiler SPSoftwareDataType | grep 'System Version' | awk '{print $3 "-" $4}'
+}
+
 main() {
   local ostype
   ostype="$(ostype)"
 
-  if [[ "$ostype" == "linux" ]]; then
+  if [[ "$ostype" == "macos" ]]; then
+    _macos_version
+  elif [[ "$ostype" == "linux" ]]; then
     [[ -f /etc/redhat-release ]] && echo "redhat" && return 0
     [[ -f /etc/fedora-release ]] && echo "fedora" && return 0
     [[ -f /etc/SuSE-release ]] && echo "suse" && return 0
