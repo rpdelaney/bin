@@ -3,4 +3,6 @@
 # returns the average CPU load among all cores
 #
 
-type mpstat &> /dev/null && mpstat | grep -A 5 "%idle" | tail -n 1 | awk -F " " '{print 100 -  $ 12}'
+if ! command -v mpstat >/dev/null 2>&1 ; then echo "Missing dependency: mpstat" 1>&2 ; exit 1 ; fi
+
+mpstat | grep -A 5 "%idle" | tail -n 1 | awk -F " " '{print 100 -  $ 12}'
