@@ -35,8 +35,8 @@ def git_sync(target_dir):
         assert len(status.stdout) == 0  # the pwstore must not be dirty
         assert len(status.stderr) == 0  # the pwstore must not be dirty
     except AssertionError:
-        print("FATAL: repo must not be dirty: ", target_dir, file=sys.stderr)
-        raise
+        print("WARNING: repo must not be dirty: ", target_dir, file=sys.stderr)
+        return
 
     # Do the syncing
     print("Synchronizing git repository: ", target_dir)
