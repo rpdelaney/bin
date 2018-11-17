@@ -37,10 +37,6 @@ do
       verbose=$((verbose+1))
       shift
       ;;
-    -q | --quiet)
-      quiet="1"
-      shift
-      ;;
     --) # End of all options
       shift
       break
