@@ -66,6 +66,6 @@ needle="$*"
 maxtime="10"
 url="http://www.commandlinefu.com/commands/matching/$needle/$(echo -n "$needle" | openssl base64)/plaintext"
 
-curl "$verbosity" --max-time "$maxtime" "$url"
+curl -L "$verbosity" --max-time "$maxtime" "$url"
 #1}}}
 # vim: ft=sh foldmethod=marker
