@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+# GNU bash, version 4.4.23(1)-release (x86_64-apple-darwin17.5.0)
+#
+# © Copyright 2018 Ryan Delaney. All rights reserved.
+# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the README file for additional terms and conditions on your use of this
+# software.
+#
+# this is a weird hack to get colors to work the way they want in some cli apps
+# that don't work they way I want, e.g. `hub`
+
+if [[ -s "$HOME"/.bash_styles ]] ; then
+  # shellcheck disable=SC1090
+  source "$HOME/.bash_styles"
+else
+  echo "FATAL: styles file not found: $HOME/.bash_styles" 1>&2
+  exit 1
+fi
+
+main()
+{
+  # shellcheck disable=SC2154
+  sed -r \
+    -e "s@<#bgblack#>@$bgblack@g" \
+    -e "s@<#bgblue#>@$bgblue@g" \
+    -e "s@<#bgcyan#>@$bgcyan@g" \
+    -e "s@<#bggreen#>@$bggreen@g" \
+    -e "s@<#bgmagenta#>@$bgmagenta@g" \
+    -e "s@<#bgred#>@$bgred@g" \
+    -e "s@<#bgwhite#>@$bgwhite@g" \
+    -e "s@<#bgyellow#>@$bgyellow@g" \
+    -e "s@<#black#>@$black@g" \
+    -e "s@<#blue#>@$blue@g" \
+    -e "s@<#cyan#>@$cyan@g" \
+    -e "s@<#green#>@$green@g" \
+    -e "s@<#magenta#>@$magenta@g" \
+    -e "s@<#red#>@$red@g" \
+    -e "s@<#white#>@$white@g" \
+    -e "s@<#yellow#>@$yellow@g" \
+    -e "s@<#dim#>@$dim@g" \
+    -e "s@<#bold#>@$bold@g" \
+    -e "s@<#nobold#>@@g" \
+    -e "s@<#underline#>@$under@g" \
+    -e "s@<#nounderline#>@$eunder@g" \
+    -e "s@<#italic#>@$italic@g" \
+    -e "s@<#noitalic#>@$eitalic@g" \
+    -e "s@<#blink#>@$blink@g" \
+    -e "s@<#noblink#>@@g" \
+    -e "s@<#alt#>@$alt@g" \
+    -e "s@<#noalt#>@$ealt@g" \
+    -e "s@<#reset#>@${reset}@g" || return $?
+}
+
+main "$@"
+exit $?
+# vim: filetype=sh foldmethod=marker shiftwidth=2 expandtab softtabstop=4:
