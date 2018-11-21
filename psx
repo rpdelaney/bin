@@ -52,14 +52,15 @@ exit 1
 
 # Validation {{{1
 if ! type psgrep &> /dev/null; then echo "ERROR: Missing dependency: psgrep" 1>&2; exit 1; fi
+if ! command -v awk >/dev/null 2>&1 ; then echo "ERROR: Missing dependency: awk" 1>&2 ; exit 1 ; fi
 # 1}}}
 
 word="$*"
 
 if [[ -z "$verbose" ]]; then
-  psgrep -d "$word"
+  psgrep -d "$word" | awk '{ if ( $2 !~'$$' ) { print ; } }'
 else
-  psgrep "$word"
+  psgrep "$word" | awk '{ if ( $2 !~'$$' ) { print ; } }'
 fi
 
 # vim: ft=sh foldmethod=marker:
