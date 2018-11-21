@@ -3,4 +3,4 @@
 # print a horizontal rule
 #
 
-printf "%$(tput cols)s\n"|tr ' ' '-'
+printf "%$(tput cols)s\\n" | tr ' ' '-'
