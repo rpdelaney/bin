@@ -12,7 +12,7 @@
 read -r line
 
 main() {
-  IFS="$*" read -r -a array <<< "$line"
+  IFS="${*:- }" read -r -a array <<< "$line"
 
   for element in "${array[@]}"
   do
