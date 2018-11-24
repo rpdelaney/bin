@@ -2,5 +2,6 @@
 #
 # print a horizontal rule
 #
+if ! command -v tput >/dev/null 2>&1 ; then echo "Missing dependency: tput" 1>&2 ; exit 1 ; fi
 
-printf "%$(tput cols)s\n"|tr ' ' '-'
+printf "%$(tput cols)s\\n" | tr ' ' '-'
