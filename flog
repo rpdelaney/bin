@@ -8,16 +8,8 @@
 # software.
 #
 # Functions {{{1
-verbose() {
-  if [[ "$verbose" -ge "1" ]] && [[ -z "$quiet" ]]; then
-    echo "$1" >&2 || return 1
-  fi
-}
-
 error() {
-  if [[ -z "$quiet" ]]; then
-    echo "$1" >&2 || return 1
-  fi
+  echo "$1" >&2 || return 1
 }
 # 1}}}
 # Usage {{{1
@@ -43,6 +35,7 @@ fi
 boilerplate() {
   printf '%s\n' '#!/usr/bin/env bash'
   printf '%s %s\n' '#' "$(bash --version | head -n1)"
+  printf '%s\n' "# vim: filetype=sh foldmethod=marker shiftwidth=2 expandtab softtabstop=4:"
   printf '%s\n' '#'
   printf '%s %s %s\n' '# © Copyright' "$(date +'%Y')" 'Ryan Delaney. All rights reserved.'
 cat <<EOD
@@ -58,7 +51,6 @@ main() {
 
 main "\$@"
 exit \$?
-# vim: filetype=sh foldmethod=marker shiftwidth=2 expandtab softtabstop=4:
 EOD
 }
 
