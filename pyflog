@@ -35,12 +35,9 @@ boilerplate() {
   printf '__author__ = "%s (%s)"\n' "${COPYRIGHT_HOLDER:-Ryan Delaney}" "${GIT_AUTHOR_EMAIL:-ryan.delaney@gmail.com}"
   printf '__date__ = "%s"\n' "$(date +'%Y-%m-%d')"
   printf '__copyright__ = """%s\n' "$copyright"
+  printf '%s\n' "$(disclaimer)"
+  printf '%s\n' '"""'
 cat <<EOD
- This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
- implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- See the README file for additional terms and conditions on your use of this
- software.
-"""
 
 
 def main():
