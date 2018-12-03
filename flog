@@ -33,11 +33,12 @@ fi
 # 1}}}
 
 boilerplate() {
+  copyright="$(copyright || return 1)"
   printf '%s\n' '#!/usr/bin/env bash'
   printf '%s %s\n' '#' "$(bash --version | head -n1)"
   printf '%s\n' "# vim: filetype=sh foldmethod=marker shiftwidth=2 expandtab softtabstop=4:"
   printf '%s\n' '#'
-  printf '%s %s %s\n' '# © Copyright' "$(date +'%Y')" 'Ryan Delaney. All rights reserved.'
+  printf '# %s\n' "$copyright"
 cat <<EOD
 # This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
@@ -63,7 +64,7 @@ else
   if touch "$1"; then
     chmod +x "$1" || error "WARNING: Failed to add executable bit."
 
-    boilerplate >> "$1"
+    boilerplate >> "$1" || exit 1
   else
     error "FATAL: Failed to create the file."
   fi

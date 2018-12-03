@@ -28,12 +28,13 @@ fi
 # 1}}}
 
 boilerplate() {
+  copyright="$(copyright || return 1)"
   printf '%s\n' '#!/usr/bin/env python3'
   printf '%s %s\n' '#' "$(python3 --version)"
   printf '%s\n' '#'
-  printf '__author__ = "%s"\n' 'Ryan Delaney (ryan DOT delaney AT gmail DOT com)'
+  printf '__author__ = "%s (%s)"\n' "${COPYRIGHT_HOLDER:-Ryan Delaney}" "${GIT_AUTHOR_EMAIL:-ryan.delaney@gmail.com}"
   printf '__date__ = "%s"\n' "$(date +'%Y-%m-%d')"
-  printf '__copyright__ = %s %s %s\n' '"""© Copyright' "$(date +'%Y')" 'Ryan Delaney. All rights reserved.'
+  printf '__copyright__ = """%s\n' "$copyright"
 cat <<EOD
  This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
  implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
@@ -60,7 +61,7 @@ else
   if touch "$1"; then
     chmod +x "$1" || error "WARNING: Failed to add executable bit."
 
-    boilerplate >> "$1"
+    boilerplate >> "$1" || exit 1
   else
     error "FATAL: Failed to create the file."
   fi
