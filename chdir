@@ -139,7 +139,7 @@ if [[ -n "$moveup" ]] && moveupdir "$1" ; then
 fi
 
 if finddir "$1" ; then
-  if [[ "$new_dir" != '.' ]] && builtin cd "$new_dir" ; then
+  if [[ "$new_dir" != '.' ]] && builtin cd -- "$new_dir" ; then
     timeout 1 exa --long --header --git --links --group-directories-first || echo "$(basename -- "$0"): Timeout listing directory contents."
   fi
 else
