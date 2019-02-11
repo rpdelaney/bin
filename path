@@ -37,6 +37,8 @@ traperror () {
 # End debugging tools. 1}}}
 # Functions {{{1
 log() {
+  [[ $verbose -le 0 ]] || [[ $quiet -gt 0 ]] && return 0  # don't log if -v was not thrown
+
   local msg=${1:-}
   local level="${2:-INFO}"
   now=$(date "+%Y-%m-%d %H:%M:%S%z")
