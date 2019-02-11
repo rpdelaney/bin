@@ -178,7 +178,7 @@ main() {
       if [[ "$replace" -gt 0 ]] ; then
         log "deleting $pre_item before prepending" DEBUG
         _del "$pre_item" "paths"
-        log "appending $pre_item" DEBUG
+        log "prepending $pre_item" DEBUG
         paths+=("$pre_item")
       else
         log "$pre_item is in the path. nothing was done" DEBUG
