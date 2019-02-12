@@ -1,0 +1,45 @@
+#!/usr/bin/env sh
+# GNU bash, version 4.4.23(1)-release (x86_64-unknown-linux-gnu)
+# vim: filetype=sh foldmethod=marker shiftwidth=2 expandtab softtabstop=4:
+#
+# © Copyright 2019 Ryan Delaney. All rights reserved.
+# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the README file for additional terms and conditions on your use of this
+# software.
+#
+
+main() {
+  # This temporarily remaps the CapsLock key to a Control key.
+  # The keyboard will return to the previous settings after a
+  # reboot. The Linux console and the X Window system each
+  # handles keypresses separately, so each must be remapped
+  # separately. First remap the X keyboard since this does not
+  # require root access.
+
+  if [ "$TERM" != "linux" ] ; then
+    # We are probably in an X session.
+    # Remap the CapsLock key to a Control key for
+    # the X Window system.
+    if command -v setxkbmap >/dev/null 2>&1 ; then
+      setxkbmap -option ctrl:nocaps 2>/dev/null
+    else
+      echo "WARNING: setxkbmap was not found. Nothing was done." 1>&2
+      return 1
+    fi
+  else
+    # Remap the CapsLock key to a Control key for the console.
+    # this only works as root
+    if [ "$(id -u)" -ne 0 ] ; then
+      # we are root
+      (dumpkeys | grep keymaps ; echo "keycode 58 = Control") | loadkeys
+    else
+      # we are not root
+      (dumpkeys | grep keymaps ; echo "keycode 58 = Control") | sudo loadkeys
+    fi
+  fi
+}
+
+main "$@"
+
+# EOF
