@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # GNU bash, version 4.2.45(2)-release (x86_64-unknown-linux-gnu)
 #
-# © Copyright 2014 Ryan Delaney. All rights reserved. This work is
+# © Copyright 2014-2018 Ryan Delaney. All rights reserved. This work is
 # distributed WITHOUT ANY WARRANTY whatsoever; without even the implied
 # warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 # README file for terms and conditions on your use of this software.
@@ -139,7 +139,7 @@ if [[ -n "$moveup" ]] && moveupdir "$1" ; then
 fi
 
 if finddir "$1" ; then
-  if [[ "$new_dir" != '.' ]] && builtin cd "$new_dir" ; then
+  if [[ "$new_dir" != '.' ]] && builtin cd -- "$new_dir" ; then
     timeout 1 exa --long --header --git --links --group-directories-first || echo "$(basename -- "$0"): Timeout listing directory contents."
   fi
 else
