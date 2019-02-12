@@ -4,7 +4,7 @@
 #
 # © Copyright 2019 Ryan Delaney. All rights reserved.
 
-# TODO: Debugging tools. REMOVE THIS LATER. {{{1
+# Debugging tools. {{{1
 set -o errexit  # exit on errors
 set -o nounset  # exit on use of uninitialized variable
 set -o errtrace # inherits trap on ERR in function and subshell
