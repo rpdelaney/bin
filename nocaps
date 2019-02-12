@@ -30,7 +30,7 @@ main() {
   else
     # Remap the CapsLock key to a Control key for the console.
     # this only works as root
-    if [ "$(id -u)" -ne 0 ] ; then
+    if [ "$(id -u)" -eq 0 ] ; then
       # we are root
       (dumpkeys | grep keymaps ; echo "keycode 58 = Control") | loadkeys
     else
