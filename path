@@ -184,7 +184,8 @@ main() {
         log "$pre_item is in the path. nothing was done" DEBUG
       fi
     else
-      log "$pre_item is in the path. nothing was done" DEBUG
+      log "prepending $pre_item" DEBUG
+      paths=("$pre_item" "${paths[@]}")
     fi
   done
 
@@ -200,7 +201,8 @@ main() {
         log "$app_item is in the path. nothing was done" DEBUG
       fi
     else
-      log "$app_item is in the path. nothing was done" DEBUG
+      log "appending $app_item" DEBUG
+      paths+=("$app_item")
     fi
   done
 
