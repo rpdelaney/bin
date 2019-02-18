@@ -179,12 +179,14 @@ main() {
         log "deleting $pre_item before prepending" DEBUG
         _del "$pre_item" "paths"
         log "prepending $pre_item" DEBUG
+        print="1"
         paths=("$pre_item" "${paths[@]}")
       else
         log "$pre_item is in the path. nothing was done" DEBUG
       fi
     else
       log "prepending $pre_item" DEBUG
+      print="1"
       paths=("$pre_item" "${paths[@]}")
     fi
   done
@@ -196,19 +198,21 @@ main() {
         log "deleting $app_item before appending" DEBUG
         _del "$app_item" "paths"
         log "appending $app_item" DEBUG
+        print="1"
         paths+=("$app_item")
       else
         log "$app_item is in the path. nothing was done" DEBUG
       fi
     else
       log "appending $app_item" DEBUG
+      print="1"
       paths+=("$app_item")
     fi
   done
 
   log "stop, paths are now  ${paths[*]}" DEBUG
 
-  printf "export PATH=%s\n" "${paths[*]}"
+  [[ "${print:-0}" -gt 0 ]] && printf "export PATH=%s\n" "${paths[*]}"
 }
 
 main "$@"
