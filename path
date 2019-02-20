@@ -159,13 +159,13 @@ do
 done
 # Parameters 1}}}
 
+declare -a paths
+
 main() {
   shopt -s extglob
   IFS=':'
 
   # ingest the path
-  declare -a -g paths
-
   while read -r -d ':' path ; do
     paths+=("$path")
   done <<<"$PATH"
