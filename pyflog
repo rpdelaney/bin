@@ -31,6 +31,7 @@ boilerplate() {
   copyright="$(copyright || return 1)"
   printf '%s\n' '#!/usr/bin/env python3'
   printf '%s %s\n' '#' "$(python3 --version)"
+  printf '%s\n' '# vim: ft=python expandtab smarttab shiftwidth=4 softtabstop=4'
   printf '%s\n' '#'
   printf '__author__ = "%s (%s)"\n' "${COPYRIGHT_HOLDER:-Ryan Delaney}" "${GIT_AUTHOR_EMAIL:-ryan.delaney@gmail.com}"
   printf '__date__ = "%s"\n' "$(date +'%Y-%m-%d')"
@@ -47,7 +48,7 @@ def main():
 if __name__ == "__main__":
     main()
 
-# vim: ft=python expandtab smarttab shiftwidth=4 softtabstop=4
+# EOF
 EOD
 }
 
