@@ -140,6 +140,5 @@ main() {
 }
 
 main "$@"
-exit $?
 
 # EOF
