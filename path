@@ -98,6 +98,7 @@ Options
   -p, --prepend <path>        prepend <path> to \$PATH (can pass multiples)
   -r, --replace               for each <path>, if it's in \$PATH already,
                                 remove it before appending or prepending.
+  -d, --delete <path>         remove <path> from \$PATH (can pass multiples)
 EOD
 exit 1
 }
@@ -106,6 +107,7 @@ exit 1
 #
 declare -a append
 declare -a prepend
+declare -a delete
 verbose=0
 replace=0
 quiet=0
@@ -137,6 +139,11 @@ do
     -p | --prepend)
       item="$(_normalize "$2")"
       prepend+=("$item")
+      shift 2
+      ;;
+    -d | --delete)
+      item="$(_normalize "$2")"
+      delete+=("$item")
       shift 2
       ;;
     -r | --replace)
@@ -171,6 +178,17 @@ main() {
   done <<<"$PATH"
 
   log "start, paths are now ${paths[*]}" DEBUG
+
+  # do the deleting
+  for del_item in "${delete[@]}" ; do
+    if _in "$del_item" "paths" ; then
+      log "deleting $del_item" DEBUG
+      _del "$del_item" "paths"
+      print="1"
+    else
+      log "$del_item is in the path. nothing was done" DEBUG
+    fi
+  done
 
   # do the prepending
   for pre_item in "${prepend[@]}" ; do
