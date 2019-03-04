@@ -99,6 +99,9 @@ Options
   -r, --replace               for each <path>, if it's in \$PATH already,
                                 remove it before appending or prepending.
   -d, --delete <path>         remove <path> from \$PATH (can pass multiples)
+
+If no OPTION is given, the paths in PATH will each be printed to standard
+error on a newline
 EOD
 exit 1
 }
@@ -178,6 +181,11 @@ main() {
   done <<<"$PATH"
 
   log "start, paths are now ${paths[*]}" DEBUG
+
+  # if no operations were given then print out the paths
+  if [[ -z "${delete[*]}" ]] && [[ -z "${prepend[*]}" ]] && [[ -z "${append[*]}" ]] ; then
+    printf "%s\n" "${PATH//:/$'\n'}" 1>&2
+  fi
 
   # do the deleting
   for del_item in "${delete[@]}" ; do
