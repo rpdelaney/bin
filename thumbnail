@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# GNU bash, version 5.0.0(1)-release (x86_64-pc-linux-gnu)
+# vim: filetype=sh foldmethod=marker shiftwidth=2 expandtab softtabstop=4:
+#
+# © Copyright 2019 Ryan Delaney. All rights reserved.
+# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the README file for additional terms and conditions on your use of this
+# software.
+
+
+main() {
+  local infile="$1"
+  local outfile
+  outfile="$(mktemp --suffix=.jpg || exit 1)"
+
+  ffmpeg \
+   -itsoffset \
+   -20 \
+   -i "$infile" \
+   -vcodec mjpeg \
+   -vframes 1 \
+   -an \
+   -f rawvideo \
+   -y \
+   -s 640x272 "$outfile"
+
+  ( set -x ; mv "$outfile" "$(basename "$infile")_thumb.jpg" )
+}
+
+main "$@"
+
+# EOF
