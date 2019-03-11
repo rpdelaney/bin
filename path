@@ -182,11 +182,6 @@ main() {
 
   log "start, paths are now ${paths[*]}" DEBUG
 
-  # if no operations were given then print out the paths
-  if [[ -z "${delete[*]}" ]] && [[ -z "${prepend[*]}" ]] && [[ -z "${append[*]}" ]] ; then
-    printf "%s\n" "${PATH//:/$'\n'}" 1>&2
-  fi
-
   # do the deleting
   for del_item in "${delete[@]}" ; do
     if _in "$del_item" "paths" ; then
