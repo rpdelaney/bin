@@ -176,9 +176,7 @@ main() {
   IFS=':'
 
   # ingest the path
-  while read -r -d ':' path ; do
-    paths+=("$path")
-  done <<<"$PATH"
+  read -ra paths <<< "$PATH"
 
   log "start, paths are now ${paths[*]}" DEBUG
 
