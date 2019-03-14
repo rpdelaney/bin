@@ -81,7 +81,7 @@ done
 count=0
 # 1}}}
 # Main {{{1
-while read line; do
+while read -r line; do
   if [[ -z "$line" ]]; then
     break
   fi
@@ -90,7 +90,7 @@ while read line; do
     avg="$line"
   else
   # average = ( (previous average * previous count) + new integer ) / new count
-    avg=$(echo "scale=${precision:-5};( ($avg * $count) + $line ) / ($count + 1)" | bc) || exit 1
+    avg=$(bc <<< "scale=${precision:-5};( ($avg * $count) + $line ) / ($count + 1)") || exit 1
   fi
 
   ((count++))
