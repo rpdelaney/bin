@@ -163,6 +163,10 @@ do
       shift
       ;;
     *)  # no more options. Stop while loop
+      if [[ -z "${append[*]}" && -z "${prepend[*]}" && -z "${delete[*]}" ]] ; then
+        echo "WARN: Missing command (need one of '-a', '-p', or '-d')" 1>&2
+        exit 1
+      fi
       break
       ;;
   esac
@@ -176,16 +180,9 @@ main() {
   IFS=':'
 
   # ingest the path
-  while read -r -d ':' path ; do
-    paths+=("$path")
-  done <<<"$PATH"
+  read -ra paths <<< "$PATH"
 
   log "start, paths are now ${paths[*]}" DEBUG
-
-  # if no operations were given then print out the paths
-  if [[ -z "${delete[*]}" ]] && [[ -z "${prepend[*]}" ]] && [[ -z "${append[*]}" ]] ; then
-    printf "%s\n" "${PATH//:/$'\n'}" 1>&2
-  fi
 
   # do the deleting
   for del_item in "${delete[@]}" ; do
