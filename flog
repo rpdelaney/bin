@@ -2,7 +2,7 @@
 # GNU bash, version 4.3.33(1)-release (x86_64-unknown-linux-gnu)
 # vim: filetype=sh foldmethod=marker shiftwidth=2 expandtab softtabstop=4:
 #
-# © Copyright 2015 Ryan Delaney. All rights reserved.
+# © Copyright 2019 Ryan Delaney. All rights reserved.
 # This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 # See the README file for additional terms and conditions on your use of this
@@ -34,13 +34,16 @@ fi
 # 1}}}
 
 boilerplate() {
-  copyright="$(copyright || return 1)"
   printf '%s\n' '#!/usr/bin/env bash'
   printf '%s %s\n' '#' "$(bash --version | head -n1)"
   printf '%s\n' "# vim: filetype=sh foldmethod=marker shiftwidth=2 expandtab softtabstop=4:"
   printf '%s\n' '#'
-  printf '# %s\n' "$copyright"
-  sed 's@^@# @' < <(disclaimer) || return 1
+  if command -v copyright &> /dev/null ; then
+    printf '# %s\n' "$(copyright)"
+  fi
+  if command -v disclaimer &> /dev/null ; then
+    sed 's@^@# @' < <(disclaimer) || return 1
+  fi
   printf '\n\n'
 
 cat <<EOD
