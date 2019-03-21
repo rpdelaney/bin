@@ -29,7 +29,7 @@ exit 1
 # 1}}}
 # Validation {{{1
 if [[ -z "$1" ]]; then
-  error "FATAL: Argument not optional. Try 'flog --help' for usage information."
+  error "FATAL: FILENAME argument not optional. Try 'flog --help' for usage information."
 fi
 # 1}}}
 
