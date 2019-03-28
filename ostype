@@ -12,6 +12,8 @@ main() {
   case "$OSTYPE" in
     "linux-gnu")
       echo "linux" ;;
+    "linux-android")
+      echo "android" ;;
     "darwin"*)
       echo "macos" ;;
     "cygwin")
