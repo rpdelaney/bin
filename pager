@@ -7,6 +7,6 @@
 # software.
 #
 
-less -R -X < "${1:-/dev/stdin}"
+less -R -X < "${1:-/proc/self/fd/0}"
 
 # vim: filetype=sh foldmethod=marker shiftwidth=2 expandtab softtabstop=4:
