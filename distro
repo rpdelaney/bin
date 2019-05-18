@@ -24,6 +24,7 @@ main() {
   if [[ "$ostype" == "macos" ]]; then
     _macos_version
   elif [[ "$ostype" == "linux" ]]; then
+    [[ "$PREFIX" =~ "termux" ]] && echo "termux" && return 0
     [[ -f /etc/redhat-release ]] && echo "redhat" && return 0
     [[ -f /etc/fedora-release ]] && echo "fedora" && return 0
     [[ -f /etc/SuSE-release ]] && echo "suse" && return 0
