@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# GNU bash, version 4.3.33(1)-release (x86_64-unknown-linux-gnu)
+# vim: ft=sh foldmethod=marker:
 #
-# © Copyright 2015 Ryan Delaney. All rights reserved.
+# © Copyright 2019 Ryan Delaney. All rights reserved.
 # This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 # See the README file for additional terms and conditions on your use of this
@@ -12,13 +12,13 @@
 # Functions {{{1
 verbose() {
   if [[ "$verbose" -ge "1" ]] && [[ -z "$quiet" ]]; then
-    echo "$1" >&2 || return 1
+    echo "$1" >&2 || return
   fi
 }
 
 error() {
   if [[ -z "$quiet" ]]; then
-    echo "$1" >&2 || return 1
+    echo "$1" >&2 || return
   fi
 }
 # 1}}}
@@ -90,7 +90,7 @@ while read -r line; do
     avg="$line"
   else
   # average = ( (previous average * previous count) + new integer ) / new count
-    avg=$(bc <<< "scale=${precision:-5};( ($avg * $count) + $line ) / ($count + 1)") || exit 1
+    avg=$(bc <<< "scale=${precision:-5};( ($avg * $count) + $line ) / ($count + 1)") || exit
   fi
 
   ((count++))
@@ -99,4 +99,4 @@ done
 echo "$avg"
 # Main 1}}}
 
-# vim: ft=sh foldmethod=marker:
+# EOF

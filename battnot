@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# GNU bash, version 4.4.19(1)-release (x86_64-unknown-linux-gnu)
+# vim: filetype=sh foldmethod=marker shiftwidth=2 expandtab softtabstop=4:
 #
-# © Copyright 2018 Ryan Delaney. All rights reserved.
+# © Copyright 2019 Ryan Delaney. All rights reserved.
 # This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 # See the README file for additional terms and conditions on your use of this
@@ -103,12 +103,12 @@ ICON_INFO='messagebox_info'
 
 main() {
   if [[ $THERMALOK -ne 0 ]]; then
-    notify-send "TEMPERATURE CRITICAL" "$THERMALTEMP" -u critical -i "$CRITICAL" || exit 1
+    notify-send "TEMPERATURE CRITICAL" "$THERMALTEMP" -u critical -i "$CRITICAL" || exit
   else
-    notify-send "$BATTLVL"% "$TIMELEFT" -u "$URGENCY" -i "$BATT_STATUS_ICON" || exit 1
+    notify-send "$BATTLVL"% "$TIMELEFT" -u "$URGENCY" -i "$BATT_STATUS_ICON" || exit
   fi
-  exit 0
 }
 
 main
-# vim: filetype=sh foldmethod=marker shiftwidth=2 expandtab softtabstop=4:
+
+# EOF
