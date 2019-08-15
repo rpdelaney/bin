@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# GNU bash, version 4.3.33(1)-release (x86_64-unknown-linux-gnu)
 # vim: filetype=sh foldmethod=marker shiftwidth=2 expandtab softtabstop=4:
 #
 # © Copyright 2019 Ryan Delaney. All rights reserved.
@@ -35,7 +34,6 @@ fi
 
 boilerplate() {
   printf '%s\n' '#!/usr/bin/env bash'
-  printf '%s %s\n' '#' "$(bash --version | head -n1)"
   printf '%s\n' "# vim: filetype=sh foldmethod=marker shiftwidth=2 expandtab softtabstop=4:"
   printf '%s\n' '#'
   if command -v copyright &> /dev/null ; then
