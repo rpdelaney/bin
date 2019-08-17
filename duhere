@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-# GNU bash, version 4.3.18(1)-release (x86_64-unknown-linux-gnu)
 #
-# © Copyright 2014 Ryan Delaney.
+# © Copyright 2019 Ryan Delaney.
 # This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 # See the README file for additional terms and conditions on your use of this
@@ -9,17 +8,6 @@
 #
 # Shows disk usage of folders at pwd
 
-# Functions {{{1
-verbose() {
-  if [[ "$verbose" = "1" ]]; then
-    echo "$1" >&2
-  fi
-}
-
-error() {
-  echo "$1" >&2
-}
-# }}}
 # Usage {{{1
 #
 usage() {
@@ -37,6 +25,10 @@ exit 1
 }
 # }}}
 
-du -h -d 1 | sort -h -r
+if [[ "$(df -T "$PWD" | tail -n1 | awk '{print $2}')" == "btrfs" ]] ; then
+  btrfs filesystem df .
+else
+  du -h -d 1 | sort -h -r
+fi
 
-# vim: ft=sh foldmethod=marker:
+# EOF
