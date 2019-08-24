@@ -40,7 +40,7 @@ boilerplate() {
     printf '# %s\n' "$(copyright)"
   fi
   if command -v disclaimer &> /dev/null ; then
-    sed 's@^@# @' < <(disclaimer) || return 1
+    sed 's@^@# @' < <(disclaimer) || return
   fi
   printf '\n\n'
 
@@ -62,7 +62,7 @@ else
   if touch "$1"; then
     chmod +x "$1" || error "WARNING: Failed to add executable bit."
 
-    boilerplate >> "$1" || exit 1
+    boilerplate >> "$1" || exit
   else
     error "FATAL: Failed to create the file."
   fi

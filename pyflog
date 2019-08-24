@@ -28,7 +28,7 @@ fi
 # 1}}}
 
 boilerplate() {
-  copyright="$(copyright || return 1)"
+  copyright="$(copyright || return)"
   printf '%s\n' '#!/usr/bin/env python3'
   printf '%s\n' '# vim: ft=python expandtab smarttab shiftwidth=4 softtabstop=4'
   printf '%s\n' '#'
@@ -58,7 +58,7 @@ else
   if touch "$1"; then
     chmod +x "$1" || error "WARNING: Failed to add executable bit."
 
-    boilerplate >> "$1" || exit 1
+    boilerplate >> "$1" || exit
   else
     error "FATAL: Failed to create the file."
     exit 1
