@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
-# GNU bash, version 4.3.11(1)-release (x86_64-unknown-linux-gnu)
 #
-# © Copyright 2014 Ryan Delaney. All rights reserved.
+# © Copyright 2019 Ryan Delaney. All rights reserved.
 # This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 # See the README file for additional terms and conditions on your use of this
 # software.
 #
 # fixflv() { ffmpeg -i broken.flv -acodec copy -vcodec copy fixed.flv; }
+
 # Functions {{{1
 verbose() {
   if [[ "$verbose" = "1" ]]; then
@@ -45,7 +45,7 @@ do
       ;;
     -v | --verbose)
       # Each instance of -v adds 1 to verbosity
-      local verbose=$((verbose+1))
+      verbose=$((verbose+1))
       shift
       ;;
     --) # End of all options
@@ -75,8 +75,7 @@ if [[ -z "$inputfile" ]] || [[ -z "$outputfile" ]]; then
   error "FATAL: argument not optional." && exit 1
 fi
 # }}}
-# Work {{{1
-ffmpeg -v "$verbose" -i "$inputfile" -acodec copy -vcodec copy "$outputfile.flv"
-# }}}
 
-# vim: ft=sh foldmethod=marker
+ffmpeg -v "$verbose" -i "$inputfile" -acodec copy -vcodec copy "$outputfile.flv"
+
+# EOF

@@ -1,15 +1,19 @@
 #!/usr/bin/env bash
 #
-#where the heck am I?
+# where the heck am I?
 #
-if ! type namei &> /dev/null; then echo "Missing dependency: namei" 1>&2; exit 1; fi
+# shellcheck disable=SC2154
 
+if ! type namei &> /dev/null; then echo "Missing dependency: namei" 1>&2; exit 1; fi
 if type gsed &> /dev/null; then echo "using gsed"; alias sed='gsed'; fi
 
 styles="$HOME/.bash_styles"
+# shellcheck disable=SC1090
 if [[ -f "$styles" ]]; then source ~/.bash_styles; fi
 
 namei "$PWD" -x -m | \
-sed -r 's@f\:\s(.*)@'"$bold$green"'\1'$reset'@' | \
-sed -r 's@^\s(\s*)D@'"$bold$yellow"'\1Mn'$reset'@' | \
-sed -r 's@^\s(\s*)l@'"$bold$cyan"'\1Ln'$reset'@'
+sed -r 's@f\:\s(.*)@'"$bold$green"'\1'"$reset"'@' | \
+sed -r 's@^\s(\s*)D@'"$bold$yellow"'\1Mn'"$reset"'@' | \
+sed -r 's@^\s(\s*)l@'"$bold$cyan"'\1Ln'"$reset"'@'
+
+# EOF
