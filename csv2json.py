@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+#
 import csv
 import json
 import sys
@@ -16,7 +16,7 @@ def csv2dict(csvfile):
                 mydict.update({field: []})
             mydict[field].append(row.get(field))
 
-    return json.dumps(mydict, indent=2)
+    return mydict
 
 
 def main():
@@ -36,7 +36,7 @@ def main():
         print(csv2dict(sys.stdin))
     else:
         with open(args.file) as csvfile:
-            print(csv2dict(csvfile))
+            print(json.dumps(csv2dict(csvfile), indent=2))
 
 
 if __name__ == "__main__":
