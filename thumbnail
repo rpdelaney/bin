@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-# GNU bash, version 5.0.0(1)-release (x86_64-pc-linux-gnu)
-# vim: filetype=sh foldmethod=marker shiftwidth=2 expandtab softtabstop=4:
 #
 # © Copyright 2019 Ryan Delaney. All rights reserved.
 # This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
@@ -12,7 +10,7 @@
 main() {
   local infile="$1"
   local outfile
-  outfile="$(mktemp || exit 1)"
+  outfile="$(mktemp || exit)"
 
   ffmpeg \
    -itsoffset \

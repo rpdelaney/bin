@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
-# GNU bash, version 4.3.42(1)-release (x86_64-unknown-linux-gnu)
 #
-# © Copyright 2016 Ryan Delaney. All rights reserved.
+# © Copyright 2019 Ryan Delaney. All rights reserved.
 # This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 # See the README file for additional terms and conditions on your use of this
 # software.
 #
-#   Try to open a file, and then ask me if I want to delete it.
+#   Try to open a video file, and then ask me if I want to delete it.
+
+if ! command -v confirm >/dev/null 2>&1 ; then echo "Missing dependency: confirm" 1>&2 ; exit 1 ; fi
 
 if [[ -r "$1" ]]; then
   mpv "$1"
@@ -16,6 +17,6 @@ else
   exit 1
 fi
 
-confirm "Delete the file? $1 " && >"$1" || exit 0
+confirm "Delete the file? $1 " && rm "$1" || exit 0
 
-# vim: filetype=sh foldmethod=marker shiftwidth=2 expandtab softtabstop=4:
+# EOF

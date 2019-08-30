@@ -1,35 +1,30 @@
 #!/usr/bin/env bash
-# GNU bash, version 4.4.23(1)-release (x86_64-apple-darwin17.5.0)
 #
-# © Copyright 2018 Ryan Delaney. All rights reserved.
+# © Copyright 2019 Ryan Delaney. All rights reserved.
 # This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 # See the README file for additional terms and conditions on your use of this
 # software.
 #
 
-main() {
-  case "$OSTYPE" in
-    "linux"*)
-      echo "linux" ;;
-    "darwin"*)
-      echo "macos" ;;
-    "cygwin")
-      echo "cygwin" ;;
-    "msys")
-      # Lightweight shell and GNU utilities compiled for Windows (part of MinGW)
-      echo "msys" ;;
-    "win32")
-      # I'm not sure this can happen.
-      echo "mingw" ;;
-    "freebsd"*)
-      echo "bsd" ;;
-    *)
-      echo "unknown" ;
-      return 1 ;;
-  esac
-  return 0
-}
+case "$OSTYPE" in
+  "linux"*)
+    echo "linux" ;;
+  "darwin"*)
+    echo "macos" ;;
+  "cygwin")
+    echo "cygwin" ;;
+  "msys")
+    # Lightweight shell and GNU utilities compiled for Windows (part of MinGW)
+    echo "msys" ;;
+  "win32")
+    # I'm not sure this can happen.
+    echo "mingw" ;;
+  "freebsd"*)
+    echo "bsd" ;;
+  *)
+    echo "unknown" ;
+    return 1 ;;
+esac
 
-main "$@" || exit 1
-# vim: filetype=sh foldmethod=marker shiftwidth=2 expandtab softtabstop=4:
+# EOF
