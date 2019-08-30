@@ -12,7 +12,7 @@
 main() {
   local infile="$1"
   local outfile
-  outfile="$(mktemp --suffix=.jpg || exit 1)"
+  outfile="$(mktemp || exit 1)"
 
   ffmpeg \
    -itsoffset \
