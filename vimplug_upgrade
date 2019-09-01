@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
-# GNU bash, version 5.0.2(1)-release (x86_64-apple-darwin17.7.0)
-# vim: filetype=sh foldmethod=marker shiftwidth=2 expandtab softtabstop=4:
-#
 # © Copyright 2019 Ryan Delaney. All rights reserved.
 #
 # 1 create a snapshot of current plugins in /tmp/
@@ -13,7 +10,9 @@
 declare threads=3
 
 main() {
-  vim -c 'PlugSnapshot! /tmp/vim-plug-'"$(date +'%s')" -c 'bd!' -c 'PlugUpgrade' -c 'PlugClean!' -c 'PlugUpdate '"$threads" -c 'PlugInstall '"$threads" -c 'qa!'
+  if vim -c 'PlugSnapshot! /tmp/vim-plug-'"$(date +'%s')" -c 'bd!' -c 'PlugUpgrade' -c 'PlugClean!' -c 'PlugUpdate '"$threads" -c 'PlugInstall '"$threads" -c 'qa!' ; then
+    echo "vim plugins upgraded 💫"
+  fi
 }
 
 main "$@"
