@@ -1,21 +1,11 @@
 #!/usr/bin/env bash
-# vim: filetype=sh foldmethod=marker shiftwidth=2 expandtab softtabstop=4:
 #
-# © Copyright 2019 Ryan Delaney. All rights reserved.
-# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
-# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the README file for additional terms and conditions on your use of this
-# software.
-#
-# Functions {{{1
 error() {
   echo "$1" >&2 || return 1
 }
-# 1}}}
-# Usage {{{1
-#
+
 usage() {
-cat <<EOD
+  cat <<EOD
 flog initializes a new bash script with vim modelines, shebang, and the like.
 
 Usage: flog [OPTION] FILENAME
@@ -23,26 +13,17 @@ Usage: flog [OPTION] FILENAME
 Options
   -?, --help                  print this help and exit
 EOD
-exit 1
+  exit 1
 }
-# 1}}}
-# Validation {{{1
+
 if [[ -z "$1" ]]; then
   error "FATAL: FILENAME argument not optional. Try 'flog --help' for usage information."
 fi
-# 1}}}
+
 
 boilerplate() {
   printf '%s\n' '#!/usr/bin/env bash'
-  printf '%s\n' "# vim: filetype=sh foldmethod=marker shiftwidth=2 expandtab softtabstop=4:"
-  printf '%s\n' '#'
-  if command -v copyright &> /dev/null ; then
-    printf '# %s\n' "$(copyright)"
-  fi
-  if command -v disclaimer &> /dev/null ; then
-    sed 's@^@# @' < <(disclaimer) || return
-  fi
-  printf '\n\n'
+  printf '%s\n\n' '#'
 
 cat <<EOD
 main() {
