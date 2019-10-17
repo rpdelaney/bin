@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#
+
+amixer sset Master on
+
+# EOF
