@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# © Copyright 2019 Ryan Delaney. All rights reserved.
 #
 # 1 create a snapshot of current plugins in /tmp/
 # 2 upgrade vim-plug itself
@@ -9,12 +8,8 @@
 
 declare threads=3
 
-main() {
-  if vim -c 'PlugSnapshot! /tmp/vim-plug-'"$(date +'%s')" -c 'bd!' -c 'PlugUpgrade' -c 'PlugClean!' -c 'PlugUpdate '"$threads" -c 'PlugInstall '"$threads" -c 'qa!' ; then
-    echo "vim plugins upgraded 💫"
-  fi
-}
-
-main "$@"
+if vim -c 'PlugSnapshot! /tmp/vim-plug-'"$(date +'%s')" -c 'bd!' -c 'PlugUpgrade' -c 'PlugClean!' -c 'PlugUpdate '"$threads" -c 'PlugInstall '"$threads" -c 'qa!' ; then
+  echo "vim plugins upgraded 💫"
+fi
 
 # EOF

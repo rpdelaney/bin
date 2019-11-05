@@ -1,11 +1,4 @@
 #!/usr/bin/env bash
-# vim: ft=sh foldmethod=marker:
-#
-# © Copyright 2019 Ryan Delaney. All rights reserved.
-# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
-# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the README file for additional terms and conditions on your use of this
-# software.
 #
 # take a column of integers and return the average
 

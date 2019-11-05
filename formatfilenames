@@ -1,11 +1,4 @@
 #!/usr/bin/env bash
-# GNU bash, version 4.2.45(2)-release (x86_64-unknown-linux-gnu)
-#
-# © Copyright 2014 Ryan Delaney.
-# This program is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-# General Public License for more details.
 #
 # renames all files underneath the PWD to replace unwanted characters such as:
 #       whitespace
@@ -13,8 +6,11 @@
 #       underscores
 #       semicolon
 #       ampersand
+#
+# TODO: this should be in python
+#
 
-#make sure extended globbing is on
+# make sure extended globbing is on
 shopt -s extglob;
 
 # Functions {{{1
@@ -28,12 +24,13 @@ error() {
   echo "$1" >&2
 }
 
-getfilenames() 
+getfilenames()
 {
   if [[ -z "$filetypes" ]]; then
-    find . -maxdepth "$maxdepth" || exit 1
+    find . -maxdepth "$maxdepth" || exit
   else
-    find . -maxdepth "$maxdepth" $filetypes || exit 1
+    # shellcheck disable=SC2086
+    find . -maxdepth "$maxdepth" $filetypes || exit
   fi
 }
 # }}}
@@ -75,7 +72,7 @@ do
       ;;
     -v | --verbose)
       # Each instance of -v adds 1 to verbosity
-      local verbose=$((verbose+1))
+      verbose=$((verbose+1))
       shift
       ;;
     --) # End of all options
@@ -137,8 +134,6 @@ while read -r file; do
 
 done < <(getfilenames);
 # 1}}}
-
-exit 0
 
 
 # Character   ##    HTML Name      ##      HTML Code
@@ -421,5 +416,6 @@ exit 0
 # Ï       ##    thetasym; ##      #977;
 # Ï       ##    upsih;    ##      #978;
 # Ï       ##    piv;      ##      #982;
-# 
-# # vim: ft=sh foldmethod=marker
+#
+
+# EOF

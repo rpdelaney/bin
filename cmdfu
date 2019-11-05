@@ -1,12 +1,6 @@
 #!/usr/bin/env bash
-# GNU bash, version 4.3.24(1)-release (i686-pc-linux-gnu)
 #
-# © Copyright 2014 Ryan Delaney. All rights reserved.
-# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
-# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the README file for additional terms and conditions on your use of this
-# software.
-#
+
 # Usage {{{1
 #
 usage() {
@@ -58,7 +52,6 @@ if ! type openssl &> /dev/null; then echo "ERROR: Missing dependency: openssl" 1
 
 if [[ -z $verbose ]]; then
   verbosity="--silent"
-# verbosity="--fail"
 fi
 #1}}}
 # Main {{{1
@@ -68,4 +61,5 @@ url="http://www.commandlinefu.com/commands/matching/$needle/$(echo -n "$needle" 
 
 curl -L "$verbosity" --max-time "$maxtime" "$url"
 #1}}}
-# vim: ft=sh foldmethod=marker
+
+# EOF

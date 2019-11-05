@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
-# GNU bash, version 5.0.2(1)-release (x86_64-apple-darwin17.7.0)
-# vim: filetype=sh foldmethod=marker shiftwidth=2 expandtab softtabstop=4:
 #
-# © Copyright 2019 Ryan Delaney. All rights reserved.
 
 # Debugging tools. {{{1
 set -o errexit  # exit on errors
