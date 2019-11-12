@@ -1,12 +1,6 @@
 #!/usr/bin/env bash
-# GNU bash, version 4.3.0(1)-release (x86_64-unknown-linux-gnu)
 #
-# © Copyright 2014-2018 Ryan Delaney. All rights reserved.
-# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
-# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the README file for additional terms and conditions on your use of this
-# software.
-#
+
 if ! command -v i3lock > /dev/null 2>&1 ; then echo "Missing dependency: i3lock" 1>&2 ; exit 1 ; fi
 
 i3lock --ignore-empty-password \

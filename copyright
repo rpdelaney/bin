@@ -1,23 +1,17 @@
 #!/usr/bin/env sh
 #
-# © Copyright 2018 Ryan Delaney. All rights reserved.
-# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
-# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the README file for additional terms and conditions on your use of this
-# software.
-#
 
 main() {
   year="$(date +'%Y' || exit 1)"
   holder="${COPYRIGHT_HOLDER:-"Ryan Delaney"}"
   claim="${COPYRIGHT_CLAIM:-"All rights reserved"}"
-  printf '%s %s. %s.' "© Copyright $year" "$holder" "$claim" || return 1
+  printf '%s %s. %s.' "© Copyright $year" "$holder" "$claim" || return
 
   if [ "$1" = '-n' ]; then
-    printf '\n' || return 1
+    printf '\n' || return
   fi
 }
 
 main "$@" || exit 1
 
-# vim: filetype=sh foldmethod=marker shiftwidth=2 expandtab softtabstop=4:
+# EOF

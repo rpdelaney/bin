@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#
+
+ostype="$(ostype)"
+
+if [[ "$ostype" == "linux" ]] ; then
+  kitty +kitten clipboard < /dev/stdin
+elif [[ "$ostype" == macos ]] ; then
+  /usr/bin/pbcopy < /dev/stdin
+else
+  exit 1
+fi
+
+# EOF

@@ -1,13 +1,6 @@
 #!/usr/bin/env bash
 #
-# © Copyright 2019 Ryan Delaney. All rights reserved.
-# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
-# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the README file for additional terms and conditions on your use of this
-# software.
 
-# Parameters {{{1
-#
 while :
 do
   case $1 in
@@ -34,32 +27,27 @@ do
       ;;
   esac
 done
-# }}}
 
-# Usage {{{1
 usage() {
-cat <<EOD
+  cat <<EOD
 Usage: psx [OPTION]
 
 Options
   -?, --help                  print this help and exit
   -v, --verbose               increase verbosity
 EOD
-exit 1
+  exit 1
 }
-# Usage 1}}}
 
-# Validation {{{1
 if ! type psgrep &> /dev/null; then echo "ERROR: Missing dependency: psgrep" 1>&2; exit 1; fi
 if ! command -v awk >/dev/null 2>&1 ; then echo "ERROR: Missing dependency: awk" 1>&2 ; exit 1 ; fi
-# 1}}}
 
 word="$*"
 
 if [[ -z "$verbose" ]]; then
-  psgrep -d "$word" | awk '{ if ( $2 !~'$$' ) { print ; } }'
+  psgrep -ai "$word" | awk '{ if ( $2 !~"PID" ) { print $2 ; } }'
 else
-  psgrep "$word" | awk '{ if ( $2 !~'$$' ) { print ; } }'
+  psgrep -ai "$word" | awk '{ if ( $2 !~'$$' ) { print ; } }'
 fi
 
 # EOF

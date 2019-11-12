@@ -1,13 +1,7 @@
 #!/usr/bin/env bash
-# GNU bash, version 4.3.11(1)-release (x86_64-unknown-linux-gnu)
-#
-# © Copyright 2014 Ryan Delaney
-# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
-# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the README file for additional terms and conditions on your use of this
-# software.
 #
 # TODO: Reduce streaming complexity (eliminate unnecessarily complex chained pipes)
+#
 
 # Functions {{{1
 verbose() {
@@ -82,4 +76,5 @@ if mtr -o RSDA -r -c 1 -b "$target"; then
   sed 's@My@@'
 fi
 # }}}
-# vim: ft=sh foldmethod=marker:
+
+# EOF
