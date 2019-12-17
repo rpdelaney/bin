@@ -232,7 +232,7 @@ main() {
 
   log "stop, paths are now  ${paths[*]}" DEBUG
 
-  [[ "${print:-0}" -gt 0 ]] && printf "export PATH=%s\n" "${paths[*]}" || return 0
+  [[ "${print:-0}" -gt 0 ]] && printf 'export PATH="%s"\n' "${paths[*]}" || return 0
 }
 
 main "$@"
