@@ -60,6 +60,7 @@ _del() {
 
   return "${status:-1}"
 }
+
 _in(){
   # Determine if a string is a member of an array
   declare needle="$1"
