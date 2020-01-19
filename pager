@@ -1,6 +1,9 @@
 #!/usr/bin/env sh
 #
 
-less -R -X < "${1:-/dev/fd/0}"
-
-# EOF
+if command -v ifne 2> /dev/null 1>&2 ; then
+  ifne less -R -X < "${1:-/dev/stdin}"
+else
+  echo "WARNING: ifne not found. The pager may misbehave if stdin is empty." 1>&2
+  exec less -R -X < "${1:-/dev/stdin}"
+fi
