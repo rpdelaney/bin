@@ -2,8 +2,8 @@
 #
 
 if command -v ifne 2> /dev/null 1>&2 ; then
-  ifne less -R -X < "${1:-/dev/stdin}"
+  ifne less -R -X < "${1:-/dev/fd/0}"
 else
-  echo "WARNING: ifne not found. The pager may misbehave if stdin is empty." 1>&2
-  exec less -R -X < "${1:-/dev/stdin}"
+  echo "WARNING: ifne not found. The pager may misbehave if stdin is empty. Install moreutils." 1>&2
+  exec less -R -X < "${1:-/dev/fd/0}"
 fi
