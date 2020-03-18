@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+#
+
+case "$#" in
+  0)
+    echo "argument not optional" 1>&2
+    exit 1
+    ;;
+  1)
+    arg="--help"
+    ;;
+  *)
+    arg=""
+    ;;
+esac
+
+pager < <(set -x ; eval "$* $arg" 2>&1)
