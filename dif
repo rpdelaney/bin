@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#
+
+if command -v diffr &>/dev/null ; then
+  ( set -x ;
+    diff "$@" | diffr \
+        --colors removed:background:00:foreground:01 \
+        --colors refine-removed:background:0:foreground:124:italic \
+        --colors added:background:0:foreground:10 \
+        --colors refine-added:background:0:foreground:35:intense
+  )
+fi
