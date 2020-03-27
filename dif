@@ -2,11 +2,12 @@
 #
 
 if command -v diffr &>/dev/null ; then
-  ( set -x ;
-    diff "$@" | diffr \
-        --colors removed:background:00:foreground:01 \
-        --colors refine-removed:background:0:foreground:124:italic \
-        --colors added:background:0:foreground:10 \
-        --colors refine-added:background:0:foreground:35:intense
-  )
+    black="0x28,0x28,0x28"
+    red="0xEA,0x69,0x62"
+    green="0xA9,0xB6,0x65"
+    diffr \
+        --colors removed:background:"$black":foreground:"$red" \
+        --colors refine-removed:background:"$black":foreground:124:italic \
+        --colors added:background:"$black":foreground:"$green" \
+        --colors refine-added:background:"$black":foreground:35:intense
 fi
