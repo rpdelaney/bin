@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#
+
+clear
+
+if [ -n "$TMUX" ] ; then
+  tmux clear-history
+  echo "tmux scrollback cleared" 1>&2
+fi
