@@ -1,8 +1,25 @@
 ---
 version: 2.1
-orbs:
-  shellcheck: circleci/shellcheck@1.3.16
-workflows:
+
+jobs:
   shellcheck:
+    docker:
+      - image: alpine:edge
+    steps:
+      - checkout
+      - run:
+          name: Install build & test dependencies
+          command: |
+            apk add shellcheck
+      - run:
+          name: Lint shell scripts
+          command: |
+            while read -r file ; do
+              shellcheck "$file" || ((failures++))
+            done < <(find . -path ./.git -prune -o -type f -executable)
+            exit "$failures"
+
+workflows:
+  pipeline:
     jobs:
-      - shellcheck/check
+      - shellcheck
