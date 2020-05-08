@@ -13,11 +13,7 @@ jobs:
             apk add shellcheck
       - run:
           name: Lint shell scripts
-          command: |
-            while read -r file ; do
-              shellcheck "$file" || ((failures++))
-            done < <(find . -path ./.git -prune -o -type f -executable)
-            exit "$failures"
+          command: bash .circleci/lint
 
 workflows:
   pipeline:
