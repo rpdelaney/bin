@@ -25,9 +25,9 @@ error() {
 #
 usage() {
 cat <<EOD
-$(basename $0) sends a message via various notification daemons simultaneously
+$(basename "$0") sends a message via various notification daemons simultaneously
 
-Usage: $(basename $0) [OPTION] MESSAGE
+Usage: $(basename "$0") [OPTION] MESSAGE
 
 Options
   -?, --help                        print this help and exit
@@ -56,7 +56,7 @@ do
       ;;
     -v | --verbose)
       # Each instance of -v adds 1 to verbosity
-      local verbose=$((verbose+1))
+      verbose=$((verbose+1))
       shift
       ;;
     -u | --urgency=)
@@ -64,26 +64,26 @@ do
       urgency="$1"
       shift
       ;;
-    -t | --expire-time=)
-      expiretime="$1"
-      shift 2
-      ;;
-    -a | --app-name=)
-      appname="$1"
-      shift 2
-      ;;
-    -i | --icon=)
-      icon="$1"
-      shift 2
-      ;;
-    -c | --category=)
-      category="$1"
-      shift 2
-      ;;
-    -h | --hint=)
-      hint="$1"
-      shift 2
-      ;;
+#   -t | --expire-time=)
+#     expiretime="$1"
+#     shift 2
+#     ;;
+#   -a | --app-name=)
+#     appname="$1"
+#     shift 2
+#     ;;
+#   -i | --icon=)
+#     icon="$1"
+#     shift 2
+#     ;;
+#   -c | --category=)
+#     category="$1"
+#     shift 2
+#     ;;
+#   -h | --hint=)
+#     hint="$1"
+#     shift 2
+#     ;;
     --) # End of all options
       shift
       break
