@@ -6,4 +6,4 @@ while read -r file ; do
   shellcheck "$file" || ((failures++))
 done < <(find . -path ./.git -prune -o -type f -executable -print)
 
-exit "$failures"
+exit "${failures:-0}"
