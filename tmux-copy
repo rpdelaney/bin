@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#
+
+window_id="$(tmux display-message -p '#S-#{window_index}-#{window-name}')"
+outfile="${1:-/tmp/"$window_id.scrollback.txt"}"
+lines="${2:--9999999}"
+
+( set -x ; tmux capture-pane -pS "$lines" > "$outfile" )
