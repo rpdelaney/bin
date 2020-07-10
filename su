@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#
+
+echo "This is insecure. Open another TTY if you want to log in as another user."
+exit 1
