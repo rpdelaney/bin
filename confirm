@@ -7,7 +7,7 @@
 [ -n "$*" ] && QUERY="$*"" (y/n)" || QUERY="Continue? (y/n)"
 
 until [ "$INPUT" = "y" ]; do
-  echo "$QUERY"
+  printf "%s " "$QUERY"
   read -r INPUT
 
   case $INPUT in
