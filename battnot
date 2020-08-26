@@ -1,13 +1,7 @@
 #!/usr/bin/env bash
-# vim: filetype=sh foldmethod=marker shiftwidth=2 expandtab softtabstop=4:
-#
-# © Copyright 2019 Ryan Delaney. All rights reserved.
-# This work is distributed WITHOUT ANY WARRANTY whatsoever; without even the
-# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the README file for additional terms and conditions on your use of this
-# software.
 #
 # Displays a notification according to the battery level
+#
 
 # Dependencies
 if ! type notify-send &> /dev/null; then echo "Missing dependency: notify-send" 1>&2; exit 1; fi
@@ -15,7 +9,7 @@ if ! pacman -Q libnotify &> /dev/null; then echo "Missing dependency: libnotify"
 
 split() {
   read -r line
-  IFS="$@" read -r -a array <<< "$line"
+  IFS="$*" read -r -a array <<< "$line"
 
   for element in "${array[@]}"
   do
@@ -24,11 +18,11 @@ split() {
 }
 
 AC="$(acpi -a)"
-ACPOWER="$(echo $AC | sed -r 's@Adapter 0: @@')"
+ACPOWER="$(echo "$AC" | sed -r 's@Adapter 0: @@')"
 BATT="$(acpi -b)"
 if ! echo "$BATT" | grep -q "Full"; then
-  BATTLVL="$(echo $BATT | grep -Po '[0-9]{2}' | head -n1)"
-  BATTTIME="$(echo $BATT | grep -Po '\d{2}:\d{2}:\d{2}')"
+  BATTLVL="$(echo "$BATT" | grep -Po '[0-9]{2}' | head -n1)"
+  BATTTIME="$(echo "$BATT" | grep -Po '\d{2}:\d{2}:\d{2}')"
   while read -r line; do
     if [[ -z $BATTHOUR ]]; then
       BATTHOUR="$line"
@@ -40,7 +34,7 @@ if ! echo "$BATT" | grep -q "Full"; then
       echo "Wtf happened?" 1>&2
       exit 1
     fi
-  done < <(echo $BATTTIME | split :)
+  done < <(echo "$BATTTIME" | split :)
   TIMELEFT="${BATTHOUR}h ${BATTMIN}m ${BATTSEC}s"
 else
   BATTLVL="100"
@@ -87,19 +81,17 @@ fi
 # Thermal data {{{1
 # Thermal 0: ok, 54.5 degrees C # acpi -t
 THERMAL="$(acpi -t)"
-THERMALTEMP="$(echo $THERMAL | grep -Po '[0-9.]+\.[0-9] degrees [CF]')"
-if echo $THERMAL | grep -q 'ok,'; then
+THERMALTEMP="$(echo "$THERMAL" | grep -Po '[0-9.]+\.[0-9] degrees [CF]')"
+if echo "$THERMAL" | grep -q 'ok,'; then
   THERMALOK=0
 else
   THERMALOK=1
 fi
 # Thermal data 1}}}
 
-# Icons {{{1
-ICON_CRITICAL='messagebox_critical'
-ICON_WARNING='messagebox_warning'
-ICON_INFO='messagebox_info'
-# 1}}}
+# ICON_CRITICAL='messagebox_critical'
+# ICON_WARNING='messagebox_warning'
+# ICON_INFO='messagebox_info'
 
 main() {
   if [[ $THERMALOK -ne 0 ]]; then

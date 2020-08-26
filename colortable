@@ -33,7 +33,7 @@ color-table() {
         for FG in 30 31 32 33 34 35 36 37; do
             echo -n "$CSI${BG:0:2};${FG}m"
             echo -n "$FNB_LOWER"
-            echo -n "$CSI$(( $FG + 60 ))m"
+            echo -n "$CSI(( $FG + 60 ))m"
             echo -n "$FNB_UPPER"
             echo -n "${CSI}0m  "
         done
@@ -42,7 +42,7 @@ color-table() {
         for FG in 30 31 32 33 34 35 36 37; do
             echo -n "$CSI$(( ${BG:0:2} + 60 ));${FG}m"
             echo -n "$FNB_LOWER"
-            echo -n "$CSI$(( $FG + 60 ))m"
+            echo -n "$CSI(( $FG + 60 ))m"
             echo -n "$FNB_UPPER"
             echo -n "${CSI}0m  "
         done
@@ -59,15 +59,15 @@ colorize() {
 }
 
 # Handle long options until we hit an unrecognized thing
-CONTINUE=true
-RESTORE=true
-NEWLINE=false
-ESCAPE=false
+# CONTINUE=true
+# RESTORE=true
+# NEWLINE=false
+# ESCAPE=false
 ESC="$(echo -e '\033')"
 CSI="${ESC}["
-OSC="${ESC}]"
-ST="${ESC}\\"
-OUTPUT=""
-SUFFIX=""
+# OSC="${ESC}]"
+# ST="${ESC}\\"
+# OUTPUT=""
+# SUFFIX=""
 
 color-table

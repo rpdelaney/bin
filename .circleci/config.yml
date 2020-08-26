@@ -1,0 +1,22 @@
+---
+version: 2.1
+
+jobs:
+  shellcheck:
+    docker:
+      - image: alpine:edge
+    steps:
+      - checkout
+      - run:
+          name: Install build & test dependencies
+          command: |
+            apk add bash
+            apk add shellcheck
+      - run:
+          name: Lint shell scripts
+          command: bash .circleci/lint
+
+workflows:
+  pipeline:
+    jobs:
+      - shellcheck
