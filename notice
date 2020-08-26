@@ -25,9 +25,9 @@ error() {
 #
 usage() {
 cat <<EOD
-$(basename "$0") sends a message via various notification daemons simultaneously
+notice sends a message via various notification daemons simultaneously
 
-Usage: $(basename "$0") [OPTION] MESSAGE
+Usage: notice [OPTION] MESSAGE
 
 Options
   -?, --help                        print this help and exit
