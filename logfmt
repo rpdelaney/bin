@@ -19,7 +19,7 @@ def split_lines(mydict: dict) -> dict:
 
 
 def main():
-    data = '\n'.join(sys.stdin.readlines())
+    data = "\n".join(sys.stdin.readlines())
     jsondata = split_lines(json.loads(data))
     print(json.dumps(jsondata, indent=2, default=str))
 
