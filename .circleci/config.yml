@@ -11,6 +11,7 @@ jobs:
           name: Install build & test dependencies
           command: |
             pip install --progress-bar off --no-clean --isolated --no-cache-dir pre-commit
+            apt-get install shellcheck
       - run:
           name: Run pre-commit hooks on all files
           command: pre-commit run --all-files --show-diff-on-failure
