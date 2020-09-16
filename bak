@@ -8,7 +8,7 @@ for file in "$@"; do
   else
     oldname="$(readlink -f "$file")" || exit
   fi
-  newname="$oldname".bak."$date"
+  newname="$oldname"."$date".bak
   cp "$file" "$newname"
 done
 
