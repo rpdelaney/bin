@@ -4,6 +4,6 @@
 #
 
 columns=$(tput cols) || exit
-printf "%${columns}s\n" "$*"
+printf "%${columns}s\\n" "$*"
 
 # EOF
