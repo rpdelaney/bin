@@ -12,7 +12,7 @@ jobs:
           command: |
             set -x
             pip install --quiet --disable-pip-version-check --progress-bar off --no-clean --isolated --no-cache-dir pre-commit
-            apt-get update -qq && apt-get install -q shellcheck
+            apt-get update -qq && apt-get install -qq shellcheck
             pre-commit --version
             shellcheck --version
       - run:
