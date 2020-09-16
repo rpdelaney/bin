@@ -2,7 +2,7 @@
 version: 2.1
 
 jobs:
-  shellcheck:
+  lint:
     docker:
       - image: alpine:edge
     steps:
@@ -11,12 +11,11 @@ jobs:
           name: Install build & test dependencies
           command: |
             apk add bash
-            apk add shellcheck
       - run:
-          name: Lint shell scripts
-          command: bash .circleci/lint
+          name: Run pre-commit hooks on all files
+          command: pre-commit run --all-files --show-diff-on-failure
 
 workflows:
   pipeline:
     jobs:
-      - shellcheck
+      - lint
