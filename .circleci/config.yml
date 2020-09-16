@@ -10,7 +10,7 @@ jobs:
       - run:
           name: Install build & test dependencies
           command: |
-            pip install --disable-pip-version-check --progress-bar off --no-clean --isolated --no-cache-dir pre-commit
+            pip install --quiet --disable-pip-version-check --progress-bar off --no-clean --isolated --no-cache-dir pre-commit
             apt-get update -qq && apt-get install -q shellcheck
       - run:
           name: Run pre-commit hooks on all files
