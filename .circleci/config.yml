@@ -2,21 +2,24 @@
 version: 2.1
 
 jobs:
-  shellcheck:
+  lint:
     docker:
-      - image: alpine:edge
+      - image: python:3.7.6-buster
     steps:
       - checkout
       - run:
           name: Install build & test dependencies
           command: |
-            apk add bash
-            apk add shellcheck
+            set -x
+            pip install --quiet --disable-pip-version-check --progress-bar off --no-clean --isolated --no-cache-dir pre-commit
+            apt-get update -qq && apt-get install -qq shellcheck
+            pre-commit --version
+            shellcheck --version
       - run:
-          name: Lint shell scripts
-          command: bash .circleci/lint
+          name: Run pre-commit hooks on all files
+          command: pre-commit run --all-files --show-diff-on-failure
 
 workflows:
   pipeline:
     jobs:
-      - shellcheck
+      - lint

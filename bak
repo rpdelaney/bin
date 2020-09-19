@@ -4,11 +4,12 @@
 for file in "$@"; do
   date="$(date +%Y%m%d-%H%m%S)" || exit
   if command -v greadlink &> /dev/null; then
-    oldname="$(greadlink -f "$file")" || exit
+    readlink="greadlink"
   else
-    oldname="$(readlink -f "$file")" || exit
+    readlink="readlink"
   fi
-  newname="$oldname".bak."$date"
+  oldname="$("$readlink" -f "$file")" || exit
+  newname="$oldname"."$date".bak
   cp "$file" "$newname"
 done
 
