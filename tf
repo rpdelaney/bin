@@ -31,12 +31,31 @@ case "$cmd" in
       ( set -x ; terraform show "$file" | pee "cat -" "uncolor > $file.txt" ) ; exit_code="$?"
     done
     ;;
+  apply)
+    # check if the user gave us a terraform plan to apply
+    for arg in "$@" ; do
+      if [[ -f "$arg" ]]; then
+        # terraform plan files are zip compressed archives with contents that
+        # have mimetype "application/octet-stream"
+        {
+          [[ "$(file --mime-type --brief "$arg")" == "application/zip" ]];
+          [[ "$(file --mime-type --brief --uncompress-noreport "$arg")" == "application/octet-stream" ]];
+        } && ((plan_found++))
+      fi
+    done
+    if [[ "$plan_found" == 1 ]] ; then
+      (set -x ; terraform apply -compact-warnings -input=false "$@" ) ; exit_code="$?"
+    else
+      echo "I couldn't find a plan file in the arguments you gave me." 1>&2 ; exit_code=1
+    fi
+    ;;
   *)
+    ( set -x ; terraform "$cmd" "$@" )
     ;;
 esac
 
 if command -v notice >/dev/null 2>&1 ; then
-  notice "terraform '$1' done"
+  notice "terraform $cmd done"
 fi
 
 exit "$exit_code"
