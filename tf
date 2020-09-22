@@ -18,6 +18,9 @@ else
 fi
 
 case "$cmd" in
+  init)
+    (set -x ; terraform init -input=false "$@" ) ; exit_code="$?"
+    ;;
   plan)
 
     (set -x ; terraform plan -compact-warnings -input=false -out="$plan_name.plan" "$@" ) ; exit_code="$?"
