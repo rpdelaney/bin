@@ -11,11 +11,11 @@ declare threads=3
 if ( vim \
     -c 'PlugSnapshot! /tmp/vim-plug-'"$(date +'%s')" \
     -c 'bd!' \
-    -c 'BlackUpgrade' \
     -c 'PlugUpgrade' \
     -c 'PlugClean!' \
     -c 'PlugUpdate '"$threads" \
     -c 'PlugInstall '"$threads" \
+    -c 'BlackUpgrade' \
     -c 'qa!'
   ) ; then
   echo "vim plugins upgraded 💫"
