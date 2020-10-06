@@ -10,7 +10,7 @@ for file in "$@"; do
   fi
   oldname="$("$readlink" -f "$file")" || exit
   newname="$oldname"."$date".bak
-  cp "$file" "$newname"
+  cp -r "$file" "$newname"
 done
 
 # EOF
