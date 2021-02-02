@@ -1,4 +1,4 @@
 [flake8]
-ignore = E123,E133,W503
+ignore = E123,E133,W503,S404
 per-file-ignores =
     tests/*:S101
