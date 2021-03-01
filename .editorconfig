@@ -11,3 +11,6 @@ charset = utf-8
 
 [logfmt]
 indent_size = 4
+
+[perf]
+indent_size = 4

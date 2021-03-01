@@ -4,4 +4,4 @@
 
 if ! command -v jq >/dev/null 2>&1 ; then echo "Missing dependency: jq" 1>&2 ; exit 1 ; fi
 
-diff <(jq . --sort-keys < "$1") <(jq . --sort-keys < "$2")
+vimdiff <(jq . --sort-keys < "$1") <(jq . --sort-keys < "$2")
