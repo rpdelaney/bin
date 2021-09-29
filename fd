@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#
+# find a file by its name, excluding .git
+# https://stackoverflow.com/questions/4210042/how-to-exclude-a-directory-in-find-command
+
+set -u
+
+find . -name ".git" -prune -o -iname "*${1}*" -print
+
+# EOF
