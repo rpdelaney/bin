@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+#
+
+trap 'trapexit $? $LINENO' EXIT
+
+trapexit() {
+  (set -x ; rm -f "$tmpfile")
+}
+
+main() {
+  local targets=("$@")
+  tmpfile="$(mktemp --suffix=mpv)"
+  chmod 0600 "$tmpfile"
+
+  for target in "${targets[@]}"; do
+    if [[ -r "$target" ]] ; then # it's a file
+      printf "%s\n" "$(realpath "$target")" >> "$tmpfile"
+    else
+      printf "%s\n" "$target" >> "$tmpfile"
+    fi
+  done
+
+  ( set -x ; mpv --loop-playlist --volume=50 --shuffle --playlist="$tmpfile" )
+}
+
+main "$@"

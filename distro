@@ -17,20 +17,20 @@ main() {
   if [[ "$ostype" == "macos" ]]; then
     _macos_version
   elif [[ "$ostype" == "linux" ]]; then
-    [[ "$PREFIX" =~ "termux" ]] && echo "termux" && return 0
-    [[ -f /etc/redhat-release ]] && echo "redhat" && return 0
-    [[ -f /etc/fedora-release ]] && echo "fedora" && return 0
-    [[ -f /etc/SuSE-release ]] && echo "suse" && return 0
-    [[ -f /etc/debian_version ]] && echo "debian" && return 0
-    [[ -f /etc/arch-release ]] && echo "arch" && return 0
-    [[ -f /etc/gentoo-release ]] && echo "gentoo" && return 0
-    [[ -f /etc/slackware-version ]] && echo "slackware" && return 0
-    [[ -f /etc/frugalware-release ]] && echo "frugalware" && return 0
-    [[ -f /etc/altlinux-release ]] && echo "altlinux" && return 0
-    [[ -f /etc/mandriva-release ]] && echo "mandriva" && return 0
-    [[ -f /etc/meego-release ]] && echo "meego" && return 0
-    [[ -f /etc/angstrom-version ]] && echo "angstrom" && return 0
-    [[ -f /etc/mageia-release ]] && echo "mageia" && return 0
+    [[ "$PREFIX" =~ "termux" ]] && echo "termux" && return
+    [[ -f /etc/redhat-release ]] && echo "redhat" && return
+    [[ -f /etc/fedora-release ]] && echo "fedora" && return
+    [[ -f /etc/SuSE-release ]] && echo "suse" && return
+    [[ -f /etc/debian_version ]] && echo "debian" && return
+    [[ -f /etc/arch-release ]] && echo "arch" && return
+    [[ -f /etc/gentoo-release ]] && echo "gentoo" && return
+    [[ -f /etc/slackware-version ]] && echo "slackware" && return
+    [[ -f /etc/frugalware-release ]] && echo "frugalware" && return
+    [[ -f /etc/altlinux-release ]] && echo "altlinux" && return
+    [[ -f /etc/mandriva-release ]] && echo "mandriva" && return
+    [[ -f /etc/meego-release ]] && echo "meego" && return
+    [[ -f /etc/angstrom-version ]] && echo "angstrom" && return
+    [[ -f /etc/mageia-release ]] && echo "mageia" && return
 
     # https://www.freedesktop.org/software/systemd/man/os-release.html
     if [[ -r /etc/os-release ]]; then
