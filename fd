@@ -5,6 +5,12 @@
 
 set -u
 
-find . -name ".git" -prune -o -iname "*${1}*" -print
+pattern="$1"
+
+if git rev-parse 2> /dev/null ; then
+  git ls-files -- "**/${pattern}"
+else
+  find . -name ".git" -prune -o -iname "*${pattern}*" -print
+fi
 
 # EOF
