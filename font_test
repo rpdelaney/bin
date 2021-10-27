@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#
+
+source /home/ryan/.bash_styles
+
+echo \'\"default0
+echo "${italic}"\'\"italic0"$eitalic"
+echo "${bold}"\'\"bold0"$default"
+echo "${under}"\'\"under0"$eunder"
+echo "${alt}"\'\"alt"${ealt}"
+
+# EOF
