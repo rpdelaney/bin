@@ -8,9 +8,9 @@ set -u
 pattern="$1"
 
 if git rev-parse 2> /dev/null ; then
-  git ls-files -- "**/${pattern}"
+  ( set -x ; git ls-files -- "**/${pattern}" )
 else
-  find . -name ".git" -prune -o -iname "*${pattern}*" -print
+  (set -x ; find . -name ".git" -prune -o -iname "*${pattern}*" -print )
 fi
 
 # EOF
