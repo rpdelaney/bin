@@ -3,7 +3,7 @@
 # TODO: Reduce streaming complexity (eliminate unnecessarily complex chained pipes)
 #
 
-# Functions {{{1
+
 verbose() {
   if [[ "$verbose" = "1" ]]; then
     echo "$1" >&2
@@ -13,9 +13,7 @@ verbose() {
 error () {
   echo "$1" >&2
 }
-# }}}
-# Usage {{{1
-#
+
 usage() {
 cat <<EOD
 iptrace prints a traceroute and geolocation of an internet address
@@ -28,9 +26,7 @@ Options
 EOD
 exit 1
 }
-# }}}
-# Parameters {{{1
-#
+
 while :
 do
   case $1 in
@@ -59,14 +55,14 @@ do
 done
 
 target="$1"
-# }}}
-# Dependencies {{{
+
 if ! type mtr &> /dev/null; then echo "ERROR: Missing dependency: mtr" 1>&2; exit 1; fi
 if ! type lynx &> /dev/null; then echo "ERROR: Missing dependency: lynx" 1>&2; exit 1; fi
 if ! type grep &> /dev/null; then echo "ERROR: Missing dependency: grep" 1>&2; exit 1; fi
 if ! type sed &> /dev/null; then echo "ERROR: Missing dependency: sed" 1>&2; exit 1; fi
-# }}}
-# Work {{{
+
+set -o pipefail
+
 if mtr -o RSDA -r -c 1 -b "$target"; then
   lynx -dump http://www.ip-adress.com/ip_tracer/?QRY="$1" | \
   grep address --color=never | \
@@ -74,7 +70,8 @@ if mtr -o RSDA -r -c 1 -b "$target"; then
   awk '{print $3,$4,$5,$6,$7,$8}' | \
   sed -r 's@ip\saddress\sflag\s@@g' | \
   sed 's@My@@'
+else
+  exit
 fi
-# }}}
 
 # EOF
