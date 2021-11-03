@@ -3,5 +3,6 @@
 
 amixer sset Master on
 amixer sset Speaker on
+amixer sset Headphone on
 
 # EOF
