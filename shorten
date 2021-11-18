@@ -1,0 +1,37 @@
+#!/usr/bin/env python3
+#
+"""Shortens a URL with 1pt.co.
+
+Usage:
+
+    shorten https://long.url/ [short-tag]
+
+If short-tag is omitted, a random short will be generated.
+"""
+import sys
+
+import requests
+
+
+def main():
+    long_url = sys.argv[1]
+    try:
+        short_url = sys.argv[2]
+    except IndexError:
+        short_url = None
+
+    params = {"long": long_url}
+    if short_url:
+        params.update({"short": short_url})
+
+    r = requests.get("https://api.1pt.co/addURL", params=params)
+    if r.ok:
+        print(f"https://1pt.co/{r.json()['short']}")
+    else:
+        print(r.json())
+
+
+if __name__ == "__main__":
+    main()
+
+# EOF
