@@ -14,3 +14,6 @@ indent_size = 4
 
 [perf]
 indent_size = 4
+
+[shorten]
+indent_size = 4
