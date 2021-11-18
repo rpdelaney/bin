@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#
+
+main() {
+  curl -Ss https://yesno.wtf/api | jq --raw-output .answer
+}
+
+main "$@"
+
+# EOF
