@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#
+
+main() {
+  printf "%s\n" "$(curl -Ss 'https://evilinsult.com/generate_insult.php?lang=en')"
+}
+
+main "$@"
+
+# EOF
