@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#
+
+if ! command -v jq &>/dev/null; then
+  echo "Missing required dependency: jq" 1>&2
+fi
+
+main() {
+  curl -Ss https://api.adviceslip.com/advice | jq --raw-output .slip.advice
+}
+
+main "$@"
+
+# EOF
