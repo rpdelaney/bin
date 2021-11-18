@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#
+
+main() {
+  curl -Ss "https://the-dune-api.herokuapp.com/quotes" | jq --raw-output .[].quote
+}
+
+main "$@"
+
+# EOF
