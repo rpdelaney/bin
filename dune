@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 #
+# print a random quote from Frank Herbert's nove Dune
 
 main() {
   curl -Ss "https://the-dune-api.herokuapp.com/quotes" | jq --raw-output .[].quote
