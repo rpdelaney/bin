@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+#
+# show a random cat pic
+
+set -u
+
+main() {
+  response="$(curl -Ss 'https://aws.random.cat/meow')" || return
+  url="$(jq --raw-output .file <<< "$response")"
+  tmpfile="$(gmktemp --suffix=.jpg)"
+  if curl -Ss "$url" > "$tmpfile" ; then
+    case "$(ostype)" in
+      "linux")
+        sxiv "$tmpfile" ;;
+      "macos")
+        open "$tmpfile" ;;
+    esac
+  fi
+}
+
+main "$@"
+
+# EOF
