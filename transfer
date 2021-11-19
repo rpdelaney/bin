@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#
+# share a file via transfer.sh
+
+set -u
+
+main() {
+  filename="$1"
+  basename="$(basename "$filename")" || return
+
+  if [[ -r "$filename" ]]; then
+    curl -Ss --upload-file "$filename" https://transfer.sh/"$basename"
+  fi
+}
+
+main "$@"
+
+# EOF
