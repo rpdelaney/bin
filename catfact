@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#
+# print a random cat fact
+
+main() {
+  curl -Ss 'https://meowfacts.herokuapp.com/' | jq --raw-output .data[]
+}
+
+main "$@"
+
+# EOF
