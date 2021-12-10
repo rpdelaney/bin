@@ -1,23 +1,21 @@
-#!/usr/bin/env bash
+#!/usr/bin/env python3
 #
-# show a random cat pic
+"""Displays a random cat pic in your browser."""
+import json
+import urllib.request
+import webbrowser
 
-set -u
+__RANDOM_CAT__ = "https://aws.random.cat/meow"
 
-main() {
-  response="$(curl -Ss 'https://aws.random.cat/meow')" || return
-  url="$(jq --raw-output .file <<< "$response")"
-  tmpfile="$(gmktemp --suffix=.jpg)"
-  if curl -Ss "$url" > "$tmpfile" ; then
-    case "$(ostype)" in
-      "linux")
-        sxiv "$tmpfile" ;;
-      "macos")
-        open "$tmpfile" ;;
-    esac
-  fi
-}
 
-main "$@"
+def main():
+    with urllib.request.urlopen(__RANDOM_CAT__) as r:
+        img_url = json.loads(r.read().decode()).get("file")
+
+    webbrowser.open(img_url)
+
+
+if __name__ == "__main__":
+    main()
 
 # EOF
