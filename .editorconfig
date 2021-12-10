@@ -5,15 +5,5 @@ end_of_line = lf
 trim_trailing_whitespace = true
 
 indent_style = space
-indent_size = 2
 
 charset = utf-8
-
-[logfmt]
-indent_size = 4
-
-[perf]
-indent_size = 4
-
-[shorten]
-indent_size = 4
