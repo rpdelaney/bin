@@ -1,14 +1,20 @@
-#!/usr/bin/env bash
+#!/usr/bin/env python3
 #
+"""Print some random piece of advice."""
+import json
+import urllib.request
 
-if ! command -v jq &>/dev/null; then
-  echo "Missing required dependency: jq" 1>&2
-fi
+__ADVICE_API__ = "https://api.adviceslip.com/advice"
 
-main() {
-  curl -Ss https://api.adviceslip.com/advice | jq --raw-output .slip.advice
-}
 
-main "$@"
+def main():
+    with urllib.request.urlopen(__ADVICE_API__) as r:
+        r_json = json.loads(r.read().decode())
+
+    print(r_json.get("slip", {}).get("advice"))
+
+
+if __name__ == "__main__":
+    main()
 
 # EOF
