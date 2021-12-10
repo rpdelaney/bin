@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 #
+# this script was a terrible, terrible mistake
 
 # Debugging tools. {{{1
 set -o errexit  # exit on errors
