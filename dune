@@ -1,11 +1,20 @@
-#!/usr/bin/env bash
+#!/usr/bin/env python3
 #
-# print a random quote from Frank Herbert's nove Dune
+import json
+import urllib.request
 
-main() {
-  curl -Ss "https://the-dune-api.herokuapp.com/quotes" | jq --raw-output .[].quote
-}
+__QUOTES_API__ = "https://the-dune-api.herokuapp.com/quotes"
 
-main "$@"
+
+def main():
+    with urllib.request.urlopen(__QUOTES_API__) as r:
+        r_json = json.loads(r.read().decode())
+
+    for quote_json in r_json:
+        print(quote_json.get("quote"))
+
+
+if __name__ == "__main__":
+    main()
 
 # EOF
