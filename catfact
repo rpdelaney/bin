@@ -1,11 +1,20 @@
-#!/usr/bin/env bash
+#!/usr/bin/env python3
 #
-# print a random cat fact
+"""Print a random cat fact."""
+import json
+import urllib.request
 
-main() {
-  curl -Ss 'https://meowfacts.herokuapp.com/' | jq --raw-output .data[]
-}
+__CAT_FACT_API__ = 'https://meowfacts.herokuapp.com/'
 
-main "$@"
+
+def main():
+    with urllib.request.urlopen(__CAT_FACT_API__) as r:
+        r_json = json.loads(r.read().decode())
+
+    print("\n".join(r_json.get("data")))
+
+
+if __name__ == "__main__":
+    main()
 
 # EOF
