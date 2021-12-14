@@ -3,10 +3,13 @@
 
 source $HOME/.bash_styles
 
-echo \'\"default0
-echo "${italic}"\'\"italic0"$eitalic"
-echo "${bold}"\'\"bold0"$default"
-echo "${under}"\'\"under0"$eunder"
-echo "${alt}"\'\"alt"${ealt}"
+string="oO08 iIlL1 g9qCGQ ~-+=>\'\""
+
+echo "$string ""default"
+echo "${bold}""$string "bold "$default"
+echo "${italic}""$string "italic "$default"
+echo "${under}""$string "under "$eunder"
+echo "${alt}""$string "alt "$default"
+echo "${dim}""$string "dim "$default"
 
 # EOF
