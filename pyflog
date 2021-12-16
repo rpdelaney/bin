@@ -27,7 +27,7 @@ boilerplate() {
 cat <<EOD
 
 
-def main():
+def main() -> None:
     pass
 
 
