@@ -22,8 +22,6 @@ fi
 # 1}}}
 
 boilerplate() {
-  printf '%s\n' '#!/usr/bin/env python3'
-  printf '%s\n' '#'
 cat <<EOD
 
 
@@ -43,8 +41,6 @@ if [[ -e "$1" ]]; then
   exit 1
 else
   if touch "$1"; then
-    chmod +x "$1" || error "WARNING: Failed to add executable bit."
-
     boilerplate >> "$1" || exit
   else
     error "FATAL: Failed to create the file."
