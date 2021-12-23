@@ -4,12 +4,17 @@
 source $HOME/.bash_styles
 
 string="oO08 iIlL1 g9qCGQ ~-+=>\'\""
+string="$(<test.txt)"
 
 echo "$string ""default"
-echo "${bold}""$string "bold "$default"
-echo "${italic}""$string "italic "$default"
-echo "${under}""$string "under "$eunder"
-echo "${alt}""$string "alt "$default"
-echo "${dim}""$string "dim "$default"
+hr
+echo "bold"
+echo "${bold}""$string ""$default"
+hr
+echo "italic"
+echo "${italic}""$string ""$default"
+hr
+echo "dim"
+echo "${dim}""$string ""$default"
 
 # EOF
