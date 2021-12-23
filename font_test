@@ -7,13 +7,16 @@ string="oO08 iIlL1 g9qCGQ ~-+=>\'\""
 string="$(<~/bin/test.txt)"
 
 clear
-echo "$string ""default"
+echo "$string "
 hr
 echo "bold"
 echo "${bold}""$string ""$default"
 hr
 echo "italic"
 echo "${italic}""$string ""$default"
+hr
+echo "bold italic"
+echo "${bold}""${italic}""$string ""$default"
 hr
 echo "dim"
 echo "${dim}""$string ""$default"
