@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 #
+intern=eDP-1-1
+extern=HDMI-0
 
-case $1 in
-  standby|suspend|off)
-    xset dpms force "$1"
-    ;;
-  *)
-    echo "Usage: $0 standby|suspend|off"
-  ;;
-esac
+if xrandr | grep "$extern disconnected"; then
+    xrandr --output "$extern" --off --output "$intern" --auto
+else
+    xrandr --output "$intern" --auto --output "$extern" --auto --left-of "$intern"
+fi
 
 # EOF
