@@ -4,7 +4,8 @@
 ostype="$(ostype)"
 
 if [[ "$ostype" == "linux" ]] ; then
-  kitty +kitten clipboard < /dev/stdin
+  # kitty +kitten clipboard < /dev/stdin
+  xclip -in -selection clipboard
 elif [[ "$ostype" == macos ]] ; then
   /usr/bin/pbcopy < /dev/stdin
 else
