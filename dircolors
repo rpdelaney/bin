@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#
+# thin wrapper around dircolors to give me gdircolors on macOS because
+# the dircolors that ships with macOS doesn't do what I need so I install
+# GNU dircolors via homebrew when using macOS
+
+if command -v gdircolors >/dev/null 2>&1 ; then
+  gdircolors "$@"
+else
+  dircolors "$@"
+fi
