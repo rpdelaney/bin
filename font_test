@@ -8,16 +8,16 @@ string="$(<~/bin/test.txt)"
 
 clear
 echo "$string "
-hr
+echo ""
 echo "bold"
 echo "${bold}""$string ""$default"
-hr
+echo ""
 echo "italic"
 echo "${italic}""$string ""$default"
-hr
+echo ""
 echo "bold italic"
 echo "${bold}""${italic}""$string ""$default"
-hr
+echo ""
 echo "dim"
 echo "${dim}""$string ""$default"
 
