@@ -23,6 +23,8 @@ fi
 
 boilerplate() {
 cat <<EOD
+#!/usr/bin/env python3
+#
 
 
 def main() -> None:
@@ -42,6 +44,7 @@ if [[ -e "$1" ]]; then
 else
   if touch "$1"; then
     boilerplate >> "$1" || exit
+    chmod +x "$1" || exit
   else
     error "FATAL: Failed to create the file."
     exit 1
