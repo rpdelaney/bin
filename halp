@@ -45,10 +45,16 @@ def main() -> None:
         except subprocess.CalledProcessError:
             continue
         else:
-            print(f"+ {command}")
             output = p.stdout.decode() + p.stderr.decode()
-            print(output)
-            return
+            if len(output.strip()):
+                print(f"+ {command}")
+                print(output)
+                return
+            else:
+                # some shell commands, e.g. `test`, don't take arguments.
+                # therefore, if the output from a successful try is zero
+                # length, we should keep going.
+                continue
 
 
 if __name__ == "__main__":
