@@ -9,7 +9,7 @@ main() {
   basename="$(basename "$filename")" || return
 
   if [[ -r "$filename" ]]; then
-    curl -Ss --upload-file "$filename" https://transfer.sh/"$basename"
+    pv "$filename" | curl -Ss --upload-file - https://transfer.sh/"$basename"
   fi
 }
 
