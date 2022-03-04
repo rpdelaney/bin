@@ -1,0 +1,7 @@
+appdirs==1.4.4
+jedi==0.18.1
+parso==0.8.3
+prompt-toolkit==3.0.24
+ptpython==3.0.20
+Pygments==2.11.1
+wcwidth==0.2.5
