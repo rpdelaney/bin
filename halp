@@ -55,6 +55,8 @@ def main() -> None:
                 # therefore, if the output from a successful try is zero
                 # length, we should keep going.
                 continue
+    else:
+        sys.exit(1)
 
 
 if __name__ == "__main__":
