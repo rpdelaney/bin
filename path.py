@@ -18,11 +18,6 @@ class ShellPath:
     def append(self, new_path):
         if new_path not in self.paths:
             self.paths.append(Path(new_path))
-        else:
-            print(
-                f"Warning: new path was already present: {new_path}",
-                file=sys.stderr,
-            )
 
     def prepend(self, new_path):
         self.delete(new_path)
