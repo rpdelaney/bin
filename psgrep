@@ -16,10 +16,9 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 
-PS_CMD="$(which ps)"
+PS_CMD="/usr/bin/ps"
 PS_OPTS="ux"
-GREP_CMD="$(which grep)"
-GREP_OPTS=""
+GREP_CMD="/usr/bin/grep"
 
 PSGREP_VERSION="master"
 
@@ -76,11 +75,13 @@ main()
             d) PS_OPTS="-eo pid,comm";
                NO_HEADER=1;
                PID_ONLY=1;;
+            *)
+              echo "Invalid option." 1>&2;;
         esac
     done
 
-    HEADER=$($PS_CMD $PS_OPTS | head -n1)
-    RESULT=$($PS_CMD $PS_OPTS | $GREP_CMD -- "${*:$OPTIND}" | $GREP_CMD -v "$GREP_CMD" | $GREP_CMD -v "$0" | awk '{print $'$PID_ONLY' }')
+    HEADER=$($PS_CMD "$PS_OPTS" | head -n1)
+    RESULT=$($PS_CMD "$PS_OPTS" | $GREP_CMD -- "${*:$OPTIND}" | $GREP_CMD -v "$GREP_CMD" | $GREP_CMD -v "$0" | awk '{print $'$PID_ONLY' }')
     if [ "$RESULT" ]; then
         [ ! "$NO_HEADER" ] && echo "$HEADER"
         echo "$RESULT"
