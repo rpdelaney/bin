@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+#
+
+main() {
+  col --no-backspaces --spaces | less --raw-control-chars --no-init && return
+}
+
+main
