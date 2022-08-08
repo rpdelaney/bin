@@ -16,9 +16,9 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 
-PS_CMD="/usr/bin/ps"
+PS_CMD="ps"
 PS_OPTS="ux"
-GREP_CMD="/usr/bin/grep"
+GREP_CMD="grep"
 
 PSGREP_VERSION="master"
 
