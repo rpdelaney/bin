@@ -1,0 +1,74 @@
+#!/usr/bin/env bash
+#
+# install (or reinstall) pipx apps and inject their plugins
+
+if ! command -v pipx &> /dev/null; then echo "Missing dependency: pipx" 1>&3; return 1; fi
+
+python3apps=(
+  black
+  daff
+  downforeveryone
+  dumbpw
+  extinfo
+  flake8
+  gallery-dl
+  howdoi
+  mdformat
+  mypy
+  pre-commit
+  ptpython
+  pudb
+  pwstore
+  rich-cli
+  thefuck
+  tldr
+  twine
+  uncolor
+  xonsh
+  yamllint
+  yt-dlp
+)
+
+flake8_injects=(
+  flake8-bandit
+  flake8-bugbear
+  flake8-simplify
+)
+
+xonsh_injects=(
+  xonsh-direnv
+  xontrib-argcomplete
+  xontrib-avox-poetry
+  xontrib-commands
+  xontrib-gruvbox
+  xontrib-jedi
+  xontrib-kitty
+)
+
+mdformat_injects=(
+  mdformat-toc
+  mdformat-gfm
+  mdformat-black
+)
+
+main() {
+  for targetapp in "${python3apps[@]}"; do
+    ( set -x ; pipx install "$targetapp" || return )
+  done
+
+  for inject in "${flake8_injects[@]}"; do
+    ( set -x ; pipx inject flake8 "$inject" || return )
+  done
+
+  for inject in "${xonsh_injects[@]}"; do
+    ( set -x ; pipx inject xonsh "$inject" || return )
+  done
+
+  for inject in "${mdformat_injects[@]}"; do
+    ( set -x ; pipx inject mdformat "$inject" || return )
+  done
+}
+
+main "$@"
+
+# EOF
