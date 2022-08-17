@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 #
-intern=eDP-1-1
-extern=HDMI-0
+DISPLAY_SECONDARY=eDP-1-1
+DISPLAY_PRIMARY=HDMI-0
 
-if xrandr | grep "$extern disconnected"; then
-    xrandr --output "$extern" --off --output "$intern" --auto
+if xrandr | grep "$DISPLAY_PRIMARY disconnected"; then
+    xrandr --output "$DISPLAY_PRIMARY" --off --output "$DISPLAY_SECONDARY" --auto
 else
-    xrandr --output "$intern" --auto --output "$extern" --auto --left-of "$intern"
+    xrandr --output "$DISPLAY_SECONDARY" --auto --output "$DISPLAY_PRIMARY" --auto --left-of "$DISPLAY_SECONDARY"
 fi
 
 # EOF
