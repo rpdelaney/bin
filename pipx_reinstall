@@ -36,6 +36,7 @@ flake8_injects=(
 )
 
 xonsh_injects=(
+  prompt_toolkit
   xonsh-direnv
   xontrib-argcomplete
   xontrib-avox-poetry
