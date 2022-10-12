@@ -10,7 +10,7 @@ trapexit() {
 main() {
   local targets=("$@")
   tmpfile="$(mktemp --suffix=mpv)"
-  chmod 0600 "$tmpfile"
+  chmod 0600 "$tmpfile" || return
 
   for target in "${targets[@]}"; do
     if [[ -r "$target" ]] ; then # it's a file
