@@ -36,6 +36,7 @@ flake8_injects=(
 )
 
 xonsh_injects=(
+  ptpython
   prompt_toolkit
   xonsh-direnv
   xontrib-argcomplete
