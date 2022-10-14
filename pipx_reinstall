@@ -50,6 +50,7 @@ mdformat_injects=(
   mdformat-toc
   mdformat-gfm
   mdformat-black
+  mdformat-frontmatter
 )
 
 main() {
