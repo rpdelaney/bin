@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
+
 #
 # wrapper for terraform
+# do `tf <command>` instead of `terraform <command>` and you might get some sugar added
+#
 
 # shellcheck disable=SC2086
 
@@ -23,7 +26,7 @@ case "$cmd" in
     ;;
   plan)
     # run a plan, non-interactively and saving the plan to a file for reuse later
-    (set -x ; terraform plan -compact-warnings -input=false -out="$plan_name.plan" "$@" ) ; exit_code="$?"
+    (set -x ; terraform plan -input=false -compact-warnings -out="$plan_name.plan" "$@" ) ; exit_code="$?"
     ;;
   show)
     # show the *.plan files in the pwd, and save to text files
@@ -33,7 +36,9 @@ case "$cmd" in
     for file in *.plan ; do
       # shellcheck disable=SC2089 disable=SC2016
       ( set -x ; terraform show "$file" | pee "cat -" "uncolor > $file.hcl" ) ; exit_code="$?"
+      #
       # TODO: exit_code will get overwritten on the next loop pass
+      #
     done
     ;;
   apply)
@@ -48,6 +53,7 @@ case "$cmd" in
         } && ((plan_found++))
       fi
     done
+
     if [[ "$plan_found" == 1 ]] ; then
       (set -x ; terraform apply -compact-warnings -input=false "$@" ) ; exit_code="$?"
     else
@@ -59,8 +65,14 @@ case "$cmd" in
     ;;
 esac
 
+# I use `notice` to send notifications that always reach me
+message="terraform $cmd done"
 if command -v notice >/dev/null 2>&1 ; then
-  notice "terraform $cmd done"
+  notice "$message"
+elif command -v notify-send >/dev/null 2>&1; then
+  notify-send "$message"
+elif command -v terminal-notifier >/dev/null 2>&1; then
+    terminal-notifier -message "$message"
 fi
 
 exit "$exit_code"
