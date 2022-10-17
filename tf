@@ -31,7 +31,7 @@ case "$cmd" in
 
     for file in *.plan ; do
       # shellcheck disable=SC2089 disable=SC2016
-      ( set -x ; terraform show "$file" | pee "cat -" "uncolor > $file.txt" ) ; exit_code="$?"
+      ( set -x ; terraform show "$file" | pee "cat -" "uncolor > $file.hcl" ) ; exit_code="$?"
     done
     ;;
   apply)
