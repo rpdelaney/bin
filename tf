@@ -22,16 +22,18 @@ case "$cmd" in
     (set -x ; terraform init -input=false "$@" ) ; exit_code="$?"
     ;;
   plan)
-
+    # run a plan, non-interactively and saving the plan to a file for reuse later
     (set -x ; terraform plan -compact-warnings -input=false -out="$plan_name.plan" "$@" ) ; exit_code="$?"
     ;;
   show)
+    # show the *.plan files in the pwd, and save to text files
     if ! command -v uncolor >/dev/null 2>&1 ; then echo "Missing dependency: uncolor" 1>&2 ; exit 1 ; fi
     if ! command -v pee >/dev/null 2>&1 ; then echo "Missing dependency: pee" 1>&2 ; exit 1 ; fi
 
     for file in *.plan ; do
       # shellcheck disable=SC2089 disable=SC2016
       ( set -x ; terraform show "$file" | pee "cat -" "uncolor > $file.hcl" ) ; exit_code="$?"
+      # TODO: exit_code will get overwritten on the next loop pass
     done
     ;;
   apply)
