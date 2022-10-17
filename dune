@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+# vim: ft=python:
+#
+# https://github.com/ywalia01/dune-api
 #
 import json
 import urllib.request
