@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# GNU bash, version 4.3.11(1)-release (x86_64-unknown-linux-gnu)
 #
 
 # Send a tmux, desktop, and audio notification after the completion
@@ -123,7 +122,7 @@ if type tmux &> /dev/null; then
 fi
 
 # notify-send
-if type notify-send &> /dev/null; then
+if command -v notify-send >/dev/null 2>&1 ; then
   if [[ -z "$urgency" ]]; then
     notify-send "$notification"
   else
@@ -132,7 +131,7 @@ if type notify-send &> /dev/null; then
 fi
 
 # espeak
-if type espeak &> /dev/null; then
+if command -v espeak >/dev/null 2>&1 ; then
   if [[ "$urgency" == "critical" ]]; then
 #   espeak "$notification"
     espeak -s 175 -k 20 -v en-french "$notification"
@@ -140,7 +139,7 @@ if type espeak &> /dev/null; then
 fi
 
 # terminal-notifier (osx)
-if type terminal-notifier &> /dev/null; then
+if command -v terminal-notifier >/dev/null 2>&1 ; then
   if [[ "$urgency" == "critical" ]]; then
     terminal-notifier -sound Basso -ignoreDnD -title "CRITICAL" -message "$notification"
   else
@@ -148,5 +147,3 @@ if type terminal-notifier &> /dev/null; then
   fi
 fi
 # }}}
-
-# vim: ft=sh foldmethod=marker:
