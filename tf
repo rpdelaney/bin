@@ -24,6 +24,9 @@ case "$cmd" in
   init)
     (set -x ; terraform init -input=false "$@" ) ; exit_code="$?"
     ;;
+  import)
+    (set -x ; terraform import -input=false "$@" ) ; exit_code="$?"
+    ;;
   plan)
     # run a plan, non-interactively and saving the plan to a file for reuse later
     (set -x ; terraform plan -input=false -compact-warnings -out="$plan_name.plan" "$@" ) ; exit_code="$?"
