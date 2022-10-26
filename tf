@@ -14,7 +14,7 @@ shift
 
 if git rev-parse &>/dev/null ; then
   # we're on git, so use the git branch as the filename
-  plan_name="$(git symbolic-ref HEAD 2> /dev/null | sed -e 's/refs\/heads\///')"
+  plan_name="$(git symbolic-ref HEAD 2> /dev/null | sed -e 's/refs\/heads\///; s/\//_/g')"
 else
   # I don't know what we're doing, so use the unix timestamp
   plan_name="$(date +%s)"
