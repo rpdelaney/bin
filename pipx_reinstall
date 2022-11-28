@@ -55,7 +55,7 @@ mdformat_injects=(
 )
 
 main() {
-  ( set -x ; pipx upgrade-all ) || return
+  ( set -x ; pipx reinstall-all ) || return
 
   for targetapp in "${python3apps[@]}"; do
     ( set -x ; pipx install "$targetapp" ) || return
