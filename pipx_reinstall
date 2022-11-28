@@ -58,19 +58,19 @@ main() {
   ( set -x ; pipx upgrade-all ) || return
 
   for targetapp in "${python3apps[@]}"; do
-    ( set -x ; pipx install "$targetapp" || return )
+    ( set -x ; pipx install "$targetapp" ) || return
   done
 
   for inject in "${flake8_injects[@]}"; do
-    ( set -x ; pipx inject flake8 "$inject" || return )
+    ( set -x ; pipx inject flake8 "$inject" ) || return
   done
 
   for inject in "${xonsh_injects[@]}"; do
-    ( set -x ; pipx inject xonsh "$inject" || return )
+    ( set -x ; pipx inject xonsh "$inject" ) || return
   done
 
   for inject in "${mdformat_injects[@]}"; do
-    ( set -x ; pipx inject mdformat "$inject" || return )
+    ( set -x ; pipx inject mdformat "$inject" ) || return
   done
 }
 
