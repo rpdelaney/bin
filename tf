@@ -38,7 +38,10 @@ case "$cmd" in
 
     for file in *.plan ; do
       # shellcheck disable=SC2089 disable=SC2016
-      ( set -x ; terraform show "$file" | pee "cat -" "uncolor > $file.hcl" ) ; exit_code="$?"
+      ( set -x ; terraform show "$file" | pee "cat -" "uncolor > $file.plan.hcl" ) ; exit_code="$?"
+      if ! command -v tf-summarize >/dev/null 2>&1 ; then
+        ( set -x ; tf-summarize -tree -draw "$file" | tee "$file.plan.summary" )
+      fi
       #
       # TODO: exit_code will get overwritten on the next loop pass
       #
