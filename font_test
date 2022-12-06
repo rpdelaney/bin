@@ -1,24 +1,39 @@
-#!/usr/bin/env bash
+#!/usr/bin/env python3
 #
+from rich.console import Console
 
-source $HOME/.bash_styles
 
-string="oO08 iIlL1 g9qCGQ ~-+=>\'\""
-string="$(<~/bin/test.txt)"
+TEXT = r"""
+ABC.DEF.GHI.JKL.MNO.PQRS.TUV.WXYZabc.def.ghi.jkl.mno.pqrs.tuv.wxyz
+¢ ſß ΓΛΔ αδιλμξ КУЗЯ эльф язычникfloat il1[]={1-2/3.4,5+6=7/8%90};
+1234567890 ,._-+= >< ¯-¬_ >~–÷+×<{}[]()<>`+-=$*/#_%^@\&|~?'" !,.;:
+!iIlL17|¦ coO08BbDQ $5SZ2zsz 96G&dbqp E3 g9q CGQ vvw VVW /V <= >=
+"""
 
-clear
-echo "$string "
-echo ""
-echo "bold"
-echo "${bold}""$string ""$default"
-echo ""
-echo "italic"
-echo "${italic}""$string ""$default"
-echo ""
-echo "bold italic"
-echo "${bold}""${italic}""$string ""$default"
-echo ""
-echo "dim"
-echo "${dim}""$string ""$default"
+MODES = [
+    (),
+    ("bold",),
+    ("bold", "italic",),
+    ("dim",),
+    ("underline",),
+    ("underline2",),
+    ("frame",),
+    ("encircle",),
+    ("overline",),
+]
+
+
+def main() -> None:
+    console = Console()
+    console.clear()
+
+    for tup in MODES:
+        _style = " ".join(tup)
+        console.rule(f"{_style}")
+        console.out(TEXT, style=_style, highlight=False)
+
+
+if __name__ == "__main__":
+    main()
 
 # EOF
