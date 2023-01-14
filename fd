@@ -7,10 +7,10 @@ set -u
 
 pattern="$1"
 
-if git rev-parse 2> /dev/null ; then
-  git ls-files -- "*${pattern}*"
+if git rev-parse >/dev/null 2>&1 ; then
+  ( set -x ; git ls-files -- "*${pattern}*" )
 else
-  find . -name ".git" -prune -o -iname "*${pattern}*" -print
+  ( set -x ; find . -name ".git" -prune -o -iname "*${pattern}*" -print )
 fi
 
 # EOF
