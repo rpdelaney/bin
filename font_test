@@ -13,13 +13,9 @@ ABC.DEF.GHI.JKL.MNO.PQRS.TUV.WXYZabc.def.ghi.jkl.mno.pqrs.tuv.wxyz
 MODES = [
     (),
     ("bold",),
-    ("bold", "italic",),
+    ("italic",),
     ("dim",),
     ("underline",),
-    ("underline2",),
-    ("frame",),
-    ("encircle",),
-    ("overline",),
 ]
 
 
