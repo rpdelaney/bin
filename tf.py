@@ -70,7 +70,7 @@ def main() -> None:
         case "plan":
             r = cmd(
                 f"terraform plan -input=false -compact-warnings "
-                f"-out='{get_plan_filename()}' {subargs}"
+                f"-out={get_plan_filename()} {subargs}"
             )
 
         case "show":
