@@ -65,10 +65,16 @@ def main() -> None:
         subcmd = sys.argv[1]
         subargs = " ".join(sys.argv[2:])
     else:
-        subcmd = ""
+        subcmd = "version"
         subargs = ""
 
     match subcmd:
+        case "version":
+            r = cmd(f"terraform version -json {subargs}")
+            if r.returncode == 0:
+                stdout = r.stdout.decode()
+                print(stdout)
+
         case "init":
             r = cmd(f"terraform init -input=false {subargs}")
 
