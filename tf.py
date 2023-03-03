@@ -7,6 +7,12 @@ import subprocess
 from pathlib import Path
 
 
+DEBUG = True
+
+def debug(line: str) -> None:
+    if DEBUG:
+        print(line, file=sys)
+
 class FakeCompletedProcess():
     def __init__(self, returncode: int = 0, stdout: str = "", stderr: str = ""):
         self.returncode = returncode
@@ -19,11 +25,9 @@ def uncolor(string: str) -> str:
 
 def cmd(command: str) -> int:
     """Thinly wrap subprocess.run, accepting strings and capturing output."""
-    print(f"EXEC --> {command}")
-    try:
-        cmd_proc = subprocess.run(command.split(), capture_output=True)
-    except KeyboardInterrupt:
-        print("You shouldn't use ctrl-C when executing terraform!")
+    # TODO: catch KeyboardInterrupt and handle it somehow?
+    debug(f"EXEC --> {command}")
+    cmd_proc = subprocess.run(command.split(), capture_output=True)
 
     if cmd_proc.returncode != 0:
         print("command failed. stderr:", file=sys.stderr)
