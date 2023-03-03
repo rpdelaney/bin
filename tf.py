@@ -127,6 +127,9 @@ def main() -> None:
                 # exit with error later
                 r = FakeCompletedProcess(1)
 
+        case "apply":
+            r = cmd(f"terraform apply -input=false -compact-warnings {subargs}")
+
         case _:
             r = cmd(f"terraform {subcmd} {subargs}")
 
