@@ -38,6 +38,9 @@ def get_plan_filename() -> str:
         ~{branch_name}__{epoch}__.plan
     Else:
         ~{epoch}__.plan
+
+    Replace some characters in {branch_name}, that terraform can
+    get confused by.
     """
     epoch = int(time.time())
     plan_filename = f"{epoch}__.plan"
@@ -46,7 +49,12 @@ def get_plan_filename() -> str:
         "git rev-parse --abbrev-ref HEAD".split(" "), capture_output=True
     )
     if p.returncode == 0:
-        branch_name = p.stdout.decode().strip().replace("/", "_")
+        branch_name = p.stdout.decode().strip()
+        branch_name = (
+                branch_name
+                .replace("/", "_")
+                .replace(" ", "_")
+        )
         plan_filename = f"{branch_name}__{plan_filename}"
 
     return f"~{plan_filename}"
