@@ -12,7 +12,7 @@ DEBUG = True
 
 def debug(line: str) -> None:
     if DEBUG:
-        print(line, file=sys)
+        print(line, file=sys.stderr)
 
 
 class FakeCompletedProcess:
