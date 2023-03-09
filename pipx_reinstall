@@ -29,6 +29,7 @@ _PIPX_APPS: Dict[str, List[str | None]] = {
     "ptpython": [],
     "pudb": [],
     "pwstore": [],
+    "pyupgrade": [],
     "rich-cli": [],
     "thefuck": [],
     "tldr": [],
