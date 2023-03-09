@@ -34,6 +34,7 @@ def uncolor(string: str) -> str:
 
 def cmd(command: str) -> int:
     """Thinly wrap subprocess.run, accepting strings and capturing output."""
+    # TODO: what happens if we are asked for an OTP?
     # TODO: catch KeyboardInterrupt and handle it somehow?
     # TODO: use subprocess.Popen so we can display the output of slow-
     #       running commands in real time
