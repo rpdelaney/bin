@@ -51,12 +51,15 @@ _PIPX_APPS: Dict[str, List[str | None]] = {
     "yt-dlp": [],
 }
 
+def _cmd(command: str) -> None:
+    print(f"+ {command}")
+    subprocess.run(command.split())
 
 def main() -> None:
     for pipx_app in _PIPX_APPS.keys():
-        subprocess.run(f"pipx reinstall {pipx_app}".split())
+        _cmd(f"pipx reinstall {pipx_app}")
         for inject in _PIPX_APPS[pipx_app]:
-            subprocess.run(f"pipx inject {pipx_app} {inject}".split())
+            _cmd(f"pipx inject {pipx_app} {inject}")
 
 
 
