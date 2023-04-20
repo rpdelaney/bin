@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#
+# run speaker-test with some less horrifically
+# defeaning defaults
+
+main() {
+  (set -x ; \
+    timeout 3 \
+    /usr/bin/speaker-test \
+    --scale 20 \
+    --test=pink \
+    --nloops 3 \
+    "$@"
+  )
+}
+
+main "$@"
+
+# EOF
