@@ -22,7 +22,7 @@ fi
 
 case "$cmd" in
   init)
-    (set -x ; terraform init -input=false "$@" ) ; exit_code="$?"
+    (set -x ; terraform init -upgrade -input=false "$@" ) ; exit_code="$?"
     ;;
   import)
     (set -x ; terraform import -input=false "$@" ) ; exit_code="$?"
