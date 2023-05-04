@@ -8,6 +8,7 @@ _PIPX_APPS: Dict[str, List[str | None]] = {
     "daff": [],
     "downforeveryone": [],
     "dumbpw": [],
+    "em-keyboard": [],
     "extinfo": [],
     "flake8": [
         "flake8-bandit",
