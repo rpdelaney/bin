@@ -51,6 +51,7 @@ do
   case $1 in
     --help | -\?)
       usage
+      # shellcheck disable=SC2317
       exit 0
       ;;
     -v | --verbose)
@@ -97,8 +98,6 @@ do
   esac
 done
 # }}}
-# Business {{{1
-# Build the notification string
 notification="$*"
 
 # tmux
@@ -121,8 +120,13 @@ if type tmux &> /dev/null; then
   fi
 fi
 
-# notify-send
-if command -v notify-send >/dev/null 2>&1 ; then
+if command -v terminal-notifier >/dev/null 2>&1 ; then
+  if [[ "$urgency" == "critical" ]]; then
+    terminal-notifier -sound Basso -ignoreDnD -title "CRITICAL" -message "$notification"
+  else
+    terminal-notifier -message "$notification"
+  fi
+elif command -v notify-send >/dev/null 2>&1 ; then
   if [[ -z "$urgency" ]]; then
     notify-send "$notification"
   else
@@ -133,17 +137,6 @@ fi
 # espeak
 if command -v espeak >/dev/null 2>&1 ; then
   if [[ "$urgency" == "critical" ]]; then
-#   espeak "$notification"
     espeak -s 175 -k 20 -v en-french "$notification"
   fi
 fi
-
-# terminal-notifier (osx)
-if command -v terminal-notifier >/dev/null 2>&1 ; then
-  if [[ "$urgency" == "critical" ]]; then
-    terminal-notifier -sound Basso -ignoreDnD -title "CRITICAL" -message "$notification"
-  else
-    terminal-notifier -message "$notification"
-  fi
-fi
-# }}}
