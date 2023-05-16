@@ -54,7 +54,7 @@ _PIPX_APPS: Dict[str, List[str | None]] = {
 
 def _cmd(command: str) -> None:
     print(f"+ {command}")
-    subprocess.run(command.split())
+    subprocess.run(command.split(), check=True)
 
 def main() -> None:
     for pipx_app in _PIPX_APPS.keys():
