@@ -52,9 +52,9 @@ _PIPX_APPS: Dict[str, List[str | None]] = {
     "yt-dlp": [],
 }
 
-def _cmd(command: str) -> None:
+def _cmd(command: str, check: bool = True) -> None:
     print(f"+ {command}")
-    subprocess.run(command.split(), check=True)
+    subprocess.run(command.split(), check=check)
 
 def main() -> None:
     for pipx_app in _PIPX_APPS.keys():
