@@ -52,16 +52,17 @@ _PIPX_APPS: Dict[str, List[str | None]] = {
     "yt-dlp": [],
 }
 
+
 def _cmd(command: str, check: bool = True) -> None:
     print(f"+ {command}")
     subprocess.run(command.split(), check=check)
+
 
 def main() -> None:
     for pipx_app in _PIPX_APPS.keys():
         _cmd(f"pipx reinstall {pipx_app}")
         for inject in _PIPX_APPS[pipx_app]:
             _cmd(f"pipx inject {pipx_app} {inject}")
-
 
 
 if __name__ == "__main__":
