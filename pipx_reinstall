@@ -37,38 +37,31 @@ _PIPX_APPS: Dict[str, List[str | None]] = {
     "tldr": [],
     "twine": [],
     "uncolor": [],
+    "xonsh": [
+        "ptpython",
+        "prompt_toolkit",
+        "xonsh-direnv",
+        "xontrib-argcomplete",
+        "xontrib-avox-poetry",
+        "xontrib-commands",
+        "xontrib-gruvbox",
+        "xontrib-jedi",
+        "xontrib-kitty",
+    ],
     "yamllint": [],
     "yt-dlp": [],
 }
-
-_XONTRIBS = [
-    "ptpython",
-    "prompt_toolkit",
-    "xonsh-direnv",
-    "xontrib-argcomplete",
-    "xontrib-avox-poetry",
-    "xontrib-commands",
-    "xontrib-gruvbox",
-    "xontrib-jedi",
-    "xontrib-kitty",
-]
-
 
 def _cmd(command: str, check: bool = True) -> None:
     print(f"+ {command}")
     subprocess.run(command.split(), check=check)
 
-
 def main() -> None:
     for pipx_app in _PIPX_APPS.keys():
-        break
-        _cmd(f"pipx uninstall --verbose {pipx_app}", check=False)
-        _cmd(f"pipx install --verbose {pipx_app}")
+        _cmd(f"pipx reinstall {pipx_app}")
         for inject in _PIPX_APPS[pipx_app]:
-            _cmd(f"pipx inject --verbose {pipx_app} {inject}")
+            _cmd(f"pipx inject {pipx_app} {inject}")
 
-    for xontrib in _XONTRIBS:
-        _cmd(f"pip install --isolated --user {xontrib}", check=True)
 
 
 if __name__ == "__main__":
