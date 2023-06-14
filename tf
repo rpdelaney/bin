@@ -29,7 +29,7 @@ case "$cmd" in
     ;;
   plan)
     # run a plan, non-interactively and saving the plan to a file for reuse later
-    (set -x ; terraform plan -input=false -compact-warnings -out="~${plan_name}.plan" "$@" ) ; exit_code="$?"
+    (set -x ; terraform plan -input=false -compact-warnings -out="${plan_name}.plan" "$@" ) ; exit_code="$?"
     ;;
   show)
     # show the *.plan files in the pwd, and save to text files
@@ -38,8 +38,8 @@ case "$cmd" in
 
     for file in *.plan ; do
       # shellcheck disable=SC2089 disable=SC2016
-      ( set -x ; terraform show "$file" | pee "cat -" "uncolor > ~${file}.plan.hcl" ) ; exit_code="$?"
-      ( set -x ; /opt/homebrew/bin/tf-summarize -tree "$file" | tee "~${file}.plan.summary.txt" )
+      ( set -x ; terraform show "$file" | pee "cat -" "uncolor > ${file}.hcl" ) ; exit_code="$?"
+      ( set -x ; /opt/homebrew/bin/tf-summarize -tree "$file" | tee "${file}.summary.txt" )
       #
       # TODO: exit_code will get overwritten on the next loop pass
       #
