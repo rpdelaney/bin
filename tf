@@ -7,7 +7,26 @@
 
 # shellcheck disable=SC2086
 
-if ! command -v terraform >/dev/null 2>&1 ; then echo "Missing dependency: terraform" 1>&2 ; exit 1 ; fi
+# Dependencies {{{1
+dependencies="terraform uncolor pee"
+missing_dependencies=""
+
+is_missing=0
+for dependency in $dependencies; do
+    if ! command -v "$dependency" > /dev/null 2>&1; then
+        # If not found, add to missing_dependencies string
+        missing_dependencies="$missing_dependencies $dependency"
+        is_missing=1
+    fi
+done
+
+if [ $is_missing -eq 1 ]; then
+    printf "Required dependencies are missing:%s\n" "$missing_dependencies"
+    exit 1
+fi
+
+unset dependencies missing_dependencies is_missing
+# Dependencies 1}}}
 
 cmd="$1"
 shift
@@ -33,9 +52,6 @@ case "$cmd" in
     ;;
   show)
     # show the *.plan files in the pwd, and save to text files
-    if ! command -v uncolor >/dev/null 2>&1 ; then echo "Missing dependency: uncolor" 1>&2 ; exit 1 ; fi
-    if ! command -v pee >/dev/null 2>&1 ; then echo "Missing dependency: pee" 1>&2 ; exit 1 ; fi
-
     for file in *.plan ; do
       # shellcheck disable=SC2089 disable=SC2016
       ( set -x ; terraform show "$file" | pee "cat -" "uncolor > ${file}.hcl" ) ; exit_code="$?"
@@ -76,7 +92,7 @@ if command -v notice >/dev/null 2>&1 ; then
 elif command -v notify-send >/dev/null 2>&1; then
   notify-send "$message"
 elif command -v terminal-notifier >/dev/null 2>&1; then
-    terminal-notifier -message "$message"
+  terminal-notifier -message "$message"
 fi
 
 exit "$exit_code"
