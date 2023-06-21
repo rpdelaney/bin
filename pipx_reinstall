@@ -29,6 +29,7 @@ _PIPX_APPS: T_AppsList = {
         "mdformat-frontmatter",
     ],
     "mypy": [],
+    "pepotron": [],
     "pre-commit": [],
     "ptpython": [],
     "pudb": [],
