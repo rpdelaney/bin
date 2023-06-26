@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
 #
+"""Fetch OTP and login to AWS for the current AWS_PROFILE
+
+To get the 1Password item UUID:
+$ op items list --vault Private
+"""
 import subprocess
 import os
 import sys
 
 OP_OBJECTS = {
-    "trussworks-id": "u65jqpgpxva2fh5gkv4prtcgda",  # rpdelaney@trussworks-id
+    "trussworks-id": "rpdelaney@trussworks-id",  # rpdelaney@trussworks-id
 }
 
 
@@ -15,12 +20,16 @@ def main():
     ):
         # Use the 1password CLI to get the MFA token
         command = ["op", "item", "get", OP_OBJECTS[AWS_ID_PROFILE], "--otp"]
-        print(f'+ {" ".join(command)}')
         mfa_secret = subprocess.check_output(command).decode().strip()
 
         # Use the MFA token to login to AWS using aws-vault
-        command = ["aws-vault", "login", AWS_PROFILE]
-        print(f'+ echo {mfa_secret} | {" ".join(command)}')
+        command = [
+            "aws-vault",
+            "login",
+            AWS_PROFILE,
+            f"--mfa-token={mfa_secret}",
+        ]
+        print("+", " ".join(command))
         process = subprocess.Popen(command, stdin=subprocess.PIPE)
         process.communicate(input=mfa_secret.encode())
     else:
