@@ -1,11 +1,19 @@
 #!/usr/bin/env bash
 #
 
-ostype="$(ostype)"
+if ! command -v ostype >/dev/null 2>&1 ; then
+  echo "Missing dependency: ostype" 1>&2
+  exit 1
+else
+  ostype="$(ostype)"
+fi
 
 if [[ "$ostype" == "linux" ]] ; then
-  # kitty +kitten clipboard --get-clipboard
-  xclip -out -selection clipboard
+  if command -v wl-paste >/dev/null 2>&1 ; then
+    wl-paste
+  else
+    xclip -out -selection clipboard
+  fi
 elif [[ "$ostype" == macos ]] ; then
   /usr/bin/pbpaste
 else
