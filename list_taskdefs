@@ -11,16 +11,16 @@ missing_dependencies=""
 
 is_missing=0
 for dependency in $dependencies; do
-    if ! command -v "$dependency" > /dev/null 2>&1; then
-        # If not found, add to missing_dependencies string
-        missing_dependencies="$missing_dependencies $dependency"
-        is_missing=1
-    fi
+  if ! command -v "$dependency" > /dev/null 2>&1; then
+    # If not found, add to missing_dependencies string
+    missing_dependencies="$missing_dependencies $dependency"
+    is_missing=1
+  fi
 done
 
 if [ $is_missing -eq 1 ]; then
-    printf "Required dependencies are missing:%s\n" "$missing_dependencies"
-    exit 1
+  printf "Required dependencies are missing:%s\n" "$missing_dependencies"
+  exit 1
 fi
 
 unset dependencies missing_dependencies is_missing
@@ -34,11 +34,11 @@ main() {
   task_definition_arns=$(aws ecs list-task-definitions --family-prefix "$family" --region "$region" | jq -r '.taskDefinitionArns[]')
 
   for arn in $task_definition_arns; do
-      # get the task definition version from the ARN
-      version=$(echo "$arn" | awk -F/ '{print $NF}' | awk -F: '{print $2}')
+    # get the task definition version from the ARN
+    version=$(echo "$arn" | awk -F/ '{print $NF}' | awk -F: '{print $2}')
 
-      # download the task definition
-      (set -x ; aws ecs describe-task-definition --task-definition "$arn" --region "$region" > "$family-v$version.json" ) || break
+    # download the task definition
+    (set -x ; aws ecs describe-task-definition --task-definition "$arn" --region "$region" > "$family-v$version.json" ) || break
   done
 }
 
