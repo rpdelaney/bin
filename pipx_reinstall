@@ -43,6 +43,7 @@ _PIPX_APPS: T_AppsList = {
     "xonsh": [
         "prompt_toolkit",
         "ptpython",
+        "rich",
         "xonsh-direnv",
         "xontrib-abbrevs",
         "xontrib-argcomplete",
