@@ -43,6 +43,8 @@ _PIPX_APPS: T_AppsList = {
     "xonsh": [
         "prompt_toolkit",
         "ptpython",
+        "pyperclip",
+        "requests",
         "xonsh-direnv",
         "xontrib-abbrevs",
         "xontrib-argcomplete",
@@ -58,11 +60,6 @@ _PIPX_APPS: T_AppsList = {
     "yt-dlp": [],
 }
 
-_PIP_APPS: T_AppsList = {
-    "requests": [],
-    "pyperclip": [],
-}
-
 
 def _cmd(command: str, check: bool = True) -> None:
     print(f"+ {command}")
@@ -70,12 +67,6 @@ def _cmd(command: str, check: bool = True) -> None:
 
 
 def main() -> None:
-    for pip_app in _PIP_APPS.keys():
-        _cmd(
-            "pip3 --no-input --disable-pip-version-check --isolated "
-            f"install --compile --upgrade --user {pip_app}"
-        )
-
     for pipx_app in _PIPX_APPS.keys():
         _cmd(f"pipx reinstall {pipx_app}")
         for inject in _PIPX_APPS[pipx_app]:
