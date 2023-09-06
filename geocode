@@ -4,7 +4,9 @@
 Uses OSM Nominatim API:
 * https://nominatim.org/release-docs/develop/api/Overview/
 """
+import argparse
 import sys
+import os
 import json
 from urllib.parse import quote
 import webbrowser
@@ -35,10 +37,22 @@ def get_location_details(address: str) -> dict:
 
 def browse(osm_id: str) -> None:
     base_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid={osm_id}"
-    webbrowser.open(base_url.format(osm_id))
+    webbrowser.open(base_url.format(osm_id=osm_id))
 
 
 if __name__ == "__main__":
-    address = sys.argv[1]
-    details = get_location_details(address)
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "-w", "--web", help="Open a map in the browser", action="store_true"
+    )
+    parser.add_argument("address", help="Address to geolocate")
+    args = parser.parse_args()
+
+    details = get_location_details(args.address)
+
+    if os.getenv["DEBUG"]:
+        print(json.dumps(details, indent=2), file=sys.stderr)
+
     print(f"{details['lat']}, {details['lon']}")
+    if args.web:
+        browse(details["osm_id"])
