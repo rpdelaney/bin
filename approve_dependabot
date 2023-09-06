@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-#
-# mass-approve dependabot PRs
-
-while read -r pr_number ; do
-    gh pr review "$pr_number" --comment --body "@dependabot merge"
-done < <(gh pr list --label 'dependencies' | cut -f1)
