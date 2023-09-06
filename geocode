@@ -7,6 +7,7 @@ Uses OSM Nominatim API:
 import sys
 import json
 from urllib.parse import quote
+import webbrowser
 
 import requests
 
@@ -30,6 +31,11 @@ def get_location_details(address: str) -> dict:
         return data[0]
     else:
         return {}
+
+
+def browse(osm_id: str) -> None:
+    base_url = "https://nominatim.openstreetmap.org/ui/details.html?osmtype=W&osmid={osm_id}"
+    webbrowser.open(base_url.format(osm_id))
 
 
 if __name__ == "__main__":
