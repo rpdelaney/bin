@@ -45,6 +45,7 @@ _PIPX_APPS: T_AppsList = {
         "ptpython",
         "pyperclip",
         "requests",
+        "rich",
         "xonsh-direnv",
         "xontrib-abbrevs",
         "xontrib-argcomplete",
