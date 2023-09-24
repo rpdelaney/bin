@@ -3,6 +3,8 @@
 # share a file via transfer.sh
 
 set -u
+if ! command -v pv >/dev/null 2>&1 ; then echo "Missing dependency: pv" 1>&2 ; exit 1 ; fi
+if ! command -v curl >/dev/null 2>&1 ; then echo "Missing dependency: curl" 1>&2 ; exit 1 ; fi
 
 main() {
   filename="$1"
