@@ -4,7 +4,11 @@ set -x
 amixer sset Master off
 xset dpms force off
 xset +dpms
-xlock || exit
+if type -a swaylock &>/dev/null ; then
+  swaylock || exit
+else
+  xlock || exit
+fi
 
 while pgrep i3lock &> /dev/null; do
   sleep 2s
