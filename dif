@@ -1,13 +1,16 @@
 #!/usr/bin/env bash
 #
+# prints a colored diff using diffr
 
 if command -v diffr &>/dev/null ; then
-    black="0x28,0x28,0x28"
-    red="0xEA,0x69,0x62"
-    green="0xA9,0xB6,0x65"
-    diffr \
-        --colors removed:background:"$black":foreground:"$red" \
-        --colors refine-removed:background:"$black":foreground:124:italic \
-        --colors added:background:"$black":foreground:"$green" \
-        --colors refine-added:background:"$black":foreground:35:intense
+  black="0x28,0x28,0x28"
+  red="0xEA,0x69,0x62"
+  green="0xA9,0xB6,0x65"
+  diffr \
+      --colors removed:background:"$black":foreground:"$red" \
+      --colors refine-removed:background:"$black":foreground:124:italic \
+      --colors added:background:"$black":foreground:"$green" \
+      --colors refine-added:background:"$black":foreground:35:intense
+else
+  exit 1
 fi
