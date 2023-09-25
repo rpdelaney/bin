@@ -12,7 +12,6 @@ def main() -> None:
     print(random.choice(strategies), end="")
 
 
-
 if __name__ == "__main__":
     main()
 

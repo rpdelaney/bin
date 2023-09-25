@@ -3,7 +3,7 @@
 """Print a horizontal rule equal to the terminal width."""
 import shutil
 
-CHAR = '-'
+CHAR = "-"
 CHAR = "━"
 
 

@@ -36,10 +36,7 @@ def parse_args() -> argparse.Namespace:
         description="does some manipulations to PATH in a "
         "very over-engineered kind of way",
     )
-    parser.add_argument(
-        "command",
-        choices=("append", "prepend", "delete")
-    )
+    parser.add_argument("command", choices=("append", "prepend", "delete"))
     parser.add_argument("path")
 
     return parser.parse_args()

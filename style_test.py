@@ -10,18 +10,23 @@ styles = [
     "reverse",
     "strike",
     "underline",
-    #Rich also supports the following styles, which are not well supported and may not display in your terminal:
+    # Rich also supports the following styles, which are not well supported and may not display in your terminal:
     "underline2",
     "frame",
     "encircle",
     "overline",
 ]
 
+
 def main() -> None:
     console = Console()
 
     for style in styles:
-        console.print(f"""the quick brown fox jumps over the lazy dog""", style=style, end="")
+        console.print(
+            f"""the quick brown fox jumps over the lazy dog""",
+            style=style,
+            end="",
+        )
         print(f"     {style}")
 
 
