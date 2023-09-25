@@ -11,7 +11,12 @@ for file in "$@"; do
   fi
   oldname="$("$readlink" -f "$file")" || exit
   newname="$oldname"."$date".bak
-  cp -r --reflink=auto "$file" "$newname"
+
+  if [[ "$(ostype)" == "macos" ]]; then
+    ( set -x ; gcp -r --reflink=auto "$file" "$newname" )
+  else
+    ( set -x ; cp -r --reflink=auto "$file" "$newname" )
+  fi
 done
 
 # EOF
