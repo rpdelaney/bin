@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#
+# like `yes` except it says "no"
+
+main() {
+  while true ; do
+    echo "no"
+  done
+}
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  main "$@"
+fi
+
+# EOF

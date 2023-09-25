@@ -3,14 +3,16 @@
 # share a file via transfer.sh
 
 set -u
+if ! command -v pv >/dev/null 2>&1 ; then echo "Missing dependency: pv" 1>&2 ; exit 1 ; fi
+if ! command -v curl >/dev/null 2>&1 ; then echo "Missing dependency: curl" 1>&2 ; exit 1 ; fi
 
 main() {
   filename="$1"
   basename="$(basename "$filename")" || return
 
   if [[ -r "$filename" ]]; then
-    if ! pv "$filename" | curl -Ss --upload-file - https://transfer.sh/"$basename" ; then
-      pv "$filename" | curl -F"file=@$filename" https://0x0.st
+    if ! ( set -x ; pv "$filename" | curl -Ss --upload-file - https://transfersh.com/"$basename" ); then
+      ( set -x ; pv "$filename" | curl -F"file=@$filename" https://0x0.st )
     fi
   fi
 }
