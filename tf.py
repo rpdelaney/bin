@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 #
+# some helpers for terraform. See also the shell version at `tf`. WIP
+#
 import re
 import time
 import sys

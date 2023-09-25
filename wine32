@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 #
+# helper to load a specific wineprefix I have optimized for 32-bit applications
+#
 
 error() {
   echo "$1" >&2

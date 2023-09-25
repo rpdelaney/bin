@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 #
+# lock the screen on xorg the way I like to lock the screen (using i3wm and i3lock)
+#
 
 if ! command -v i3lock > /dev/null 2>&1 ; then echo "Missing dependency: i3lock" 1>&2 ; exit 1 ; fi
 

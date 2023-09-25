@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 #
+"""Print some text showing terminal capabilities."""
 from rich.console import Console
 
 

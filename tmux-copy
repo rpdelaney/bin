@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 #
+# copy the whole tmux scrollback on the current buffer to a file in /tmp/
+#
 
 window_id="$(tmux display-message -p '#S-#{window_index}-#{window-name}')"
 outfile="${1:-/tmp/"$window_id.scrollback.txt"}"

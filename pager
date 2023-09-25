@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 #
+# read standard input into my preferred pager settings
+#
 
 if command -v ifne 2> /dev/null 1>&2 ; then
   ifne less -r -X -F < "${1:-/dev/fd/0}"

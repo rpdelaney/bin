@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 #
+"""
+Read input and upload it to a secure pastebin.
+Then copy the resulting link to the clipboard.
+"""
 import requests
 import pyperclip
 import fileinput

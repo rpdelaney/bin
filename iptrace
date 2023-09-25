@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 #
+# try to geolocate an IP address
 # TODO: Reduce streaming complexity (eliminate unnecessarily complex chained pipes)
 #
 

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 #
+# explain a shell command using explainshell.com
+#
 
 if ! command -v w3m >/dev/null 2>&1; then echo "Missing dependency: w3m" 1>&2; exit 1; fi
 

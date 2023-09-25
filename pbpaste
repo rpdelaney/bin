@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 #
+# paste the system clipboard to standard output
+#
 
 if ! command -v ostype >/dev/null 2>&1 ; then
   echo "Missing dependency: ostype" 1>&2

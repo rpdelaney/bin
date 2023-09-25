@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 #
 # run speaker-test with some less horrifically
-# defeaning defaults
+# defeaning output than you get with the defaults
+#
 
 main() {
   (set -x ; \

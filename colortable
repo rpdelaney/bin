@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
 #
+# print a table of terminal colors
+# this use to be more complicated...
+#
 
 ansi --color-table

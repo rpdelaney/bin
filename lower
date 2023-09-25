@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #
 # Changes filename(s) to UTF-8 lower case
+# see also: `upper`
 #
 
 if ! type convmv &> /dev/null; then echo "ERROR: Missing dependency: convmv" 1>&2; exit 1; fi

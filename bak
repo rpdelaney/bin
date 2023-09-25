@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 #
+# make a copy of the target file with a timestamped .bak extension
 
 for file in "$@"; do
   date="$(date +%Y%m%d-%H%m%S)" || exit

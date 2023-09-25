@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 #
+# try to figure out which operating system and distribution we're on, and print it
+#
 
 if ! command -v ostype > /dev/null 2>&1 ; then echo "Missing dependency: ostype" 1>&2 ; exit 1 ; fi
 

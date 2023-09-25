@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 #
+# find PIDs with a string in their name.
+# can be useful for simulating `ps aux` or `killall` except better, kinda
+#
 
 while :
 do

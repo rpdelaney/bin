@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-# vim: ft=python:
 #
-# https://github.com/ywalia01/dune-api
-#
+"""
+Print a random quote from the Dune novels by Frank Herbert.
+https://github.com/ywalia01/dune-api
+"""
+
 import json
 import urllib.request
 

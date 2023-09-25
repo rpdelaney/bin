@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 #
+# print some text for testing the readability of the font
+#
 from rich.console import Console
 
 

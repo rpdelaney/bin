@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #
 # where the heck am I?
+# like doing `pwd` except it resolves symlinks along the way. I think
 #
 # shellcheck disable=SC2154
 

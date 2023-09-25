@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 #
+# unlock the system and unmute the speakers (see also: `freeze`)
+#
 
 amixer sset Master on
 amixer sset Speaker on

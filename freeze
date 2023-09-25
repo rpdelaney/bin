@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 #
+# lock the screen and also mute the sound outputs
+# see also: `thaw`
+#
 set -x
 amixer sset Master off
 xset dpms force off

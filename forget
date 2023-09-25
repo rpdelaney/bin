@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 #
+# purge the tmux scrollback entirely
+#
 
 clear
 

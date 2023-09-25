@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 #
+# discourage me from using su, because that breaks the security model
+# if I really really really want to get around this, /bin/su can be invoked explicitly
+#
 
 echo "This is insecure. Open another TTY if you want to log in as another user."
 exit 1

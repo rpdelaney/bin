@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 #
+"""Facilitates manipulating the shell PATH in a very over-engineered kind of way."""
 import argparse
 import os
 import sys

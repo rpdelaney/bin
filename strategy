@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 #
+# print a random strategy. for when you don't know what to do!
+#
 import random
 
 

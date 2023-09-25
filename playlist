@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 #
+# create a playlist in mpv with arbitrary paths as inputs and play it with
+# some arguments I usually need
+#
 
 trap 'trapexit $? $LINENO' EXIT
 

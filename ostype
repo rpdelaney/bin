@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 #
+# try to figure out which platform we're basically on
+# see also `distro`
 
 case "$OSTYPE" in
   "linux"*)
