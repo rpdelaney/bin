@@ -12,10 +12,16 @@ ABC.DEF.GHI.JKL.MNO.PQRS.TUV.WXYZabc.def.ghi.jkl.mno.pqrs.tuv.wxyz
 
 MODES = [
     (),
+    ("blink",),
     ("bold",),
-    ("italic",),
+    ("bright",),
+    ("conceal",),
     ("dim",),
+    ("italic",),
+    ("reverse",),
+    ("strike",),
     ("underline",),
+    ("underline2",),
 ]
 
 
