@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+#
+# tries to beautify the terraform graph. WIP
+# https://github.com/pcasteran/terraform-graph-beautifier
+#
+
+set -xu
+
+plan() {
+  # we can make a targeted plan kind of like this I guess
+  terraform plan \
+    --target=module.template2.resource.aws_ecr_repository \
+    --target=module.template2.resource.aws_route_53_record \
+    --target=module.template2.resource.ecs-service \
+    --target=module.template2.resource.aws_db_instance \
+    --target=module.template2.resource.aws_ecr_repository \
+    -out=targeted.plan
+    :
+}
+
+main() {
+  # use podman to run the graph beautifier
+  podman run --rm -i \
+    --name terraform-graph-beautifier \
+    ghcr.io/pcasteran/terraform-graph-beautifier:latest-linux \
+    --output-type=cyto-html \
+    < "$1" > config1.html
+}
+
+main "$@"
+
+# EOF
