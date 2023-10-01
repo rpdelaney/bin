@@ -46,12 +46,13 @@ def main() -> None:
     args = parse_args()
     paths = ShellPath(os.environ.get("PATH"))
 
-    if args.command == "append":
-        paths.append(Path(args.path).absolute())
-    elif args.command == "prepend":
-        paths.prepend(Path(args.path).absolute())
-    elif args.command == "delete":
-        paths.delete(Path(args.path).absolute())
+    match args.command:
+        case "append":
+            paths.append(Path(args.path).absolute())
+        case "prepend":
+            paths.prepend(Path(args.path).absolute())
+        case "delete":
+            paths.delete(Path(args.path).absolute())
 
     print(":".join(str(path) for path in paths.paths))
 
