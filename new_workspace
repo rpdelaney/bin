@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+#
+# ask the user for a name, then move the focused window to a new workspace with that name
+if ! command -v rofi >/dev/null 2>&1 ; then echo "Missing dependency: rofi" 1>&2 ; exit 1 ; fi
+if ! command -v swaymsg >/dev/null 2>&1 ; then echo "Missing dependency: swaymsg" 1>&2 ; exit 1 ; fi
+
+main() {
+  if [[ -n "$1" ]] ; then
+    name="$1"
+  else
+    name="$(rofi -dmenu -p "Enter workspace name")"
+  fi
+
+  ( set -x ;
+    swaymsg move container to workspace "$name"
+  )
+}
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  main "$@"
+fi
+
+# EOF
