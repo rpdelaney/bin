@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#
+# take a video file and a subtitle file and hard-code the subtitles
+
+main() {
+  set -u
+  file_input="$1"
+  file_subs="$2"
+
+  ( set -x ; ffmpeg -i "$file_input" -vf subtitles="$file_subs" output.mp4 )
+
+}
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  main "$@"
+fi
+
+# EOF
