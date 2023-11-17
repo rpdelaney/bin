@@ -25,14 +25,14 @@ unset dependencies missing_dependencies is_missing
 # Dependencies 1}}}
 
 die() {
-  notice "tldring fucked up"
+  notice -u critical "tldring fucked up"
   exit "${1:-1}"
 }
 
 main() {
   data="$(pbpaste)"
-  summary="$(set -x ; echo "$data" | gptalk tldr)" || die "$?"
   notice "tldr'ing some stuff, don't touch your clipboard"
+  summary="$(DEBUG=0 set -x ; echo "$data" | gptalk tldr)" || die "$?"
 
   if isurl "$data"; then
     ( echo "$data" && echo "$summary" ) | pbcopy || die "$?"
