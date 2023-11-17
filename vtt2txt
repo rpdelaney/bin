@@ -1,0 +1,45 @@
+#!/usr/bin/env python
+#
+"""Convert VTT subtitles to prose."""
+import fileinput
+import re
+from collections import OrderedDict
+
+
+def process_vtt_line(line: str) -> str:
+    """
+    Process a single line of VTT content to extract the text.
+
+    Args:
+        line (str): A line from a VTT file.
+
+    Returns:
+        str: The processed text from the line.
+    """
+    # Remove VTT tags and timestamps
+    text = re.sub(r"<[^>]+>", "", line)
+    return text.strip()
+
+
+def process_vtt_stream() -> str:
+    """
+    Process the VTT subtitles from an input stream into prose.
+
+    Returns:
+        str: The processed prose from the VTT subtitles.
+    """
+    lines_seen = OrderedDict()
+    for line in fileinput.input():
+        processed_line = process_vtt_line(line)
+        if (
+            processed_line
+            and not processed_line.startswith("WEBVTT")
+            and "-->" not in processed_line
+        ):
+            lines_seen[processed_line] = None
+    return " ".join(lines_seen.keys())
+
+
+if __name__ == "__main__":
+    prose = process_vtt_stream()
+    print(prose)
