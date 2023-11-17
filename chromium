@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#
+# always default to incognito mode
+
+main() {
+  ( set -x ; /usr/sbin/chromium --incognito )
+}
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  main "$@"
+fi
+
+# EOF
