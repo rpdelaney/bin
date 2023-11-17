@@ -53,6 +53,13 @@ if __name__ == "__main__":
     if os.getenv("DEBUG"):
         print(json.dumps(details, indent=2), file=sys.stderr)
 
-    print(f"{details['lat']}, {details['lon']}")
+    try:
+        geocode = (details["lat"], details["lon"])
+    except KeyError as ke:
+        print("The response did not include the required keys:")
+        print(json.dumps(details, indent=2), file=sys.stderr)
+
+    print(f"{details.get('lat')}, {details.get('lon')}")
+
     if args.web:
         browse(details["osm_id"])
