@@ -11,7 +11,7 @@ main() {
   basename="$(basename "$filename")" || return
 
   if [[ -r "$filename" ]]; then
-    if ! ( set -x ; pv "$filename" | curl -Ss --upload-file - https://transfersh.com/"$basename" ); then
+    if ! ( set -x ; pv "$filename" | curl -Ss --upload-file - https://transfer.sh/"$basename" ); then
       ( set -x ; pv "$filename" | curl -F"file=@$filename" https://0x0.st )
     fi
   fi
