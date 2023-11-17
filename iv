@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+#
+# open my image viewer with some settings I usually want
+
+main() {
+  set -x
+  # shellcheck disable=SC2086
+  nsxiv \
+    --animate \
+    --recursive \
+    --thumbnail \
+    --zoom-100 \
+    --stdout \
+    $NSXIV_OPTIONS \
+    "$@"
+}
+
+main "$@"
+
+# EOF
