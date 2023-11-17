@@ -41,6 +41,7 @@ _PIPX_APPS: T_AppsList = {
     "pudb": [],
     "pwstore": [],
     "pyupgrade": [],
+    "refurb": [],
     "rich-cli": [],
     "thefuck": [],
     "tldr": [],
