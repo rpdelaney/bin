@@ -21,9 +21,9 @@ def process_vtt_line(line: str) -> str:
     return text.strip()
 
 
-def process_vtt_stream() -> str:
+def vtt2prose(vtt: str) -> str:
     """
-    Process the VTT subtitles from an input stream into prose.
+    Process VTT subtitles into prose.
 
     Returns:
         str: The processed prose from the VTT subtitles.
