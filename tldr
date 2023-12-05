@@ -35,12 +35,12 @@ main() {
   summary="$(unset DEBUG ; echo "$data" | gptalk tldr)" || die "$?"
 
   if isurl "$data"; then
-    ( echo "$data" && echo "$summary" ) | pbcopy || die "$?"
-    notice "tldr'd a url"
+    ( printf "%s\n\n%s" "$data" "$summary" ) | pbcopy || die "$?"
   else
     echo "$summary" | pbcopy || die "$?"
-    notice "tldr'd some content"
   fi
+  pbpaste
+  notice "tldr'd some content"
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
