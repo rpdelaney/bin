@@ -58,6 +58,7 @@ _PIPX_APPS: T_AppsList = {
         "xontrib-argcomplete",
         "xontrib-avox-poetry",
         "xontrib-commands",
+        "xontrib-expand-braces",
         "xontrib-gruvbox",
         "xontrib-jedi",
         "xontrib-kitty",
