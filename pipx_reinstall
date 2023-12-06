@@ -7,9 +7,9 @@ Re-initialize my python tools and the injections I need.
 """
 #
 import subprocess
-from typing import Dict, List, Union
+from typing import Dict, List
 
-T_AppsList = Dict[str, List[Union[str, None]]]
+T_AppsList = Dict[str, List[str | None]]
 
 _PIPX_APPS: T_AppsList = {
     "black": [],
