@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#
+# display a progress meter for a stream
+
+main() {
+  pv -F '%t⏱️ →%r ≈%a %p'
+}
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  main "$@"
+fi
+
+# EOF
