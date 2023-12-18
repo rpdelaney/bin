@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+#
+# Remove letterboxing from media files using ffmpeg's cropdetect function
+#
+
+set -o nounset -o pipefail
+
+if ! command -v ffmpeg >/dev/null 2>&1 ; then echo "Missing dependency: ffmpeg" 1>&2 ; exit 1 ; fi
+if ! command -v grep >/dev/null 2>&1 ; then echo "Missing dependency: grep" 1>&2 ; exit 1 ; fi
+
+CROP_PATTERN="crop=\d+:\d+:\d+:\d+"
+
+input_file="$1"
+output_file="${input_file%.*}_unboxed.${input_file##*.}"
+
+# detect crop area
+crop_area="$( \
+  ffmpeg -i "$input_file" -vf cropdetect -f null - 2>&1 | \
+  grep -Po "$CROP_PATTERN" | \
+  tail -n1 \
+)" || return
+
+# crop the video
+( set -x ; \
+  ffmpeg \
+  -i "$input_file" \
+  -acodec copy \
+  -vf "$crop_area" \
+  "$output_file" \
+)
+
+# EOF
