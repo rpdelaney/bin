@@ -23,6 +23,7 @@ crop_area="$( \
 # crop the video
 ( set -x ; \
   ffmpeg \
+  -n \
   -i "$input_file" \
   -acodec copy \
   -vf "$crop_area" \
