@@ -7,6 +7,7 @@ set -o nounset -o pipefail
 
 if ! command -v ffmpeg >/dev/null 2>&1 ; then echo "Missing dependency: ffmpeg" 1>&2 ; exit 1 ; fi
 if ! command -v grep >/dev/null 2>&1 ; then echo "Missing dependency: grep" 1>&2 ; exit 1 ; fi
+if ! command -v bak >/dev/null 2>&1 ; then echo "Missing dependency: bak" 1>&2 ; exit 1 ; fi
 
 CROP_PATTERN="crop=\d+:\d+:\d+:\d+"
 
@@ -20,14 +21,19 @@ crop_area="$( \
   tail -n1 \
 )" || return
 
-# crop the video
-( set -x ; \
-  ffmpeg \
-  -n \
-  -i "$input_file" \
-  -acodec copy \
-  -vf "$crop_area" \
-  "$output_file" \
-)
+if bak "$input_file" ; then
+  # crop the video
+  ( set -x ; \
+    ffmpeg \
+    -y \
+    -i "$input_file" \
+    -acodec copy \
+    -vf "$crop_area" \
+    "$output_file" \
+  ) && \
+  mv -f "$output_file" "$input_file"
+else
+  exit
+fi
 
 # EOF
