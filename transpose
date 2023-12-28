@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+#
+# rotate a video
+# https://stackoverflow.com/questions/3937387/rotating-videos-with-ffmpeg
+
+set -o nounset -o pipefail
+
+if ! command -v ffmpeg >/dev/null 2>&1 ; then echo "Missing dependency: ffmpeg" 1>&2 ; exit 1 ; fi
+
+basename=$(basename -- "$1")
+filename="${basename%.*}"
+extension="${basename##*.}"
+outputname="$filename-rotated.$extension"
+
+mode="$2"
+
+# "soft" transposition using metadata
+# the player must support it, but most do anymore
+( set -x ; ffmpeg -i "$1" -display_rotation "$mode" -codec copy "$outputname" )
+
+# "hard" transposition, re-encodes the video:
+# 0 = 90CounterCLockwise and Vertical Flip (default)
+# 1 = 90Clockwise
+# 2 = 90CounterClockwise
+# 3 = 90Clockwise and Vertical Flip
+# ( set -x ; ffmpeg -i "$basename" -vf "transpose=$mode" "$outputname" )
