@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+#
+# evacuate a file of content, but don't delete it.
+#
+# this is sometimes useful when working in other shells that
+# don't have such simple idioms
+#
+
+set -u
+
+main() {
+  file="$1"
+  true > "$file"
+}
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  main "$@"
+fi
+
+# EOF
