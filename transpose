@@ -16,7 +16,7 @@ mode="$2"
 
 # "soft" transposition using metadata
 # the player must support it, but most do anymore
-( set -x ; ffmpeg -i "$1" -display_rotation "$mode" -codec copy "$outputname" )
+( set -x ; ffmpeg -display_rotation "$mode" -i "$1" -codec copy "$outputname" )
 
 # "hard" transposition, re-encodes the video:
 # 0 = 90CounterCLockwise and Vertical Flip (default)
