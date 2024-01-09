@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#
+# run proton from steam, because xonsh chokes on paths withe whitespace or something
+
+main() {
+  mkdir -p ~/.proton || return
+  (  set -x ; \
+     STEAM_COMPAT_CLIENT_INSTALL_PATH=~/.steam/steam \
+     STEAM_COMPAT_DATA_PATH=~/.proton \
+     ~/.steam/steam/steamapps/common/Proton\ -\ Experimental/proton \
+     "$@"
+  )
+}
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  main "$@"
+fi
+
+# EOF
