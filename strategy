@@ -2,11 +2,12 @@
 #
 # print a random strategy. for when you don't know what to do!
 #
+import os
 import random
 
 
 def main() -> None:
-    with open("strategy.txt") as f:
+    with open(f"{os.getenv('HOME')}/bin/strategy.txt") as f:
         strategies = list(f)
 
     print(random.choice(strategies), end="")
