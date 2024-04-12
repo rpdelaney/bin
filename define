@@ -25,6 +25,7 @@ def main() -> int:
 
 
 if __name__ == "__main__":
+    raise NotImplementedError("This doesn't work yet. Use xonsh command or migrate that code here.")
     sys.exit(main())
 
 # EOF
