@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+#
+# start sway, and stop the graphical session target when exiting
+#
+
+cleanup() {
+  (set -x ; systemctl --no-ask-password stop --user sway-session.service)
+}
+
+trap cleanup EXIT
+
+main() {
+  (set -x ; /usr/sbin/sway)
+}
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  main "$@"
+fi
+
+# EOF

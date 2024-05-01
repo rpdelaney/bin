@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#
+# discourage me from using sudo, because that breaks the security model
+# if I really really really want to get around this, /bin/sudo can be invoked explicitly
+#
+
+echo "This is insecure. Open another TTY if you want to be root."
+exit 1

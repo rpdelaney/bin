@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+#
+# mirror DISPLAY1 output to DISPLAY2
+
+DISPLAY1_NAME="DP-3"
+DISPLAY2_NAME="DP-1"
+
+set -o nounset
+
+trap process_sigint INT
+
+function process_sigint() {
+  echo "Control-C was pressed." 1>&2
+  ( set -x ; \
+    killall wl-mirror
+    swaymsg output "$DISPLAY2_NAME" disable
+  )
+  exit 0
+}
+
+
+main() {
+  ( set -x ; \
+    swaymsg output "$DISPLAY2_NAME" enable && \
+    wl-mirror --fullscreen-output "$DISPLAY2_NAME" "$DISPLAY1_NAME"
+  )
+}
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  main "$@"
+fi
+
+# EOF

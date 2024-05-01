@@ -35,7 +35,7 @@ main() {
   summary="$(unset DEBUG ; echo "$data" | gptalk tldr)" || die "$?"
 
   if isurl "$data"; then
-    ( printf "%s\n\n%s" "$data" "$summary" ) | pbcopy || die "$?"
+    ( printf "Content summary for %s (by ChatGPT)\n\n%s" "$data" "$summary" ) | pbcopy || die "$?"
   else
     echo "$summary" | pbcopy || die "$?"
   fi
