@@ -71,7 +71,7 @@ def _cmd(command: str, check: bool = True) -> None:
 
 def main() -> None:
     for pipx_app in _PIPX_APPS.keys():
-        _cmd(f"pipx reinstall {pipx_app}")
+        _cmd(f"pipx install --force {pipx_app}")
         for inject in _PIPX_APPS[pipx_app]:
             _cmd(f"pipx inject {pipx_app} {inject}")
 
