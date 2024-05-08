@@ -12,18 +12,11 @@ from typing import Dict, List
 T_AppsList = Dict[str, List[str | None]]
 
 _PIPX_APPS: T_AppsList = {
-    "black": [],
     "daff": [],
     "downforeveryone": [],
     "dumbpw": [],
     "em-keyboard": [],
     "extinfo": [],
-    "flake8": [
-        "flake8-bandit",
-        "flake8-bugbear",
-        "flake8-simplify",
-        "flake8-pie",
-    ],
     "gallery-dl": [
         "yt-dlp",
     ],
@@ -43,6 +36,7 @@ _PIPX_APPS: T_AppsList = {
     "pyupgrade": [],
     "refurb": [],
     "rich-cli": [],
+    "ruff": [],
     "thefuck": [],
     "tldr": [],
     "twine": [],
