@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+#
+import sys
+
+
+def main() -> None:
+    s = sys.argv[1]
+    print("".join(c.upper() if i % 2 == 0 else c.lower() for i, c in enumerate(s)))
+
+
+if __name__ == "__main__":
+    main()
+
+# EOF
