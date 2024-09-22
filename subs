@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -o nounset -o pipefail
+
+input_file="$1"
+model="${2:-medium.en}"
+language="${3:-en}"
+( set -x ; whisper --model "$model" --language "$language" -f srt "$input_file" )
