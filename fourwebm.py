@@ -110,7 +110,6 @@ def get_video_length(target: str) -> str:
     data = data.replace("Duration:", "").strip()
     items = data.split(", ")
     duration = items[0].split(":")
-    # duration = [str("{:02d}".format(float(x))) for x in duration]
 
     return ":".join(duration)
 
