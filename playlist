@@ -23,7 +23,7 @@ main() {
     fi
   done
 
-  ( set -x ; mpv --loop-playlist --volume=50 --shuffle --playlist="$tmpfile" )
+  ( set -x ; mpv --volume=50 --shuffle --playlist="$tmpfile" )
 }
 
 main "$@"
