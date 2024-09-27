@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+#
+# modulate image brightness, saturation, and hue
+
+set -o nounset     # expanding unset variables is fatal
+shopt -s nullglob  # globs that match nothing expand to ""
+
+filename="$1"
+
+adjust() {
+  target="${filename/.png/.new.png}"
+
+  brightness=55
+  saturation=75
+  hue=175
+
+  if [[ ! -w "$filename" ]] ; then
+    echo "$filename not writable"
+    return
+  fi
+
+  if bak "$filename"; then
+    if (set -x ; convert -modulate "$brightness","$saturation","$hue" "$filename" "$target" && rm "$filename"); then
+      (set -x ; mv "$target" "$filename")
+    fi
+  fi
+}
+
+main() {
+  for file in "$@"; do
+    if [[ "$file" != *"egg"* ]]; then
+      adjust "$file"
+    fi
+  done
+}
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  main "$@"
+fi
+
+# EOF
