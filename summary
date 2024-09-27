@@ -25,13 +25,13 @@ unset dependencies missing_dependencies is_missing
 # Dependencies 1}}}
 
 die() {
-  notice -u critical "tldring fucked up"
+  notice -u critical "tldring fucked up" 2>/dev/null
   exit "${1:-1}"
 }
 
 main() {
   data="$(pbpaste)"
-  notice "tldr'ing some stuff, don't touch your clipboard"
+  notice "tldr'ing some stuff, don't touch your clipboard" 2>/dev/null
   summary="$(unset DEBUG ; echo "$data" | gptalk tldr)" || die "$?"
 
   if isurl "$data"; then
@@ -40,7 +40,7 @@ main() {
     echo "$summary" | pbcopy || die "$?"
   fi
   pbpaste
-  notice "tldr'd some content"
+  notice "tldr'd some content" 2>/dev/null
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
