@@ -24,7 +24,9 @@ def parse_args() -> argparse.Namespace:
         prog="4webm",
         description="creates webm clips from video files using ffmpeg",
     )
-    parser.add_argument("--input-file", "-i", help="input video file", required=True)
+    parser.add_argument(
+        "--input-file", "-i", help="input video file", required=True
+    )
     parser.add_argument(
         "--engine",
         "-e",
@@ -38,7 +40,9 @@ def parse_args() -> argparse.Namespace:
         type=str,
         default="00:00:00.00",
     )
-    parser.add_argument("--stop", "-st", "-to", help="ending timestamp", default=None)
+    parser.add_argument(
+        "--stop", "-st", "-to", help="ending timestamp", default=None
+    )
     parser.add_argument(
         "--no-audio",
         "-na",
@@ -138,7 +142,10 @@ def get_new_file_name(filename: str) -> Iterator[str]:
         [
             (
                 c
-                if c.isalpha() or c.isdigit() or c.isalnum() or c in keepcharacters
+                if c.isalpha()
+                or c.isdigit()
+                or c.isalnum()
+                or c in keepcharacters
                 else "_"
             )
             for c in fullname
@@ -164,7 +171,9 @@ def encode(command: list[str]) -> None:
     Raises:
         subprocess.CalledProcessError: If the subprocess call exited non-zero.
     """
-    process = subprocess.Popen(command, stdout=subprocess.PIPE, universal_newlines=True)
+    process = subprocess.Popen(
+        command, stdout=subprocess.PIPE, universal_newlines=True
+    )
     return_code = process.wait()
     if return_code:
         raise subprocess.CalledProcessError(return_code, command)
@@ -181,9 +190,7 @@ def main() -> None:
 
     start = datetime.datetime.strptime(args.start, "%H:%M:%S.%f").time()  # noqa: DTZ007
     if args.stop:
-        stop = datetime.datetime.strptime(
-            args.stop, "%H:%M:%S.%f"
-        ).time()  # noqa: DTZ007
+        stop = datetime.datetime.strptime(args.stop, "%H:%M:%S.%f").time()  # noqa: DTZ007
     else:
         stop = datetime.datetime.strptime(  # noqa: DTZ007
             get_video_length(args.input_file), "%H:%M:%S.%f"
