@@ -4,15 +4,24 @@
 
 main() {
   set -x
+
+  # if we have a lot of arguments, start in slideshow
+  if [[ $# -ge 3 ]]; then
+    gallery_arg="--ss-delay 5"
+  fi
+
   # shellcheck disable=SC2086
-  nsxiv \
-    --animate \
-    --recursive \
-    --thumbnail \
-    --zoom-100 \
-    --stdout \
-    $NSXIV_OPTIONS \
-    "$@"
+  ( set -x ;
+    nsxiv \
+      --animate \
+      --recursive \
+      --scale-mode f \
+      --stdout \
+      --alpha-layer \
+      $gallery_arg \
+      $NSXIV_OPTIONS \
+      "$@"
+  )
 }
 
 main "$@"
