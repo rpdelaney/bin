@@ -1,65 +1,81 @@
 #!/usr/bin/env python3
-#
+
 """
-halp
+Automate finding and displaying help text for commands with varying help flag conventions.
 
 Usage:
+    $ ./halp.py command | pager
 
-$ halp cOmMaNdIdOnTkNoW | pager
+This script tries different conventions for help flags and directs output to stdout,
+handling commands that output help text to either stdout or stderr.
 
-Some utils have their own idea of whether it should be '--help' or '-h' or '-?'
-or some random combination and I'm tired of guessing when I'm in the midst of
-trying to figure something else out.
-
-Also, I like to page the output if it's long, but some commands print help text
-to stdout and others to stderr. who wants to type '&> | pager' all the damn
-time? not me.
+Functions:
+    find_command_help(command: str) -> None: Attempts to display the help text for a given command.
 """
-import sys
-import subprocess
+
 import shutil
+import subprocess
+import sys
 
-COMMAND = sys.argv[1]
-
-TRIES = (
-    f"{COMMAND} --help",
-    f"{COMMAND} -?",
-    f"{COMMAND} -h",
-    f"{COMMAND} help",
-    f"{COMMAND} -help",
-    f"tldr {COMMAND}",
-    f"info {COMMAND}",
-)
+from typing import Optional
 
 
-def main() -> None:
-    # hold up: does this thing even exist on the system?
-    if not shutil.which(COMMAND):
-        print(f"Command not found: {COMMAND}")
-        return 1
+def run_command(command: str) -> str | None:
+    """
+    Executes a command and returns its output if successful, None otherwise.
 
-    for command in TRIES:
-        p = subprocess.run(command.split(" "), capture_output=True)
-        try:
-            p.check_returncode()
-        except subprocess.CalledProcessError:
-            continue
-        else:
-            output = p.stdout.decode() + p.stderr.decode()
-            if len(output.strip()):
-                print(f"+ {command}")
-                print(output)
-                return
-            else:
-                # some shell commands, e.g. `test`, don't take arguments.
-                # therefore, if the output from a successful try is zero
-                # length, we should keep going.
-                continue
-    else:
+    Args:
+        command: The command to execute.
+
+    Returns:
+        The combined stdout and stderr output of the command if execution was successful, None otherwise.
+
+    >>> run_command("echo 'Hello, World!'")  # doctest: +ELLIPSIS
+    'Hello, World!\\n'
+    """
+    try:
+        result = subprocess.run(
+            command.split(), capture_output=True, text=True, check=True
+        )
+        return result.stdout + result.stderr
+    except subprocess.CalledProcessError:
+        return None
+
+
+def find_command_help(command: str) -> None:
+    """
+    Tries different help flag conventions to display a command's help text.
+
+    Args:
+        command: The command to find help text for.
+    """
+    if not shutil.which(command):
+        print(f"Command not found: {command}")
         sys.exit(1)
+
+    tries = [
+        f"{command} --help",
+        f"{command} -?",
+        f"{command} -h",
+        f"{command} help",
+        f"{command} -help",
+        f"tldr {command}",
+        f"info {command}",
+    ]
+
+    for attempt in tries:
+        output = run_command(attempt)
+        if output:
+            print(f"+ {attempt}")
+            print(output)
+            return
+
+    sys.exit("Help text not found for command.")
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    if len(sys.argv) != 2:
+        print("Usage: halp.py <command>")
+        sys.exit(1)
 
-# EOF
+    find_command_help(sys.argv[1])
