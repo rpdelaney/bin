@@ -24,6 +24,8 @@ fi
 boilerplate() {
   printf '%s\n' '#!/usr/bin/env bash'
   printf '%s\n\n' '#'
+  printf '%s\n' 'set -o nounset     # expanding unset variables is fatal'
+  printf '%s\n\n' 'shopt -s nullglob  # globs that match nothing expand to ""'
 
 cat <<EOD
 main() {
