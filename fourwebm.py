@@ -126,7 +126,7 @@ def get_new_file_name(filename: str) -> Iterator[str]:
     """
     try:
         i: int
-        i
+        _ = i
     except NameError:
         i = 1
 
