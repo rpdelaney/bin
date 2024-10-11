@@ -8,12 +8,9 @@ if ! command -v curl >/dev/null 2>&1 ; then echo "Missing dependency: curl" 1>&2
 
 main() {
   filename="$1"
-  basename="$(basename "$filename")" || return
 
   if [[ -r "$filename" ]]; then
-    if ! ( set -x ; pv "$filename" | curl -Ss --upload-file - https://transfer.sh/"$basename" ); then
-      ( set -x ; pv "$filename" | curl -F"file=@$filename" https://0x0.st )
-    fi
+    ( set -x ; pv "$filename" | curl -F"file=@$filename" https://0x0.st )
   fi
 }
 
