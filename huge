@@ -28,9 +28,7 @@ adjust() {
 
 main() {
   for file in "$@"; do
-    if [[ "$file" != *"egg"* ]]; then
-      adjust "$file"
-    fi
+    adjust "$file" || break
   done
 }
 
