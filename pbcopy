@@ -3,6 +3,8 @@
 # add standard input to the system clipboard
 #
 
+wlcopydir="/tmp/wl-copy-cache/"
+
 if ! command -v ostype >/dev/null 2>&1 ; then
   echo "Missing dependency: ostype" 1>&2
   exit 1
@@ -12,7 +14,8 @@ fi
 
 if [[ "$ostype" == "linux" ]] ; then
   if command -v wl-copy >/dev/null 2>&1 ; then
-    wl-copy
+    mkdir -p "$wlcopydir"
+    TMPDIR="$wlcopydir" wl-copy
   else
     xclip -in -selection clipboard
   fi
