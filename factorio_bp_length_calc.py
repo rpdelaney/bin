@@ -51,7 +51,7 @@ def main() -> None:
             continue
 
     if detailed_rates:
-        detailed_rates["overall_max_tiles"] = max(
+        detailed_rates["overall_max_tiles"] = min(
             entry["max_tiles_per_lane"]
             for entry in detailed_rates.values()
         )
