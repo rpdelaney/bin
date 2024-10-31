@@ -2,8 +2,8 @@
 #
 # mirror DISPLAY1 output to DISPLAY2
 
-DISPLAY1_NAME="DP-3"
-DISPLAY2_NAME="DP-1"
+DISPLAY1_NAME="DP-1"
+DISPLAY2_NAME="DP-3"
 
 set -o nounset
 
