@@ -4,8 +4,9 @@
 import argparse
 import os
 import sys
-from pathlib import Path
+
 from contextlib import suppress
+from pathlib import Path
 
 
 class ShellPath:

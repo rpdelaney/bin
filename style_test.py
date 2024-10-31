@@ -23,7 +23,7 @@ def main() -> None:
 
     for style in styles:
         console.print(
-            f"""the quick brown fox jumps over the lazy dog""",
+            """the quick brown fox jumps over the lazy dog""",
             style=style,
             end="",
         )

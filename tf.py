@@ -3,9 +3,10 @@
 # some helpers for terraform. See also the shell version at `tf`. WIP
 #
 import re
-import time
-import sys
 import subprocess
+import sys
+import time
+
 from pathlib import Path
 
 
@@ -43,7 +44,7 @@ def cmd(command: str) -> int:
     debug(f"EXEC --> {command}")
     cmd_proc = subprocess.run(
         command.split(),
-        capture_output=True,
+        capture_output=True, check=False,
     )
 
     if cmd_proc.returncode != 0:
@@ -68,7 +69,7 @@ def get_plan_filename() -> str:
     plan_filename = f"{epoch}__.plan"
 
     p = subprocess.run(
-        "git rev-parse --abbrev-ref HEAD".split(" "), capture_output=True
+        "git rev-parse --abbrev-ref HEAD".split(" "), capture_output=True, check=False
     )
     if p.returncode == 0:
         branch_name = p.stdout.decode().strip()
@@ -108,7 +109,7 @@ def main() -> None:
         case "show":
             # TODO: add tf-summarize:
             # /opt/homebrew/bin/tf-summarize -tree "$file" | tee "~${file}.plan.summary.txt"
-            pwd = Path(".")
+            pwd = Path()
             planfiles = [str(_p) for _p in pwd.glob("*.plan")]
             for planfile in planfiles:
                 print(f"### {planfile} ##########")

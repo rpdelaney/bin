@@ -11,7 +11,10 @@ import os
 import shutil
 import subprocess
 import tempfile
-from typing import Iterator, List
+
+from collections.abc import Iterator
+from typing import List
+
 
 # constants
 AUDIO_BITRATE = 96
@@ -268,7 +271,7 @@ def main() -> None:
         "-f",
         "webm",
         "-metadata",
-        "title={}".format(os.path.basename(args.input_file)),
+        f"title={os.path.basename(args.input_file)}",
     ]
 
     if args.new_video_codec:
@@ -324,7 +327,7 @@ def main() -> None:
     # print the commands we're about to execute (for debugging)
     print(" ".join(command1))
     print(" ".join(command2))
-    print("")
+    print()
 
     if not args.dry_run:
         encode(command1)

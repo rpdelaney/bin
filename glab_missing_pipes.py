@@ -1,7 +1,9 @@
 """Find GitLab pipelines where a specific stage has not finished."""
 
 import os
+
 import requests
+
 
 # Replace with your GitLab instance URL
 GITLAB_URL = "https://gitlab.example.com"

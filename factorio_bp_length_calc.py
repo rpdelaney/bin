@@ -4,7 +4,9 @@
 I can tile a blueprint in factorio before I strip the belt.
 """
 import json
+
 from decimal import Decimal, InvalidOperation, getcontext
+
 
 getcontext().prec = 28
 
