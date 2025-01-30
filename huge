@@ -13,11 +13,12 @@ _bak() {
 
 
 adjust() {
-  target="${filename/.png/.new.png}"
+  filename="$1"
+  hue="$2"
+  brightness="$3"
+  saturation="$4"
 
-  brightness=55
-  saturation=75
-  hue=175
+  target="${filename/.png/.new.png}"
 
   if [[ ! -w "$filename" ]] ; then
     echo "$filename not writable"
