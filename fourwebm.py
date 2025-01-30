@@ -13,7 +13,6 @@ import subprocess
 import tempfile
 
 from collections.abc import Iterator
-from typing import List
 
 
 # constants
@@ -25,7 +24,7 @@ def parse_args() -> argparse.Namespace:
     default_threads = multiprocessing.cpu_count() - 1
     parser = argparse.ArgumentParser(
         prog="4webm",
-        description="creates webm clips from video files using ffmpeg",
+        description="creates clips from video files using ffmpeg",
     )
     parser.add_argument(
         "--input-file", "-i", help="input video file", required=True
