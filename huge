@@ -5,7 +5,12 @@
 set -o nounset     # expanding unset variables is fatal
 shopt -s nullglob  # globs that match nothing expand to ""
 
-filename="$1"
+
+_bak() {
+  filename="$1"
+  mv "$filename" "$filename".bak
+}
+
 
 adjust() {
   target="${filename/.png/.new.png}"
@@ -19,7 +24,7 @@ adjust() {
     return
   fi
 
-  if bak "$filename"; then
+  if _bak "$filename"; then
     if (set -x ; convert -modulate "$brightness","$saturation","$hue" "$filename" "$target" && rm "$filename"); then
       (set -x ; mv "$target" "$filename")
     fi
