@@ -21,19 +21,22 @@ crop_area="$( \
   tail -n1 \
 )" || return
 
-if bak "$input_file" ; then
-  # crop the video
-  ( set -x ; \
-    ffmpeg \
-    -y \
-    -i "$input_file" \
-    -acodec copy \
-    -vf "$crop_area" \
-    "$output_file" \
-  ) && \
-  mv -f "$output_file" "$input_file"
+bak "$input_file" || exit
+
+notice -u low "Unboxing start..."
+( set -x ; \
+  ffmpeg \
+  -y \
+  -i "$input_file" \
+  -acodec copy \
+  -vf "$crop_area" \
+  "$output_file" \
+) || exit
+
+if mv -f "$output_file" "$input_file"; then
+  notice -u low "Unboxing done"
 else
-  exit
+  notice -u low "Unboxing failed"
 fi
 
 # EOF
