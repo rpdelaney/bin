@@ -7,7 +7,7 @@ main() {
   file_input="$1"
   file_subs="$2"
 
-  ( set -x ; ffmpeg -i "$file_input" -vf subtitles="$file_subs" output.mp4 )
+  ( set -x ; ffmpeg -i "$file_input" -vf "subtitles=$file_subs:force_style='Fontsize=24,BorderStyle=4,BackColour=&H22000000'" output.mp4 )
 
 }
 
