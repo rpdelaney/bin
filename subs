@@ -5,4 +5,12 @@ set -o nounset -o pipefail
 input_file="$1"
 model="${2:-medium.en}"
 language="${3:-en}"
-( set -x ; whisper --model "$model" --language "$language" -f srt "$input_file" )
+format="vtt"
+( set -x ; \
+  whisper --model "$model" \
+  --language "$language" \
+  --output_format "$format" \
+  --word_timestamps "True" \
+  --max_line_count "1" \
+  --max_words_per_line 1 \
+  "$input_file" )
