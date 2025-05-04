@@ -3,7 +3,7 @@
 set -o nounset -o pipefail
 
 input_file="$1"
-model="${2:-medium.en}"
+model="${2:-turbo}"
 language="${3:-en}"
 format="vtt"
 ( set -x ; \
@@ -12,5 +12,6 @@ format="vtt"
   --output_format "$format" \
   --word_timestamps "True" \
   --max_line_count "1" \
-  --max_words_per_line 1 \
+  --max_line_width "60" \
+  --max_words_per_line "1" \
   "$input_file" )
