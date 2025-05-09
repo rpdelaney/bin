@@ -12,5 +12,5 @@ format="vtt"
   --output_format "$format" \
   --word_timestamps "True" \
   --max_line_count "1" \
-  --max_words_per_line "1" \
+  --max_words_per_line "3" \
   "$input_file" )
