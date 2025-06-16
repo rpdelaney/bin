@@ -220,6 +220,8 @@ def main() -> None:
         "-y",
         "-i",
         args.input_file,
+        "-vf",
+        "scale=640:360:force_original_aspect_ratio=decrease",
         "-pass",
         "1",
         # where to put the log file for first pass
@@ -250,6 +252,8 @@ def main() -> None:
         "-y",
         "-i",
         args.input_file,
+        "-vf",
+        "scale=640:360:force_original_aspect_ratio=decrease",
         "-pass",
         "2",
         # where to put the log file for first pass
