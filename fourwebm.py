@@ -243,6 +243,7 @@ def main() -> None:
         "0",
         "-speed",
         "4",
+        "/dev/null",
     ]
     command2 = [
         "ffmpeg",
@@ -299,16 +300,12 @@ def main() -> None:
             str(AUDIO_BITRATE) + "k",  # set audio bitrate
         ]
 
-    command1.append("/dev/null")
     command2.append(temp_file.name)
 
-    # print the commands we're about to execute (for debugging)
-    print(" ".join(command1))
-    print(" ".join(command2))
-    print()
-
     if not args.dry_run:
+        print(" ".join(command1))
         encode(command1)
+        print(" ".join(command2))
         encode(command2)
 
     # Figure out a name for the ile
