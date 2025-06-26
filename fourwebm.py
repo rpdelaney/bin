@@ -65,18 +65,6 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
     )
     parser.add_argument(
-        "--new-video-codec",
-        help="use the new vpx-vp9 video codec",
-        action="store_true",
-        default=False,
-    )
-    parser.add_argument(
-        "--new-audio-codec",
-        help="use the new ogg opus audio codec",
-        action="store_true",
-        default=False,
-    )
-    parser.add_argument(
         "--threads",
         help="how many threads to use when encoding (default: %(default)s)",
         default=default_threads,
@@ -184,7 +172,7 @@ def main() -> None:
     """Main cli entry point."""
     args = parse_args()
 
-    audiocodec = "libopus" if args.new_audio_codec else "libvorbis"
+    audiocodec = "libopus"
 
     temp_file = tempfile.NamedTemporaryFile(suffix=".webm", delete=False)
     log_file = tempfile.NamedTemporaryFile(suffix="-0.log", delete=False)
@@ -246,6 +234,15 @@ def main() -> None:
         "webm",
         # disable audio (since we're doing the first pass)
         "-an",
+        #  set video codec
+        "-c:v",
+        "libvpx-vp9",
+        "-tile-columns",
+        "0",
+        "-frame-parallel",
+        "0",
+        "-speed",
+        "4",
     ]
     command2 = [
         "ffmpeg",
@@ -275,44 +272,22 @@ def main() -> None:
         "webm",
         "-metadata",
         f"title={os.path.basename(args.input_file)}",
+        # set video codec
+        "-c:v",
+        "libvpx-vp9",
+        "-tile-columns",
+        "0",
+        "-frame-parallel",
+        "0",
+        "-auto-alt-ref",
+        "1",
+        # number of frames to look ahead for when encoding
+        # 0 means no limit
+        "-lag-in-frames",
+        "0",
+        "-speed",
+        "1",
     ]
-
-    if args.new_video_codec:
-        command1 += [
-            "-c:v",
-            "libvpx-vp9",
-            "-tile-columns",
-            "0",
-            "-frame-parallel",
-            "0",
-            "-speed",
-            "4",
-        ]
-        command2 += [
-            "-c:v",
-            "libvpx-vp9",
-            "-tile-columns",
-            "0",
-            "-frame-parallel",
-            "0",
-            "-auto-alt-ref",
-            "1",
-            # number of frames to look ahead for when encoding
-            # 0 means no limit
-            "-lag-in-frames",
-            "0",
-            "-speed",
-            "1",
-        ]
-    else:
-        command1 += [
-            "-c:v",
-            "libvpx",
-            # VP8 is fast enough to use -speed=0 for both passes.
-            "-speed",
-            "0",
-        ]
-        command2 += ["-c:v", "libvpx", "-speed", "0"]
 
     if args.no_audio:
         command2.append("-an")
