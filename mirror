@@ -9,7 +9,7 @@ set -o nounset
 
 trap process_sigint INT
 
-function process_sigint() {
+process_sigint() {
   echo "Control-C was pressed." 1>&2
   ( set -x ; \
     killall wl-mirror
