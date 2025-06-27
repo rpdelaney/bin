@@ -2,8 +2,8 @@
 #
 # mirror DISPLAY1 output to DISPLAY2
 
-DISPLAY1_NAME="DP-1"
-DISPLAY2_NAME="DP-3"
+DIS1="DP-1"
+DIS2="DP-2"
 
 set -o nounset
 
@@ -13,7 +13,7 @@ function process_sigint() {
   echo "Control-C was pressed." 1>&2
   ( set -x ; \
     killall wl-mirror
-    swaymsg output "$DISPLAY2_NAME" disable
+    swaymsg output "$DIS2" disable
   )
   exit 0
 }
@@ -21,8 +21,8 @@ function process_sigint() {
 
 main() {
   ( set -x ; \
-    swaymsg output "$DISPLAY2_NAME" enable && \
-    wl-mirror --fullscreen-output "$DISPLAY2_NAME" "$DISPLAY1_NAME"
+    swaymsg output "$DIS2" enable && \
+    wl-mirror --fullscreen-output "$DIS2" "$DIS1"
   )
 }
 
