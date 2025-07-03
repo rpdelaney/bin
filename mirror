@@ -8,16 +8,20 @@ DIS2="DP-2"
 set -o nounset
 
 trap process_sigint INT
+trap die EXIT
+
+die() {
+  ( set -x ; \
+    pkill wl-mirror
+    swaymsg output "$DIS2" disable
+  )
+  exit
+}
 
 process_sigint() {
   echo "Control-C was pressed." 1>&2
-  ( set -x ; \
-    killall wl-mirror
-    swaymsg output "$DIS2" disable
-  )
-  exit 0
+  die
 }
-
 
 main() {
   ( set -x ; \
