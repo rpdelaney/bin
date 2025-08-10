@@ -1,18 +1,38 @@
 #!/usr/bin/env bash
 #
 # take a video file and a subtitle file and hard-code the subtitles
+#
+# Instead of interpreting a hex code as "RRGGBB", the code is read as &HAABBGGRR (alpha, blue, green, red)
+#
+set -o nounset
 
-main() {
-  set -u
-  file_input="$1"
-  file_subs="$2"
-
-  ( set -x ; ffmpeg -i "$file_input" -vf "subtitles=$file_subs:force_style='Fontsize=24,BorderStyle=4,BackColour=&H22000000'" output.mp4 )
-
-}
-
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-  main "$@"
+# Parse args
+if [[ "$1" == "--crop-center" ]]; then
+  crop_center=1
+  shift
 fi
+if [[ "$1" == "--background" ]]; then
+  background=1
+  shift
+fi
+
+file_input="$1"
+file_subs="$2"
+video_format_bg="subtitles=$file_subs:force_style='Fontsize=24,BorderStyle=4"
+
+if [[ "${background:-0}" -eq 1 ]]; then
+  hr
+  echo "Adding background..."
+  hr
+  video_format_bg="$video_format_bg,BackColour=&H22333333'"
+fi
+if [[ "${crop_center:-0}" -eq 1 ]]; then
+  hr
+  echo "Cropping centered..."
+  hr
+  mixin_crop_center="crop=ih*9/16:ih,"
+fi
+
+( set -x ; ffmpeg -i "$file_input" -vf "${mixin_crop_center:-}$video_format_bg" output.mkv )
 
 # EOF
