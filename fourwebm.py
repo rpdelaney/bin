@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Encode an input media file as a webm clip.
+"""Encode an input media file as a mp4 clip.
 
 Calculates bitrate to achieve a target file size.
 """
@@ -107,7 +107,7 @@ def get_video_length(target: str) -> str:
 def get_new_file_name(filename: str) -> Iterator[str]:
     """Yield an appropriate output filename.
 
-    Format: [ORIGINAL_FILE_BASENAME]-[INDEX].webm
+    Format: [ORIGINAL_FILE_BASENAME]-[INDEX].mp4
 
     where [INDEX] is a zero-padded integer starting at 01 and increasing
 
@@ -122,7 +122,7 @@ def get_new_file_name(filename: str) -> Iterator[str]:
 
     basename = os.path.basename(filename)
     splitname = os.path.splitext(basename)[0]
-    fullname = "{}-{:02d}{}".format(splitname, i, ".webm")
+    fullname = "{}-{:02d}{}".format(splitname, i, ".mp4")
 
     # we could use string.ascii_characters and string.digits, but that would
     # miss anything outside of ASCII space
@@ -160,6 +160,7 @@ def encode(command: list[str]) -> None:
     Raises:
         subprocess.CalledProcessError: If the subprocess call exited non-zero.
     """
+    print("####", " ".join(command))
     process = subprocess.Popen(
         command, stdout=subprocess.PIPE, universal_newlines=True
     )
@@ -174,7 +175,7 @@ def main() -> None:
 
     audiocodec = "libopus"
 
-    temp_file = tempfile.NamedTemporaryFile(suffix=".webm", delete=False)
+    temp_file = tempfile.NamedTemporaryFile(suffix=".mp4", delete=False)
     log_file = tempfile.NamedTemporaryFile(suffix="-0.log", delete=False)
 
     start = datetime.datetime.strptime(args.start, "%H:%M:%S.%f").time()  # noqa: DTZ007
@@ -210,11 +211,6 @@ def main() -> None:
         args.input_file,
         "-vf",
         "scale=640:360:force_original_aspect_ratio=decrease",
-        "-pass",
-        "1",
-        # where to put the log file for first pass
-        "-passlogfile",
-        log_file.name,
         # set the video bitrate
         "-b:v",
         str(bitrate_kbit) + "K",
@@ -226,23 +222,16 @@ def main() -> None:
         # use multithreading
         "-threads",
         str(args.threads),
-        # Maximum keyframe interval (frames)
-        "-g",
-        "9999",
-        # force output format to webm
+        # force output format to mp4
         "-f",
-        "webm",
+        "null",
         # disable audio (since we're doing the first pass)
         "-an",
         #  set video codec
         "-c:v",
-        "libvpx-vp9",
-        "-tile-columns",
-        "0",
-        "-frame-parallel",
-        "0",
-        "-speed",
-        "4",
+        "libx265",
+        "-x265-params",
+        "pass=1",
         "/dev/null",
     ]
     command2 = [
@@ -252,11 +241,6 @@ def main() -> None:
         args.input_file,
         "-vf",
         "scale=640:360:force_original_aspect_ratio=decrease",
-        "-pass",
-        "2",
-        # where to put the log file for first pass
-        "-passlogfile",
-        log_file.name,
         # set the video bitrate
         "-b:v",
         str(bitrate_kbit) + "K",
@@ -268,26 +252,16 @@ def main() -> None:
         # use multithreading
         "-threads",
         str(args.threads),
-        # force output format to webm
+        # force output format to mp4
         "-f",
-        "webm",
+        "mp4",
         "-metadata",
         f"title={os.path.basename(args.input_file)}",
         # set video codec
         "-c:v",
-        "libvpx-vp9",
-        "-tile-columns",
-        "0",
-        "-frame-parallel",
-        "0",
-        "-auto-alt-ref",
-        "1",
-        # number of frames to look ahead for when encoding
-        # 0 means no limit
-        "-lag-in-frames",
-        "0",
-        "-speed",
-        "1",
+        "libx265",
+        "-x265-params",
+        "pass=2",
     ]
 
     if args.no_audio:
@@ -303,9 +277,7 @@ def main() -> None:
     command2.append(temp_file.name)
 
     if not args.dry_run:
-        print(" ".join(command1))
         encode(command1)
-        print(" ".join(command2))
         encode(command2)
 
     # Figure out a name for the ile
