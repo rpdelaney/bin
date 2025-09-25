@@ -32,6 +32,8 @@ if [[ "${crop_center:-0}" -eq 1 ]]; then
   hr
   echo "Cropping centered..."
   hr
+  # for a 25% center-left offset, do it like this:
+  # mixin_crop_center="crop=ih*9/16:ih:iw*0.25:0,"
   mixin_crop_center="crop=ih*9/16:ih,"
 fi
 
