@@ -202,7 +202,7 @@ def main() -> None:
     if not args.no_audio:
         sound_size_kbit = round(length * AUDIO_BITRATE)
         target_size_kbit = target_size_kbit - sound_size_kbit
-    bitrate_kbit = round(target_size_kbit / length)
+    bitrate_video_kbit = round(target_size_kbit / length)
 
     command1 = [
         "ffmpeg",
@@ -213,7 +213,7 @@ def main() -> None:
         "scale=640:360:force_original_aspect_ratio=decrease",
         # set the video bitrate
         "-b:v",
-        str(bitrate_kbit) + "K",
+        str(bitrate_video_kbit) + "K",
         # start and stop timestamps
         "-ss",
         args.start,
@@ -243,7 +243,7 @@ def main() -> None:
         "scale=640:360:force_original_aspect_ratio=decrease",
         # set the video bitrate
         "-b:v",
-        str(bitrate_kbit) + "K",
+        str(bitrate_video_kbit) + "K",
         # start and stop timestamps
         "-ss",
         args.start,

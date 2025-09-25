@@ -18,6 +18,8 @@ fi
 
 file_input="$1"
 file_subs="$2"
+shift 2
+
 video_format_bg="subtitles=$file_subs:force_style='Fontsize=24,BorderStyle=4"
 
 if [[ "${background:-0}" -eq 1 ]]; then
@@ -33,6 +35,6 @@ if [[ "${crop_center:-0}" -eq 1 ]]; then
   mixin_crop_center="crop=ih*9/16:ih,"
 fi
 
-( set -x ; ffmpeg -i "$file_input" -vf "${mixin_crop_center:-}$video_format_bg" output.mkv )
+( set -x ; ffmpeg -i "$file_input" -vf "${mixin_crop_center:-}$video_format_bg" "$@" output.mkv )
 
 # EOF
