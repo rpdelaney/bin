@@ -209,8 +209,10 @@ def main() -> None:
         "-y",
         "-i",
         args.input_file,
+        # downscale to 640:640, or closest possible,
+        # without mangling aspect ratio
         "-vf",
-        "scale=640:360:force_original_aspect_ratio=decrease",
+        r"scale='trunc(iw*min(640/iw\,640/ih)/2)*2':'trunc(ih*min(640/iw\,360/ih)/2)*2'",
         # set the video bitrate
         "-b:v",
         str(bitrate_video_kbit) + "K",
@@ -240,7 +242,7 @@ def main() -> None:
         "-i",
         args.input_file,
         "-vf",
-        "scale=640:360:force_original_aspect_ratio=decrease",
+        r"scale='trunc(iw*min(640/iw\,640/ih)/2)*2':'trunc(ih*min(640/iw\,360/ih)/2)*2'",
         # set the video bitrate
         "-b:v",
         str(bitrate_video_kbit) + "K",
