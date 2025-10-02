@@ -224,12 +224,12 @@ def main() -> None:
         # use multithreading
         "-threads",
         str(args.threads),
-        # force output format to mp4
+        # output no files (since we're doing the first pass)
         "-f",
         "null",
         # disable audio (since we're doing the first pass)
         "-an",
-        #  set video codec
+        # set video codec
         "-c:v",
         "libx265",
         "-x265-params",
@@ -257,6 +257,7 @@ def main() -> None:
         # force output format to mp4
         "-f",
         "mp4",
+        # write the original filename into the metadata
         "-metadata",
         f"title={os.path.basename(args.input_file)}",
         # set video codec
