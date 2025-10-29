@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#
+tmpfile="$1"
+
+trap 'trapexit $? $LINENO' EXIT
+
+trapexit() {
+  rm -f "$tmpfile"
+}
+
+( set -x ; mpv --volume=50 --shuffle --playlist="$tmpfile" )

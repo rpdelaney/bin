@@ -6,8 +6,11 @@
 
 trap 'trapexit $? $LINENO' EXIT
 
+if ! command -v _playlist >/dev/null 2>&1 ; then echo "Missing dependency: _playlist" 1>&2 ; exit 1 ; fi
+if ! command -v mpv >/dev/null 2>&1 ; then echo "Missing dependency: mpv" 1>&2 ; exit 1 ; fi
+
 trapexit() {
-  (set -x ; rm -f "$tmpfile")
+  rm -f "$tmpfile"
 }
 
 main() {
@@ -18,12 +21,17 @@ main() {
   for target in "${targets[@]}"; do
     if [[ -r "$target" ]] ; then # it's a file
       printf "%s\n" "$(realpath "$target")" >> "$tmpfile"
-    else
+    else # maybe it's a directory?
       printf "%s\n" "$target" >> "$tmpfile"
     fi
   done
 
-  ( set -x ; mpv --volume=50 --shuffle --playlist="$tmpfile" )
+  if [[ ! -s "$tmpfile" ]]; then
+    echo "No readable targets were found: ${targets[*]}" 1>&2
+    return 1
+  fi
+
+  exec _playlist "$tmpfile"
 }
 
 main "$@"
