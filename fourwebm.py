@@ -14,6 +14,8 @@ import tempfile
 
 from collections.abc import Iterator
 
+from rich.console import Console
+
 
 # constants
 AUDIO_BITRATE = 96
@@ -160,7 +162,11 @@ def encode(command: list[str]) -> None:
     Raises:
         subprocess.CalledProcessError: If the subprocess call exited non-zero.
     """
-    print("####", " ".join(command))
+    console = Console()
+    console.rule()
+    console.out(command, highlight=True)
+    console.rule()
+
     process = subprocess.Popen(
         command, stdout=subprocess.PIPE, universal_newlines=True
     )
@@ -173,7 +179,7 @@ def main() -> None:
     """Main cli entry point."""
     args = parse_args()
 
-    audiocodec = "libopus"
+    audiocodec = "aac"
 
     temp_file = tempfile.NamedTemporaryFile(suffix=".mp4", delete=False)
     log_file = tempfile.NamedTemporaryFile(suffix="-0.log", delete=False)
@@ -185,17 +191,13 @@ def main() -> None:
         stop = datetime.datetime.strptime(  # noqa: DTZ007
             get_video_length(args.input_file), "%H:%M:%S.%f"
         ).time()
-    print(f"stop: {stop}")
 
     delta = datetime.datetime.combine(
         datetime.date.min, stop
     ) - datetime.datetime.combine(datetime.date.min, start)
     length = delta.total_seconds()
-    if length < 0:
-        errmsg = f"Video length was less than 0 seconds {length}"
-        raise RuntimeError(errmsg)
-    if length >= 300:  # maximum video length is 5 minutes  # noqa: PLR2004
-        errmsg = f"Video length was greater than 300 seconds: {length}"
+    if length <= 0:
+        errmsg = f"Video length was less than or equal to 0 seconds: {length}"
         raise RuntimeError(errmsg)
 
     target_size_kbit = args.size * 8 * 1024
@@ -212,15 +214,16 @@ def main() -> None:
         # downscale to 640:640, or closest possible,
         # without mangling aspect ratio
         "-vf",
-        r"scale='trunc(iw*min(640/iw\,640/ih)/2)*2':'trunc(ih*min(640/iw\,360/ih)/2)*2'",
+        # set filters
+        r"format=yuv420p,fps=30000/1001,scale=trunc(iw*min(640/iw\,640/ih)/2)*2:trunc(ih*min(640/iw\,640/ih)/2)*2",
         # set the video bitrate
         "-b:v",
-        str(bitrate_video_kbit) + "K",
+        str(bitrate_video_kbit) + "k",
         # start and stop timestamps
         "-ss",
         args.start,
         "-to",
-        stop.strftime("%H:%M:%S"),
+        stop.strftime("%H:%M:%S.%f"),
         # use multithreading
         "-threads",
         str(args.threads),
@@ -229,28 +232,39 @@ def main() -> None:
         "null",
         # disable audio (since we're doing the first pass)
         "-an",
+        # faster streaming/startup
+        "-movflags",
+        "+faststart",
         # set video codec
         "-c:v",
-        "libx265",
-        "-x265-params",
-        "pass=1",
-        "/dev/null",
+        "libx264",
+        "-preset",
+        "slow",
+        "-pass",
+        "1",
+        # force constant timing
+        "-fps_mode",
+        "cfr",
+        # write data to null
+        # (since we don't actually produce a video on this step)
+        "-",
     ]
     command2 = [
         "ffmpeg",
         "-y",
         "-i",
         args.input_file,
+        # set filters
         "-vf",
-        r"scale='trunc(iw*min(640/iw\,640/ih)/2)*2':'trunc(ih*min(640/iw\,360/ih)/2)*2'",
+        r"format=yuv420p,fps=30000/1001,scale=trunc(iw*min(640/iw\,640/ih)/2)*2:trunc(ih*min(640/iw\,640/ih)/2)*2",
         # set the video bitrate
         "-b:v",
-        str(bitrate_video_kbit) + "K",
+        str(bitrate_video_kbit) + "k",
         # start and stop timestamps
         "-ss",
         args.start,
         "-to",
-        stop.strftime("%H:%M:%S"),
+        stop.strftime("%H:%M:%S.%f"),
         # use multithreading
         "-threads",
         str(args.threads),
@@ -260,11 +274,22 @@ def main() -> None:
         # write the original filename into the metadata
         "-metadata",
         f"title={os.path.basename(args.input_file)}",
+        # downmix audio to stereo
+        "-ac",
+        "2",
         # set video codec
         "-c:v",
-        "libx265",
-        "-x265-params",
-        "pass=2",
+        "libx264",
+        "-preset",
+        "slow",
+        "-pass",
+        "2",
+        # force constant timing
+        "-fps_mode",
+        "cfr",
+        # explicitly set the sample entry for maximum compatibility
+        "-tag:v",
+        "avc1"
     ]
 
     if args.no_audio:
