@@ -1,0 +1,85 @@
+#!/usr/bin/env bash
+#
+# run a game with my favorite sugar
+
+set -o nounset     # expanding unset variables is fatal
+shopt -s nullglob  # globs that match nothing expand to ""
+
+log() {
+  local msg=${1:-}
+  local level="${2:-INFO}"
+  now=$(date "+%Y-%m-%d %H:%M:%S%z")
+  echo "$now $HOSTNAME $(basename "$0"):$level $msg" 1>&2
+}
+
+#MANGOHUD_CONFIGFILE=""
+MANGOHUD_CONFIGFILE=/home/ryan/.config/MangoHud/default.conf
+export MANGOHUD_CONFIGFILE
+
+if [[ -n "${WAYLAND_DISPLAY:-}" ]]; then
+  unset WAYLAND_DISPLAY
+fi
+
+if [[ -z "${QT_QPA_PLATFORM:-}" ]]; then
+  QT_QPA_PLATFORM="xcb,wayland"   # fall-back to wayland
+  export QT_QPA_PLATFORM
+fi
+
+# Dependencies {{{1
+dependencies="mangohud gamemoderun gamescope hr"
+missing_dependencies=""
+
+is_missing=0
+for dependency in $dependencies; do
+  if ! command -v "$dependency" > /dev/null 2>&1; then
+    # If not found, add to missing_dependencies string
+    missing_dependencies="$missing_dependencies $dependency"
+    is_missing=1
+  fi
+done
+
+if [ $is_missing -eq 1 ]; then
+  printf "Required dependencies are missing:%s\\n" "$missing_dependencies"
+  exit 1
+fi
+
+unset dependencies missing_dependencies is_missing
+
+if [[ -n "$MANGOHUD_CONFIGFILE" ]]; then
+  if [[ -r "$MANGOHUD_CONFIGFILE" ]]; then
+    log "Mangohud config not found: \`$MANGOHUD_CONFIGFILE\`" 1>&2
+  fi
+fi
+# Dependencies 1}}}
+
+main() {
+#   --expose-wayland # DONT DO THIS until you know mangoapp supports wayland
+#       --scaler "fit" \
+#       --hide-cursor-delay \
+
+  # shellcheck disable=SC2068
+  ( set -x ;
+      gamescope \
+        --fullscreen \
+        --mangoapp \
+        --output-height 1080 \
+        --output-width 1920 \
+        --nested-height 480 \
+        --nested-width 852 \
+      $@ 2>&1
+  ) | \
+    grep -Fv \
+    -e "got the same buffer committed twice, ignoring." \
+    -e "Could not resolve keysym" \
+    -e "Loading scripts from:" \
+    -e "Running script file" \
+    -e "LD_PRELOAD cannot be preloaded (wrong ELF class: ELFCLASS32)"
+}
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  hr
+  main "$@"
+  hr
+fi
+
+# EOF
