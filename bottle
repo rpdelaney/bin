@@ -42,7 +42,7 @@ fi
 unset dependencies missing_dependencies is_missing
 
 if [[ -n "${MANGOHUD_CONFIGFILE:-}" ]]; then
-  if [[ -r "$MANGOHUD_CONFIGFILE" ]]; then
+  if [[ ! -r "$MANGOHUD_CONFIGFILE" ]]; then
     log "Mangohud config not found: \`$MANGOHUD_CONFIGFILE\`" 1>&2
   fi
 fi
