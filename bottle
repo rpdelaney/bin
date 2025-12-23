@@ -12,10 +12,6 @@ log() {
   echo "$now $HOSTNAME $(basename "$0"):$level $msg" 1>&2
 }
 
-#MANGOHUD_CONFIGFILE=""
-MANGOHUD_CONFIGFILE=/home/ryan/.config/MangoHud/default.conf
-export MANGOHUD_CONFIGFILE
-
 if [[ -n "${WAYLAND_DISPLAY:-}" ]]; then
   unset WAYLAND_DISPLAY
 fi
