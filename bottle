@@ -50,18 +50,16 @@ fi
 
 main() {
 #   --expose-wayland # DONT DO THIS until you know mangoapp supports wayland
-#       --scaler "fit" \
-#       --hide-cursor-delay \
 
   # shellcheck disable=SC2068
   ( set -x ;
       gamescope \
         --fullscreen \
         --mangoapp \
+        --nested-height 1080 \
+        --nested-width 1920 \
         --output-height 1080 \
         --output-width 1920 \
-        --nested-height 480 \
-        --nested-width 852 \
       $@ 2>&1
   ) | \
     grep -Fv \
