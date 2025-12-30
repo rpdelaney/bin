@@ -67,7 +67,9 @@ main() {
     -e "Could not resolve keysym" \
     -e "Loading scripts from:" \
     -e "Running script file" \
-    -e "LD_PRELOAD cannot be preloaded (wrong ELF class: ELFCLASS32)"
+    -e "LD_PRELOAD cannot be preloaded (wrong ELF class: ELFCLASS32)" \
+    | \
+    uniq
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
