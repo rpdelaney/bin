@@ -12,6 +12,11 @@ import json
 from pathlib import Path
 
 
+"""
+directory = Path('your_directory_path')
+files = [file for file in directory.rglob('*') if file.is_file()]
+"""
+
 textures = []
 
 for filepath in [Path(line.strip()) for line in fileinput.input()]:
@@ -41,4 +46,4 @@ output = {
     "Textures": textures,
 }
 
-print(json.dumps(output, indent=2))
+print(json.dumps(output, indent=2, sort_keys=True))
