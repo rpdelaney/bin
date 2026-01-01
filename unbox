@@ -21,7 +21,7 @@ crop_area="$( \
   tail -n1 \
 )" || return
 
-bak "$input_file" || exit
+backup_file="$(bak "$input_file" || exit)"
 
 notice -u low "Unboxing start..."
 ( set -x ; \
@@ -33,7 +33,7 @@ notice -u low "Unboxing start..."
   "$output_file" \
 ) || exit
 
-if mv -f "$output_file" "$input_file"; then
+if mv -f "$output_file" "$input_file" && touch --reference="$backup_file" "$input_file"; then
   notice -u low "Unboxing done"
 else
   notice -u low "Unboxing failed"
