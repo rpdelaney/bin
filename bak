@@ -4,19 +4,10 @@
 
 for file in "$@"; do
   date="$(date +%Y%m%d-%H%m%S)" || exit
-  if command -v greadlink &> /dev/null; then
-    readlink="greadlink"
-  else
-    readlink="readlink"
-  fi
-  oldname="$("$readlink" -f "$file")" || exit
+  oldname="$(readlink -f "$file")" || exit
   newname="$oldname"."$date".bak
 
-  if [[ "$(ostype)" == "macos" ]]; then
-    ( set -x ; gcp -r --reflink=auto "$file" "$newname" )
-  else
-    ( set -x ; cp -r --reflink=auto "$file" "$newname" )
-  fi
+  ( set -x ; cp -r --reflink=auto "$file" "$newname" )
 done
 
 # EOF
