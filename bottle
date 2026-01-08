@@ -13,7 +13,7 @@ log() {
 }
 
 # Dependencies {{{1
-dependencies="mangohud gamemoderun gamescope hr"
+dependencies="gamescope rich"
 missing_dependencies=""
 
 is_missing=0
@@ -64,9 +64,10 @@ main() {
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-  hr
+  rich --rule
+  log "Launching command: $*"
   main "$@"
-  hr
+  rich --rule
 fi
 
 # EOF
