@@ -41,9 +41,11 @@ fi
 
 main() {
 #   --expose-wayland # DONT DO THIS until you know mangoapp supports wayland
+#   we must `env LD_PRELOAD=""` to prevent stuttering after 20 minutes
 
   # shellcheck disable=SC2068
   ( set -x ;
+    env LD_PRELOAD="" \
       gamescope \
         --fullscreen \
         --mangoapp \
