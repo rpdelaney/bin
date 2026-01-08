@@ -12,15 +12,6 @@ log() {
   echo "$now $HOSTNAME $(basename "$0"):$level $msg" 1>&2
 }
 
-if [[ -n "${WAYLAND_DISPLAY:-}" ]]; then
-  unset WAYLAND_DISPLAY
-fi
-
-if [[ -z "${QT_QPA_PLATFORM:-}" ]]; then
-  QT_QPA_PLATFORM="xcb,wayland"   # fall-back to wayland
-  export QT_QPA_PLATFORM
-fi
-
 # Dependencies {{{1
 dependencies="mangohud gamemoderun gamescope hr"
 missing_dependencies=""
