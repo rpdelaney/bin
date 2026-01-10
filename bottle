@@ -31,12 +31,6 @@ if [ $is_missing -eq 1 ]; then
 fi
 
 unset dependencies missing_dependencies is_missing
-
-if [[ -n "${MANGOHUD_CONFIGFILE:-}" ]]; then
-  if [[ ! -r "$MANGOHUD_CONFIGFILE" ]]; then
-    log "Mangohud config not found: \`$MANGOHUD_CONFIGFILE\`" 1>&2
-  fi
-fi
 # Dependencies 1}}}
 
 main() {
@@ -49,12 +43,9 @@ main() {
       gamescope \
         --fullscreen \
         --mangoapp \
-        --nested-height 1080 \
-        --nested-width 1920 \
-        --output-height 1080 \
-        --output-width 1920 \
       $@ 2>&1
-  ) | \
+  ) \
+    | \
     grep -Fv \
     -e "got the same buffer committed twice, ignoring." \
     -e "Could not resolve keysym" \
