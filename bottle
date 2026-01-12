@@ -40,20 +40,18 @@ main() {
   # shellcheck disable=SC2068
   ( set -x ;
     env LD_PRELOAD="" \
-      gamescope \
-        --fullscreen \
-        --mangoapp \
-      $@ 2>&1
+    gamescope \
+      --fullscreen \
+      --mangoapp \
+    $@ 2>&1
   ) \
-    | \
-    grep -Fv \
+  | grep -Fv \
     -e "got the same buffer committed twice, ignoring." \
     -e "Could not resolve keysym" \
     -e "Loading scripts from:" \
     -e "Running script file" \
     -e "LD_PRELOAD cannot be preloaded (wrong ELF class: ELFCLASS32)" \
-    | \
-    uniq
+  | uniq
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
