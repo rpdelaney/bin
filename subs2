@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+#
+# podman pull ghcr.io/ggml-org/whisper.cpp:main
+
+set -o nounset     # expanding unset variables is fatal
+shopt -s nullglob  # globs that match nothing expand to ""
+
+INPUTFILE="$(readlink -f "$1")" || exit
+INPUTFILE_NAME="${INPUTFILE%.*}"
+INPUTFILE_EXT="${INPUTFILE##*.}"
+MODEL="${2:-large-v2}"
+shift 2
+
+WORKDIR="$(mktemp --directory --suffix=.whispercpp)"
+cd "$WORKDIR" || exit
+
+audiofile="$(basename "$INPUTFILE")"
+FILETYPE="$(file "$INPUTFILE" | jc --file | jq --raw-output '.[].type')"
+if [[ "$FILETYPE" != *"WAVE audio, Microsoft PCM"* ]]; then
+  echo "Filetype must be WAV." 1>&2
+  tmpfile="$(mktemp --tmpdir="$WORKDIR" --suffix=.wav)"
+  ffmpeg -y -i "$INPUTFILE" "$tmpfile" || exit
+  audiofile="$(basename "$tmpfile")"
+fi
+
+time ( set -x ; \
+  podman run -it --rm \
+  --volume /home/ryan/.cache/whisper:/models \
+  --volume "$PWD":/audios \
+  whisper.cpp:main \
+  "whisper-cli --print-progress --processors 7 --threads 14 --file /audios/$audiofile --model /models/ggml-$MODEL.bin --print-colors --output-vtt --output-lrc --output-txt $*"
+)
+mv -v "$tmpfile.vtt"     "$INPUTFILE_NAME.$INPUTFILE_EXT".vtt
+mv -v "$tmpfile.json"    "$INPUTFILE_NAME.$INPUTFILE_EXT".json
+mv -v "$tmpfile.txt"     "$INPUTFILE_NAME.$INPUTFILE_EXT".txt
+
+# EOF
