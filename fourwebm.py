@@ -14,8 +14,6 @@ import tempfile
 
 from collections.abc import Iterator
 
-from rich.console import Console
-
 
 # constants
 AUDIO_BITRATE = 96
@@ -289,7 +287,7 @@ def main() -> None:
         "cfr",
         # explicitly set the sample entry for maximum compatibility
         "-tag:v",
-        "avc1"
+        "avc1",
     ]
 
     if args.no_audio:
