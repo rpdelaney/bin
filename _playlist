@@ -8,4 +8,4 @@ trapexit() {
   rm -f "$tmpfile"
 }
 
-( set -x ; mpv --volume=50 --shuffle --playlist="$tmpfile" )
+( set -x ; mpv --volume=50 --loop-playlist --playlist="$tmpfile" )
