@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+#
+
+set -o nounset     # expanding unset variables is fatal
+shopt -s nullglob  # globs that match nothing expand to ""
+
+for cmd in llm rich glow gum jq; do
+  if ! command -v "$cmd" &> /dev/null; then
+    echo "Error: $cmd is not installed."
+    exit 1
+  fi
+done
+
+main() {
+  rich --rule
+
+  while true; do
+    input="$(gum write)" || break
+    echo -n "$input" | rich --panel "rounded" -
+
+    # shellcheck disable=SC2068
+    gum spin \
+      --title="Thinking" \
+      --show-output \
+      --show-stdout \
+      --show-stderr \
+      -- \
+    llm prompt ${cid:+--conversation "$cid"} ${sp:+--system "$sp"} $@ -- <<< "$input" | glow || return
+
+    if [[ -z "${cid:-}" ]]; then
+      cid="$(llm logs --json | jq --raw-output '.[-1].conversation_id')"
+      echo ">> conversation id: $cid" | rich --text-right - 1>&2
+    fi
+  done
+}
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  main "$@"
+fi
+
+# EOF
