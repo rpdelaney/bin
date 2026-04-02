@@ -3,7 +3,7 @@
 # display a progress meter for a stream
 
 main() {
-  pv -F '%t⏱️ →%r ≈%a %p'
+  pv --format='%t → %r ≈%a %p'
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
