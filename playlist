@@ -4,26 +4,23 @@
 # some arguments I usually need
 #
 
-trap 'trapexit $? $LINENO' EXIT
+trap 'trapexit $? $LINENO' ERR INT
 
 if ! command -v _playlist >/dev/null 2>&1 ; then echo "Missing dependency: _playlist" 1>&2 ; exit 1 ; fi
 if ! command -v mpv >/dev/null 2>&1 ; then echo "Missing dependency: mpv" 1>&2 ; exit 1 ; fi
 
 trapexit() {
   rm -f "$tmpfile"
+  exit 1
 }
 
 main() {
   local targets=("$@")
-  tmpfile="$(mktemp --suffix=mpv)"
+  tmpfile="$(mktemp --suffix=playlist)"
   chmod 0600 "$tmpfile" || return
 
   for target in "${targets[@]}"; do
-    if [[ -r "$target" ]] ; then # it's a file
-      printf "%s\n" "$(realpath "$target")" >> "$tmpfile"
-    else # maybe it's a directory?
-      printf "%s\n" "$target" >> "$tmpfile"
-    fi
+    printf "%s\n" "$(realpath "$target")" >> "$tmpfile"
   done
 
   if [[ ! -s "$tmpfile" ]]; then
