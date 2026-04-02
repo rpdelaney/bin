@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Remove letterboxing from media files using ffmpeg's cropdetect function
+# Remove letterboxing and pillarboxing from media files using ffmpeg's cropdetect function
 #
 
 set -o nounset -o pipefail
@@ -24,6 +24,8 @@ crop_area="$( \
 backup_file="$(bak "$input_file" || exit)"
 
 notice -u low "Unboxing start..."
+echo "crop_area: $crop_area" 1>&2
+
 ( set -x ; \
   ffmpeg \
   -y \
