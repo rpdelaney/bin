@@ -6,21 +6,14 @@
 set -o nounset -o pipefail
 
 if ! command -v ffmpeg >/dev/null 2>&1 ; then echo "Missing dependency: ffmpeg" 1>&2 ; exit 1 ; fi
-
-basename=$(basename -- "$1")
-filename="${basename%.*}"
-extension="${basename##*.}"
-outputname="$filename-rotated.$extension"
+if ! command -v bak >/dev/null 2>&1 ; then echo "Missing dependency: bak" 1>&2 ; exit 1 ; fi
 
 mode="$2"
 
+mv "$1" "$1".bak
+
 # "soft" transposition using metadata
 # the player must support it, but most do anymore
-( set -x ; ffmpeg -display_rotation "$mode" -i "$1" -codec copy "$outputname" )
+( set -x ; ffmpeg -display_rotation "$mode" -i "$1".bak -codec copy "$1" )
 
-# "hard" transposition, re-encodes the video:
-# 0 = 90CounterCLockwise and Vertical Flip (default)
-# 1 = 90Clockwise
-# 2 = 90CounterClockwise
-# 3 = 90Clockwise and Vertical Flip
-# ( set -x ; ffmpeg -i "$basename" -vf "transpose=$mode" "$outputname" )
+touch --reference="$1".bak "$1"
