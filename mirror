@@ -25,8 +25,9 @@ process_sigint() {
 
 main() {
   ( set -x ; \
+    WAYLAND_DEBUG=1 \
     swaymsg output "$DIS2" enable && \
-    wl-mirror --fullscreen-output "$DIS2" "$DIS1"
+    wl-mirror --title "typhon" --stream --scaling nearest --fullscreen-output "$DIS2" "$DIS1"
   )
 }
 
