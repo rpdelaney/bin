@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 #
 # run a game with my favorite sugar
+#
+# devildaggers: bottle -w 852 -h 480 -W 852 -H 480 --scaler "fit" --nested-refresh 360 --force-grab-cursor --mangoapp --fullscreen -- %command%
 
 set -o nounset     # expanding unset variables is fatal
 shopt -s nullglob  # globs that match nothing expand to ""
