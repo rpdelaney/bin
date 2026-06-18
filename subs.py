@@ -80,11 +80,18 @@ def colorize_ass(ass_path: Path) -> None:
     try:
         text = ass_path.read_text(encoding="utf-8")
     except Exception as err:  # noqa: BLE001
-        print(f"Error reading file {ass_path}: {err}", file=sys.stderr)
+        print(
+            f"Error reading file {ass_path}: {err}",
+            file=sys.stderr,
+        )
         sys.exit(1)
 
-    new_text = text.replace("{\\u1}", "{\\c&HF169CE&}").replace(
-        "{\\u0}", "{\\c&HFFFFFF&}"
+    new_text = text.replace(
+        "{\\u1}",
+        "{\\c&H16F6F9&}",
+    ).replace(
+        "{\\u0}",
+        "{\\c&HFFFFFF&}",
     )
     try:
         ass_path.write_text(new_text, encoding="utf-8")
