@@ -22,6 +22,8 @@ def run_whisper(
     input_file: Path,
     model: str,
     output_format: str = "vtt",
+    language: str | None = None,
+    task: str = "transcribe",
 ) -> None:
     """
     Run the whisper command-line tool to generate subtitles.
@@ -32,16 +34,18 @@ def run_whisper(
         model,
         "--output_format",
         output_format,
-        "--word_timestamps",
-        "True",
-        "--highlight_words",
-        "True",
-        "--max_line_count",
-        "1",
-        "--max_line_width",
-        "15",
-        "--max_words_per_line",
-        "3",
+        "--task",
+        task,
+#       "--word_timestamps",
+#       "True",
+#       "--highlight_words",
+#       "True",
+#       "--max_line_count",
+#       "1",
+#       "--max_words_per_line",
+#       "3",
+        "--threads",
+        "5",
         str(input_file),
     ]
     print("Running whisper command:")
@@ -100,21 +104,42 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--model",
-        default="turbo",
-        help="Name of the whisper model (default: turbo)",
+        default="large-v2",
+        help="Name of the whisper model (default: large-v2)",
     )
-    return parser.parse_args()
+    parser.add_argument(
+        "--output-format",
+        default="vtt",
+        help="output format to pass to whisper-cli. See `whisper --help`",
+    )
+    parser.add_argument(
+        "--language",
+        default="None",
+        help="Language spoken in audio. `whisper --help`",
+    )
+    parser.add_argument(
+        "--task",
+        default="transcribe",
+        help="output format to pass to whisper-cli. See `whisper --help`",
+    )
+    return parser.parse_known_args()
 
 
 def main() -> None:
-    args = parse_args()
+    args, _ = parse_args()
 
     input_file: Path = args.input_file.resolve()
     model: str = args.model
 
     # Run whisper to generate VTT subtitles.
     try:
-        run_whisper(input_file, model)
+        run_whisper(
+            input_file=input_file,
+            language=args.language,
+            model=model,
+            output_format=args.output_format,
+            task=args.task,
+        )
     except subprocess.CalledProcessError as err:
         print(f"Error running whisper: {err}", file=sys.stderr)
         sys.exit(1)
