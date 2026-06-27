@@ -18,14 +18,13 @@ main() {
     input="$(gum write)" || break
     echo -n "$input" | rich --panel "rounded" -
 
-    # shellcheck disable=SC2068
     gum spin \
       --title="Thinking" \
       --show-output \
       --show-stdout \
       --show-stderr \
       -- \
-    llm prompt ${cid:+--conversation "$cid"} ${sp:+--system "$sp"} $@ -- <<< "$input" | glow || return
+    llm prompt ${cid:+--conversation "$cid"} ${sp:+--system "$sp"} "$@" -- <<< "$input" | glow || return
 
     if [[ -z "${cid:-}" ]]; then
       cid="$(llm logs --json | jq --raw-output '.[-1].conversation_id')"
@@ -34,8 +33,6 @@ main() {
   done
 }
 
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-  main "$@"
-fi
+main "$@"
 
 # EOF
