@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+#
+# wrapper to ensure the target directory is there
+
+set -o nounset     # expanding unset variables is fatal
+shopt -s nullglob  # globs that match nothing expand to ""
+
+wlcopydir="/tmp/wl-copy-cache"
+tmpssdir="/tmp/wl-screenshots"
+
+main() {
+  mkdir -p "$wlcopydir" || return
+  mkdir -p "$tmpssdir" || return
+
+  tmpfile="$tmpssdir/$(date '+%Y-%m-%d_%H-%M-%S').jpg"
+
+  # mod+F12
+  grim -t jpeg  -q 90 -c  -g "$(slurp)"     "$tmpfile"
+
+# TODO: figure out how tf to put a file in the clipboard in sway
+# pbcopy -t "text/plain;charset=utf-8" -t "UTF8_STRING" -t text/uri-list <<< "$tmpfile"
+# notice "copied something I think"
+}
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  main "$@"
+fi
+
+# EOF
