@@ -4,6 +4,11 @@
 # arguments passed will be the query question
 #
 
+if command -v "gum" > /dev/null 2>&1; then
+  gum confirm
+  exit
+fi
+
 [ -n "$*" ] && QUERY="$*"" (y/n)" || QUERY="Continue? (y/n)"
 
 until [ "$INPUT" = "y" ]; do
