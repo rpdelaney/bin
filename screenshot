@@ -17,9 +17,8 @@ main() {
   # mod+F12
   grim -t jpeg  -q 90 -c  -g "$(slurp)"     "$tmpfile"
 
-# TODO: figure out how tf to put a file in the clipboard in sway
-# pbcopy -t "text/plain;charset=utf-8" -t "UTF8_STRING" -t text/uri-list <<< "$tmpfile"
-# notice "copied something I think"
+  # copy the file to the clipboard
+  wl-copy --type "text/uri-list" <<< "file://$(realpath "$tmpfile")"
 }
 
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
