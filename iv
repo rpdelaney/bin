@@ -6,11 +6,11 @@ main() {
   set -x
   case "$1" in
     "--h"*)
-      man nsxiv
+      halp nsxiv
       return
       ;;
     "-h"*)
-      man nsxiv
+      halp nsxiv
       return
       ;;
   esac
