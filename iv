@@ -4,6 +4,16 @@
 
 main() {
   set -x
+  case "$1" in
+    "--h"*)
+      man nsxiv
+      return
+      ;;
+    "-h"*)
+      man nsxiv
+      return
+      ;;
+  esac
 
   # if we have a lot of arguments, start in slideshow
   if [[ $# -ge 3 ]]; then
@@ -11,17 +21,22 @@ main() {
   fi
 
   # shellcheck disable=SC2086
-  ( set -x ;
-    nsxiv \
-      --animate \
-      --recursive \
-      --scale-mode f \
-      --stdout \
-      --alpha-layer \
-      $gallery_arg \
-      $NSXIV_OPTIONS \
-      "$@"
+  result=$(nsxiv \
+    --animate \
+    --recursive \
+    --scale-mode f \
+    --stdout \
+    --alpha-layer \
+    $gallery_arg \
+    $NSXIV_OPTIONS \
+    "$@" | sed -z 's@\n$@@'
   )
+  if [[ -n "$result" ]]; then
+    : assume the output is files, and copy them to clipboard
+    for file in $result ; do
+      readlink -f "$file"
+    done | wl-copy --trim-newline --type "text/url-list"
+  fi
 }
 
 main "$@"
