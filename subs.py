@@ -29,23 +29,21 @@ def run_whisper(
     Run the whisper command-line tool to generate subtitles.
     """
     cmd = [
-        "whisper",
+        "whisperx",
         "--model",
         model,
         "--output_format",
         output_format,
         "--task",
         task,
-        "--word_timestamps",
-        "True",
         "--highlight_words",
         "True",
         "--max_line_count",
         "1",
         "--max_line_width",
-        "20",
+        "18",
         "--threads",
-        "5",
+        "7",
         str(input_file),
     ]
     print("Running whisper command:")
