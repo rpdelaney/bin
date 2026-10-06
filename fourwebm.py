@@ -292,7 +292,7 @@ def main() -> None:
         "cfr",
         # explicitly set the sample entry for maximum compatibility
         "-tag:v",
-        "avc1"
+        "avc1",
     ]
 
     if args.no_audio:
