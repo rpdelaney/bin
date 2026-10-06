@@ -234,7 +234,7 @@ def main() -> None:
         "-an",
         # faster streaming/startup
         "-movflags",
-        "+faststart",
+        "faststart",
         # set video codec
         "-c:v",
         "libx264",
@@ -277,6 +277,9 @@ def main() -> None:
         # downmix audio to stereo
         "-ac",
         "2",
+        # faster streaming/startup
+        "-movflags",
+        "faststart",
         # set video codec
         "-c:v",
         "libx264",
