@@ -11,32 +11,22 @@ if [[ "$1" == "--crop-center" ]]; then
   crop_center=1
   shift
 fi
-if [[ "$1" == "--background" ]]; then
-  background=1
-  shift
-fi
 
 file_input="$1"
 file_subs="$2"
 shift 2
 
-video_format_bg="subtitles=$file_subs:force_style='Fontsize=24,BorderStyle=4"
+video_format_bg="subtitles=$file_subs:force_style='Fontsize=24,BorderStyle=4,BackColour=&H22333333'"
 
-if [[ "${background:-0}" -eq 1 ]]; then
-  hr
-  echo "Adding background..."
-  hr
-  video_format_bg="$video_format_bg,BackColour=&H22333333'"
-fi
 if [[ "${crop_center:-0}" -eq 1 ]]; then
   hr
   echo "Cropping centered..."
   hr
   # for a 25% center-left offset, do it like this:
-  # mixin_crop_center="crop=ih*9/16:ih:iw*0.25:0,"
+# mixin_crop_center="crop=ih*9/16:ih:iw*0.25:0,"
   mixin_crop_center="crop=ih*9/16:ih,"
 fi
 
-( set -x ; ffmpeg -i "$file_input" -vf "${mixin_crop_center:-}$video_format_bg" "$@" output.mkv )
+( set -x ; ffmpeg -i "$file_input" "$@" -vf "${mixin_crop_center:-}$video_format_bg" -acodec copy output.mkv )
 
 # EOF
