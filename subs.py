@@ -14,6 +14,7 @@ Requires:
 import argparse
 import subprocess
 import sys
+import os
 
 from pathlib import Path
 
@@ -21,34 +22,46 @@ from pathlib import Path
 def run_whisper(
     input_file: Path,
     model: str,
+    language: str,
+    task: str,
     output_format: str = "vtt",
-    language: str | None = None,
-    task: str = "transcribe",
 ) -> None:
     """
     Run the whisper command-line tool to generate subtitles.
     """
     cmd = [
         "whisperx",
-        "--model",
-        model,
-        "--output_format",
-        output_format,
-        "--task",
-        task,
-        "--highlight_words",
-        "True",
-        "--max_line_count",
-        "1",
-        "--max_line_width",
-        "18",
-        "--threads",
-        "7",
+        *("--model", model),
+        *("--output_format", output_format),
+        *("--task", task),
+        *("--language", language),
+        "--diarize",
+        *("--diarize_model", "/home/ryan/models/pyannote-speaker-diarization-community-1"),
+        *("--asr_backend", "qwen3"),
+        *("--qwen_asr_model", "/home/ryan/models/Qwen3-ASR-1.7B"),
+        *("--qwen_forced_aligner", "/home/ryan/models/Qwen3-ForcedAligner-0.6B"),
+        *("--highlight_words", "True"),
+        *("--max_line_count", "1"),
+        *("--max_line_width", "18"),
+        *("--threads", "7"),
         str(input_file),
     ]
     print("Running whisper command:")
     print(" ".join(cmd))
-    subprocess.run(cmd, check=True)
+    subprocess.run(
+        cmd,
+        check=True,
+        env={
+            "HF_HOME": "/home/ryan/models",
+            "HF_HUB_DISABLE_TELEMETRY": "1",
+            "HF_HUB_OFFLINE": "1",
+            "HF_HUB_DISABLE_IMPLICIT_TOKEN": "1",
+            "HF_HUB_DISABLE_UPDATE_CHECK": "1",
+            "DO_NOT_TRACK": "1",
+            "PATH": os.environ.get("PATH", "/home/ryan/.local/bin/"),
+            "TRANSFORMERS_OFFLINE": "1",
+        },
+    )
 
 
 def convert_vtt_to_ass(vtt_path: Path) -> Path:
@@ -99,14 +112,12 @@ def colorize_ass(ass_path: Path) -> None:
     print(f"Colorization applied to {ass_path}")
 
 
-def parse_args() -> argparse.Namespace:
+def parse_args() -> tuple[argparse.Namespace, list[str]]:
     parser = argparse.ArgumentParser(
         description="Generate subtitles with whisper, convert from VTT to "
         "ASS via ffmpeg, and colorize the ASS file."
     )
-    parser.add_argument(
-        "input_file", type=Path, help="Path to the input media file."
-    )
+    parser.add_argument("input_file", type=Path, help="Path to the input media file.")
     parser.add_argument(
         "--model",
         default="large-v2",
@@ -114,12 +125,12 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--output-format",
-        default="vtt",
+        default="json",
         help="output format to pass to whisper-cli. See `whisper --help`",
     )
     parser.add_argument(
         "--language",
-        default="None",
+        default="en",
         help="Language spoken in audio. `whisper --help`",
     )
     parser.add_argument(
